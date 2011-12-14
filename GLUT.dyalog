@@ -82,7 +82,6 @@ PFD_SUPPORT_OPENGL←32
 ∇ {r}←glutCreateWindow title;bitand;dwFlags;pFD;handle;hDC;IPX;hRC
   r←⎕NEW 'Form' (('Caption' title)('Posn' (⌽initialwindowposition))('Size' (⌽initialwindowsize))('Coord' 'Pixel')('Visible' 0))
   r ⎕WS 'Event' 'Close' '#.GLUT.close'
-  r.(s←⎕NEW ⊂'SubForm')
 
   ⍝ Make sure the OpenGL library is loaded before calling wglCreateContext, as
   ⍝ described here:
@@ -99,7 +98,7 @@ PFD_SUPPORT_OPENGL←32
       dwFlags+←PFD_DOUBLEBUFFER
   :EndIf
   pFD←32 1 dwFlags 3 24,(13⍴0),32 0 0 0 0 0 0 0
-  handle←r.s ⎕WG 'Handle'
+  handle←r ⎕WG 'Handle'
   hDC←#.User32.GetDC handle
   IPX←#.GDI.ChoosePixelFormat hDC pFD
   #.GDI.SetPixelFormat hDC IPX pFD
@@ -119,12 +118,12 @@ PFD_SUPPORT_OPENGL←32
 
 ∇ glutPostRedisplay
   ⍝ TODO use sensible values for y, x, h and w
-  ⎕NQ currentwindow.s 'Expose' 0 0 1 1
+  ⎕NQ currentwindow 'Expose' 0 0 1 1
 ∇
 
 ∇ glutDisplayFunc func
   displayfunc←⍎func
-  currentwindow.s ⎕WS 'Event' 'onExpose' 'display'
+  currentwindow ⎕WS 'Event' 'onExpose' 'display'
 ∇
 
 ∇ display msg
@@ -145,7 +144,7 @@ PFD_SUPPORT_OPENGL←32
 
 ∇ glutReshapeFunc func
   reshapefunc←⍎func
-  currentwindow.s ⎕WS 'Event' 'onConfigure' 'reshape'
+  currentwindow ⎕WS 'Event' 'onConfigure' 'reshape'
 ∇
 
 ∇ reshape msg
@@ -175,7 +174,7 @@ PFD_SUPPORT_OPENGL←32
   #.WGL.wglMakeCurrent 0 0
   #.WGL.wglDeleteContext hRC
 
-  handle←currentwindow.s ⎕WG 'Handle'
+  handle←currentwindow ⎕WG 'Handle'
   hDC←#.User32.GetDC handle
   #.User32.ReleaseDC handle hDC
 

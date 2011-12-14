@@ -92,7 +92,7 @@ rot_x←0
   #.GLUT.glutPostRedisplay
 ∇
 
-∇ resizefunc (object eventcode ypos xpos y x)
+∇ resizefunc (x y)
 
   #.GL.glViewport 0 0 x y
   #.GL.glMatrixMode #.GL.GL_PROJECTION
@@ -104,7 +104,7 @@ rot_x←0
   #.GL.glLoadIdentity
 ∇
 
-∇ displayfunc msg
+∇ displayfunc
   #.GL.glClear #.GL.GL_COLOR_BUFFER_BIT+#.GL.GL_DEPTH_BUFFER_BIT
 
   #.GL.glMatrixMode #.GL.GL_MODELVIEW
@@ -220,8 +220,8 @@ rot_x←0
   #.IL.ilLoadImage path,'back.bmp'
 ∇
 
-∇ keybfunc (object eventcode inputcode asciicode keynumber shiftstate)
-  :Select inputcode
+∇ keybfunc (key x y)
+  :Select key
   :CaseList 'w' 'W'
       rot_x+←1.4
 

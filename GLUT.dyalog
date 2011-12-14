@@ -122,20 +122,20 @@ PFD_SUPPORT_OPENGL←32
 ∇
 
 ∇ glutDisplayFunc func
-  displayfunc←⍎func
-  currentwindow ⎕WS 'Event' 'onExpose' 'display'
+  displayfunc←func
+  currentwindow ⎕WS 'Event' 'onExpose' '#.GLUT.display'
 ∇
 
-∇ display msg
+∇ display (object eventcode y x h w)
   ⍝ Force a reshape before the first display
   :If needreshape
       :If 0≠⎕NC 'reshapefunc'
           ⍝ TODO set eventcode to 'Configure'
-          reshapefunc msg
+          (⍎reshapefunc) w h
       :EndIf
       needreshape←0
   :EndIf
-  displayfunc msg
+  ⍎displayfunc
 ∇
 
 ∇ glutSwapBuffers
@@ -143,17 +143,22 @@ PFD_SUPPORT_OPENGL←32
 ∇
 
 ∇ glutReshapeFunc func
-  reshapefunc←⍎func
-  currentwindow ⎕WS 'Event' 'onConfigure' 'reshape'
+  reshapefunc←func
+  currentwindow ⎕WS 'Event' 'onConfigure' '#.GLUT.reshape'
 ∇
 
-∇ reshape msg
+∇ reshape (object eventcode y x h w)
   needreshape←0
-  reshapefunc msg
+  (⍎reshapefunc) w h
 ∇
 
 ∇ glutKeyboardFunc func
-  currentwindow ⎕WS 'Event' 'onKeyPress' func
+  keyboardfunc←func
+  currentwindow ⎕WS 'Event' 'onKeyPress' '#.GLUT.keyboard'
+∇
+
+∇ keyboard (object eventcode inputcode asciicode keynumber shiftstate)
+  (⍎keyboardfunc) inputcode 0 0
 ∇
 
 ∇ glutIdleFunc func

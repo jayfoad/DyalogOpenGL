@@ -62,11 +62,6 @@ rot_x←0
 ∇
 
 ∇ initGLparam
-  #.GL.glShadeModel #.GL.GL_SMOOTH
-
-  #.GL.glClearColor 0 0 0 0
-  #.GL.glDepthFunc #.GL.GL_LEQUAL
-  #.GL.glClearDepth 1
   #.GL.glEnable #.GL.GL_DEPTH_TEST
 
   #.GL.glHint #.GL.GL_PERSPECTIVE_CORRECTION_HINT #.GL.GL_NICEST
@@ -120,6 +115,7 @@ rot_x←0
   #.GL.glEnable #.GL.GL_TEXTURE_GEN_T
   #.GL.glEnable #.GL.GL_TEXTURE_GEN_R
   #.GL.glEnable #.GL.GL_TEXTURE_CUBE_MAP
+  #.GL.glEnable #.GL.GL_LIGHTING
 
   ⍝ draw teapot
 
@@ -148,6 +144,8 @@ rot_x←0
       #.GL.glTexCoord2f  0  0 ⋄ #.GL.glVertex3f  3.9  3.0 ¯7.0
       #.GL.glTexCoord2f ¯1  0 ⋄ #.GL.glVertex3f ¯3.9  3.0 ¯7.0
   #.GL.glEnd
+
+  #.GL.glDisable #.GL.GL_TEXTURE_2D
 
   ⍝ swap
 
@@ -185,7 +183,7 @@ rot_x←0
   #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_GENERATE_MIPMAP #.GL.GL_TRUE
   #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MIN_FILTER #.GL.GL_LINEAR_MIPMAP_LINEAR
   #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MAG_FILTER #.GL.GL_LINEAR
-  #.GL.glTexImage2D    #.GL.GL_TEXTURE_2D 0 #.GL.GL_RGB8 512 512 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'back.bmp')
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_2D 0 #.GL.GL_RGB8 512 512 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'back.bmp')
 ∇
 
 ∇ keybfunc (key x y)

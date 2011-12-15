@@ -7,7 +7,6 @@
 ⍝∇:require =/GL
 ⍝∇:require =/GLU
 ⍝∇:require =/GLUT
-⍝∇:require =/IL
 
 ∇ MessageBox (text caption type);msg
   msg←⎕NEW 'MsgBox' (('Caption' caption) ('Text' text) ('Style' type) ('Btns' 'OK'))
@@ -30,14 +29,8 @@ matsh←10
 rot_y←0
 rot_x←0
 
-∇ main
+∇ main;cube;back
   #.GLUT.glutInit
-  #.IL.ilInit
-  #.IL.iluInit
-  #.IL.ilutInit
-  #.IL.ilutRenderer #.IL.ILUT_OPENGL
-
-  #.IL.ilutEnable #.IL.ILUT_OPENGL_CONV
 
   openWindow
 
@@ -51,6 +44,7 @@ rot_x←0
 
   #.GLUT.glutCreateWindow 'Environment Mapping Demo'
 
+  ⍝ TODO also BGR_EXT, reflection mapping, ... ?
   :If ~(#.GLUT.glutExtensionSupported 'GL_ARB_texture_cube_map')∨(#.GLUT.glutExtensionSupported 'GL_EXT_texture_cube_map')
   :OrIf ~#.GLUT.glutExtensionSupported 'GL_SGIS_generate_mipmap'
       MessageBox ('This program needs the following OpenGL extensions:' 'GL_ARB_texture_cube_map' 'GL_SGIS_generate_mipmap') 'Fatal error' 'Error'
@@ -116,38 +110,16 @@ rot_x←0
 
   ⍝ teapot texture
 
-  #.IL.ilBindImage xpos
-  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_POSITIVE_X_EXT 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR_EXT #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
+  #.GL.glBindTexture #.GL.GL_TEXTURE_CUBE_MAP cube
 
-  #.IL.ilBindImage ypos
-  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_POSITIVE_Y_EXT 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR_EXT #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
-
-  #.IL.ilBindImage zpos
-  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_POSITIVE_Z_EXT 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR_EXT #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
-
-  #.IL.ilBindImage xneg
-  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_NEGATIVE_X_EXT 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR_EXT #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
-
-  #.IL.ilBindImage yneg
-  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_EXT 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR_EXT #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
-
-  #.IL.ilBindImage zneg
-  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_EXT 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR_EXT #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
-
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP_EXT #.GL.GL_TEXTURE_MIN_FILTER #.GL.GL_LINEAR_MIPMAP_LINEAR
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP_EXT #.GL.GL_TEXTURE_MAG_FILTER #.GL.GL_LINEAR
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP_EXT #.GL.GL_GENERATE_MIPMAP_SGIS #.GL.GL_TRUE
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP_EXT #.GL.GL_TEXTURE_WRAP_S #.GL.GL_CLAMP_TO_EDGE
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP_EXT #.GL.GL_TEXTURE_WRAP_T #.GL.GL_CLAMP_TO_EDGE
-
-  #.GL.glTexGeni #.GL.GL_S #.GL.GL_TEXTURE_GEN_MODE #.GL.GL_REFLECTION_MAP_EXT
-  #.GL.glTexGeni #.GL.GL_T #.GL.GL_TEXTURE_GEN_MODE #.GL.GL_REFLECTION_MAP_EXT
-  #.GL.glTexGeni #.GL.GL_R #.GL.GL_TEXTURE_GEN_MODE #.GL.GL_REFLECTION_MAP_EXT
+  #.GL.glTexGeni #.GL.GL_S #.GL.GL_TEXTURE_GEN_MODE #.GL.GL_REFLECTION_MAP
+  #.GL.glTexGeni #.GL.GL_T #.GL.GL_TEXTURE_GEN_MODE #.GL.GL_REFLECTION_MAP
+  #.GL.glTexGeni #.GL.GL_R #.GL.GL_TEXTURE_GEN_MODE #.GL.GL_REFLECTION_MAP
 
   #.GL.glEnable #.GL.GL_TEXTURE_GEN_S
   #.GL.glEnable #.GL.GL_TEXTURE_GEN_T
   #.GL.glEnable #.GL.GL_TEXTURE_GEN_R
-  #.GL.glEnable #.GL.GL_TEXTURE_CUBE_MAP_EXT
+  #.GL.glEnable #.GL.GL_TEXTURE_CUBE_MAP
 
   ⍝ draw teapot
 
@@ -158,7 +130,7 @@ rot_x←0
   #.GL.glDisable #.GL.GL_TEXTURE_GEN_S
   #.GL.glDisable #.GL.GL_TEXTURE_GEN_T
   #.GL.glDisable #.GL.GL_TEXTURE_GEN_R
-  #.GL.glDisable #.GL.GL_TEXTURE_CUBE_MAP_EXT
+  #.GL.glDisable #.GL.GL_TEXTURE_CUBE_MAP
 
   #.GL.glLoadIdentity
 
@@ -167,13 +139,7 @@ rot_x←0
   #.GL.glEnable #.GL.GL_TEXTURE_2D
   #.GL.glDisable #.GL.GL_LIGHTING
 
-  #.IL.ilBindImage back
-  #.GL.glBindTexture   #.GL.GL_TEXTURE_2D back
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_GENERATE_MIPMAP_SGIS #.GL.GL_TRUE
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MIN_FILTER #.GL.GL_LINEAR_MIPMAP_LINEAR
-  #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MAG_FILTER #.GL.GL_LINEAR
-  #.GL.glTexImage2D    #.GL.GL_TEXTURE_2D 0 #.GL.GL_RGB8 512 512 0 (#.IL.ilGetInteger #.IL.IL_IMAGE_FORMAT) #.GL.GL_UNSIGNED_BYTE #.IL.ilGetData
-
+  #.GL.glBindTexture #.GL.GL_TEXTURE_2D back
   #.GL.glBegin #.GL.GL_QUADS
       #.GL.glColor3f 1 1 1
       #.GL.glNormal3f 1 1 1
@@ -188,36 +154,38 @@ rot_x←0
   #.GLUT.glutSwapBuffers
 ∇
 
+∇ r←loadbmp filename;t
+  t←filename ⎕NTIE 0
+  r←256|54↓⎕NREAD t 83 (⎕NSIZE t)
+  ⎕NUNTIE t
+∇
+
 ∇ setuptextures;path
   path←{(⌽∨\⌽(⍵='\')∨⍵='/')/⍵} SALT_Data.SourceFile
 
-  xpos←#.IL.ilGenImages 1
-  #.IL.ilBindImage xpos
-  #.IL.ilLoadImage path,'xpos.bmp'
+  cube back←#.GL.glGenTextures 2 2
 
-  ypos←#.IL.ilGenImages 1
-  #.IL.ilBindImage ypos
-  #.IL.ilLoadImage path,'ypos.bmp'
+  #.GL.glBindTexture #.GL.GL_TEXTURE_CUBE_MAP cube
 
-  zpos←#.IL.ilGenImages 1
-  #.IL.ilBindImage zpos
-  #.IL.ilLoadImage path,'zpos.bmp'
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP #.GL.GL_TEXTURE_WRAP_S #.GL.GL_CLAMP_TO_EDGE
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP #.GL.GL_TEXTURE_WRAP_T #.GL.GL_CLAMP_TO_EDGE
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP #.GL.GL_TEXTURE_WRAP_R #.GL.GL_CLAMP_TO_EDGE
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP #.GL.GL_TEXTURE_MAG_FILTER #.GL.GL_LINEAR
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP #.GL.GL_TEXTURE_MIN_FILTER #.GL.GL_LINEAR_MIPMAP_LINEAR
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_CUBE_MAP #.GL.GL_GENERATE_MIPMAP #.GL.GL_TRUE
 
-  xneg←#.IL.ilGenImages 1
-  #.IL.ilBindImage xneg
-  #.IL.ilLoadImage path,'xneg.bmp'
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_POSITIVE_X 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'xpos.bmp')
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_NEGATIVE_X 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'xneg.bmp')
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_POSITIVE_Y 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'ypos.bmp')
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_NEGATIVE_Y 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'yneg.bmp')
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_POSITIVE_Z 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'zpos.bmp')
+  #.GL.glTexImage2D #.GL.GL_TEXTURE_CUBE_MAP_NEGATIVE_Z 0 #.GL.GL_RGB8 256 256 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'zneg.bmp')
 
-  yneg←#.IL.ilGenImages 1
-  #.IL.ilBindImage yneg
-  #.IL.ilLoadImage path,'yneg.bmp'
-
-  zneg←#.IL.ilGenImages 1
-  #.IL.ilBindImage zneg
-  #.IL.ilLoadImage path,'zneg.bmp'
-
-  back←#.IL.ilGenImages 1
-  #.IL.ilBindImage back
-  #.IL.ilLoadImage path,'back.bmp'
+  #.GL.glBindTexture #.GL.GL_TEXTURE_2D back
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_GENERATE_MIPMAP #.GL.GL_TRUE
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MIN_FILTER #.GL.GL_LINEAR_MIPMAP_LINEAR
+  #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MAG_FILTER #.GL.GL_LINEAR
+  #.GL.glTexImage2D    #.GL.GL_TEXTURE_2D 0 #.GL.GL_RGB8 512 512 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'back.bmp')
 ∇
 
 ∇ keybfunc (key x y)
@@ -239,12 +207,7 @@ rot_x←0
 ∇
 
 ∇ freetextures
-  #.IL.ilDeleteImages xpos
-  #.IL.ilDeleteImages zpos
-  #.IL.ilDeleteImages ypos
-  #.IL.ilDeleteImages xneg
-  #.IL.ilDeleteImages yneg
-  #.IL.ilDeleteImages zneg
+  #.GL.glDeleteTextures 2 (cube back)
 ∇
 
 :EndNamespace

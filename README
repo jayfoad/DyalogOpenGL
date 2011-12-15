@@ -32,6 +32,8 @@ This will launch the Depth of Field demo. You should see a new window appear con
 
 ** Functions returning a variable length array
 
+(e.g. a b c←glGenTextures 3 3 ⍝ looks a bit odd!)
+
 * Demos
 
 ** DOFDemo
@@ -48,4 +50,3 @@ GLU: http://www.opengl.org/resources/libraries/glx/
 WGL: http://msdn.microsoft.com/en-us/library/dd374394.aspx
 GDI: http://msdn.microsoft.com/en-us/library/ms533798.aspx
 User32: http://en.wikipedia.org/wiki/Windows_USER
-DevIL (IL, ILU and ILUT): http://openil.sourceforge.net/

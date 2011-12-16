@@ -8,6 +8,9 @@
 ⍝∇:require =/GLU
 ⍝∇:require =/GLUT
 
+⎕ML←0
+⎕IO←0
+
 ∇ MessageBox (text caption type);msg
   msg←⎕NEW 'MsgBox' (('Caption' caption) ('Text' text) ('Style' type) ('Btns' 'OK'))
   ⎕DQ msg
@@ -37,17 +40,19 @@ rot_x←0
   freetextures
 ∇
 
-∇ openWindow;extnames
+∇ openWindow;version
   #.GLUT.glutInitDisplayMode #.GLUT.GLUT_RGBA+#.GLUT.GLUT_DOUBLE+#.GLUT.GLUT_DEPTH
   ⍝#.GLUT.glutInitWindowPosition 0 0
   #.GLUT.glutInitWindowSize 640 480
 
   #.GLUT.glutCreateWindow 'Environment Mapping Demo'
 
-  ⍝ TODO also BGR_EXT, reflection mapping, ... ?
-  :If ~(#.GLUT.glutExtensionSupported 'GL_ARB_texture_cube_map')∨(#.GLUT.glutExtensionSupported 'GL_EXT_texture_cube_map')
-  :OrIf ~#.GLUT.glutExtensionSupported 'GL_SGIS_generate_mipmap'
-      MessageBox ('This program needs the following OpenGL extensions:' 'GL_ARB_texture_cube_map' 'GL_SGIS_generate_mipmap') 'Fatal error' 'Error'
+  version←⊃1⊃⎕VFI⊃('^[0-9]+\.[0-9]+' ⎕S '&') #.GL.glGetString #.GL.GL_VERSION
+
+  :If (version<1.2)∧(~#.GLUT.glutExtensionSupported 'GL_EXT_bgra')
+  :OrIf (version<1.3)∧(~#.GLUT.glutExtensionSupported 'GL_ARB_texture_cube_map')∧(~#.GLUT.glutExtensionSupported 'GL_EXT_texture_cube_map')
+  :OrIf (version<1.4)∧(~#.GLUT.glutExtensionSupported 'GL_SGIS_generate_mipmap')
+      MessageBox ('This program needs the following OpenGL extensions:' 'GL_EXT_bgra' 'GL_ARB_texture_cube_map' 'GL_SGIS_generate_mipmap') 'Fatal error' 'Error'
       ⍝ TODO exit(-1)
   :EndIf
 

@@ -29,7 +29,7 @@ matsh←10
 rot_y←0
 rot_x←0
 
-∇ main;cube;back
+∇ main;cube;back;disp
   #.GLUT.glutInit
 
   openWindow
@@ -119,7 +119,7 @@ rot_x←0
 
   ⍝ draw teapot
 
-  #.GLUT.glutSolidTeapot 1
+  #.GL.glCallList disp
 
   ⍝ draw background
 
@@ -184,6 +184,11 @@ rot_x←0
   #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MIN_FILTER #.GL.GL_LINEAR_MIPMAP_LINEAR
   #.GL.glTexParameteri #.GL.GL_TEXTURE_2D #.GL.GL_TEXTURE_MAG_FILTER #.GL.GL_LINEAR
   #.GL.glTexImage2D #.GL.GL_TEXTURE_2D 0 #.GL.GL_RGB8 512 512 0 #.GL.GL_BGR #.GL.GL_UNSIGNED_BYTE (loadbmp path,'back.bmp')
+
+  disp←#.GL.glGenLists 1
+  #.GL.glNewList disp #.GL.GL_COMPILE
+  #.GLUT.glutSolidTeapot 1
+  #.GL.glEndList
 ∇
 
 ∇ keybfunc (key x y)

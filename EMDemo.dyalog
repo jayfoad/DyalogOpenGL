@@ -23,16 +23,10 @@ dif_0←1 1 1 1
 pos_0←0 1 0 1
 exp_0←128
 
-⍝ teapot material
-matamb←0 0 0 0
-matspec←1 1 1 0
-matdif←1 1 1 0
-matsh←10
+∇ main;rot_y;rot_x;cube;back;disp
+  rot_y←0
+  rot_x←0
 
-rot_y←0
-rot_x←0
-
-∇ main;cube;back;disp
   #.GLUT.glutInit
 
   openWindow
@@ -61,7 +55,6 @@ rot_x←0
   #.GLUT.glutReshapeFunc '#.EMDemo.resizefunc'
   #.GLUT.glutDisplayFunc '#.EMDemo.displayfunc'
   #.GLUT.glutKeyboardFunc '#.EMDemo.keybfunc'
-  ⍝#.GLUT.glutIdleFunc '#.EMDemo.idlefunc'
 
   #.GLUT.glutMainLoop
 ∇
@@ -80,10 +73,6 @@ rot_x←0
   #.GL.glEnable #.GL.GL_LIGHT0
 
   setuptextures
-∇
-
-∇ idlefunc
-  #.GLUT.glutPostRedisplay
 ∇
 
 ∇ resizefunc (x y)

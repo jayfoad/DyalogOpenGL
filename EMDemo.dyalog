@@ -7,6 +7,7 @@
 ⍝∇:require =/GL
 ⍝∇:require =/GLU
 ⍝∇:require =/GLUT
+⍝∇:require =/GLDuck
 
 ⎕ML←0
 ⎕IO←0
@@ -72,6 +73,8 @@ exp_0←128
   #.GL.glLightf #.GL.GL_LIGHT0 #.GL.GL_SPOT_EXPONENT exp_0
   #.GL.glEnable #.GL.GL_LIGHT0
 
+  #.GL.glEnable #.GL.GL_COLOR_MATERIAL
+
   setuptextures
 ∇
 
@@ -97,7 +100,7 @@ exp_0←128
   #.GL.glRotatef rot_y 0 1 0
   #.GL.glRotatef rot_x 1 0 0
 
-  ⍝ teapot texture
+  ⍝ object texture
 
   #.GL.glBindTexture #.GL.GL_TEXTURE_CUBE_MAP cube
 
@@ -111,7 +114,7 @@ exp_0←128
   #.GL.glEnable #.GL.GL_TEXTURE_CUBE_MAP
   #.GL.glEnable #.GL.GL_LIGHTING
 
-  ⍝ draw teapot
+  ⍝ draw object
 
   #.GL.glCallList disp
 
@@ -181,7 +184,7 @@ exp_0←128
 
   disp←#.GL.glGenLists 1
   #.GL.glNewList disp #.GL.GL_COMPILE
-  #.GLUT.glutSolidTeapot 1
+  #.GLDuck.glDucky 1
   #.GL.glEndList
 ∇
 

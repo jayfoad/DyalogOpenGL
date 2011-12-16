@@ -188,9 +188,7 @@ PFD_SUPPORT_OPENGL←32
 
 ⍝ Shapes ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 
-∇ r←sqrt r
-  r←r*0.5
-∇
+sqrt←*∘0.5
 
 ∇ glutWireSphere (radius slices stacks);quadObj
   quadObj←#.GLU.gluNewQuadric

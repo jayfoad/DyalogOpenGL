@@ -4610,6 +4610,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR←37851
 GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR←37852
 GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
+∇ r←getdllname
+  :If 'Windows'≡7↑#.⎕WG'APLVersion'
+      r←'opengl32'
+  :Else
+      r←'libGL.so'
+  :Endif
+∇
+
 ∇ r←ptostring p;l
   :If p=0
       r←''
@@ -4628,126 +4636,126 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCullFace mode
   :If 0=⎕NC'glCullFace_DLL'
-      'glCullFace_DLL'⎕NA'opengl32|glCullFace U4'
+      'glCullFace_DLL'⎕NA'',getdllname,'|glCullFace U4'
   :EndIf
   {}glCullFace_DLL mode
 ∇
 
 ∇ glFrontFace mode
   :If 0=⎕NC'glFrontFace_DLL'
-      'glFrontFace_DLL'⎕NA'opengl32|glFrontFace U4'
+      'glFrontFace_DLL'⎕NA'',getdllname,'|glFrontFace U4'
   :EndIf
   {}glFrontFace_DLL mode
 ∇
 
 ∇ glHint (target mode)
   :If 0=⎕NC'glHint_DLL'
-      'glHint_DLL'⎕NA'opengl32|glHint U4 U4'
+      'glHint_DLL'⎕NA'',getdllname,'|glHint U4 U4'
   :EndIf
   {}glHint_DLL target mode
 ∇
 
 ∇ glLineWidth width
   :If 0=⎕NC'glLineWidth_DLL'
-      'glLineWidth_DLL'⎕NA'opengl32|glLineWidth F4'
+      'glLineWidth_DLL'⎕NA'',getdllname,'|glLineWidth F4'
   :EndIf
   {}glLineWidth_DLL width
 ∇
 
 ∇ glPointSize size
   :If 0=⎕NC'glPointSize_DLL'
-      'glPointSize_DLL'⎕NA'opengl32|glPointSize F4'
+      'glPointSize_DLL'⎕NA'',getdllname,'|glPointSize F4'
   :EndIf
   {}glPointSize_DLL size
 ∇
 
 ∇ glPolygonMode (face mode)
   :If 0=⎕NC'glPolygonMode_DLL'
-      'glPolygonMode_DLL'⎕NA'opengl32|glPolygonMode U4 U4'
+      'glPolygonMode_DLL'⎕NA'',getdllname,'|glPolygonMode U4 U4'
   :EndIf
   {}glPolygonMode_DLL face mode
 ∇
 
 ∇ glScissor (x y width height)
   :If 0=⎕NC'glScissor_DLL'
-      'glScissor_DLL'⎕NA'opengl32|glScissor I4 I4 I4 I4'
+      'glScissor_DLL'⎕NA'',getdllname,'|glScissor I4 I4 I4 I4'
   :EndIf
   {}glScissor_DLL x y width height
 ∇
 
 ∇ glTexParameterf (target pname param)
   :If 0=⎕NC'glTexParameterf_DLL'
-      'glTexParameterf_DLL'⎕NA'opengl32|glTexParameterf U4 U4 F4'
+      'glTexParameterf_DLL'⎕NA'',getdllname,'|glTexParameterf U4 U4 F4'
   :EndIf
   {}glTexParameterf_DLL target pname param
 ∇
 
 ∇ glTexParameterfv (target pname params)
   :If 0=⎕NC'glTexParameterfv_DLL'
-      'glTexParameterfv_DLL'⎕NA'opengl32|glTexParameterfv U4 U4 <F4[]'
+      'glTexParameterfv_DLL'⎕NA'',getdllname,'|glTexParameterfv U4 U4 <F4[]'
   :EndIf
   {}glTexParameterfv_DLL target pname params
 ∇
 
 ∇ glTexParameteri (target pname param)
   :If 0=⎕NC'glTexParameteri_DLL'
-      'glTexParameteri_DLL'⎕NA'opengl32|glTexParameteri U4 U4 I4'
+      'glTexParameteri_DLL'⎕NA'',getdllname,'|glTexParameteri U4 U4 I4'
   :EndIf
   {}glTexParameteri_DLL target pname param
 ∇
 
 ∇ glTexParameteriv (target pname params)
   :If 0=⎕NC'glTexParameteriv_DLL'
-      'glTexParameteriv_DLL'⎕NA'opengl32|glTexParameteriv U4 U4 <I4[]'
+      'glTexParameteriv_DLL'⎕NA'',getdllname,'|glTexParameteriv U4 U4 <I4[]'
   :EndIf
   {}glTexParameteriv_DLL target pname params
 ∇
 
 ∇ TexImage1D_U1 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_U1_DLL'
-      'TexImage1D_U1_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexImage1D_U1_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexImage1D_U1_DLL target level internalformat width border format type pixels
 ∇
 
 ∇ TexImage1D_I1 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_I1_DLL'
-      'TexImage1D_I1_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexImage1D_I1_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexImage1D_I1_DLL target level internalformat width border format type pixels
 ∇
 
 ∇ TexImage1D_U2 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_U2_DLL'
-      'TexImage1D_U2_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexImage1D_U2_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexImage1D_U2_DLL target level internalformat width border format type pixels
 ∇
 
 ∇ TexImage1D_I2 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_I2_DLL'
-      'TexImage1D_I2_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexImage1D_I2_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexImage1D_I2_DLL target level internalformat width border format type pixels
 ∇
 
 ∇ TexImage1D_U4 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_U4_DLL'
-      'TexImage1D_U4_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexImage1D_U4_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexImage1D_U4_DLL target level internalformat width border format type pixels
 ∇
 
 ∇ TexImage1D_I4 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_I4_DLL'
-      'TexImage1D_I4_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexImage1D_I4_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexImage1D_I4_DLL target level internalformat width border format type pixels
 ∇
 
 ∇ TexImage1D_F4 (target level internalformat width border format type pixels)
   :If 0=⎕NC'TexImage1D_F4_DLL'
-      'TexImage1D_F4_DLL'⎕NA'opengl32|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexImage1D_F4_DLL'⎕NA'',getdllname,'|glTexImage1D U4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexImage1D_F4_DLL target level internalformat width border format type pixels
 ∇
@@ -4805,49 +4813,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexImage2D_U1 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_U1_DLL'
-      'TexImage2D_U1_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexImage2D_U1_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexImage2D_U1_DLL target level internalformat width height border format type pixels
 ∇
 
 ∇ TexImage2D_I1 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_I1_DLL'
-      'TexImage2D_I1_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexImage2D_I1_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexImage2D_I1_DLL target level internalformat width height border format type pixels
 ∇
 
 ∇ TexImage2D_U2 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_U2_DLL'
-      'TexImage2D_U2_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexImage2D_U2_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexImage2D_U2_DLL target level internalformat width height border format type pixels
 ∇
 
 ∇ TexImage2D_I2 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_I2_DLL'
-      'TexImage2D_I2_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexImage2D_I2_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexImage2D_I2_DLL target level internalformat width height border format type pixels
 ∇
 
 ∇ TexImage2D_U4 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_U4_DLL'
-      'TexImage2D_U4_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexImage2D_U4_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexImage2D_U4_DLL target level internalformat width height border format type pixels
 ∇
 
 ∇ TexImage2D_I4 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_I4_DLL'
-      'TexImage2D_I4_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexImage2D_I4_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexImage2D_I4_DLL target level internalformat width height border format type pixels
 ∇
 
 ∇ TexImage2D_F4 (target level internalformat width height border format type pixels)
   :If 0=⎕NC'TexImage2D_F4_DLL'
-      'TexImage2D_F4_DLL'⎕NA'opengl32|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexImage2D_F4_DLL'⎕NA'',getdllname,'|glTexImage2D U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexImage2D_F4_DLL target level internalformat width height border format type pixels
 ∇
@@ -4905,140 +4913,140 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDrawBuffer mode
   :If 0=⎕NC'glDrawBuffer_DLL'
-      'glDrawBuffer_DLL'⎕NA'opengl32|glDrawBuffer U4'
+      'glDrawBuffer_DLL'⎕NA'',getdllname,'|glDrawBuffer U4'
   :EndIf
   {}glDrawBuffer_DLL mode
 ∇
 
 ∇ glClear mask
   :If 0=⎕NC'glClear_DLL'
-      'glClear_DLL'⎕NA'opengl32|glClear U4'
+      'glClear_DLL'⎕NA'',getdllname,'|glClear U4'
   :EndIf
   {}glClear_DLL mask
 ∇
 
 ∇ glClearColor (red green blue alpha)
   :If 0=⎕NC'glClearColor_DLL'
-      'glClearColor_DLL'⎕NA'opengl32|glClearColor F4 F4 F4 F4'
+      'glClearColor_DLL'⎕NA'',getdllname,'|glClearColor F4 F4 F4 F4'
   :EndIf
   {}glClearColor_DLL red green blue alpha
 ∇
 
 ∇ glClearStencil s
   :If 0=⎕NC'glClearStencil_DLL'
-      'glClearStencil_DLL'⎕NA'opengl32|glClearStencil I4'
+      'glClearStencil_DLL'⎕NA'',getdllname,'|glClearStencil I4'
   :EndIf
   {}glClearStencil_DLL s
 ∇
 
 ∇ glClearDepth depth
   :If 0=⎕NC'glClearDepth_DLL'
-      'glClearDepth_DLL'⎕NA'opengl32|glClearDepth F8'
+      'glClearDepth_DLL'⎕NA'',getdllname,'|glClearDepth F8'
   :EndIf
   {}glClearDepth_DLL depth
 ∇
 
 ∇ glStencilMask mask
   :If 0=⎕NC'glStencilMask_DLL'
-      'glStencilMask_DLL'⎕NA'opengl32|glStencilMask U4'
+      'glStencilMask_DLL'⎕NA'',getdllname,'|glStencilMask U4'
   :EndIf
   {}glStencilMask_DLL mask
 ∇
 
 ∇ glColorMask (red green blue alpha)
   :If 0=⎕NC'glColorMask_DLL'
-      'glColorMask_DLL'⎕NA'opengl32|glColorMask U1 U1 U1 U1'
+      'glColorMask_DLL'⎕NA'',getdllname,'|glColorMask U1 U1 U1 U1'
   :EndIf
   {}glColorMask_DLL red green blue alpha
 ∇
 
 ∇ glDepthMask flag
   :If 0=⎕NC'glDepthMask_DLL'
-      'glDepthMask_DLL'⎕NA'opengl32|glDepthMask U1'
+      'glDepthMask_DLL'⎕NA'',getdllname,'|glDepthMask U1'
   :EndIf
   {}glDepthMask_DLL flag
 ∇
 
 ∇ glDisable cap
   :If 0=⎕NC'glDisable_DLL'
-      'glDisable_DLL'⎕NA'opengl32|glDisable U4'
+      'glDisable_DLL'⎕NA'',getdllname,'|glDisable U4'
   :EndIf
   {}glDisable_DLL cap
 ∇
 
 ∇ glEnable cap
   :If 0=⎕NC'glEnable_DLL'
-      'glEnable_DLL'⎕NA'opengl32|glEnable U4'
+      'glEnable_DLL'⎕NA'',getdllname,'|glEnable U4'
   :EndIf
   {}glEnable_DLL cap
 ∇
 
 ∇ glFinish
   :If 0=⎕NC'glFinish_DLL'
-      'glFinish_DLL'⎕NA'opengl32|glFinish'
+      'glFinish_DLL'⎕NA'',getdllname,'|glFinish'
   :EndIf
   {}glFinish_DLL
 ∇
 
 ∇ glFlush
   :If 0=⎕NC'glFlush_DLL'
-      'glFlush_DLL'⎕NA'opengl32|glFlush'
+      'glFlush_DLL'⎕NA'',getdllname,'|glFlush'
   :EndIf
   {}glFlush_DLL
 ∇
 
 ∇ glBlendFunc (sfactor dfactor)
   :If 0=⎕NC'glBlendFunc_DLL'
-      'glBlendFunc_DLL'⎕NA'opengl32|glBlendFunc U4 U4'
+      'glBlendFunc_DLL'⎕NA'',getdllname,'|glBlendFunc U4 U4'
   :EndIf
   {}glBlendFunc_DLL sfactor dfactor
 ∇
 
 ∇ glLogicOp opcode
   :If 0=⎕NC'glLogicOp_DLL'
-      'glLogicOp_DLL'⎕NA'opengl32|glLogicOp U4'
+      'glLogicOp_DLL'⎕NA'',getdllname,'|glLogicOp U4'
   :EndIf
   {}glLogicOp_DLL opcode
 ∇
 
 ∇ glStencilFunc (func ref mask)
   :If 0=⎕NC'glStencilFunc_DLL'
-      'glStencilFunc_DLL'⎕NA'opengl32|glStencilFunc U4 I4 U4'
+      'glStencilFunc_DLL'⎕NA'',getdllname,'|glStencilFunc U4 I4 U4'
   :EndIf
   {}glStencilFunc_DLL func ref mask
 ∇
 
 ∇ glStencilOp (fail zfail zpass)
   :If 0=⎕NC'glStencilOp_DLL'
-      'glStencilOp_DLL'⎕NA'opengl32|glStencilOp U4 U4 U4'
+      'glStencilOp_DLL'⎕NA'',getdllname,'|glStencilOp U4 U4 U4'
   :EndIf
   {}glStencilOp_DLL fail zfail zpass
 ∇
 
 ∇ glDepthFunc func
   :If 0=⎕NC'glDepthFunc_DLL'
-      'glDepthFunc_DLL'⎕NA'opengl32|glDepthFunc U4'
+      'glDepthFunc_DLL'⎕NA'',getdllname,'|glDepthFunc U4'
   :EndIf
   {}glDepthFunc_DLL func
 ∇
 
 ∇ glPixelStoref (pname param)
   :If 0=⎕NC'glPixelStoref_DLL'
-      'glPixelStoref_DLL'⎕NA'opengl32|glPixelStoref U4 F4'
+      'glPixelStoref_DLL'⎕NA'',getdllname,'|glPixelStoref U4 F4'
   :EndIf
   {}glPixelStoref_DLL pname param
 ∇
 
 ∇ glPixelStorei (pname param)
   :If 0=⎕NC'glPixelStorei_DLL'
-      'glPixelStorei_DLL'⎕NA'opengl32|glPixelStorei U4 I4'
+      'glPixelStorei_DLL'⎕NA'',getdllname,'|glPixelStorei U4 I4'
   :EndIf
   {}glPixelStorei_DLL pname param
 ∇
 
 ∇ glReadBuffer mode
   :If 0=⎕NC'glReadBuffer_DLL'
-      'glReadBuffer_DLL'⎕NA'opengl32|glReadBuffer U4'
+      'glReadBuffer_DLL'⎕NA'',getdllname,'|glReadBuffer U4'
   :EndIf
   {}glReadBuffer_DLL mode
 ∇
@@ -5052,42 +5060,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetBooleanv (pname params)
   :If 0=⎕NC'glGetBooleanv_DLL'
-      'glGetBooleanv_DLL'⎕NA'opengl32|glGetBooleanv U4 >U1[]'
+      'glGetBooleanv_DLL'⎕NA'',getdllname,'|glGetBooleanv U4 >U1[]'
   :EndIf
   r←glGetBooleanv_DLL pname params
 ∇
 
 ∇ r←glGetDoublev (pname params)
   :If 0=⎕NC'glGetDoublev_DLL'
-      'glGetDoublev_DLL'⎕NA'opengl32|glGetDoublev U4 >F8[]'
+      'glGetDoublev_DLL'⎕NA'',getdllname,'|glGetDoublev U4 >F8[]'
   :EndIf
   r←glGetDoublev_DLL pname params
 ∇
 
 ∇ r←glGetError
   :If 0=⎕NC'glGetError_DLL'
-      'glGetError_DLL'⎕NA'U4 opengl32|glGetError'
+      'glGetError_DLL'⎕NA'U4 ',getdllname,'|glGetError'
   :EndIf
   r←glGetError_DLL
 ∇
 
 ∇ r←glGetFloatv (pname params)
   :If 0=⎕NC'glGetFloatv_DLL'
-      'glGetFloatv_DLL'⎕NA'opengl32|glGetFloatv U4 >F4[]'
+      'glGetFloatv_DLL'⎕NA'',getdllname,'|glGetFloatv U4 >F4[]'
   :EndIf
   r←glGetFloatv_DLL pname params
 ∇
 
 ∇ r←glGetIntegerv (pname params)
   :If 0=⎕NC'glGetIntegerv_DLL'
-      'glGetIntegerv_DLL'⎕NA'opengl32|glGetIntegerv U4 >I4[]'
+      'glGetIntegerv_DLL'⎕NA'',getdllname,'|glGetIntegerv U4 >I4[]'
   :EndIf
   r←glGetIntegerv_DLL pname params
 ∇
 
 ∇ r←glGetString name
   :If 0=⎕NC'glGetString_DLL'
-      'glGetString_DLL'⎕NA'P opengl32|glGetString U4'
+      'glGetString_DLL'⎕NA'P ',getdllname,'|glGetString U4'
   :EndIf
   r←ptostring glGetString_DLL name
 ∇
@@ -5101,70 +5109,70 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetTexParameterfv (target pname params)
   :If 0=⎕NC'glGetTexParameterfv_DLL'
-      'glGetTexParameterfv_DLL'⎕NA'opengl32|glGetTexParameterfv U4 U4 >F4[]'
+      'glGetTexParameterfv_DLL'⎕NA'',getdllname,'|glGetTexParameterfv U4 U4 >F4[]'
   :EndIf
   r←glGetTexParameterfv_DLL target pname params
 ∇
 
 ∇ r←glGetTexParameteriv (target pname params)
   :If 0=⎕NC'glGetTexParameteriv_DLL'
-      'glGetTexParameteriv_DLL'⎕NA'opengl32|glGetTexParameteriv U4 U4 >I4[]'
+      'glGetTexParameteriv_DLL'⎕NA'',getdllname,'|glGetTexParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetTexParameteriv_DLL target pname params
 ∇
 
 ∇ r←glGetTexLevelParameterfv (target level pname params)
   :If 0=⎕NC'glGetTexLevelParameterfv_DLL'
-      'glGetTexLevelParameterfv_DLL'⎕NA'opengl32|glGetTexLevelParameterfv U4 I4 U4 >F4[]'
+      'glGetTexLevelParameterfv_DLL'⎕NA'',getdllname,'|glGetTexLevelParameterfv U4 I4 U4 >F4[]'
   :EndIf
   r←glGetTexLevelParameterfv_DLL target level pname params
 ∇
 
 ∇ r←glGetTexLevelParameteriv (target level pname params)
   :If 0=⎕NC'glGetTexLevelParameteriv_DLL'
-      'glGetTexLevelParameteriv_DLL'⎕NA'opengl32|glGetTexLevelParameteriv U4 I4 U4 >I4[]'
+      'glGetTexLevelParameteriv_DLL'⎕NA'',getdllname,'|glGetTexLevelParameteriv U4 I4 U4 >I4[]'
   :EndIf
   r←glGetTexLevelParameteriv_DLL target level pname params
 ∇
 
 ∇ r←glIsEnabled cap
   :If 0=⎕NC'glIsEnabled_DLL'
-      'glIsEnabled_DLL'⎕NA'U1 opengl32|glIsEnabled U4'
+      'glIsEnabled_DLL'⎕NA'U1 ',getdllname,'|glIsEnabled U4'
   :EndIf
   r←glIsEnabled_DLL cap
 ∇
 
 ∇ glDepthRange (near far)
   :If 0=⎕NC'glDepthRange_DLL'
-      'glDepthRange_DLL'⎕NA'opengl32|glDepthRange F8 F8'
+      'glDepthRange_DLL'⎕NA'',getdllname,'|glDepthRange F8 F8'
   :EndIf
   {}glDepthRange_DLL near far
 ∇
 
 ∇ glViewport (x y width height)
   :If 0=⎕NC'glViewport_DLL'
-      'glViewport_DLL'⎕NA'opengl32|glViewport I4 I4 I4 I4'
+      'glViewport_DLL'⎕NA'',getdllname,'|glViewport I4 I4 I4 I4'
   :EndIf
   {}glViewport_DLL x y width height
 ∇
 
 ∇ glNewList (list mode)
   :If 0=⎕NC'glNewList_DLL'
-      'glNewList_DLL'⎕NA'opengl32|glNewList U4 U4'
+      'glNewList_DLL'⎕NA'',getdllname,'|glNewList U4 U4'
   :EndIf
   {}glNewList_DLL list mode
 ∇
 
 ∇ glEndList
   :If 0=⎕NC'glEndList_DLL'
-      'glEndList_DLL'⎕NA'opengl32|glEndList'
+      'glEndList_DLL'⎕NA'',getdllname,'|glEndList'
   :EndIf
   {}glEndList_DLL
 ∇
 
 ∇ glCallList list
   :If 0=⎕NC'glCallList_DLL'
-      'glCallList_DLL'⎕NA'opengl32|glCallList U4'
+      'glCallList_DLL'⎕NA'',getdllname,'|glCallList U4'
   :EndIf
   {}glCallList_DLL list
 ∇
@@ -5178,266 +5186,266 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDeleteLists (list range)
   :If 0=⎕NC'glDeleteLists_DLL'
-      'glDeleteLists_DLL'⎕NA'opengl32|glDeleteLists U4 I4'
+      'glDeleteLists_DLL'⎕NA'',getdllname,'|glDeleteLists U4 I4'
   :EndIf
   {}glDeleteLists_DLL list range
 ∇
 
 ∇ r←glGenLists range
   :If 0=⎕NC'glGenLists_DLL'
-      'glGenLists_DLL'⎕NA'U4 opengl32|glGenLists I4'
+      'glGenLists_DLL'⎕NA'U4 ',getdllname,'|glGenLists I4'
   :EndIf
   r←glGenLists_DLL range
 ∇
 
 ∇ glListBase base
   :If 0=⎕NC'glListBase_DLL'
-      'glListBase_DLL'⎕NA'opengl32|glListBase U4'
+      'glListBase_DLL'⎕NA'',getdllname,'|glListBase U4'
   :EndIf
   {}glListBase_DLL base
 ∇
 
 ∇ glBegin mode
   :If 0=⎕NC'glBegin_DLL'
-      'glBegin_DLL'⎕NA'opengl32|glBegin U4'
+      'glBegin_DLL'⎕NA'',getdllname,'|glBegin U4'
   :EndIf
   {}glBegin_DLL mode
 ∇
 
 ∇ glBitmap (width height xorig yorig xmove ymove bitmap)
   :If 0=⎕NC'glBitmap_DLL'
-      'glBitmap_DLL'⎕NA'opengl32|glBitmap I4 I4 F4 F4 F4 F4 <U1[]'
+      'glBitmap_DLL'⎕NA'',getdllname,'|glBitmap I4 I4 F4 F4 F4 F4 <U1[]'
   :EndIf
   {}glBitmap_DLL width height xorig yorig xmove ymove bitmap
 ∇
 
 ∇ glColor3b (red green blue)
   :If 0=⎕NC'glColor3b_DLL'
-      'glColor3b_DLL'⎕NA'opengl32|glColor3b I1 I1 I1'
+      'glColor3b_DLL'⎕NA'',getdllname,'|glColor3b I1 I1 I1'
   :EndIf
   {}glColor3b_DLL red green blue
 ∇
 
 ∇ glColor3bv v
   :If 0=⎕NC'glColor3bv_DLL'
-      'glColor3bv_DLL'⎕NA'opengl32|glColor3bv <I1[3]'
+      'glColor3bv_DLL'⎕NA'',getdllname,'|glColor3bv <I1[3]'
   :EndIf
   {}glColor3bv_DLL v
 ∇
 
 ∇ glColor3d (red green blue)
   :If 0=⎕NC'glColor3d_DLL'
-      'glColor3d_DLL'⎕NA'opengl32|glColor3d F8 F8 F8'
+      'glColor3d_DLL'⎕NA'',getdllname,'|glColor3d F8 F8 F8'
   :EndIf
   {}glColor3d_DLL red green blue
 ∇
 
 ∇ glColor3dv v
   :If 0=⎕NC'glColor3dv_DLL'
-      'glColor3dv_DLL'⎕NA'opengl32|glColor3dv <F8[3]'
+      'glColor3dv_DLL'⎕NA'',getdllname,'|glColor3dv <F8[3]'
   :EndIf
   {}glColor3dv_DLL v
 ∇
 
 ∇ glColor3f (red green blue)
   :If 0=⎕NC'glColor3f_DLL'
-      'glColor3f_DLL'⎕NA'opengl32|glColor3f F4 F4 F4'
+      'glColor3f_DLL'⎕NA'',getdllname,'|glColor3f F4 F4 F4'
   :EndIf
   {}glColor3f_DLL red green blue
 ∇
 
 ∇ glColor3fv v
   :If 0=⎕NC'glColor3fv_DLL'
-      'glColor3fv_DLL'⎕NA'opengl32|glColor3fv <F4[3]'
+      'glColor3fv_DLL'⎕NA'',getdllname,'|glColor3fv <F4[3]'
   :EndIf
   {}glColor3fv_DLL v
 ∇
 
 ∇ glColor3i (red green blue)
   :If 0=⎕NC'glColor3i_DLL'
-      'glColor3i_DLL'⎕NA'opengl32|glColor3i I4 I4 I4'
+      'glColor3i_DLL'⎕NA'',getdllname,'|glColor3i I4 I4 I4'
   :EndIf
   {}glColor3i_DLL red green blue
 ∇
 
 ∇ glColor3iv v
   :If 0=⎕NC'glColor3iv_DLL'
-      'glColor3iv_DLL'⎕NA'opengl32|glColor3iv <I4[3]'
+      'glColor3iv_DLL'⎕NA'',getdllname,'|glColor3iv <I4[3]'
   :EndIf
   {}glColor3iv_DLL v
 ∇
 
 ∇ glColor3s (red green blue)
   :If 0=⎕NC'glColor3s_DLL'
-      'glColor3s_DLL'⎕NA'opengl32|glColor3s I2 I2 I2'
+      'glColor3s_DLL'⎕NA'',getdllname,'|glColor3s I2 I2 I2'
   :EndIf
   {}glColor3s_DLL red green blue
 ∇
 
 ∇ glColor3sv v
   :If 0=⎕NC'glColor3sv_DLL'
-      'glColor3sv_DLL'⎕NA'opengl32|glColor3sv <I2[3]'
+      'glColor3sv_DLL'⎕NA'',getdllname,'|glColor3sv <I2[3]'
   :EndIf
   {}glColor3sv_DLL v
 ∇
 
 ∇ glColor3ub (red green blue)
   :If 0=⎕NC'glColor3ub_DLL'
-      'glColor3ub_DLL'⎕NA'opengl32|glColor3ub U1 U1 U1'
+      'glColor3ub_DLL'⎕NA'',getdllname,'|glColor3ub U1 U1 U1'
   :EndIf
   {}glColor3ub_DLL red green blue
 ∇
 
 ∇ glColor3ubv v
   :If 0=⎕NC'glColor3ubv_DLL'
-      'glColor3ubv_DLL'⎕NA'opengl32|glColor3ubv <U1[3]'
+      'glColor3ubv_DLL'⎕NA'',getdllname,'|glColor3ubv <U1[3]'
   :EndIf
   {}glColor3ubv_DLL v
 ∇
 
 ∇ glColor3ui (red green blue)
   :If 0=⎕NC'glColor3ui_DLL'
-      'glColor3ui_DLL'⎕NA'opengl32|glColor3ui U4 U4 U4'
+      'glColor3ui_DLL'⎕NA'',getdllname,'|glColor3ui U4 U4 U4'
   :EndIf
   {}glColor3ui_DLL red green blue
 ∇
 
 ∇ glColor3uiv v
   :If 0=⎕NC'glColor3uiv_DLL'
-      'glColor3uiv_DLL'⎕NA'opengl32|glColor3uiv <U4[3]'
+      'glColor3uiv_DLL'⎕NA'',getdllname,'|glColor3uiv <U4[3]'
   :EndIf
   {}glColor3uiv_DLL v
 ∇
 
 ∇ glColor3us (red green blue)
   :If 0=⎕NC'glColor3us_DLL'
-      'glColor3us_DLL'⎕NA'opengl32|glColor3us U2 U2 U2'
+      'glColor3us_DLL'⎕NA'',getdllname,'|glColor3us U2 U2 U2'
   :EndIf
   {}glColor3us_DLL red green blue
 ∇
 
 ∇ glColor3usv v
   :If 0=⎕NC'glColor3usv_DLL'
-      'glColor3usv_DLL'⎕NA'opengl32|glColor3usv <U2[3]'
+      'glColor3usv_DLL'⎕NA'',getdllname,'|glColor3usv <U2[3]'
   :EndIf
   {}glColor3usv_DLL v
 ∇
 
 ∇ glColor4b (red green blue alpha)
   :If 0=⎕NC'glColor4b_DLL'
-      'glColor4b_DLL'⎕NA'opengl32|glColor4b I1 I1 I1 I1'
+      'glColor4b_DLL'⎕NA'',getdllname,'|glColor4b I1 I1 I1 I1'
   :EndIf
   {}glColor4b_DLL red green blue alpha
 ∇
 
 ∇ glColor4bv v
   :If 0=⎕NC'glColor4bv_DLL'
-      'glColor4bv_DLL'⎕NA'opengl32|glColor4bv <I1[4]'
+      'glColor4bv_DLL'⎕NA'',getdllname,'|glColor4bv <I1[4]'
   :EndIf
   {}glColor4bv_DLL v
 ∇
 
 ∇ glColor4d (red green blue alpha)
   :If 0=⎕NC'glColor4d_DLL'
-      'glColor4d_DLL'⎕NA'opengl32|glColor4d F8 F8 F8 F8'
+      'glColor4d_DLL'⎕NA'',getdllname,'|glColor4d F8 F8 F8 F8'
   :EndIf
   {}glColor4d_DLL red green blue alpha
 ∇
 
 ∇ glColor4dv v
   :If 0=⎕NC'glColor4dv_DLL'
-      'glColor4dv_DLL'⎕NA'opengl32|glColor4dv <F8[4]'
+      'glColor4dv_DLL'⎕NA'',getdllname,'|glColor4dv <F8[4]'
   :EndIf
   {}glColor4dv_DLL v
 ∇
 
 ∇ glColor4f (red green blue alpha)
   :If 0=⎕NC'glColor4f_DLL'
-      'glColor4f_DLL'⎕NA'opengl32|glColor4f F4 F4 F4 F4'
+      'glColor4f_DLL'⎕NA'',getdllname,'|glColor4f F4 F4 F4 F4'
   :EndIf
   {}glColor4f_DLL red green blue alpha
 ∇
 
 ∇ glColor4fv v
   :If 0=⎕NC'glColor4fv_DLL'
-      'glColor4fv_DLL'⎕NA'opengl32|glColor4fv <F4[4]'
+      'glColor4fv_DLL'⎕NA'',getdllname,'|glColor4fv <F4[4]'
   :EndIf
   {}glColor4fv_DLL v
 ∇
 
 ∇ glColor4i (red green blue alpha)
   :If 0=⎕NC'glColor4i_DLL'
-      'glColor4i_DLL'⎕NA'opengl32|glColor4i I4 I4 I4 I4'
+      'glColor4i_DLL'⎕NA'',getdllname,'|glColor4i I4 I4 I4 I4'
   :EndIf
   {}glColor4i_DLL red green blue alpha
 ∇
 
 ∇ glColor4iv v
   :If 0=⎕NC'glColor4iv_DLL'
-      'glColor4iv_DLL'⎕NA'opengl32|glColor4iv <I4[4]'
+      'glColor4iv_DLL'⎕NA'',getdllname,'|glColor4iv <I4[4]'
   :EndIf
   {}glColor4iv_DLL v
 ∇
 
 ∇ glColor4s (red green blue alpha)
   :If 0=⎕NC'glColor4s_DLL'
-      'glColor4s_DLL'⎕NA'opengl32|glColor4s I2 I2 I2 I2'
+      'glColor4s_DLL'⎕NA'',getdllname,'|glColor4s I2 I2 I2 I2'
   :EndIf
   {}glColor4s_DLL red green blue alpha
 ∇
 
 ∇ glColor4sv v
   :If 0=⎕NC'glColor4sv_DLL'
-      'glColor4sv_DLL'⎕NA'opengl32|glColor4sv <I2[4]'
+      'glColor4sv_DLL'⎕NA'',getdllname,'|glColor4sv <I2[4]'
   :EndIf
   {}glColor4sv_DLL v
 ∇
 
 ∇ glColor4ub (red green blue alpha)
   :If 0=⎕NC'glColor4ub_DLL'
-      'glColor4ub_DLL'⎕NA'opengl32|glColor4ub U1 U1 U1 U1'
+      'glColor4ub_DLL'⎕NA'',getdllname,'|glColor4ub U1 U1 U1 U1'
   :EndIf
   {}glColor4ub_DLL red green blue alpha
 ∇
 
 ∇ glColor4ubv v
   :If 0=⎕NC'glColor4ubv_DLL'
-      'glColor4ubv_DLL'⎕NA'opengl32|glColor4ubv <U1[4]'
+      'glColor4ubv_DLL'⎕NA'',getdllname,'|glColor4ubv <U1[4]'
   :EndIf
   {}glColor4ubv_DLL v
 ∇
 
 ∇ glColor4ui (red green blue alpha)
   :If 0=⎕NC'glColor4ui_DLL'
-      'glColor4ui_DLL'⎕NA'opengl32|glColor4ui U4 U4 U4 U4'
+      'glColor4ui_DLL'⎕NA'',getdllname,'|glColor4ui U4 U4 U4 U4'
   :EndIf
   {}glColor4ui_DLL red green blue alpha
 ∇
 
 ∇ glColor4uiv v
   :If 0=⎕NC'glColor4uiv_DLL'
-      'glColor4uiv_DLL'⎕NA'opengl32|glColor4uiv <U4[4]'
+      'glColor4uiv_DLL'⎕NA'',getdllname,'|glColor4uiv <U4[4]'
   :EndIf
   {}glColor4uiv_DLL v
 ∇
 
 ∇ glColor4us (red green blue alpha)
   :If 0=⎕NC'glColor4us_DLL'
-      'glColor4us_DLL'⎕NA'opengl32|glColor4us U2 U2 U2 U2'
+      'glColor4us_DLL'⎕NA'',getdllname,'|glColor4us U2 U2 U2 U2'
   :EndIf
   {}glColor4us_DLL red green blue alpha
 ∇
 
 ∇ glColor4usv v
   :If 0=⎕NC'glColor4usv_DLL'
-      'glColor4usv_DLL'⎕NA'opengl32|glColor4usv <U2[4]'
+      'glColor4usv_DLL'⎕NA'',getdllname,'|glColor4usv <U2[4]'
   :EndIf
   {}glColor4usv_DLL v
 ∇
 
 ∇ glEdgeFlag flag
   :If 0=⎕NC'glEdgeFlag_DLL'
-      'glEdgeFlag_DLL'⎕NA'opengl32|glEdgeFlag U1'
+      'glEdgeFlag_DLL'⎕NA'',getdllname,'|glEdgeFlag U1'
   :EndIf
   {}glEdgeFlag_DLL flag
 ∇
@@ -5451,1309 +5459,1309 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glEnd
   :If 0=⎕NC'glEnd_DLL'
-      'glEnd_DLL'⎕NA'opengl32|glEnd'
+      'glEnd_DLL'⎕NA'',getdllname,'|glEnd'
   :EndIf
   {}glEnd_DLL
 ∇
 
 ∇ glIndexd c
   :If 0=⎕NC'glIndexd_DLL'
-      'glIndexd_DLL'⎕NA'opengl32|glIndexd F8'
+      'glIndexd_DLL'⎕NA'',getdllname,'|glIndexd F8'
   :EndIf
   {}glIndexd_DLL c
 ∇
 
 ∇ glIndexdv c
   :If 0=⎕NC'glIndexdv_DLL'
-      'glIndexdv_DLL'⎕NA'opengl32|glIndexdv <F8[1]'
+      'glIndexdv_DLL'⎕NA'',getdllname,'|glIndexdv <F8[1]'
   :EndIf
   {}glIndexdv_DLL c
 ∇
 
 ∇ glIndexf c
   :If 0=⎕NC'glIndexf_DLL'
-      'glIndexf_DLL'⎕NA'opengl32|glIndexf F4'
+      'glIndexf_DLL'⎕NA'',getdllname,'|glIndexf F4'
   :EndIf
   {}glIndexf_DLL c
 ∇
 
 ∇ glIndexfv c
   :If 0=⎕NC'glIndexfv_DLL'
-      'glIndexfv_DLL'⎕NA'opengl32|glIndexfv <F4[1]'
+      'glIndexfv_DLL'⎕NA'',getdllname,'|glIndexfv <F4[1]'
   :EndIf
   {}glIndexfv_DLL c
 ∇
 
 ∇ glIndexi c
   :If 0=⎕NC'glIndexi_DLL'
-      'glIndexi_DLL'⎕NA'opengl32|glIndexi I4'
+      'glIndexi_DLL'⎕NA'',getdllname,'|glIndexi I4'
   :EndIf
   {}glIndexi_DLL c
 ∇
 
 ∇ glIndexiv c
   :If 0=⎕NC'glIndexiv_DLL'
-      'glIndexiv_DLL'⎕NA'opengl32|glIndexiv <I4[1]'
+      'glIndexiv_DLL'⎕NA'',getdllname,'|glIndexiv <I4[1]'
   :EndIf
   {}glIndexiv_DLL c
 ∇
 
 ∇ glIndexs c
   :If 0=⎕NC'glIndexs_DLL'
-      'glIndexs_DLL'⎕NA'opengl32|glIndexs I2'
+      'glIndexs_DLL'⎕NA'',getdllname,'|glIndexs I2'
   :EndIf
   {}glIndexs_DLL c
 ∇
 
 ∇ glIndexsv c
   :If 0=⎕NC'glIndexsv_DLL'
-      'glIndexsv_DLL'⎕NA'opengl32|glIndexsv <I2[1]'
+      'glIndexsv_DLL'⎕NA'',getdllname,'|glIndexsv <I2[1]'
   :EndIf
   {}glIndexsv_DLL c
 ∇
 
 ∇ glNormal3b (nx ny nz)
   :If 0=⎕NC'glNormal3b_DLL'
-      'glNormal3b_DLL'⎕NA'opengl32|glNormal3b I1 I1 I1'
+      'glNormal3b_DLL'⎕NA'',getdllname,'|glNormal3b I1 I1 I1'
   :EndIf
   {}glNormal3b_DLL nx ny nz
 ∇
 
 ∇ glNormal3bv v
   :If 0=⎕NC'glNormal3bv_DLL'
-      'glNormal3bv_DLL'⎕NA'opengl32|glNormal3bv <I1[3]'
+      'glNormal3bv_DLL'⎕NA'',getdllname,'|glNormal3bv <I1[3]'
   :EndIf
   {}glNormal3bv_DLL v
 ∇
 
 ∇ glNormal3d (nx ny nz)
   :If 0=⎕NC'glNormal3d_DLL'
-      'glNormal3d_DLL'⎕NA'opengl32|glNormal3d F8 F8 F8'
+      'glNormal3d_DLL'⎕NA'',getdllname,'|glNormal3d F8 F8 F8'
   :EndIf
   {}glNormal3d_DLL nx ny nz
 ∇
 
 ∇ glNormal3dv v
   :If 0=⎕NC'glNormal3dv_DLL'
-      'glNormal3dv_DLL'⎕NA'opengl32|glNormal3dv <F8[3]'
+      'glNormal3dv_DLL'⎕NA'',getdllname,'|glNormal3dv <F8[3]'
   :EndIf
   {}glNormal3dv_DLL v
 ∇
 
 ∇ glNormal3f (nx ny nz)
   :If 0=⎕NC'glNormal3f_DLL'
-      'glNormal3f_DLL'⎕NA'opengl32|glNormal3f F4 F4 F4'
+      'glNormal3f_DLL'⎕NA'',getdllname,'|glNormal3f F4 F4 F4'
   :EndIf
   {}glNormal3f_DLL nx ny nz
 ∇
 
 ∇ glNormal3fv v
   :If 0=⎕NC'glNormal3fv_DLL'
-      'glNormal3fv_DLL'⎕NA'opengl32|glNormal3fv <F4[3]'
+      'glNormal3fv_DLL'⎕NA'',getdllname,'|glNormal3fv <F4[3]'
   :EndIf
   {}glNormal3fv_DLL v
 ∇
 
 ∇ glNormal3i (nx ny nz)
   :If 0=⎕NC'glNormal3i_DLL'
-      'glNormal3i_DLL'⎕NA'opengl32|glNormal3i I4 I4 I4'
+      'glNormal3i_DLL'⎕NA'',getdllname,'|glNormal3i I4 I4 I4'
   :EndIf
   {}glNormal3i_DLL nx ny nz
 ∇
 
 ∇ glNormal3iv v
   :If 0=⎕NC'glNormal3iv_DLL'
-      'glNormal3iv_DLL'⎕NA'opengl32|glNormal3iv <I4[3]'
+      'glNormal3iv_DLL'⎕NA'',getdllname,'|glNormal3iv <I4[3]'
   :EndIf
   {}glNormal3iv_DLL v
 ∇
 
 ∇ glNormal3s (nx ny nz)
   :If 0=⎕NC'glNormal3s_DLL'
-      'glNormal3s_DLL'⎕NA'opengl32|glNormal3s I2 I2 I2'
+      'glNormal3s_DLL'⎕NA'',getdllname,'|glNormal3s I2 I2 I2'
   :EndIf
   {}glNormal3s_DLL nx ny nz
 ∇
 
 ∇ glNormal3sv v
   :If 0=⎕NC'glNormal3sv_DLL'
-      'glNormal3sv_DLL'⎕NA'opengl32|glNormal3sv <I2[3]'
+      'glNormal3sv_DLL'⎕NA'',getdllname,'|glNormal3sv <I2[3]'
   :EndIf
   {}glNormal3sv_DLL v
 ∇
 
 ∇ glRasterPos2d (x y)
   :If 0=⎕NC'glRasterPos2d_DLL'
-      'glRasterPos2d_DLL'⎕NA'opengl32|glRasterPos2d F8 F8'
+      'glRasterPos2d_DLL'⎕NA'',getdllname,'|glRasterPos2d F8 F8'
   :EndIf
   {}glRasterPos2d_DLL x y
 ∇
 
 ∇ glRasterPos2dv v
   :If 0=⎕NC'glRasterPos2dv_DLL'
-      'glRasterPos2dv_DLL'⎕NA'opengl32|glRasterPos2dv <F8[2]'
+      'glRasterPos2dv_DLL'⎕NA'',getdllname,'|glRasterPos2dv <F8[2]'
   :EndIf
   {}glRasterPos2dv_DLL v
 ∇
 
 ∇ glRasterPos2f (x y)
   :If 0=⎕NC'glRasterPos2f_DLL'
-      'glRasterPos2f_DLL'⎕NA'opengl32|glRasterPos2f F4 F4'
+      'glRasterPos2f_DLL'⎕NA'',getdllname,'|glRasterPos2f F4 F4'
   :EndIf
   {}glRasterPos2f_DLL x y
 ∇
 
 ∇ glRasterPos2fv v
   :If 0=⎕NC'glRasterPos2fv_DLL'
-      'glRasterPos2fv_DLL'⎕NA'opengl32|glRasterPos2fv <F4[2]'
+      'glRasterPos2fv_DLL'⎕NA'',getdllname,'|glRasterPos2fv <F4[2]'
   :EndIf
   {}glRasterPos2fv_DLL v
 ∇
 
 ∇ glRasterPos2i (x y)
   :If 0=⎕NC'glRasterPos2i_DLL'
-      'glRasterPos2i_DLL'⎕NA'opengl32|glRasterPos2i I4 I4'
+      'glRasterPos2i_DLL'⎕NA'',getdllname,'|glRasterPos2i I4 I4'
   :EndIf
   {}glRasterPos2i_DLL x y
 ∇
 
 ∇ glRasterPos2iv v
   :If 0=⎕NC'glRasterPos2iv_DLL'
-      'glRasterPos2iv_DLL'⎕NA'opengl32|glRasterPos2iv <I4[2]'
+      'glRasterPos2iv_DLL'⎕NA'',getdllname,'|glRasterPos2iv <I4[2]'
   :EndIf
   {}glRasterPos2iv_DLL v
 ∇
 
 ∇ glRasterPos2s (x y)
   :If 0=⎕NC'glRasterPos2s_DLL'
-      'glRasterPos2s_DLL'⎕NA'opengl32|glRasterPos2s I2 I2'
+      'glRasterPos2s_DLL'⎕NA'',getdllname,'|glRasterPos2s I2 I2'
   :EndIf
   {}glRasterPos2s_DLL x y
 ∇
 
 ∇ glRasterPos2sv v
   :If 0=⎕NC'glRasterPos2sv_DLL'
-      'glRasterPos2sv_DLL'⎕NA'opengl32|glRasterPos2sv <I2[2]'
+      'glRasterPos2sv_DLL'⎕NA'',getdllname,'|glRasterPos2sv <I2[2]'
   :EndIf
   {}glRasterPos2sv_DLL v
 ∇
 
 ∇ glRasterPos3d (x y z)
   :If 0=⎕NC'glRasterPos3d_DLL'
-      'glRasterPos3d_DLL'⎕NA'opengl32|glRasterPos3d F8 F8 F8'
+      'glRasterPos3d_DLL'⎕NA'',getdllname,'|glRasterPos3d F8 F8 F8'
   :EndIf
   {}glRasterPos3d_DLL x y z
 ∇
 
 ∇ glRasterPos3dv v
   :If 0=⎕NC'glRasterPos3dv_DLL'
-      'glRasterPos3dv_DLL'⎕NA'opengl32|glRasterPos3dv <F8[3]'
+      'glRasterPos3dv_DLL'⎕NA'',getdllname,'|glRasterPos3dv <F8[3]'
   :EndIf
   {}glRasterPos3dv_DLL v
 ∇
 
 ∇ glRasterPos3f (x y z)
   :If 0=⎕NC'glRasterPos3f_DLL'
-      'glRasterPos3f_DLL'⎕NA'opengl32|glRasterPos3f F4 F4 F4'
+      'glRasterPos3f_DLL'⎕NA'',getdllname,'|glRasterPos3f F4 F4 F4'
   :EndIf
   {}glRasterPos3f_DLL x y z
 ∇
 
 ∇ glRasterPos3fv v
   :If 0=⎕NC'glRasterPos3fv_DLL'
-      'glRasterPos3fv_DLL'⎕NA'opengl32|glRasterPos3fv <F4[3]'
+      'glRasterPos3fv_DLL'⎕NA'',getdllname,'|glRasterPos3fv <F4[3]'
   :EndIf
   {}glRasterPos3fv_DLL v
 ∇
 
 ∇ glRasterPos3i (x y z)
   :If 0=⎕NC'glRasterPos3i_DLL'
-      'glRasterPos3i_DLL'⎕NA'opengl32|glRasterPos3i I4 I4 I4'
+      'glRasterPos3i_DLL'⎕NA'',getdllname,'|glRasterPos3i I4 I4 I4'
   :EndIf
   {}glRasterPos3i_DLL x y z
 ∇
 
 ∇ glRasterPos3iv v
   :If 0=⎕NC'glRasterPos3iv_DLL'
-      'glRasterPos3iv_DLL'⎕NA'opengl32|glRasterPos3iv <I4[3]'
+      'glRasterPos3iv_DLL'⎕NA'',getdllname,'|glRasterPos3iv <I4[3]'
   :EndIf
   {}glRasterPos3iv_DLL v
 ∇
 
 ∇ glRasterPos3s (x y z)
   :If 0=⎕NC'glRasterPos3s_DLL'
-      'glRasterPos3s_DLL'⎕NA'opengl32|glRasterPos3s I2 I2 I2'
+      'glRasterPos3s_DLL'⎕NA'',getdllname,'|glRasterPos3s I2 I2 I2'
   :EndIf
   {}glRasterPos3s_DLL x y z
 ∇
 
 ∇ glRasterPos3sv v
   :If 0=⎕NC'glRasterPos3sv_DLL'
-      'glRasterPos3sv_DLL'⎕NA'opengl32|glRasterPos3sv <I2[3]'
+      'glRasterPos3sv_DLL'⎕NA'',getdllname,'|glRasterPos3sv <I2[3]'
   :EndIf
   {}glRasterPos3sv_DLL v
 ∇
 
 ∇ glRasterPos4d (x y z w)
   :If 0=⎕NC'glRasterPos4d_DLL'
-      'glRasterPos4d_DLL'⎕NA'opengl32|glRasterPos4d F8 F8 F8 F8'
+      'glRasterPos4d_DLL'⎕NA'',getdllname,'|glRasterPos4d F8 F8 F8 F8'
   :EndIf
   {}glRasterPos4d_DLL x y z w
 ∇
 
 ∇ glRasterPos4dv v
   :If 0=⎕NC'glRasterPos4dv_DLL'
-      'glRasterPos4dv_DLL'⎕NA'opengl32|glRasterPos4dv <F8[4]'
+      'glRasterPos4dv_DLL'⎕NA'',getdllname,'|glRasterPos4dv <F8[4]'
   :EndIf
   {}glRasterPos4dv_DLL v
 ∇
 
 ∇ glRasterPos4f (x y z w)
   :If 0=⎕NC'glRasterPos4f_DLL'
-      'glRasterPos4f_DLL'⎕NA'opengl32|glRasterPos4f F4 F4 F4 F4'
+      'glRasterPos4f_DLL'⎕NA'',getdllname,'|glRasterPos4f F4 F4 F4 F4'
   :EndIf
   {}glRasterPos4f_DLL x y z w
 ∇
 
 ∇ glRasterPos4fv v
   :If 0=⎕NC'glRasterPos4fv_DLL'
-      'glRasterPos4fv_DLL'⎕NA'opengl32|glRasterPos4fv <F4[4]'
+      'glRasterPos4fv_DLL'⎕NA'',getdllname,'|glRasterPos4fv <F4[4]'
   :EndIf
   {}glRasterPos4fv_DLL v
 ∇
 
 ∇ glRasterPos4i (x y z w)
   :If 0=⎕NC'glRasterPos4i_DLL'
-      'glRasterPos4i_DLL'⎕NA'opengl32|glRasterPos4i I4 I4 I4 I4'
+      'glRasterPos4i_DLL'⎕NA'',getdllname,'|glRasterPos4i I4 I4 I4 I4'
   :EndIf
   {}glRasterPos4i_DLL x y z w
 ∇
 
 ∇ glRasterPos4iv v
   :If 0=⎕NC'glRasterPos4iv_DLL'
-      'glRasterPos4iv_DLL'⎕NA'opengl32|glRasterPos4iv <I4[4]'
+      'glRasterPos4iv_DLL'⎕NA'',getdllname,'|glRasterPos4iv <I4[4]'
   :EndIf
   {}glRasterPos4iv_DLL v
 ∇
 
 ∇ glRasterPos4s (x y z w)
   :If 0=⎕NC'glRasterPos4s_DLL'
-      'glRasterPos4s_DLL'⎕NA'opengl32|glRasterPos4s I2 I2 I2 I2'
+      'glRasterPos4s_DLL'⎕NA'',getdllname,'|glRasterPos4s I2 I2 I2 I2'
   :EndIf
   {}glRasterPos4s_DLL x y z w
 ∇
 
 ∇ glRasterPos4sv v
   :If 0=⎕NC'glRasterPos4sv_DLL'
-      'glRasterPos4sv_DLL'⎕NA'opengl32|glRasterPos4sv <I2[4]'
+      'glRasterPos4sv_DLL'⎕NA'',getdllname,'|glRasterPos4sv <I2[4]'
   :EndIf
   {}glRasterPos4sv_DLL v
 ∇
 
 ∇ glRectd (x1 y1 x2 y2)
   :If 0=⎕NC'glRectd_DLL'
-      'glRectd_DLL'⎕NA'opengl32|glRectd F8 F8 F8 F8'
+      'glRectd_DLL'⎕NA'',getdllname,'|glRectd F8 F8 F8 F8'
   :EndIf
   {}glRectd_DLL x1 y1 x2 y2
 ∇
 
 ∇ glRectdv (v1 v2)
   :If 0=⎕NC'glRectdv_DLL'
-      'glRectdv_DLL'⎕NA'opengl32|glRectdv <F8[2] <F8[2]'
+      'glRectdv_DLL'⎕NA'',getdllname,'|glRectdv <F8[2] <F8[2]'
   :EndIf
   {}glRectdv_DLL v1 v2
 ∇
 
 ∇ glRectf (x1 y1 x2 y2)
   :If 0=⎕NC'glRectf_DLL'
-      'glRectf_DLL'⎕NA'opengl32|glRectf F4 F4 F4 F4'
+      'glRectf_DLL'⎕NA'',getdllname,'|glRectf F4 F4 F4 F4'
   :EndIf
   {}glRectf_DLL x1 y1 x2 y2
 ∇
 
 ∇ glRectfv (v1 v2)
   :If 0=⎕NC'glRectfv_DLL'
-      'glRectfv_DLL'⎕NA'opengl32|glRectfv <F4[2] <F4[2]'
+      'glRectfv_DLL'⎕NA'',getdllname,'|glRectfv <F4[2] <F4[2]'
   :EndIf
   {}glRectfv_DLL v1 v2
 ∇
 
 ∇ glRecti (x1 y1 x2 y2)
   :If 0=⎕NC'glRecti_DLL'
-      'glRecti_DLL'⎕NA'opengl32|glRecti I4 I4 I4 I4'
+      'glRecti_DLL'⎕NA'',getdllname,'|glRecti I4 I4 I4 I4'
   :EndIf
   {}glRecti_DLL x1 y1 x2 y2
 ∇
 
 ∇ glRectiv (v1 v2)
   :If 0=⎕NC'glRectiv_DLL'
-      'glRectiv_DLL'⎕NA'opengl32|glRectiv <I4[2] <I4[2]'
+      'glRectiv_DLL'⎕NA'',getdllname,'|glRectiv <I4[2] <I4[2]'
   :EndIf
   {}glRectiv_DLL v1 v2
 ∇
 
 ∇ glRects (x1 y1 x2 y2)
   :If 0=⎕NC'glRects_DLL'
-      'glRects_DLL'⎕NA'opengl32|glRects I2 I2 I2 I2'
+      'glRects_DLL'⎕NA'',getdllname,'|glRects I2 I2 I2 I2'
   :EndIf
   {}glRects_DLL x1 y1 x2 y2
 ∇
 
 ∇ glRectsv (v1 v2)
   :If 0=⎕NC'glRectsv_DLL'
-      'glRectsv_DLL'⎕NA'opengl32|glRectsv <I2[2] <I2[2]'
+      'glRectsv_DLL'⎕NA'',getdllname,'|glRectsv <I2[2] <I2[2]'
   :EndIf
   {}glRectsv_DLL v1 v2
 ∇
 
 ∇ glTexCoord1d s
   :If 0=⎕NC'glTexCoord1d_DLL'
-      'glTexCoord1d_DLL'⎕NA'opengl32|glTexCoord1d F8'
+      'glTexCoord1d_DLL'⎕NA'',getdllname,'|glTexCoord1d F8'
   :EndIf
   {}glTexCoord1d_DLL s
 ∇
 
 ∇ glTexCoord1dv v
   :If 0=⎕NC'glTexCoord1dv_DLL'
-      'glTexCoord1dv_DLL'⎕NA'opengl32|glTexCoord1dv <F8[1]'
+      'glTexCoord1dv_DLL'⎕NA'',getdllname,'|glTexCoord1dv <F8[1]'
   :EndIf
   {}glTexCoord1dv_DLL v
 ∇
 
 ∇ glTexCoord1f s
   :If 0=⎕NC'glTexCoord1f_DLL'
-      'glTexCoord1f_DLL'⎕NA'opengl32|glTexCoord1f F4'
+      'glTexCoord1f_DLL'⎕NA'',getdllname,'|glTexCoord1f F4'
   :EndIf
   {}glTexCoord1f_DLL s
 ∇
 
 ∇ glTexCoord1fv v
   :If 0=⎕NC'glTexCoord1fv_DLL'
-      'glTexCoord1fv_DLL'⎕NA'opengl32|glTexCoord1fv <F4[1]'
+      'glTexCoord1fv_DLL'⎕NA'',getdllname,'|glTexCoord1fv <F4[1]'
   :EndIf
   {}glTexCoord1fv_DLL v
 ∇
 
 ∇ glTexCoord1i s
   :If 0=⎕NC'glTexCoord1i_DLL'
-      'glTexCoord1i_DLL'⎕NA'opengl32|glTexCoord1i I4'
+      'glTexCoord1i_DLL'⎕NA'',getdllname,'|glTexCoord1i I4'
   :EndIf
   {}glTexCoord1i_DLL s
 ∇
 
 ∇ glTexCoord1iv v
   :If 0=⎕NC'glTexCoord1iv_DLL'
-      'glTexCoord1iv_DLL'⎕NA'opengl32|glTexCoord1iv <I4[1]'
+      'glTexCoord1iv_DLL'⎕NA'',getdllname,'|glTexCoord1iv <I4[1]'
   :EndIf
   {}glTexCoord1iv_DLL v
 ∇
 
 ∇ glTexCoord1s s
   :If 0=⎕NC'glTexCoord1s_DLL'
-      'glTexCoord1s_DLL'⎕NA'opengl32|glTexCoord1s I2'
+      'glTexCoord1s_DLL'⎕NA'',getdllname,'|glTexCoord1s I2'
   :EndIf
   {}glTexCoord1s_DLL s
 ∇
 
 ∇ glTexCoord1sv v
   :If 0=⎕NC'glTexCoord1sv_DLL'
-      'glTexCoord1sv_DLL'⎕NA'opengl32|glTexCoord1sv <I2[1]'
+      'glTexCoord1sv_DLL'⎕NA'',getdllname,'|glTexCoord1sv <I2[1]'
   :EndIf
   {}glTexCoord1sv_DLL v
 ∇
 
 ∇ glTexCoord2d (s t)
   :If 0=⎕NC'glTexCoord2d_DLL'
-      'glTexCoord2d_DLL'⎕NA'opengl32|glTexCoord2d F8 F8'
+      'glTexCoord2d_DLL'⎕NA'',getdllname,'|glTexCoord2d F8 F8'
   :EndIf
   {}glTexCoord2d_DLL s t
 ∇
 
 ∇ glTexCoord2dv v
   :If 0=⎕NC'glTexCoord2dv_DLL'
-      'glTexCoord2dv_DLL'⎕NA'opengl32|glTexCoord2dv <F8[2]'
+      'glTexCoord2dv_DLL'⎕NA'',getdllname,'|glTexCoord2dv <F8[2]'
   :EndIf
   {}glTexCoord2dv_DLL v
 ∇
 
 ∇ glTexCoord2f (s t)
   :If 0=⎕NC'glTexCoord2f_DLL'
-      'glTexCoord2f_DLL'⎕NA'opengl32|glTexCoord2f F4 F4'
+      'glTexCoord2f_DLL'⎕NA'',getdllname,'|glTexCoord2f F4 F4'
   :EndIf
   {}glTexCoord2f_DLL s t
 ∇
 
 ∇ glTexCoord2fv v
   :If 0=⎕NC'glTexCoord2fv_DLL'
-      'glTexCoord2fv_DLL'⎕NA'opengl32|glTexCoord2fv <F4[2]'
+      'glTexCoord2fv_DLL'⎕NA'',getdllname,'|glTexCoord2fv <F4[2]'
   :EndIf
   {}glTexCoord2fv_DLL v
 ∇
 
 ∇ glTexCoord2i (s t)
   :If 0=⎕NC'glTexCoord2i_DLL'
-      'glTexCoord2i_DLL'⎕NA'opengl32|glTexCoord2i I4 I4'
+      'glTexCoord2i_DLL'⎕NA'',getdllname,'|glTexCoord2i I4 I4'
   :EndIf
   {}glTexCoord2i_DLL s t
 ∇
 
 ∇ glTexCoord2iv v
   :If 0=⎕NC'glTexCoord2iv_DLL'
-      'glTexCoord2iv_DLL'⎕NA'opengl32|glTexCoord2iv <I4[2]'
+      'glTexCoord2iv_DLL'⎕NA'',getdllname,'|glTexCoord2iv <I4[2]'
   :EndIf
   {}glTexCoord2iv_DLL v
 ∇
 
 ∇ glTexCoord2s (s t)
   :If 0=⎕NC'glTexCoord2s_DLL'
-      'glTexCoord2s_DLL'⎕NA'opengl32|glTexCoord2s I2 I2'
+      'glTexCoord2s_DLL'⎕NA'',getdllname,'|glTexCoord2s I2 I2'
   :EndIf
   {}glTexCoord2s_DLL s t
 ∇
 
 ∇ glTexCoord2sv v
   :If 0=⎕NC'glTexCoord2sv_DLL'
-      'glTexCoord2sv_DLL'⎕NA'opengl32|glTexCoord2sv <I2[2]'
+      'glTexCoord2sv_DLL'⎕NA'',getdllname,'|glTexCoord2sv <I2[2]'
   :EndIf
   {}glTexCoord2sv_DLL v
 ∇
 
 ∇ glTexCoord3d (s t r)
   :If 0=⎕NC'glTexCoord3d_DLL'
-      'glTexCoord3d_DLL'⎕NA'opengl32|glTexCoord3d F8 F8 F8'
+      'glTexCoord3d_DLL'⎕NA'',getdllname,'|glTexCoord3d F8 F8 F8'
   :EndIf
   {}glTexCoord3d_DLL s t r
 ∇
 
 ∇ glTexCoord3dv v
   :If 0=⎕NC'glTexCoord3dv_DLL'
-      'glTexCoord3dv_DLL'⎕NA'opengl32|glTexCoord3dv <F8[3]'
+      'glTexCoord3dv_DLL'⎕NA'',getdllname,'|glTexCoord3dv <F8[3]'
   :EndIf
   {}glTexCoord3dv_DLL v
 ∇
 
 ∇ glTexCoord3f (s t r)
   :If 0=⎕NC'glTexCoord3f_DLL'
-      'glTexCoord3f_DLL'⎕NA'opengl32|glTexCoord3f F4 F4 F4'
+      'glTexCoord3f_DLL'⎕NA'',getdllname,'|glTexCoord3f F4 F4 F4'
   :EndIf
   {}glTexCoord3f_DLL s t r
 ∇
 
 ∇ glTexCoord3fv v
   :If 0=⎕NC'glTexCoord3fv_DLL'
-      'glTexCoord3fv_DLL'⎕NA'opengl32|glTexCoord3fv <F4[3]'
+      'glTexCoord3fv_DLL'⎕NA'',getdllname,'|glTexCoord3fv <F4[3]'
   :EndIf
   {}glTexCoord3fv_DLL v
 ∇
 
 ∇ glTexCoord3i (s t r)
   :If 0=⎕NC'glTexCoord3i_DLL'
-      'glTexCoord3i_DLL'⎕NA'opengl32|glTexCoord3i I4 I4 I4'
+      'glTexCoord3i_DLL'⎕NA'',getdllname,'|glTexCoord3i I4 I4 I4'
   :EndIf
   {}glTexCoord3i_DLL s t r
 ∇
 
 ∇ glTexCoord3iv v
   :If 0=⎕NC'glTexCoord3iv_DLL'
-      'glTexCoord3iv_DLL'⎕NA'opengl32|glTexCoord3iv <I4[3]'
+      'glTexCoord3iv_DLL'⎕NA'',getdllname,'|glTexCoord3iv <I4[3]'
   :EndIf
   {}glTexCoord3iv_DLL v
 ∇
 
 ∇ glTexCoord3s (s t r)
   :If 0=⎕NC'glTexCoord3s_DLL'
-      'glTexCoord3s_DLL'⎕NA'opengl32|glTexCoord3s I2 I2 I2'
+      'glTexCoord3s_DLL'⎕NA'',getdllname,'|glTexCoord3s I2 I2 I2'
   :EndIf
   {}glTexCoord3s_DLL s t r
 ∇
 
 ∇ glTexCoord3sv v
   :If 0=⎕NC'glTexCoord3sv_DLL'
-      'glTexCoord3sv_DLL'⎕NA'opengl32|glTexCoord3sv <I2[3]'
+      'glTexCoord3sv_DLL'⎕NA'',getdllname,'|glTexCoord3sv <I2[3]'
   :EndIf
   {}glTexCoord3sv_DLL v
 ∇
 
 ∇ glTexCoord4d (s t r q)
   :If 0=⎕NC'glTexCoord4d_DLL'
-      'glTexCoord4d_DLL'⎕NA'opengl32|glTexCoord4d F8 F8 F8 F8'
+      'glTexCoord4d_DLL'⎕NA'',getdllname,'|glTexCoord4d F8 F8 F8 F8'
   :EndIf
   {}glTexCoord4d_DLL s t r q
 ∇
 
 ∇ glTexCoord4dv v
   :If 0=⎕NC'glTexCoord4dv_DLL'
-      'glTexCoord4dv_DLL'⎕NA'opengl32|glTexCoord4dv <F8[4]'
+      'glTexCoord4dv_DLL'⎕NA'',getdllname,'|glTexCoord4dv <F8[4]'
   :EndIf
   {}glTexCoord4dv_DLL v
 ∇
 
 ∇ glTexCoord4f (s t r q)
   :If 0=⎕NC'glTexCoord4f_DLL'
-      'glTexCoord4f_DLL'⎕NA'opengl32|glTexCoord4f F4 F4 F4 F4'
+      'glTexCoord4f_DLL'⎕NA'',getdllname,'|glTexCoord4f F4 F4 F4 F4'
   :EndIf
   {}glTexCoord4f_DLL s t r q
 ∇
 
 ∇ glTexCoord4fv v
   :If 0=⎕NC'glTexCoord4fv_DLL'
-      'glTexCoord4fv_DLL'⎕NA'opengl32|glTexCoord4fv <F4[4]'
+      'glTexCoord4fv_DLL'⎕NA'',getdllname,'|glTexCoord4fv <F4[4]'
   :EndIf
   {}glTexCoord4fv_DLL v
 ∇
 
 ∇ glTexCoord4i (s t r q)
   :If 0=⎕NC'glTexCoord4i_DLL'
-      'glTexCoord4i_DLL'⎕NA'opengl32|glTexCoord4i I4 I4 I4 I4'
+      'glTexCoord4i_DLL'⎕NA'',getdllname,'|glTexCoord4i I4 I4 I4 I4'
   :EndIf
   {}glTexCoord4i_DLL s t r q
 ∇
 
 ∇ glTexCoord4iv v
   :If 0=⎕NC'glTexCoord4iv_DLL'
-      'glTexCoord4iv_DLL'⎕NA'opengl32|glTexCoord4iv <I4[4]'
+      'glTexCoord4iv_DLL'⎕NA'',getdllname,'|glTexCoord4iv <I4[4]'
   :EndIf
   {}glTexCoord4iv_DLL v
 ∇
 
 ∇ glTexCoord4s (s t r q)
   :If 0=⎕NC'glTexCoord4s_DLL'
-      'glTexCoord4s_DLL'⎕NA'opengl32|glTexCoord4s I2 I2 I2 I2'
+      'glTexCoord4s_DLL'⎕NA'',getdllname,'|glTexCoord4s I2 I2 I2 I2'
   :EndIf
   {}glTexCoord4s_DLL s t r q
 ∇
 
 ∇ glTexCoord4sv v
   :If 0=⎕NC'glTexCoord4sv_DLL'
-      'glTexCoord4sv_DLL'⎕NA'opengl32|glTexCoord4sv <I2[4]'
+      'glTexCoord4sv_DLL'⎕NA'',getdllname,'|glTexCoord4sv <I2[4]'
   :EndIf
   {}glTexCoord4sv_DLL v
 ∇
 
 ∇ glVertex2d (x y)
   :If 0=⎕NC'glVertex2d_DLL'
-      'glVertex2d_DLL'⎕NA'opengl32|glVertex2d F8 F8'
+      'glVertex2d_DLL'⎕NA'',getdllname,'|glVertex2d F8 F8'
   :EndIf
   {}glVertex2d_DLL x y
 ∇
 
 ∇ glVertex2dv v
   :If 0=⎕NC'glVertex2dv_DLL'
-      'glVertex2dv_DLL'⎕NA'opengl32|glVertex2dv <F8[2]'
+      'glVertex2dv_DLL'⎕NA'',getdllname,'|glVertex2dv <F8[2]'
   :EndIf
   {}glVertex2dv_DLL v
 ∇
 
 ∇ glVertex2f (x y)
   :If 0=⎕NC'glVertex2f_DLL'
-      'glVertex2f_DLL'⎕NA'opengl32|glVertex2f F4 F4'
+      'glVertex2f_DLL'⎕NA'',getdllname,'|glVertex2f F4 F4'
   :EndIf
   {}glVertex2f_DLL x y
 ∇
 
 ∇ glVertex2fv v
   :If 0=⎕NC'glVertex2fv_DLL'
-      'glVertex2fv_DLL'⎕NA'opengl32|glVertex2fv <F4[2]'
+      'glVertex2fv_DLL'⎕NA'',getdllname,'|glVertex2fv <F4[2]'
   :EndIf
   {}glVertex2fv_DLL v
 ∇
 
 ∇ glVertex2i (x y)
   :If 0=⎕NC'glVertex2i_DLL'
-      'glVertex2i_DLL'⎕NA'opengl32|glVertex2i I4 I4'
+      'glVertex2i_DLL'⎕NA'',getdllname,'|glVertex2i I4 I4'
   :EndIf
   {}glVertex2i_DLL x y
 ∇
 
 ∇ glVertex2iv v
   :If 0=⎕NC'glVertex2iv_DLL'
-      'glVertex2iv_DLL'⎕NA'opengl32|glVertex2iv <I4[2]'
+      'glVertex2iv_DLL'⎕NA'',getdllname,'|glVertex2iv <I4[2]'
   :EndIf
   {}glVertex2iv_DLL v
 ∇
 
 ∇ glVertex2s (x y)
   :If 0=⎕NC'glVertex2s_DLL'
-      'glVertex2s_DLL'⎕NA'opengl32|glVertex2s I2 I2'
+      'glVertex2s_DLL'⎕NA'',getdllname,'|glVertex2s I2 I2'
   :EndIf
   {}glVertex2s_DLL x y
 ∇
 
 ∇ glVertex2sv v
   :If 0=⎕NC'glVertex2sv_DLL'
-      'glVertex2sv_DLL'⎕NA'opengl32|glVertex2sv <I2[2]'
+      'glVertex2sv_DLL'⎕NA'',getdllname,'|glVertex2sv <I2[2]'
   :EndIf
   {}glVertex2sv_DLL v
 ∇
 
 ∇ glVertex3d (x y z)
   :If 0=⎕NC'glVertex3d_DLL'
-      'glVertex3d_DLL'⎕NA'opengl32|glVertex3d F8 F8 F8'
+      'glVertex3d_DLL'⎕NA'',getdllname,'|glVertex3d F8 F8 F8'
   :EndIf
   {}glVertex3d_DLL x y z
 ∇
 
 ∇ glVertex3dv v
   :If 0=⎕NC'glVertex3dv_DLL'
-      'glVertex3dv_DLL'⎕NA'opengl32|glVertex3dv <F8[3]'
+      'glVertex3dv_DLL'⎕NA'',getdllname,'|glVertex3dv <F8[3]'
   :EndIf
   {}glVertex3dv_DLL v
 ∇
 
 ∇ glVertex3f (x y z)
   :If 0=⎕NC'glVertex3f_DLL'
-      'glVertex3f_DLL'⎕NA'opengl32|glVertex3f F4 F4 F4'
+      'glVertex3f_DLL'⎕NA'',getdllname,'|glVertex3f F4 F4 F4'
   :EndIf
   {}glVertex3f_DLL x y z
 ∇
 
 ∇ glVertex3fv v
   :If 0=⎕NC'glVertex3fv_DLL'
-      'glVertex3fv_DLL'⎕NA'opengl32|glVertex3fv <F4[3]'
+      'glVertex3fv_DLL'⎕NA'',getdllname,'|glVertex3fv <F4[3]'
   :EndIf
   {}glVertex3fv_DLL v
 ∇
 
 ∇ glVertex3i (x y z)
   :If 0=⎕NC'glVertex3i_DLL'
-      'glVertex3i_DLL'⎕NA'opengl32|glVertex3i I4 I4 I4'
+      'glVertex3i_DLL'⎕NA'',getdllname,'|glVertex3i I4 I4 I4'
   :EndIf
   {}glVertex3i_DLL x y z
 ∇
 
 ∇ glVertex3iv v
   :If 0=⎕NC'glVertex3iv_DLL'
-      'glVertex3iv_DLL'⎕NA'opengl32|glVertex3iv <I4[3]'
+      'glVertex3iv_DLL'⎕NA'',getdllname,'|glVertex3iv <I4[3]'
   :EndIf
   {}glVertex3iv_DLL v
 ∇
 
 ∇ glVertex3s (x y z)
   :If 0=⎕NC'glVertex3s_DLL'
-      'glVertex3s_DLL'⎕NA'opengl32|glVertex3s I2 I2 I2'
+      'glVertex3s_DLL'⎕NA'',getdllname,'|glVertex3s I2 I2 I2'
   :EndIf
   {}glVertex3s_DLL x y z
 ∇
 
 ∇ glVertex3sv v
   :If 0=⎕NC'glVertex3sv_DLL'
-      'glVertex3sv_DLL'⎕NA'opengl32|glVertex3sv <I2[3]'
+      'glVertex3sv_DLL'⎕NA'',getdllname,'|glVertex3sv <I2[3]'
   :EndIf
   {}glVertex3sv_DLL v
 ∇
 
 ∇ glVertex4d (x y z w)
   :If 0=⎕NC'glVertex4d_DLL'
-      'glVertex4d_DLL'⎕NA'opengl32|glVertex4d F8 F8 F8 F8'
+      'glVertex4d_DLL'⎕NA'',getdllname,'|glVertex4d F8 F8 F8 F8'
   :EndIf
   {}glVertex4d_DLL x y z w
 ∇
 
 ∇ glVertex4dv v
   :If 0=⎕NC'glVertex4dv_DLL'
-      'glVertex4dv_DLL'⎕NA'opengl32|glVertex4dv <F8[4]'
+      'glVertex4dv_DLL'⎕NA'',getdllname,'|glVertex4dv <F8[4]'
   :EndIf
   {}glVertex4dv_DLL v
 ∇
 
 ∇ glVertex4f (x y z w)
   :If 0=⎕NC'glVertex4f_DLL'
-      'glVertex4f_DLL'⎕NA'opengl32|glVertex4f F4 F4 F4 F4'
+      'glVertex4f_DLL'⎕NA'',getdllname,'|glVertex4f F4 F4 F4 F4'
   :EndIf
   {}glVertex4f_DLL x y z w
 ∇
 
 ∇ glVertex4fv v
   :If 0=⎕NC'glVertex4fv_DLL'
-      'glVertex4fv_DLL'⎕NA'opengl32|glVertex4fv <F4[4]'
+      'glVertex4fv_DLL'⎕NA'',getdllname,'|glVertex4fv <F4[4]'
   :EndIf
   {}glVertex4fv_DLL v
 ∇
 
 ∇ glVertex4i (x y z w)
   :If 0=⎕NC'glVertex4i_DLL'
-      'glVertex4i_DLL'⎕NA'opengl32|glVertex4i I4 I4 I4 I4'
+      'glVertex4i_DLL'⎕NA'',getdllname,'|glVertex4i I4 I4 I4 I4'
   :EndIf
   {}glVertex4i_DLL x y z w
 ∇
 
 ∇ glVertex4iv v
   :If 0=⎕NC'glVertex4iv_DLL'
-      'glVertex4iv_DLL'⎕NA'opengl32|glVertex4iv <I4[4]'
+      'glVertex4iv_DLL'⎕NA'',getdllname,'|glVertex4iv <I4[4]'
   :EndIf
   {}glVertex4iv_DLL v
 ∇
 
 ∇ glVertex4s (x y z w)
   :If 0=⎕NC'glVertex4s_DLL'
-      'glVertex4s_DLL'⎕NA'opengl32|glVertex4s I2 I2 I2 I2'
+      'glVertex4s_DLL'⎕NA'',getdllname,'|glVertex4s I2 I2 I2 I2'
   :EndIf
   {}glVertex4s_DLL x y z w
 ∇
 
 ∇ glVertex4sv v
   :If 0=⎕NC'glVertex4sv_DLL'
-      'glVertex4sv_DLL'⎕NA'opengl32|glVertex4sv <I2[4]'
+      'glVertex4sv_DLL'⎕NA'',getdllname,'|glVertex4sv <I2[4]'
   :EndIf
   {}glVertex4sv_DLL v
 ∇
 
 ∇ glClipPlane (plane equation)
   :If 0=⎕NC'glClipPlane_DLL'
-      'glClipPlane_DLL'⎕NA'opengl32|glClipPlane U4 <F8[4]'
+      'glClipPlane_DLL'⎕NA'',getdllname,'|glClipPlane U4 <F8[4]'
   :EndIf
   {}glClipPlane_DLL plane equation
 ∇
 
 ∇ glColorMaterial (face mode)
   :If 0=⎕NC'glColorMaterial_DLL'
-      'glColorMaterial_DLL'⎕NA'opengl32|glColorMaterial U4 U4'
+      'glColorMaterial_DLL'⎕NA'',getdllname,'|glColorMaterial U4 U4'
   :EndIf
   {}glColorMaterial_DLL face mode
 ∇
 
 ∇ glFogf (pname param)
   :If 0=⎕NC'glFogf_DLL'
-      'glFogf_DLL'⎕NA'opengl32|glFogf U4 F4'
+      'glFogf_DLL'⎕NA'',getdllname,'|glFogf U4 F4'
   :EndIf
   {}glFogf_DLL pname param
 ∇
 
 ∇ glFogfv (pname params)
   :If 0=⎕NC'glFogfv_DLL'
-      'glFogfv_DLL'⎕NA'opengl32|glFogfv U4 <F4[]'
+      'glFogfv_DLL'⎕NA'',getdllname,'|glFogfv U4 <F4[]'
   :EndIf
   {}glFogfv_DLL pname params
 ∇
 
 ∇ glFogi (pname param)
   :If 0=⎕NC'glFogi_DLL'
-      'glFogi_DLL'⎕NA'opengl32|glFogi U4 I4'
+      'glFogi_DLL'⎕NA'',getdllname,'|glFogi U4 I4'
   :EndIf
   {}glFogi_DLL pname param
 ∇
 
 ∇ glFogiv (pname params)
   :If 0=⎕NC'glFogiv_DLL'
-      'glFogiv_DLL'⎕NA'opengl32|glFogiv U4 <I4[]'
+      'glFogiv_DLL'⎕NA'',getdllname,'|glFogiv U4 <I4[]'
   :EndIf
   {}glFogiv_DLL pname params
 ∇
 
 ∇ glLightf (light pname param)
   :If 0=⎕NC'glLightf_DLL'
-      'glLightf_DLL'⎕NA'opengl32|glLightf U4 U4 F4'
+      'glLightf_DLL'⎕NA'',getdllname,'|glLightf U4 U4 F4'
   :EndIf
   {}glLightf_DLL light pname param
 ∇
 
 ∇ glLightfv (light pname params)
   :If 0=⎕NC'glLightfv_DLL'
-      'glLightfv_DLL'⎕NA'opengl32|glLightfv U4 U4 <F4[]'
+      'glLightfv_DLL'⎕NA'',getdllname,'|glLightfv U4 U4 <F4[]'
   :EndIf
   {}glLightfv_DLL light pname params
 ∇
 
 ∇ glLighti (light pname param)
   :If 0=⎕NC'glLighti_DLL'
-      'glLighti_DLL'⎕NA'opengl32|glLighti U4 U4 I4'
+      'glLighti_DLL'⎕NA'',getdllname,'|glLighti U4 U4 I4'
   :EndIf
   {}glLighti_DLL light pname param
 ∇
 
 ∇ glLightiv (light pname params)
   :If 0=⎕NC'glLightiv_DLL'
-      'glLightiv_DLL'⎕NA'opengl32|glLightiv U4 U4 <I4[]'
+      'glLightiv_DLL'⎕NA'',getdllname,'|glLightiv U4 U4 <I4[]'
   :EndIf
   {}glLightiv_DLL light pname params
 ∇
 
 ∇ glLightModelf (pname param)
   :If 0=⎕NC'glLightModelf_DLL'
-      'glLightModelf_DLL'⎕NA'opengl32|glLightModelf U4 F4'
+      'glLightModelf_DLL'⎕NA'',getdllname,'|glLightModelf U4 F4'
   :EndIf
   {}glLightModelf_DLL pname param
 ∇
 
 ∇ glLightModelfv (pname params)
   :If 0=⎕NC'glLightModelfv_DLL'
-      'glLightModelfv_DLL'⎕NA'opengl32|glLightModelfv U4 <F4[]'
+      'glLightModelfv_DLL'⎕NA'',getdllname,'|glLightModelfv U4 <F4[]'
   :EndIf
   {}glLightModelfv_DLL pname params
 ∇
 
 ∇ glLightModeli (pname param)
   :If 0=⎕NC'glLightModeli_DLL'
-      'glLightModeli_DLL'⎕NA'opengl32|glLightModeli U4 I4'
+      'glLightModeli_DLL'⎕NA'',getdllname,'|glLightModeli U4 I4'
   :EndIf
   {}glLightModeli_DLL pname param
 ∇
 
 ∇ glLightModeliv (pname params)
   :If 0=⎕NC'glLightModeliv_DLL'
-      'glLightModeliv_DLL'⎕NA'opengl32|glLightModeliv U4 <I4[]'
+      'glLightModeliv_DLL'⎕NA'',getdllname,'|glLightModeliv U4 <I4[]'
   :EndIf
   {}glLightModeliv_DLL pname params
 ∇
 
 ∇ glLineStipple (factor pattern)
   :If 0=⎕NC'glLineStipple_DLL'
-      'glLineStipple_DLL'⎕NA'opengl32|glLineStipple I4 U2'
+      'glLineStipple_DLL'⎕NA'',getdllname,'|glLineStipple I4 U2'
   :EndIf
   {}glLineStipple_DLL factor pattern
 ∇
 
 ∇ glMaterialf (face pname param)
   :If 0=⎕NC'glMaterialf_DLL'
-      'glMaterialf_DLL'⎕NA'opengl32|glMaterialf U4 U4 F4'
+      'glMaterialf_DLL'⎕NA'',getdllname,'|glMaterialf U4 U4 F4'
   :EndIf
   {}glMaterialf_DLL face pname param
 ∇
 
 ∇ glMaterialfv (face pname params)
   :If 0=⎕NC'glMaterialfv_DLL'
-      'glMaterialfv_DLL'⎕NA'opengl32|glMaterialfv U4 U4 <F4[]'
+      'glMaterialfv_DLL'⎕NA'',getdllname,'|glMaterialfv U4 U4 <F4[]'
   :EndIf
   {}glMaterialfv_DLL face pname params
 ∇
 
 ∇ glMateriali (face pname param)
   :If 0=⎕NC'glMateriali_DLL'
-      'glMateriali_DLL'⎕NA'opengl32|glMateriali U4 U4 I4'
+      'glMateriali_DLL'⎕NA'',getdllname,'|glMateriali U4 U4 I4'
   :EndIf
   {}glMateriali_DLL face pname param
 ∇
 
 ∇ glMaterialiv (face pname params)
   :If 0=⎕NC'glMaterialiv_DLL'
-      'glMaterialiv_DLL'⎕NA'opengl32|glMaterialiv U4 U4 <I4[]'
+      'glMaterialiv_DLL'⎕NA'',getdllname,'|glMaterialiv U4 U4 <I4[]'
   :EndIf
   {}glMaterialiv_DLL face pname params
 ∇
 
 ∇ glPolygonStipple mask
   :If 0=⎕NC'glPolygonStipple_DLL'
-      'glPolygonStipple_DLL'⎕NA'opengl32|glPolygonStipple <U1[]'
+      'glPolygonStipple_DLL'⎕NA'',getdllname,'|glPolygonStipple <U1[]'
   :EndIf
   {}glPolygonStipple_DLL mask
 ∇
 
 ∇ glShadeModel mode
   :If 0=⎕NC'glShadeModel_DLL'
-      'glShadeModel_DLL'⎕NA'opengl32|glShadeModel U4'
+      'glShadeModel_DLL'⎕NA'',getdllname,'|glShadeModel U4'
   :EndIf
   {}glShadeModel_DLL mode
 ∇
 
 ∇ glTexEnvf (target pname param)
   :If 0=⎕NC'glTexEnvf_DLL'
-      'glTexEnvf_DLL'⎕NA'opengl32|glTexEnvf U4 U4 F4'
+      'glTexEnvf_DLL'⎕NA'',getdllname,'|glTexEnvf U4 U4 F4'
   :EndIf
   {}glTexEnvf_DLL target pname param
 ∇
 
 ∇ glTexEnvfv (target pname params)
   :If 0=⎕NC'glTexEnvfv_DLL'
-      'glTexEnvfv_DLL'⎕NA'opengl32|glTexEnvfv U4 U4 <F4[]'
+      'glTexEnvfv_DLL'⎕NA'',getdllname,'|glTexEnvfv U4 U4 <F4[]'
   :EndIf
   {}glTexEnvfv_DLL target pname params
 ∇
 
 ∇ glTexEnvi (target pname param)
   :If 0=⎕NC'glTexEnvi_DLL'
-      'glTexEnvi_DLL'⎕NA'opengl32|glTexEnvi U4 U4 I4'
+      'glTexEnvi_DLL'⎕NA'',getdllname,'|glTexEnvi U4 U4 I4'
   :EndIf
   {}glTexEnvi_DLL target pname param
 ∇
 
 ∇ glTexEnviv (target pname params)
   :If 0=⎕NC'glTexEnviv_DLL'
-      'glTexEnviv_DLL'⎕NA'opengl32|glTexEnviv U4 U4 <I4[]'
+      'glTexEnviv_DLL'⎕NA'',getdllname,'|glTexEnviv U4 U4 <I4[]'
   :EndIf
   {}glTexEnviv_DLL target pname params
 ∇
 
 ∇ glTexGend (coord pname param)
   :If 0=⎕NC'glTexGend_DLL'
-      'glTexGend_DLL'⎕NA'opengl32|glTexGend U4 U4 F8'
+      'glTexGend_DLL'⎕NA'',getdllname,'|glTexGend U4 U4 F8'
   :EndIf
   {}glTexGend_DLL coord pname param
 ∇
 
 ∇ glTexGendv (coord pname params)
   :If 0=⎕NC'glTexGendv_DLL'
-      'glTexGendv_DLL'⎕NA'opengl32|glTexGendv U4 U4 <F8[]'
+      'glTexGendv_DLL'⎕NA'',getdllname,'|glTexGendv U4 U4 <F8[]'
   :EndIf
   {}glTexGendv_DLL coord pname params
 ∇
 
 ∇ glTexGenf (coord pname param)
   :If 0=⎕NC'glTexGenf_DLL'
-      'glTexGenf_DLL'⎕NA'opengl32|glTexGenf U4 U4 F4'
+      'glTexGenf_DLL'⎕NA'',getdllname,'|glTexGenf U4 U4 F4'
   :EndIf
   {}glTexGenf_DLL coord pname param
 ∇
 
 ∇ glTexGenfv (coord pname params)
   :If 0=⎕NC'glTexGenfv_DLL'
-      'glTexGenfv_DLL'⎕NA'opengl32|glTexGenfv U4 U4 <F4[]'
+      'glTexGenfv_DLL'⎕NA'',getdllname,'|glTexGenfv U4 U4 <F4[]'
   :EndIf
   {}glTexGenfv_DLL coord pname params
 ∇
 
 ∇ glTexGeni (coord pname param)
   :If 0=⎕NC'glTexGeni_DLL'
-      'glTexGeni_DLL'⎕NA'opengl32|glTexGeni U4 U4 I4'
+      'glTexGeni_DLL'⎕NA'',getdllname,'|glTexGeni U4 U4 I4'
   :EndIf
   {}glTexGeni_DLL coord pname param
 ∇
 
 ∇ glTexGeniv (coord pname params)
   :If 0=⎕NC'glTexGeniv_DLL'
-      'glTexGeniv_DLL'⎕NA'opengl32|glTexGeniv U4 U4 <I4[]'
+      'glTexGeniv_DLL'⎕NA'',getdllname,'|glTexGeniv U4 U4 <I4[]'
   :EndIf
   {}glTexGeniv_DLL coord pname params
 ∇
 
 ∇ r←glFeedbackBuffer (size type buffer)
   :If 0=⎕NC'glFeedbackBuffer_DLL'
-      'glFeedbackBuffer_DLL'⎕NA'opengl32|glFeedbackBuffer I4 U4 >F4[]'
+      'glFeedbackBuffer_DLL'⎕NA'',getdllname,'|glFeedbackBuffer I4 U4 >F4[]'
   :EndIf
   r←glFeedbackBuffer_DLL size type buffer
 ∇
 
 ∇ r←glSelectBuffer (size buffer)
   :If 0=⎕NC'glSelectBuffer_DLL'
-      'glSelectBuffer_DLL'⎕NA'opengl32|glSelectBuffer I4 >U4[]'
+      'glSelectBuffer_DLL'⎕NA'',getdllname,'|glSelectBuffer I4 >U4[]'
   :EndIf
   r←glSelectBuffer_DLL size buffer
 ∇
 
 ∇ r←glRenderMode mode
   :If 0=⎕NC'glRenderMode_DLL'
-      'glRenderMode_DLL'⎕NA'I4 opengl32|glRenderMode U4'
+      'glRenderMode_DLL'⎕NA'I4 ',getdllname,'|glRenderMode U4'
   :EndIf
   r←glRenderMode_DLL mode
 ∇
 
 ∇ glInitNames
   :If 0=⎕NC'glInitNames_DLL'
-      'glInitNames_DLL'⎕NA'opengl32|glInitNames'
+      'glInitNames_DLL'⎕NA'',getdllname,'|glInitNames'
   :EndIf
   {}glInitNames_DLL
 ∇
 
 ∇ glLoadName name
   :If 0=⎕NC'glLoadName_DLL'
-      'glLoadName_DLL'⎕NA'opengl32|glLoadName U4'
+      'glLoadName_DLL'⎕NA'',getdllname,'|glLoadName U4'
   :EndIf
   {}glLoadName_DLL name
 ∇
 
 ∇ glPassThrough token
   :If 0=⎕NC'glPassThrough_DLL'
-      'glPassThrough_DLL'⎕NA'opengl32|glPassThrough F4'
+      'glPassThrough_DLL'⎕NA'',getdllname,'|glPassThrough F4'
   :EndIf
   {}glPassThrough_DLL token
 ∇
 
 ∇ glPopName
   :If 0=⎕NC'glPopName_DLL'
-      'glPopName_DLL'⎕NA'opengl32|glPopName'
+      'glPopName_DLL'⎕NA'',getdllname,'|glPopName'
   :EndIf
   {}glPopName_DLL
 ∇
 
 ∇ glPushName name
   :If 0=⎕NC'glPushName_DLL'
-      'glPushName_DLL'⎕NA'opengl32|glPushName U4'
+      'glPushName_DLL'⎕NA'',getdllname,'|glPushName U4'
   :EndIf
   {}glPushName_DLL name
 ∇
 
 ∇ glClearAccum (red green blue alpha)
   :If 0=⎕NC'glClearAccum_DLL'
-      'glClearAccum_DLL'⎕NA'opengl32|glClearAccum F4 F4 F4 F4'
+      'glClearAccum_DLL'⎕NA'',getdllname,'|glClearAccum F4 F4 F4 F4'
   :EndIf
   {}glClearAccum_DLL red green blue alpha
 ∇
 
 ∇ glClearIndex c
   :If 0=⎕NC'glClearIndex_DLL'
-      'glClearIndex_DLL'⎕NA'opengl32|glClearIndex F4'
+      'glClearIndex_DLL'⎕NA'',getdllname,'|glClearIndex F4'
   :EndIf
   {}glClearIndex_DLL c
 ∇
 
 ∇ glIndexMask mask
   :If 0=⎕NC'glIndexMask_DLL'
-      'glIndexMask_DLL'⎕NA'opengl32|glIndexMask U4'
+      'glIndexMask_DLL'⎕NA'',getdllname,'|glIndexMask U4'
   :EndIf
   {}glIndexMask_DLL mask
 ∇
 
 ∇ glAccum (op value)
   :If 0=⎕NC'glAccum_DLL'
-      'glAccum_DLL'⎕NA'opengl32|glAccum U4 F4'
+      'glAccum_DLL'⎕NA'',getdllname,'|glAccum U4 F4'
   :EndIf
   {}glAccum_DLL op value
 ∇
 
 ∇ glPopAttrib
   :If 0=⎕NC'glPopAttrib_DLL'
-      'glPopAttrib_DLL'⎕NA'opengl32|glPopAttrib'
+      'glPopAttrib_DLL'⎕NA'',getdllname,'|glPopAttrib'
   :EndIf
   {}glPopAttrib_DLL
 ∇
 
 ∇ glPushAttrib mask
   :If 0=⎕NC'glPushAttrib_DLL'
-      'glPushAttrib_DLL'⎕NA'opengl32|glPushAttrib U4'
+      'glPushAttrib_DLL'⎕NA'',getdllname,'|glPushAttrib U4'
   :EndIf
   {}glPushAttrib_DLL mask
 ∇
 
 ∇ glMap1d (target u1 u2 stride order points)
   :If 0=⎕NC'glMap1d_DLL'
-      'glMap1d_DLL'⎕NA'opengl32|glMap1d U4 F8 F8 I4 I4 <F8[]'
+      'glMap1d_DLL'⎕NA'',getdllname,'|glMap1d U4 F8 F8 I4 I4 <F8[]'
   :EndIf
   {}glMap1d_DLL target u1 u2 stride order points
 ∇
 
 ∇ glMap1f (target u1 u2 stride order points)
   :If 0=⎕NC'glMap1f_DLL'
-      'glMap1f_DLL'⎕NA'opengl32|glMap1f U4 F4 F4 I4 I4 <F4[]'
+      'glMap1f_DLL'⎕NA'',getdllname,'|glMap1f U4 F4 F4 I4 I4 <F4[]'
   :EndIf
   {}glMap1f_DLL target u1 u2 stride order points
 ∇
 
 ∇ glMap2d (target u1 u2 ustride uorder v1 v2 vstride vorder points)
   :If 0=⎕NC'glMap2d_DLL'
-      'glMap2d_DLL'⎕NA'opengl32|glMap2d U4 F8 F8 I4 I4 F8 F8 I4 I4 <F8[]'
+      'glMap2d_DLL'⎕NA'',getdllname,'|glMap2d U4 F8 F8 I4 I4 F8 F8 I4 I4 <F8[]'
   :EndIf
   {}glMap2d_DLL target u1 u2 ustride uorder v1 v2 vstride vorder points
 ∇
 
 ∇ glMap2f (target u1 u2 ustride uorder v1 v2 vstride vorder points)
   :If 0=⎕NC'glMap2f_DLL'
-      'glMap2f_DLL'⎕NA'opengl32|glMap2f U4 F4 F4 I4 I4 F4 F4 I4 I4 <F4[]'
+      'glMap2f_DLL'⎕NA'',getdllname,'|glMap2f U4 F4 F4 I4 I4 F4 F4 I4 I4 <F4[]'
   :EndIf
   {}glMap2f_DLL target u1 u2 ustride uorder v1 v2 vstride vorder points
 ∇
 
 ∇ glMapGrid1d (un u1 u2)
   :If 0=⎕NC'glMapGrid1d_DLL'
-      'glMapGrid1d_DLL'⎕NA'opengl32|glMapGrid1d I4 F8 F8'
+      'glMapGrid1d_DLL'⎕NA'',getdllname,'|glMapGrid1d I4 F8 F8'
   :EndIf
   {}glMapGrid1d_DLL un u1 u2
 ∇
 
 ∇ glMapGrid1f (un u1 u2)
   :If 0=⎕NC'glMapGrid1f_DLL'
-      'glMapGrid1f_DLL'⎕NA'opengl32|glMapGrid1f I4 F4 F4'
+      'glMapGrid1f_DLL'⎕NA'',getdllname,'|glMapGrid1f I4 F4 F4'
   :EndIf
   {}glMapGrid1f_DLL un u1 u2
 ∇
 
 ∇ glMapGrid2d (un u1 u2 vn v1 v2)
   :If 0=⎕NC'glMapGrid2d_DLL'
-      'glMapGrid2d_DLL'⎕NA'opengl32|glMapGrid2d I4 F8 F8 I4 F8 F8'
+      'glMapGrid2d_DLL'⎕NA'',getdllname,'|glMapGrid2d I4 F8 F8 I4 F8 F8'
   :EndIf
   {}glMapGrid2d_DLL un u1 u2 vn v1 v2
 ∇
 
 ∇ glMapGrid2f (un u1 u2 vn v1 v2)
   :If 0=⎕NC'glMapGrid2f_DLL'
-      'glMapGrid2f_DLL'⎕NA'opengl32|glMapGrid2f I4 F4 F4 I4 F4 F4'
+      'glMapGrid2f_DLL'⎕NA'',getdllname,'|glMapGrid2f I4 F4 F4 I4 F4 F4'
   :EndIf
   {}glMapGrid2f_DLL un u1 u2 vn v1 v2
 ∇
 
 ∇ glEvalCoord1d u
   :If 0=⎕NC'glEvalCoord1d_DLL'
-      'glEvalCoord1d_DLL'⎕NA'opengl32|glEvalCoord1d F8'
+      'glEvalCoord1d_DLL'⎕NA'',getdllname,'|glEvalCoord1d F8'
   :EndIf
   {}glEvalCoord1d_DLL u
 ∇
 
 ∇ glEvalCoord1dv u
   :If 0=⎕NC'glEvalCoord1dv_DLL'
-      'glEvalCoord1dv_DLL'⎕NA'opengl32|glEvalCoord1dv <F8[1]'
+      'glEvalCoord1dv_DLL'⎕NA'',getdllname,'|glEvalCoord1dv <F8[1]'
   :EndIf
   {}glEvalCoord1dv_DLL u
 ∇
 
 ∇ glEvalCoord1f u
   :If 0=⎕NC'glEvalCoord1f_DLL'
-      'glEvalCoord1f_DLL'⎕NA'opengl32|glEvalCoord1f F4'
+      'glEvalCoord1f_DLL'⎕NA'',getdllname,'|glEvalCoord1f F4'
   :EndIf
   {}glEvalCoord1f_DLL u
 ∇
 
 ∇ glEvalCoord1fv u
   :If 0=⎕NC'glEvalCoord1fv_DLL'
-      'glEvalCoord1fv_DLL'⎕NA'opengl32|glEvalCoord1fv <F4[1]'
+      'glEvalCoord1fv_DLL'⎕NA'',getdllname,'|glEvalCoord1fv <F4[1]'
   :EndIf
   {}glEvalCoord1fv_DLL u
 ∇
 
 ∇ glEvalCoord2d (u v)
   :If 0=⎕NC'glEvalCoord2d_DLL'
-      'glEvalCoord2d_DLL'⎕NA'opengl32|glEvalCoord2d F8 F8'
+      'glEvalCoord2d_DLL'⎕NA'',getdllname,'|glEvalCoord2d F8 F8'
   :EndIf
   {}glEvalCoord2d_DLL u v
 ∇
 
 ∇ glEvalCoord2dv u
   :If 0=⎕NC'glEvalCoord2dv_DLL'
-      'glEvalCoord2dv_DLL'⎕NA'opengl32|glEvalCoord2dv <F8[2]'
+      'glEvalCoord2dv_DLL'⎕NA'',getdllname,'|glEvalCoord2dv <F8[2]'
   :EndIf
   {}glEvalCoord2dv_DLL u
 ∇
 
 ∇ glEvalCoord2f (u v)
   :If 0=⎕NC'glEvalCoord2f_DLL'
-      'glEvalCoord2f_DLL'⎕NA'opengl32|glEvalCoord2f F4 F4'
+      'glEvalCoord2f_DLL'⎕NA'',getdllname,'|glEvalCoord2f F4 F4'
   :EndIf
   {}glEvalCoord2f_DLL u v
 ∇
 
 ∇ glEvalCoord2fv u
   :If 0=⎕NC'glEvalCoord2fv_DLL'
-      'glEvalCoord2fv_DLL'⎕NA'opengl32|glEvalCoord2fv <F4[2]'
+      'glEvalCoord2fv_DLL'⎕NA'',getdllname,'|glEvalCoord2fv <F4[2]'
   :EndIf
   {}glEvalCoord2fv_DLL u
 ∇
 
 ∇ glEvalMesh1 (mode i1 i2)
   :If 0=⎕NC'glEvalMesh1_DLL'
-      'glEvalMesh1_DLL'⎕NA'opengl32|glEvalMesh1 U4 I4 I4'
+      'glEvalMesh1_DLL'⎕NA'',getdllname,'|glEvalMesh1 U4 I4 I4'
   :EndIf
   {}glEvalMesh1_DLL mode i1 i2
 ∇
 
 ∇ glEvalPoint1 i
   :If 0=⎕NC'glEvalPoint1_DLL'
-      'glEvalPoint1_DLL'⎕NA'opengl32|glEvalPoint1 I4'
+      'glEvalPoint1_DLL'⎕NA'',getdllname,'|glEvalPoint1 I4'
   :EndIf
   {}glEvalPoint1_DLL i
 ∇
 
 ∇ glEvalMesh2 (mode i1 i2 j1 j2)
   :If 0=⎕NC'glEvalMesh2_DLL'
-      'glEvalMesh2_DLL'⎕NA'opengl32|glEvalMesh2 U4 I4 I4 I4 I4'
+      'glEvalMesh2_DLL'⎕NA'',getdllname,'|glEvalMesh2 U4 I4 I4 I4 I4'
   :EndIf
   {}glEvalMesh2_DLL mode i1 i2 j1 j2
 ∇
 
 ∇ glEvalPoint2 (i j)
   :If 0=⎕NC'glEvalPoint2_DLL'
-      'glEvalPoint2_DLL'⎕NA'opengl32|glEvalPoint2 I4 I4'
+      'glEvalPoint2_DLL'⎕NA'',getdllname,'|glEvalPoint2 I4 I4'
   :EndIf
   {}glEvalPoint2_DLL i j
 ∇
 
 ∇ glAlphaFunc (func ref)
   :If 0=⎕NC'glAlphaFunc_DLL'
-      'glAlphaFunc_DLL'⎕NA'opengl32|glAlphaFunc U4 F4'
+      'glAlphaFunc_DLL'⎕NA'',getdllname,'|glAlphaFunc U4 F4'
   :EndIf
   {}glAlphaFunc_DLL func ref
 ∇
 
 ∇ glPixelZoom (xfactor yfactor)
   :If 0=⎕NC'glPixelZoom_DLL'
-      'glPixelZoom_DLL'⎕NA'opengl32|glPixelZoom F4 F4'
+      'glPixelZoom_DLL'⎕NA'',getdllname,'|glPixelZoom F4 F4'
   :EndIf
   {}glPixelZoom_DLL xfactor yfactor
 ∇
 
 ∇ glPixelTransferf (pname param)
   :If 0=⎕NC'glPixelTransferf_DLL'
-      'glPixelTransferf_DLL'⎕NA'opengl32|glPixelTransferf U4 F4'
+      'glPixelTransferf_DLL'⎕NA'',getdllname,'|glPixelTransferf U4 F4'
   :EndIf
   {}glPixelTransferf_DLL pname param
 ∇
 
 ∇ glPixelTransferi (pname param)
   :If 0=⎕NC'glPixelTransferi_DLL'
-      'glPixelTransferi_DLL'⎕NA'opengl32|glPixelTransferi U4 I4'
+      'glPixelTransferi_DLL'⎕NA'',getdllname,'|glPixelTransferi U4 I4'
   :EndIf
   {}glPixelTransferi_DLL pname param
 ∇
 
 ∇ glPixelMapfv (map mapsize values)
   :If 0=⎕NC'glPixelMapfv_DLL'
-      'glPixelMapfv_DLL'⎕NA'opengl32|glPixelMapfv U4 I4 <F4[]'
+      'glPixelMapfv_DLL'⎕NA'',getdllname,'|glPixelMapfv U4 I4 <F4[]'
   :EndIf
   {}glPixelMapfv_DLL map mapsize values
 ∇
 
 ∇ glPixelMapuiv (map mapsize values)
   :If 0=⎕NC'glPixelMapuiv_DLL'
-      'glPixelMapuiv_DLL'⎕NA'opengl32|glPixelMapuiv U4 I4 <U4[]'
+      'glPixelMapuiv_DLL'⎕NA'',getdllname,'|glPixelMapuiv U4 I4 <U4[]'
   :EndIf
   {}glPixelMapuiv_DLL map mapsize values
 ∇
 
 ∇ glPixelMapusv (map mapsize values)
   :If 0=⎕NC'glPixelMapusv_DLL'
-      'glPixelMapusv_DLL'⎕NA'opengl32|glPixelMapusv U4 I4 <U2[]'
+      'glPixelMapusv_DLL'⎕NA'',getdllname,'|glPixelMapusv U4 I4 <U2[]'
   :EndIf
   {}glPixelMapusv_DLL map mapsize values
 ∇
 
 ∇ glCopyPixels (x y width height type)
   :If 0=⎕NC'glCopyPixels_DLL'
-      'glCopyPixels_DLL'⎕NA'opengl32|glCopyPixels I4 I4 I4 I4 U4'
+      'glCopyPixels_DLL'⎕NA'',getdllname,'|glCopyPixels I4 I4 I4 I4 U4'
   :EndIf
   {}glCopyPixels_DLL x y width height type
 ∇
 
 ∇ DrawPixels_U1 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_U1_DLL'
-      'DrawPixels_U1_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <U1[]'
+      'DrawPixels_U1_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <U1[]'
   :EndIf
   {}DrawPixels_U1_DLL width height format type pixels
 ∇
 
 ∇ DrawPixels_I1 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_I1_DLL'
-      'DrawPixels_I1_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <I1[]'
+      'DrawPixels_I1_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <I1[]'
   :EndIf
   {}DrawPixels_I1_DLL width height format type pixels
 ∇
 
 ∇ DrawPixels_U2 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_U2_DLL'
-      'DrawPixels_U2_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <U2[]'
+      'DrawPixels_U2_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <U2[]'
   :EndIf
   {}DrawPixels_U2_DLL width height format type pixels
 ∇
 
 ∇ DrawPixels_I2 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_I2_DLL'
-      'DrawPixels_I2_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <I2[]'
+      'DrawPixels_I2_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <I2[]'
   :EndIf
   {}DrawPixels_I2_DLL width height format type pixels
 ∇
 
 ∇ DrawPixels_U4 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_U4_DLL'
-      'DrawPixels_U4_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <U4[]'
+      'DrawPixels_U4_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <U4[]'
   :EndIf
   {}DrawPixels_U4_DLL width height format type pixels
 ∇
 
 ∇ DrawPixels_I4 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_I4_DLL'
-      'DrawPixels_I4_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <I4[]'
+      'DrawPixels_I4_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <I4[]'
   :EndIf
   {}DrawPixels_I4_DLL width height format type pixels
 ∇
 
 ∇ DrawPixels_F4 (width height format type pixels)
   :If 0=⎕NC'DrawPixels_F4_DLL'
-      'DrawPixels_F4_DLL'⎕NA'opengl32|glDrawPixels I4 I4 U4 U4 <F4[]'
+      'DrawPixels_F4_DLL'⎕NA'',getdllname,'|glDrawPixels I4 I4 U4 U4 <F4[]'
   :EndIf
   {}DrawPixels_F4_DLL width height format type pixels
 ∇
@@ -6811,245 +6819,245 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetClipPlane plane
   :If 0=⎕NC'glGetClipPlane_DLL'
-      'glGetClipPlane_DLL'⎕NA'opengl32|glGetClipPlane U4 >F8[4]'
+      'glGetClipPlane_DLL'⎕NA'',getdllname,'|glGetClipPlane U4 >F8[4]'
   :EndIf
   r←glGetClipPlane_DLL plane 4
 ∇
 
 ∇ r←glGetLightfv (light pname params)
   :If 0=⎕NC'glGetLightfv_DLL'
-      'glGetLightfv_DLL'⎕NA'opengl32|glGetLightfv U4 U4 >F4[]'
+      'glGetLightfv_DLL'⎕NA'',getdllname,'|glGetLightfv U4 U4 >F4[]'
   :EndIf
   r←glGetLightfv_DLL light pname params
 ∇
 
 ∇ r←glGetLightiv (light pname params)
   :If 0=⎕NC'glGetLightiv_DLL'
-      'glGetLightiv_DLL'⎕NA'opengl32|glGetLightiv U4 U4 >I4[]'
+      'glGetLightiv_DLL'⎕NA'',getdllname,'|glGetLightiv U4 U4 >I4[]'
   :EndIf
   r←glGetLightiv_DLL light pname params
 ∇
 
 ∇ r←glGetMapdv (target query v)
   :If 0=⎕NC'glGetMapdv_DLL'
-      'glGetMapdv_DLL'⎕NA'opengl32|glGetMapdv U4 U4 >F8[]'
+      'glGetMapdv_DLL'⎕NA'',getdllname,'|glGetMapdv U4 U4 >F8[]'
   :EndIf
   r←glGetMapdv_DLL target query v
 ∇
 
 ∇ r←glGetMapfv (target query v)
   :If 0=⎕NC'glGetMapfv_DLL'
-      'glGetMapfv_DLL'⎕NA'opengl32|glGetMapfv U4 U4 >F4[]'
+      'glGetMapfv_DLL'⎕NA'',getdllname,'|glGetMapfv U4 U4 >F4[]'
   :EndIf
   r←glGetMapfv_DLL target query v
 ∇
 
 ∇ r←glGetMapiv (target query v)
   :If 0=⎕NC'glGetMapiv_DLL'
-      'glGetMapiv_DLL'⎕NA'opengl32|glGetMapiv U4 U4 >I4[]'
+      'glGetMapiv_DLL'⎕NA'',getdllname,'|glGetMapiv U4 U4 >I4[]'
   :EndIf
   r←glGetMapiv_DLL target query v
 ∇
 
 ∇ r←glGetMaterialfv (face pname params)
   :If 0=⎕NC'glGetMaterialfv_DLL'
-      'glGetMaterialfv_DLL'⎕NA'opengl32|glGetMaterialfv U4 U4 >F4[]'
+      'glGetMaterialfv_DLL'⎕NA'',getdllname,'|glGetMaterialfv U4 U4 >F4[]'
   :EndIf
   r←glGetMaterialfv_DLL face pname params
 ∇
 
 ∇ r←glGetMaterialiv (face pname params)
   :If 0=⎕NC'glGetMaterialiv_DLL'
-      'glGetMaterialiv_DLL'⎕NA'opengl32|glGetMaterialiv U4 U4 >I4[]'
+      'glGetMaterialiv_DLL'⎕NA'',getdllname,'|glGetMaterialiv U4 U4 >I4[]'
   :EndIf
   r←glGetMaterialiv_DLL face pname params
 ∇
 
 ∇ r←glGetPixelMapfv (map values)
   :If 0=⎕NC'glGetPixelMapfv_DLL'
-      'glGetPixelMapfv_DLL'⎕NA'opengl32|glGetPixelMapfv U4 >F4[]'
+      'glGetPixelMapfv_DLL'⎕NA'',getdllname,'|glGetPixelMapfv U4 >F4[]'
   :EndIf
   r←glGetPixelMapfv_DLL map values
 ∇
 
 ∇ r←glGetPixelMapuiv (map values)
   :If 0=⎕NC'glGetPixelMapuiv_DLL'
-      'glGetPixelMapuiv_DLL'⎕NA'opengl32|glGetPixelMapuiv U4 >U4[]'
+      'glGetPixelMapuiv_DLL'⎕NA'',getdllname,'|glGetPixelMapuiv U4 >U4[]'
   :EndIf
   r←glGetPixelMapuiv_DLL map values
 ∇
 
 ∇ r←glGetPixelMapusv (map values)
   :If 0=⎕NC'glGetPixelMapusv_DLL'
-      'glGetPixelMapusv_DLL'⎕NA'opengl32|glGetPixelMapusv U4 >U2[]'
+      'glGetPixelMapusv_DLL'⎕NA'',getdllname,'|glGetPixelMapusv U4 >U2[]'
   :EndIf
   r←glGetPixelMapusv_DLL map values
 ∇
 
 ∇ r←glGetPolygonStipple mask
   :If 0=⎕NC'glGetPolygonStipple_DLL'
-      'glGetPolygonStipple_DLL'⎕NA'opengl32|glGetPolygonStipple >U1[]'
+      'glGetPolygonStipple_DLL'⎕NA'',getdllname,'|glGetPolygonStipple >U1[]'
   :EndIf
   r←glGetPolygonStipple_DLL mask
 ∇
 
 ∇ r←glGetTexEnvfv (target pname params)
   :If 0=⎕NC'glGetTexEnvfv_DLL'
-      'glGetTexEnvfv_DLL'⎕NA'opengl32|glGetTexEnvfv U4 U4 >F4[]'
+      'glGetTexEnvfv_DLL'⎕NA'',getdllname,'|glGetTexEnvfv U4 U4 >F4[]'
   :EndIf
   r←glGetTexEnvfv_DLL target pname params
 ∇
 
 ∇ r←glGetTexEnviv (target pname params)
   :If 0=⎕NC'glGetTexEnviv_DLL'
-      'glGetTexEnviv_DLL'⎕NA'opengl32|glGetTexEnviv U4 U4 >I4[]'
+      'glGetTexEnviv_DLL'⎕NA'',getdllname,'|glGetTexEnviv U4 U4 >I4[]'
   :EndIf
   r←glGetTexEnviv_DLL target pname params
 ∇
 
 ∇ r←glGetTexGendv (coord pname params)
   :If 0=⎕NC'glGetTexGendv_DLL'
-      'glGetTexGendv_DLL'⎕NA'opengl32|glGetTexGendv U4 U4 >F8[]'
+      'glGetTexGendv_DLL'⎕NA'',getdllname,'|glGetTexGendv U4 U4 >F8[]'
   :EndIf
   r←glGetTexGendv_DLL coord pname params
 ∇
 
 ∇ r←glGetTexGenfv (coord pname params)
   :If 0=⎕NC'glGetTexGenfv_DLL'
-      'glGetTexGenfv_DLL'⎕NA'opengl32|glGetTexGenfv U4 U4 >F4[]'
+      'glGetTexGenfv_DLL'⎕NA'',getdllname,'|glGetTexGenfv U4 U4 >F4[]'
   :EndIf
   r←glGetTexGenfv_DLL coord pname params
 ∇
 
 ∇ r←glGetTexGeniv (coord pname params)
   :If 0=⎕NC'glGetTexGeniv_DLL'
-      'glGetTexGeniv_DLL'⎕NA'opengl32|glGetTexGeniv U4 U4 >I4[]'
+      'glGetTexGeniv_DLL'⎕NA'',getdllname,'|glGetTexGeniv U4 U4 >I4[]'
   :EndIf
   r←glGetTexGeniv_DLL coord pname params
 ∇
 
 ∇ r←glIsList list
   :If 0=⎕NC'glIsList_DLL'
-      'glIsList_DLL'⎕NA'U1 opengl32|glIsList U4'
+      'glIsList_DLL'⎕NA'U1 ',getdllname,'|glIsList U4'
   :EndIf
   r←glIsList_DLL list
 ∇
 
 ∇ glFrustum (left right bottom top zNear zFar)
   :If 0=⎕NC'glFrustum_DLL'
-      'glFrustum_DLL'⎕NA'opengl32|glFrustum F8 F8 F8 F8 F8 F8'
+      'glFrustum_DLL'⎕NA'',getdllname,'|glFrustum F8 F8 F8 F8 F8 F8'
   :EndIf
   {}glFrustum_DLL left right bottom top zNear zFar
 ∇
 
 ∇ glLoadIdentity
   :If 0=⎕NC'glLoadIdentity_DLL'
-      'glLoadIdentity_DLL'⎕NA'opengl32|glLoadIdentity'
+      'glLoadIdentity_DLL'⎕NA'',getdllname,'|glLoadIdentity'
   :EndIf
   {}glLoadIdentity_DLL
 ∇
 
 ∇ glLoadMatrixf m
   :If 0=⎕NC'glLoadMatrixf_DLL'
-      'glLoadMatrixf_DLL'⎕NA'opengl32|glLoadMatrixf <F4[16]'
+      'glLoadMatrixf_DLL'⎕NA'',getdllname,'|glLoadMatrixf <F4[16]'
   :EndIf
   {}glLoadMatrixf_DLL m
 ∇
 
 ∇ glLoadMatrixd m
   :If 0=⎕NC'glLoadMatrixd_DLL'
-      'glLoadMatrixd_DLL'⎕NA'opengl32|glLoadMatrixd <F8[16]'
+      'glLoadMatrixd_DLL'⎕NA'',getdllname,'|glLoadMatrixd <F8[16]'
   :EndIf
   {}glLoadMatrixd_DLL m
 ∇
 
 ∇ glMatrixMode mode
   :If 0=⎕NC'glMatrixMode_DLL'
-      'glMatrixMode_DLL'⎕NA'opengl32|glMatrixMode U4'
+      'glMatrixMode_DLL'⎕NA'',getdllname,'|glMatrixMode U4'
   :EndIf
   {}glMatrixMode_DLL mode
 ∇
 
 ∇ glMultMatrixf m
   :If 0=⎕NC'glMultMatrixf_DLL'
-      'glMultMatrixf_DLL'⎕NA'opengl32|glMultMatrixf <F4[16]'
+      'glMultMatrixf_DLL'⎕NA'',getdllname,'|glMultMatrixf <F4[16]'
   :EndIf
   {}glMultMatrixf_DLL m
 ∇
 
 ∇ glMultMatrixd m
   :If 0=⎕NC'glMultMatrixd_DLL'
-      'glMultMatrixd_DLL'⎕NA'opengl32|glMultMatrixd <F8[16]'
+      'glMultMatrixd_DLL'⎕NA'',getdllname,'|glMultMatrixd <F8[16]'
   :EndIf
   {}glMultMatrixd_DLL m
 ∇
 
 ∇ glOrtho (left right bottom top zNear zFar)
   :If 0=⎕NC'glOrtho_DLL'
-      'glOrtho_DLL'⎕NA'opengl32|glOrtho F8 F8 F8 F8 F8 F8'
+      'glOrtho_DLL'⎕NA'',getdllname,'|glOrtho F8 F8 F8 F8 F8 F8'
   :EndIf
   {}glOrtho_DLL left right bottom top zNear zFar
 ∇
 
 ∇ glPopMatrix
   :If 0=⎕NC'glPopMatrix_DLL'
-      'glPopMatrix_DLL'⎕NA'opengl32|glPopMatrix'
+      'glPopMatrix_DLL'⎕NA'',getdllname,'|glPopMatrix'
   :EndIf
   {}glPopMatrix_DLL
 ∇
 
 ∇ glPushMatrix
   :If 0=⎕NC'glPushMatrix_DLL'
-      'glPushMatrix_DLL'⎕NA'opengl32|glPushMatrix'
+      'glPushMatrix_DLL'⎕NA'',getdllname,'|glPushMatrix'
   :EndIf
   {}glPushMatrix_DLL
 ∇
 
 ∇ glRotated (angle x y z)
   :If 0=⎕NC'glRotated_DLL'
-      'glRotated_DLL'⎕NA'opengl32|glRotated F8 F8 F8 F8'
+      'glRotated_DLL'⎕NA'',getdllname,'|glRotated F8 F8 F8 F8'
   :EndIf
   {}glRotated_DLL angle x y z
 ∇
 
 ∇ glRotatef (angle x y z)
   :If 0=⎕NC'glRotatef_DLL'
-      'glRotatef_DLL'⎕NA'opengl32|glRotatef F4 F4 F4 F4'
+      'glRotatef_DLL'⎕NA'',getdllname,'|glRotatef F4 F4 F4 F4'
   :EndIf
   {}glRotatef_DLL angle x y z
 ∇
 
 ∇ glScaled (x y z)
   :If 0=⎕NC'glScaled_DLL'
-      'glScaled_DLL'⎕NA'opengl32|glScaled F8 F8 F8'
+      'glScaled_DLL'⎕NA'',getdllname,'|glScaled F8 F8 F8'
   :EndIf
   {}glScaled_DLL x y z
 ∇
 
 ∇ glScalef (x y z)
   :If 0=⎕NC'glScalef_DLL'
-      'glScalef_DLL'⎕NA'opengl32|glScalef F4 F4 F4'
+      'glScalef_DLL'⎕NA'',getdllname,'|glScalef F4 F4 F4'
   :EndIf
   {}glScalef_DLL x y z
 ∇
 
 ∇ glTranslated (x y z)
   :If 0=⎕NC'glTranslated_DLL'
-      'glTranslated_DLL'⎕NA'opengl32|glTranslated F8 F8 F8'
+      'glTranslated_DLL'⎕NA'',getdllname,'|glTranslated F8 F8 F8'
   :EndIf
   {}glTranslated_DLL x y z
 ∇
 
 ∇ glTranslatef (x y z)
   :If 0=⎕NC'glTranslatef_DLL'
-      'glTranslatef_DLL'⎕NA'opengl32|glTranslatef F4 F4 F4'
+      'glTranslatef_DLL'⎕NA'',getdllname,'|glTranslatef F4 F4 F4'
   :EndIf
   {}glTranslatef_DLL x y z
 ∇
 
 ∇ glDrawArrays (mode first count)
   :If 0=⎕NC'glDrawArrays_DLL'
-      'glDrawArrays_DLL'⎕NA'opengl32|glDrawArrays U4 I4 I4'
+      'glDrawArrays_DLL'⎕NA'',getdllname,'|glDrawArrays U4 I4 I4'
   :EndIf
   {}glDrawArrays_DLL mode first count
 ∇
@@ -7070,84 +7078,84 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glPolygonOffset (factor units)
   :If 0=⎕NC'glPolygonOffset_DLL'
-      'glPolygonOffset_DLL'⎕NA'opengl32|glPolygonOffset F4 F4'
+      'glPolygonOffset_DLL'⎕NA'',getdllname,'|glPolygonOffset F4 F4'
   :EndIf
   {}glPolygonOffset_DLL factor units
 ∇
 
 ∇ glCopyTexImage1D (target level internalformat x y width border)
   :If 0=⎕NC'glCopyTexImage1D_DLL'
-      'glCopyTexImage1D_DLL'⎕NA'opengl32|glCopyTexImage1D U4 I4 U4 I4 I4 I4 I4'
+      'glCopyTexImage1D_DLL'⎕NA'',getdllname,'|glCopyTexImage1D U4 I4 U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexImage1D_DLL target level internalformat x y width border
 ∇
 
 ∇ glCopyTexImage2D (target level internalformat x y width height border)
   :If 0=⎕NC'glCopyTexImage2D_DLL'
-      'glCopyTexImage2D_DLL'⎕NA'opengl32|glCopyTexImage2D U4 I4 U4 I4 I4 I4 I4 I4'
+      'glCopyTexImage2D_DLL'⎕NA'',getdllname,'|glCopyTexImage2D U4 I4 U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexImage2D_DLL target level internalformat x y width height border
 ∇
 
 ∇ glCopyTexSubImage1D (target level xoffset x y width)
   :If 0=⎕NC'glCopyTexSubImage1D_DLL'
-      'glCopyTexSubImage1D_DLL'⎕NA'opengl32|glCopyTexSubImage1D U4 I4 I4 I4 I4 I4'
+      'glCopyTexSubImage1D_DLL'⎕NA'',getdllname,'|glCopyTexSubImage1D U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexSubImage1D_DLL target level xoffset x y width
 ∇
 
 ∇ glCopyTexSubImage2D (target level xoffset yoffset x y width height)
   :If 0=⎕NC'glCopyTexSubImage2D_DLL'
-      'glCopyTexSubImage2D_DLL'⎕NA'opengl32|glCopyTexSubImage2D U4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyTexSubImage2D_DLL'⎕NA'',getdllname,'|glCopyTexSubImage2D U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexSubImage2D_DLL target level xoffset yoffset x y width height
 ∇
 
 ∇ TexSubImage1D_U1 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_U1_DLL'
-      'TexSubImage1D_U1_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage1D_U1_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage1D_U1_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1D_I1 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_I1_DLL'
-      'TexSubImage1D_I1_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage1D_I1_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage1D_I1_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1D_U2 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_U2_DLL'
-      'TexSubImage1D_U2_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage1D_U2_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage1D_U2_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1D_I2 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_I2_DLL'
-      'TexSubImage1D_I2_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage1D_I2_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage1D_I2_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1D_U4 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_U4_DLL'
-      'TexSubImage1D_U4_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage1D_U4_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage1D_U4_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1D_I4 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_I4_DLL'
-      'TexSubImage1D_I4_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage1D_I4_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage1D_I4_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1D_F4 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1D_F4_DLL'
-      'TexSubImage1D_F4_DLL'⎕NA'opengl32|glTexSubImage1D U4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage1D_F4_DLL'⎕NA'',getdllname,'|glTexSubImage1D U4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage1D_F4_DLL target level xoffset width format type pixels
 ∇
@@ -7205,49 +7213,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexSubImage2D_U1 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_U1_DLL'
-      'TexSubImage2D_U1_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage2D_U1_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage2D_U1_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2D_I1 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_I1_DLL'
-      'TexSubImage2D_I1_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage2D_I1_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage2D_I1_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2D_U2 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_U2_DLL'
-      'TexSubImage2D_U2_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage2D_U2_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage2D_U2_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2D_I2 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_I2_DLL'
-      'TexSubImage2D_I2_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage2D_I2_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage2D_I2_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2D_U4 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_U4_DLL'
-      'TexSubImage2D_U4_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage2D_U4_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage2D_U4_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2D_I4 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_I4_DLL'
-      'TexSubImage2D_I4_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage2D_I4_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage2D_I4_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2D_F4 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2D_F4_DLL'
-      'TexSubImage2D_F4_DLL'⎕NA'opengl32|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage2D_F4_DLL'⎕NA'',getdllname,'|glTexSubImage2D U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage2D_F4_DLL target level xoffset yoffset width height format type pixels
 ∇
@@ -7305,35 +7313,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindTexture (target texture)
   :If 0=⎕NC'glBindTexture_DLL'
-      'glBindTexture_DLL'⎕NA'opengl32|glBindTexture U4 U4'
+      'glBindTexture_DLL'⎕NA'',getdllname,'|glBindTexture U4 U4'
   :EndIf
   {}glBindTexture_DLL target texture
 ∇
 
 ∇ glDeleteTextures (n textures)
   :If 0=⎕NC'glDeleteTextures_DLL'
-      'glDeleteTextures_DLL'⎕NA'opengl32|glDeleteTextures I4 <U4[]'
+      'glDeleteTextures_DLL'⎕NA'',getdllname,'|glDeleteTextures I4 <U4[]'
   :EndIf
   {}glDeleteTextures_DLL n textures
 ∇
 
 ∇ r←glGenTextures (n textures)
   :If 0=⎕NC'glGenTextures_DLL'
-      'glGenTextures_DLL'⎕NA'opengl32|glGenTextures I4 >U4[]'
+      'glGenTextures_DLL'⎕NA'',getdllname,'|glGenTextures I4 >U4[]'
   :EndIf
   r←glGenTextures_DLL n textures
 ∇
 
 ∇ r←glIsTexture texture
   :If 0=⎕NC'glIsTexture_DLL'
-      'glIsTexture_DLL'⎕NA'U1 opengl32|glIsTexture U4'
+      'glIsTexture_DLL'⎕NA'U1 ',getdllname,'|glIsTexture U4'
   :EndIf
   r←glIsTexture_DLL texture
 ∇
 
 ∇ glArrayElement i
   :If 0=⎕NC'glArrayElement_DLL'
-      'glArrayElement_DLL'⎕NA'opengl32|glArrayElement I4'
+      'glArrayElement_DLL'⎕NA'',getdllname,'|glArrayElement I4'
   :EndIf
   {}glArrayElement_DLL i
 ∇
@@ -7347,7 +7355,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDisableClientState array
   :If 0=⎕NC'glDisableClientState_DLL'
-      'glDisableClientState_DLL'⎕NA'opengl32|glDisableClientState U4'
+      'glDisableClientState_DLL'⎕NA'',getdllname,'|glDisableClientState U4'
   :EndIf
   {}glDisableClientState_DLL array
 ∇
@@ -7361,7 +7369,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glEnableClientState array
   :If 0=⎕NC'glEnableClientState_DLL'
-      'glEnableClientState_DLL'⎕NA'opengl32|glEnableClientState U4'
+      'glEnableClientState_DLL'⎕NA'',getdllname,'|glEnableClientState U4'
   :EndIf
   {}glEnableClientState_DLL array
 ∇
@@ -7403,56 +7411,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glAreTexturesResident (n textures residences)
   :If 0=⎕NC'glAreTexturesResident_DLL'
-      'glAreTexturesResident_DLL'⎕NA'U1 opengl32|glAreTexturesResident I4 <U4[] >U1[]'
+      'glAreTexturesResident_DLL'⎕NA'U1 ',getdllname,'|glAreTexturesResident I4 <U4[] >U1[]'
   :EndIf
   r←glAreTexturesResident_DLL n textures residences
 ∇
 
 ∇ glPrioritizeTextures (n textures priorities)
   :If 0=⎕NC'glPrioritizeTextures_DLL'
-      'glPrioritizeTextures_DLL'⎕NA'opengl32|glPrioritizeTextures I4 <U4[] <F4[]'
+      'glPrioritizeTextures_DLL'⎕NA'',getdllname,'|glPrioritizeTextures I4 <U4[] <F4[]'
   :EndIf
   {}glPrioritizeTextures_DLL n textures priorities
 ∇
 
 ∇ glIndexub c
   :If 0=⎕NC'glIndexub_DLL'
-      'glIndexub_DLL'⎕NA'opengl32|glIndexub U1'
+      'glIndexub_DLL'⎕NA'',getdllname,'|glIndexub U1'
   :EndIf
   {}glIndexub_DLL c
 ∇
 
 ∇ glIndexubv c
   :If 0=⎕NC'glIndexubv_DLL'
-      'glIndexubv_DLL'⎕NA'opengl32|glIndexubv <U1[1]'
+      'glIndexubv_DLL'⎕NA'',getdllname,'|glIndexubv <U1[1]'
   :EndIf
   {}glIndexubv_DLL c
 ∇
 
 ∇ glPopClientAttrib
   :If 0=⎕NC'glPopClientAttrib_DLL'
-      'glPopClientAttrib_DLL'⎕NA'opengl32|glPopClientAttrib'
+      'glPopClientAttrib_DLL'⎕NA'',getdllname,'|glPopClientAttrib'
   :EndIf
   {}glPopClientAttrib_DLL
 ∇
 
 ∇ glPushClientAttrib mask
   :If 0=⎕NC'glPushClientAttrib_DLL'
-      'glPushClientAttrib_DLL'⎕NA'opengl32|glPushClientAttrib U4'
+      'glPushClientAttrib_DLL'⎕NA'',getdllname,'|glPushClientAttrib U4'
   :EndIf
   {}glPushClientAttrib_DLL mask
 ∇
 
 ∇ glBlendColor (red green blue alpha)
   :If 0=⎕NC'glBlendColor_DLL'
-      'glBlendColor_DLL'⎕NA'opengl32|glBlendColor F4 F4 F4 F4'
+      'glBlendColor_DLL'⎕NA'',getdllname,'|glBlendColor F4 F4 F4 F4'
   :EndIf
   {}glBlendColor_DLL red green blue alpha
 ∇
 
 ∇ glBlendEquation mode
   :If 0=⎕NC'glBlendEquation_DLL'
-      'glBlendEquation_DLL'⎕NA'opengl32|glBlendEquation U4'
+      'glBlendEquation_DLL'⎕NA'',getdllname,'|glBlendEquation U4'
   :EndIf
   {}glBlendEquation_DLL mode
 ∇
@@ -7466,49 +7474,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexImage3D_U1 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_U1_DLL'
-      'TexImage3D_U1_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexImage3D_U1_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexImage3D_U1_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3D_I1 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_I1_DLL'
-      'TexImage3D_I1_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexImage3D_I1_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexImage3D_I1_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3D_U2 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_U2_DLL'
-      'TexImage3D_U2_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexImage3D_U2_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexImage3D_U2_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3D_I2 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_I2_DLL'
-      'TexImage3D_I2_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexImage3D_I2_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexImage3D_I2_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3D_U4 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_U4_DLL'
-      'TexImage3D_U4_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexImage3D_U4_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexImage3D_U4_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3D_I4 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_I4_DLL'
-      'TexImage3D_I4_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexImage3D_I4_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexImage3D_I4_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3D_F4 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3D_F4_DLL'
-      'TexImage3D_F4_DLL'⎕NA'opengl32|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexImage3D_F4_DLL'⎕NA'',getdllname,'|glTexImage3D U4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexImage3D_F4_DLL target level internalformat width height depth border format type pixels
 ∇
@@ -7566,49 +7574,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexSubImage3D_U1 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_U1_DLL'
-      'TexSubImage3D_U1_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage3D_U1_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage3D_U1_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3D_I1 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_I1_DLL'
-      'TexSubImage3D_I1_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage3D_I1_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage3D_I1_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3D_U2 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_U2_DLL'
-      'TexSubImage3D_U2_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage3D_U2_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage3D_U2_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3D_I2 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_I2_DLL'
-      'TexSubImage3D_I2_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage3D_I2_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage3D_I2_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3D_U4 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_U4_DLL'
-      'TexSubImage3D_U4_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage3D_U4_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage3D_U4_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3D_I4 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_I4_DLL'
-      'TexSubImage3D_I4_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage3D_I4_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage3D_I4_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3D_F4 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3D_F4_DLL'
-      'TexSubImage3D_F4_DLL'⎕NA'opengl32|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage3D_F4_DLL'⎕NA'',getdllname,'|glTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage3D_F4_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
@@ -7666,56 +7674,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyTexSubImage3D (target level xoffset yoffset zoffset x y width height)
   :If 0=⎕NC'glCopyTexSubImage3D_DLL'
-      'glCopyTexSubImage3D_DLL'⎕NA'opengl32|glCopyTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyTexSubImage3D_DLL'⎕NA'',getdllname,'|glCopyTexSubImage3D U4 I4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexSubImage3D_DLL target level xoffset yoffset zoffset x y width height
 ∇
 
 ∇ ColorTable_U1 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_U1_DLL'
-      'ColorTable_U1_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <U1[]'
+      'ColorTable_U1_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <U1[]'
   :EndIf
   {}ColorTable_U1_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTable_I1 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_I1_DLL'
-      'ColorTable_I1_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <I1[]'
+      'ColorTable_I1_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <I1[]'
   :EndIf
   {}ColorTable_I1_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTable_U2 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_U2_DLL'
-      'ColorTable_U2_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <U2[]'
+      'ColorTable_U2_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <U2[]'
   :EndIf
   {}ColorTable_U2_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTable_I2 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_I2_DLL'
-      'ColorTable_I2_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <I2[]'
+      'ColorTable_I2_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <I2[]'
   :EndIf
   {}ColorTable_I2_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTable_U4 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_U4_DLL'
-      'ColorTable_U4_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <U4[]'
+      'ColorTable_U4_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <U4[]'
   :EndIf
   {}ColorTable_U4_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTable_I4 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_I4_DLL'
-      'ColorTable_I4_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <I4[]'
+      'ColorTable_I4_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <I4[]'
   :EndIf
   {}ColorTable_I4_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTable_F4 (target internalformat width format type table)
   :If 0=⎕NC'ColorTable_F4_DLL'
-      'ColorTable_F4_DLL'⎕NA'opengl32|glColorTable U4 U4 I4 U4 U4 <F4[]'
+      'ColorTable_F4_DLL'⎕NA'',getdllname,'|glColorTable U4 U4 I4 U4 U4 <F4[]'
   :EndIf
   {}ColorTable_F4_DLL target internalformat width format type table
 ∇
@@ -7773,21 +7781,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glColorTableParameterfv (target pname params)
   :If 0=⎕NC'glColorTableParameterfv_DLL'
-      'glColorTableParameterfv_DLL'⎕NA'opengl32|glColorTableParameterfv U4 U4 <F4[]'
+      'glColorTableParameterfv_DLL'⎕NA'',getdllname,'|glColorTableParameterfv U4 U4 <F4[]'
   :EndIf
   {}glColorTableParameterfv_DLL target pname params
 ∇
 
 ∇ glColorTableParameteriv (target pname params)
   :If 0=⎕NC'glColorTableParameteriv_DLL'
-      'glColorTableParameteriv_DLL'⎕NA'opengl32|glColorTableParameteriv U4 U4 <I4[]'
+      'glColorTableParameteriv_DLL'⎕NA'',getdllname,'|glColorTableParameteriv U4 U4 <I4[]'
   :EndIf
   {}glColorTableParameteriv_DLL target pname params
 ∇
 
 ∇ glCopyColorTable (target internalformat x y width)
   :If 0=⎕NC'glCopyColorTable_DLL'
-      'glCopyColorTable_DLL'⎕NA'opengl32|glCopyColorTable U4 U4 I4 I4 I4'
+      'glCopyColorTable_DLL'⎕NA'',getdllname,'|glCopyColorTable U4 U4 I4 I4 I4'
   :EndIf
   {}glCopyColorTable_DLL target internalformat x y width
 ∇
@@ -7801,63 +7809,63 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetColorTableParameterfv (target pname params)
   :If 0=⎕NC'glGetColorTableParameterfv_DLL'
-      'glGetColorTableParameterfv_DLL'⎕NA'opengl32|glGetColorTableParameterfv U4 U4 >F4[]'
+      'glGetColorTableParameterfv_DLL'⎕NA'',getdllname,'|glGetColorTableParameterfv U4 U4 >F4[]'
   :EndIf
   r←glGetColorTableParameterfv_DLL target pname params
 ∇
 
 ∇ r←glGetColorTableParameteriv (target pname params)
   :If 0=⎕NC'glGetColorTableParameteriv_DLL'
-      'glGetColorTableParameteriv_DLL'⎕NA'opengl32|glGetColorTableParameteriv U4 U4 >I4[]'
+      'glGetColorTableParameteriv_DLL'⎕NA'',getdllname,'|glGetColorTableParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetColorTableParameteriv_DLL target pname params
 ∇
 
 ∇ ColorSubTable_U1 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_U1_DLL'
-      'ColorSubTable_U1_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <U1[]'
+      'ColorSubTable_U1_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}ColorSubTable_U1_DLL target start count format type data
 ∇
 
 ∇ ColorSubTable_I1 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_I1_DLL'
-      'ColorSubTable_I1_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <I1[]'
+      'ColorSubTable_I1_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}ColorSubTable_I1_DLL target start count format type data
 ∇
 
 ∇ ColorSubTable_U2 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_U2_DLL'
-      'ColorSubTable_U2_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <U2[]'
+      'ColorSubTable_U2_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}ColorSubTable_U2_DLL target start count format type data
 ∇
 
 ∇ ColorSubTable_I2 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_I2_DLL'
-      'ColorSubTable_I2_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <I2[]'
+      'ColorSubTable_I2_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}ColorSubTable_I2_DLL target start count format type data
 ∇
 
 ∇ ColorSubTable_U4 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_U4_DLL'
-      'ColorSubTable_U4_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <U4[]'
+      'ColorSubTable_U4_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}ColorSubTable_U4_DLL target start count format type data
 ∇
 
 ∇ ColorSubTable_I4 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_I4_DLL'
-      'ColorSubTable_I4_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <I4[]'
+      'ColorSubTable_I4_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}ColorSubTable_I4_DLL target start count format type data
 ∇
 
 ∇ ColorSubTable_F4 (target start count format type data)
   :If 0=⎕NC'ColorSubTable_F4_DLL'
-      'ColorSubTable_F4_DLL'⎕NA'opengl32|glColorSubTable U4 I4 I4 U4 U4 <F4[]'
+      'ColorSubTable_F4_DLL'⎕NA'',getdllname,'|glColorSubTable U4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}ColorSubTable_F4_DLL target start count format type data
 ∇
@@ -7915,56 +7923,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyColorSubTable (target start x y width)
   :If 0=⎕NC'glCopyColorSubTable_DLL'
-      'glCopyColorSubTable_DLL'⎕NA'opengl32|glCopyColorSubTable U4 I4 I4 I4 I4'
+      'glCopyColorSubTable_DLL'⎕NA'',getdllname,'|glCopyColorSubTable U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyColorSubTable_DLL target start x y width
 ∇
 
 ∇ ConvolutionFilter1D_U1 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_U1_DLL'
-      'ConvolutionFilter1D_U1_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <U1[]'
+      'ConvolutionFilter1D_U1_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <U1[]'
   :EndIf
   {}ConvolutionFilter1D_U1_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1D_I1 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_I1_DLL'
-      'ConvolutionFilter1D_I1_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <I1[]'
+      'ConvolutionFilter1D_I1_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <I1[]'
   :EndIf
   {}ConvolutionFilter1D_I1_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1D_U2 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_U2_DLL'
-      'ConvolutionFilter1D_U2_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <U2[]'
+      'ConvolutionFilter1D_U2_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <U2[]'
   :EndIf
   {}ConvolutionFilter1D_U2_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1D_I2 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_I2_DLL'
-      'ConvolutionFilter1D_I2_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <I2[]'
+      'ConvolutionFilter1D_I2_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <I2[]'
   :EndIf
   {}ConvolutionFilter1D_I2_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1D_U4 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_U4_DLL'
-      'ConvolutionFilter1D_U4_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <U4[]'
+      'ConvolutionFilter1D_U4_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <U4[]'
   :EndIf
   {}ConvolutionFilter1D_U4_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1D_I4 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_I4_DLL'
-      'ConvolutionFilter1D_I4_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <I4[]'
+      'ConvolutionFilter1D_I4_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <I4[]'
   :EndIf
   {}ConvolutionFilter1D_I4_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1D_F4 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1D_F4_DLL'
-      'ConvolutionFilter1D_F4_DLL'⎕NA'opengl32|glConvolutionFilter1D U4 U4 I4 U4 U4 <F4[]'
+      'ConvolutionFilter1D_F4_DLL'⎕NA'',getdllname,'|glConvolutionFilter1D U4 U4 I4 U4 U4 <F4[]'
   :EndIf
   {}ConvolutionFilter1D_F4_DLL target internalformat width format type image
 ∇
@@ -8022,49 +8030,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ ConvolutionFilter2D_U1 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_U1_DLL'
-      'ConvolutionFilter2D_U1_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <U1[]'
+      'ConvolutionFilter2D_U1_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}ConvolutionFilter2D_U1_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2D_I1 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_I1_DLL'
-      'ConvolutionFilter2D_I1_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <I1[]'
+      'ConvolutionFilter2D_I1_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}ConvolutionFilter2D_I1_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2D_U2 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_U2_DLL'
-      'ConvolutionFilter2D_U2_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <U2[]'
+      'ConvolutionFilter2D_U2_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}ConvolutionFilter2D_U2_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2D_I2 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_I2_DLL'
-      'ConvolutionFilter2D_I2_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <I2[]'
+      'ConvolutionFilter2D_I2_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}ConvolutionFilter2D_I2_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2D_U4 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_U4_DLL'
-      'ConvolutionFilter2D_U4_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <U4[]'
+      'ConvolutionFilter2D_U4_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}ConvolutionFilter2D_U4_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2D_I4 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_I4_DLL'
-      'ConvolutionFilter2D_I4_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <I4[]'
+      'ConvolutionFilter2D_I4_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}ConvolutionFilter2D_I4_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2D_F4 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2D_F4_DLL'
-      'ConvolutionFilter2D_F4_DLL'⎕NA'opengl32|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <F4[]'
+      'ConvolutionFilter2D_F4_DLL'⎕NA'',getdllname,'|glConvolutionFilter2D U4 U4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}ConvolutionFilter2D_F4_DLL target internalformat width height format type image
 ∇
@@ -8122,42 +8130,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glConvolutionParameterf (target pname params)
   :If 0=⎕NC'glConvolutionParameterf_DLL'
-      'glConvolutionParameterf_DLL'⎕NA'opengl32|glConvolutionParameterf U4 U4 F4'
+      'glConvolutionParameterf_DLL'⎕NA'',getdllname,'|glConvolutionParameterf U4 U4 F4'
   :EndIf
   {}glConvolutionParameterf_DLL target pname params
 ∇
 
 ∇ glConvolutionParameterfv (target pname params)
   :If 0=⎕NC'glConvolutionParameterfv_DLL'
-      'glConvolutionParameterfv_DLL'⎕NA'opengl32|glConvolutionParameterfv U4 U4 <F4[]'
+      'glConvolutionParameterfv_DLL'⎕NA'',getdllname,'|glConvolutionParameterfv U4 U4 <F4[]'
   :EndIf
   {}glConvolutionParameterfv_DLL target pname params
 ∇
 
 ∇ glConvolutionParameteri (target pname params)
   :If 0=⎕NC'glConvolutionParameteri_DLL'
-      'glConvolutionParameteri_DLL'⎕NA'opengl32|glConvolutionParameteri U4 U4 I4'
+      'glConvolutionParameteri_DLL'⎕NA'',getdllname,'|glConvolutionParameteri U4 U4 I4'
   :EndIf
   {}glConvolutionParameteri_DLL target pname params
 ∇
 
 ∇ glConvolutionParameteriv (target pname params)
   :If 0=⎕NC'glConvolutionParameteriv_DLL'
-      'glConvolutionParameteriv_DLL'⎕NA'opengl32|glConvolutionParameteriv U4 U4 <I4[]'
+      'glConvolutionParameteriv_DLL'⎕NA'',getdllname,'|glConvolutionParameteriv U4 U4 <I4[]'
   :EndIf
   {}glConvolutionParameteriv_DLL target pname params
 ∇
 
 ∇ glCopyConvolutionFilter1D (target internalformat x y width)
   :If 0=⎕NC'glCopyConvolutionFilter1D_DLL'
-      'glCopyConvolutionFilter1D_DLL'⎕NA'opengl32|glCopyConvolutionFilter1D U4 U4 I4 I4 I4'
+      'glCopyConvolutionFilter1D_DLL'⎕NA'',getdllname,'|glCopyConvolutionFilter1D U4 U4 I4 I4 I4'
   :EndIf
   {}glCopyConvolutionFilter1D_DLL target internalformat x y width
 ∇
 
 ∇ glCopyConvolutionFilter2D (target internalformat x y width height)
   :If 0=⎕NC'glCopyConvolutionFilter2D_DLL'
-      'glCopyConvolutionFilter2D_DLL'⎕NA'opengl32|glCopyConvolutionFilter2D U4 U4 I4 I4 I4 I4'
+      'glCopyConvolutionFilter2D_DLL'⎕NA'',getdllname,'|glCopyConvolutionFilter2D U4 U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyConvolutionFilter2D_DLL target internalformat x y width height
 ∇
@@ -8171,14 +8179,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetConvolutionParameterfv (target pname params)
   :If 0=⎕NC'glGetConvolutionParameterfv_DLL'
-      'glGetConvolutionParameterfv_DLL'⎕NA'opengl32|glGetConvolutionParameterfv U4 U4 >F4[]'
+      'glGetConvolutionParameterfv_DLL'⎕NA'',getdllname,'|glGetConvolutionParameterfv U4 U4 >F4[]'
   :EndIf
   r←glGetConvolutionParameterfv_DLL target pname params
 ∇
 
 ∇ r←glGetConvolutionParameteriv (target pname params)
   :If 0=⎕NC'glGetConvolutionParameteriv_DLL'
-      'glGetConvolutionParameteriv_DLL'⎕NA'opengl32|glGetConvolutionParameteriv U4 U4 >I4[]'
+      'glGetConvolutionParameteriv_DLL'⎕NA'',getdllname,'|glGetConvolutionParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetConvolutionParameteriv_DLL target pname params
 ∇
@@ -8206,14 +8214,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetHistogramParameterfv (target pname params)
   :If 0=⎕NC'glGetHistogramParameterfv_DLL'
-      'glGetHistogramParameterfv_DLL'⎕NA'opengl32|glGetHistogramParameterfv U4 U4 >F4[]'
+      'glGetHistogramParameterfv_DLL'⎕NA'',getdllname,'|glGetHistogramParameterfv U4 U4 >F4[]'
   :EndIf
   r←glGetHistogramParameterfv_DLL target pname params
 ∇
 
 ∇ r←glGetHistogramParameteriv (target pname params)
   :If 0=⎕NC'glGetHistogramParameteriv_DLL'
-      'glGetHistogramParameteriv_DLL'⎕NA'opengl32|glGetHistogramParameteriv U4 U4 >I4[]'
+      'glGetHistogramParameteriv_DLL'⎕NA'',getdllname,'|glGetHistogramParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetHistogramParameteriv_DLL target pname params
 ∇
@@ -8227,56 +8235,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetMinmaxParameterfv (target pname params)
   :If 0=⎕NC'glGetMinmaxParameterfv_DLL'
-      'glGetMinmaxParameterfv_DLL'⎕NA'opengl32|glGetMinmaxParameterfv U4 U4 >F4[]'
+      'glGetMinmaxParameterfv_DLL'⎕NA'',getdllname,'|glGetMinmaxParameterfv U4 U4 >F4[]'
   :EndIf
   r←glGetMinmaxParameterfv_DLL target pname params
 ∇
 
 ∇ r←glGetMinmaxParameteriv (target pname params)
   :If 0=⎕NC'glGetMinmaxParameteriv_DLL'
-      'glGetMinmaxParameteriv_DLL'⎕NA'opengl32|glGetMinmaxParameteriv U4 U4 >I4[]'
+      'glGetMinmaxParameteriv_DLL'⎕NA'',getdllname,'|glGetMinmaxParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetMinmaxParameteriv_DLL target pname params
 ∇
 
 ∇ glHistogram (target width internalformat sink)
   :If 0=⎕NC'glHistogram_DLL'
-      'glHistogram_DLL'⎕NA'opengl32|glHistogram U4 I4 U4 U1'
+      'glHistogram_DLL'⎕NA'',getdllname,'|glHistogram U4 I4 U4 U1'
   :EndIf
   {}glHistogram_DLL target width internalformat sink
 ∇
 
 ∇ glMinmax (target internalformat sink)
   :If 0=⎕NC'glMinmax_DLL'
-      'glMinmax_DLL'⎕NA'opengl32|glMinmax U4 U4 U1'
+      'glMinmax_DLL'⎕NA'',getdllname,'|glMinmax U4 U4 U1'
   :EndIf
   {}glMinmax_DLL target internalformat sink
 ∇
 
 ∇ glResetHistogram target
   :If 0=⎕NC'glResetHistogram_DLL'
-      'glResetHistogram_DLL'⎕NA'opengl32|glResetHistogram U4'
+      'glResetHistogram_DLL'⎕NA'',getdllname,'|glResetHistogram U4'
   :EndIf
   {}glResetHistogram_DLL target
 ∇
 
 ∇ glResetMinmax target
   :If 0=⎕NC'glResetMinmax_DLL'
-      'glResetMinmax_DLL'⎕NA'opengl32|glResetMinmax U4'
+      'glResetMinmax_DLL'⎕NA'',getdllname,'|glResetMinmax U4'
   :EndIf
   {}glResetMinmax_DLL target
 ∇
 
 ∇ glActiveTexture texture
   :If 0=⎕NC'glActiveTexture_DLL'
-      'glActiveTexture_DLL'⎕NA'opengl32|glActiveTexture U4'
+      'glActiveTexture_DLL'⎕NA'',getdllname,'|glActiveTexture U4'
   :EndIf
   {}glActiveTexture_DLL texture
 ∇
 
 ∇ glSampleCoverage (value invert)
   :If 0=⎕NC'glSampleCoverage_DLL'
-      'glSampleCoverage_DLL'⎕NA'opengl32|glSampleCoverage F4 U1'
+      'glSampleCoverage_DLL'⎕NA'',getdllname,'|glSampleCoverage F4 U1'
   :EndIf
   {}glSampleCoverage_DLL value invert
 ∇
@@ -8332,273 +8340,273 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glClientActiveTexture texture
   :If 0=⎕NC'glClientActiveTexture_DLL'
-      'glClientActiveTexture_DLL'⎕NA'opengl32|glClientActiveTexture U4'
+      'glClientActiveTexture_DLL'⎕NA'',getdllname,'|glClientActiveTexture U4'
   :EndIf
   {}glClientActiveTexture_DLL texture
 ∇
 
 ∇ glMultiTexCoord1d (target s)
   :If 0=⎕NC'glMultiTexCoord1d_DLL'
-      'glMultiTexCoord1d_DLL'⎕NA'opengl32|glMultiTexCoord1d U4 F8'
+      'glMultiTexCoord1d_DLL'⎕NA'',getdllname,'|glMultiTexCoord1d U4 F8'
   :EndIf
   {}glMultiTexCoord1d_DLL target s
 ∇
 
 ∇ glMultiTexCoord1dv (target v)
   :If 0=⎕NC'glMultiTexCoord1dv_DLL'
-      'glMultiTexCoord1dv_DLL'⎕NA'opengl32|glMultiTexCoord1dv U4 <F8[1]'
+      'glMultiTexCoord1dv_DLL'⎕NA'',getdllname,'|glMultiTexCoord1dv U4 <F8[1]'
   :EndIf
   {}glMultiTexCoord1dv_DLL target v
 ∇
 
 ∇ glMultiTexCoord1f (target s)
   :If 0=⎕NC'glMultiTexCoord1f_DLL'
-      'glMultiTexCoord1f_DLL'⎕NA'opengl32|glMultiTexCoord1f U4 F4'
+      'glMultiTexCoord1f_DLL'⎕NA'',getdllname,'|glMultiTexCoord1f U4 F4'
   :EndIf
   {}glMultiTexCoord1f_DLL target s
 ∇
 
 ∇ glMultiTexCoord1fv (target v)
   :If 0=⎕NC'glMultiTexCoord1fv_DLL'
-      'glMultiTexCoord1fv_DLL'⎕NA'opengl32|glMultiTexCoord1fv U4 <F4[1]'
+      'glMultiTexCoord1fv_DLL'⎕NA'',getdllname,'|glMultiTexCoord1fv U4 <F4[1]'
   :EndIf
   {}glMultiTexCoord1fv_DLL target v
 ∇
 
 ∇ glMultiTexCoord1i (target s)
   :If 0=⎕NC'glMultiTexCoord1i_DLL'
-      'glMultiTexCoord1i_DLL'⎕NA'opengl32|glMultiTexCoord1i U4 I4'
+      'glMultiTexCoord1i_DLL'⎕NA'',getdllname,'|glMultiTexCoord1i U4 I4'
   :EndIf
   {}glMultiTexCoord1i_DLL target s
 ∇
 
 ∇ glMultiTexCoord1iv (target v)
   :If 0=⎕NC'glMultiTexCoord1iv_DLL'
-      'glMultiTexCoord1iv_DLL'⎕NA'opengl32|glMultiTexCoord1iv U4 <I4[1]'
+      'glMultiTexCoord1iv_DLL'⎕NA'',getdllname,'|glMultiTexCoord1iv U4 <I4[1]'
   :EndIf
   {}glMultiTexCoord1iv_DLL target v
 ∇
 
 ∇ glMultiTexCoord1s (target s)
   :If 0=⎕NC'glMultiTexCoord1s_DLL'
-      'glMultiTexCoord1s_DLL'⎕NA'opengl32|glMultiTexCoord1s U4 I2'
+      'glMultiTexCoord1s_DLL'⎕NA'',getdllname,'|glMultiTexCoord1s U4 I2'
   :EndIf
   {}glMultiTexCoord1s_DLL target s
 ∇
 
 ∇ glMultiTexCoord1sv (target v)
   :If 0=⎕NC'glMultiTexCoord1sv_DLL'
-      'glMultiTexCoord1sv_DLL'⎕NA'opengl32|glMultiTexCoord1sv U4 <I2[1]'
+      'glMultiTexCoord1sv_DLL'⎕NA'',getdllname,'|glMultiTexCoord1sv U4 <I2[1]'
   :EndIf
   {}glMultiTexCoord1sv_DLL target v
 ∇
 
 ∇ glMultiTexCoord2d (target s t)
   :If 0=⎕NC'glMultiTexCoord2d_DLL'
-      'glMultiTexCoord2d_DLL'⎕NA'opengl32|glMultiTexCoord2d U4 F8 F8'
+      'glMultiTexCoord2d_DLL'⎕NA'',getdllname,'|glMultiTexCoord2d U4 F8 F8'
   :EndIf
   {}glMultiTexCoord2d_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2dv (target v)
   :If 0=⎕NC'glMultiTexCoord2dv_DLL'
-      'glMultiTexCoord2dv_DLL'⎕NA'opengl32|glMultiTexCoord2dv U4 <F8[2]'
+      'glMultiTexCoord2dv_DLL'⎕NA'',getdllname,'|glMultiTexCoord2dv U4 <F8[2]'
   :EndIf
   {}glMultiTexCoord2dv_DLL target v
 ∇
 
 ∇ glMultiTexCoord2f (target s t)
   :If 0=⎕NC'glMultiTexCoord2f_DLL'
-      'glMultiTexCoord2f_DLL'⎕NA'opengl32|glMultiTexCoord2f U4 F4 F4'
+      'glMultiTexCoord2f_DLL'⎕NA'',getdllname,'|glMultiTexCoord2f U4 F4 F4'
   :EndIf
   {}glMultiTexCoord2f_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2fv (target v)
   :If 0=⎕NC'glMultiTexCoord2fv_DLL'
-      'glMultiTexCoord2fv_DLL'⎕NA'opengl32|glMultiTexCoord2fv U4 <F4[2]'
+      'glMultiTexCoord2fv_DLL'⎕NA'',getdllname,'|glMultiTexCoord2fv U4 <F4[2]'
   :EndIf
   {}glMultiTexCoord2fv_DLL target v
 ∇
 
 ∇ glMultiTexCoord2i (target s t)
   :If 0=⎕NC'glMultiTexCoord2i_DLL'
-      'glMultiTexCoord2i_DLL'⎕NA'opengl32|glMultiTexCoord2i U4 I4 I4'
+      'glMultiTexCoord2i_DLL'⎕NA'',getdllname,'|glMultiTexCoord2i U4 I4 I4'
   :EndIf
   {}glMultiTexCoord2i_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2iv (target v)
   :If 0=⎕NC'glMultiTexCoord2iv_DLL'
-      'glMultiTexCoord2iv_DLL'⎕NA'opengl32|glMultiTexCoord2iv U4 <I4[2]'
+      'glMultiTexCoord2iv_DLL'⎕NA'',getdllname,'|glMultiTexCoord2iv U4 <I4[2]'
   :EndIf
   {}glMultiTexCoord2iv_DLL target v
 ∇
 
 ∇ glMultiTexCoord2s (target s t)
   :If 0=⎕NC'glMultiTexCoord2s_DLL'
-      'glMultiTexCoord2s_DLL'⎕NA'opengl32|glMultiTexCoord2s U4 I2 I2'
+      'glMultiTexCoord2s_DLL'⎕NA'',getdllname,'|glMultiTexCoord2s U4 I2 I2'
   :EndIf
   {}glMultiTexCoord2s_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2sv (target v)
   :If 0=⎕NC'glMultiTexCoord2sv_DLL'
-      'glMultiTexCoord2sv_DLL'⎕NA'opengl32|glMultiTexCoord2sv U4 <I2[2]'
+      'glMultiTexCoord2sv_DLL'⎕NA'',getdllname,'|glMultiTexCoord2sv U4 <I2[2]'
   :EndIf
   {}glMultiTexCoord2sv_DLL target v
 ∇
 
 ∇ glMultiTexCoord3d (target s t r)
   :If 0=⎕NC'glMultiTexCoord3d_DLL'
-      'glMultiTexCoord3d_DLL'⎕NA'opengl32|glMultiTexCoord3d U4 F8 F8 F8'
+      'glMultiTexCoord3d_DLL'⎕NA'',getdllname,'|glMultiTexCoord3d U4 F8 F8 F8'
   :EndIf
   {}glMultiTexCoord3d_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3dv (target v)
   :If 0=⎕NC'glMultiTexCoord3dv_DLL'
-      'glMultiTexCoord3dv_DLL'⎕NA'opengl32|glMultiTexCoord3dv U4 <F8[3]'
+      'glMultiTexCoord3dv_DLL'⎕NA'',getdllname,'|glMultiTexCoord3dv U4 <F8[3]'
   :EndIf
   {}glMultiTexCoord3dv_DLL target v
 ∇
 
 ∇ glMultiTexCoord3f (target s t r)
   :If 0=⎕NC'glMultiTexCoord3f_DLL'
-      'glMultiTexCoord3f_DLL'⎕NA'opengl32|glMultiTexCoord3f U4 F4 F4 F4'
+      'glMultiTexCoord3f_DLL'⎕NA'',getdllname,'|glMultiTexCoord3f U4 F4 F4 F4'
   :EndIf
   {}glMultiTexCoord3f_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3fv (target v)
   :If 0=⎕NC'glMultiTexCoord3fv_DLL'
-      'glMultiTexCoord3fv_DLL'⎕NA'opengl32|glMultiTexCoord3fv U4 <F4[3]'
+      'glMultiTexCoord3fv_DLL'⎕NA'',getdllname,'|glMultiTexCoord3fv U4 <F4[3]'
   :EndIf
   {}glMultiTexCoord3fv_DLL target v
 ∇
 
 ∇ glMultiTexCoord3i (target s t r)
   :If 0=⎕NC'glMultiTexCoord3i_DLL'
-      'glMultiTexCoord3i_DLL'⎕NA'opengl32|glMultiTexCoord3i U4 I4 I4 I4'
+      'glMultiTexCoord3i_DLL'⎕NA'',getdllname,'|glMultiTexCoord3i U4 I4 I4 I4'
   :EndIf
   {}glMultiTexCoord3i_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3iv (target v)
   :If 0=⎕NC'glMultiTexCoord3iv_DLL'
-      'glMultiTexCoord3iv_DLL'⎕NA'opengl32|glMultiTexCoord3iv U4 <I4[3]'
+      'glMultiTexCoord3iv_DLL'⎕NA'',getdllname,'|glMultiTexCoord3iv U4 <I4[3]'
   :EndIf
   {}glMultiTexCoord3iv_DLL target v
 ∇
 
 ∇ glMultiTexCoord3s (target s t r)
   :If 0=⎕NC'glMultiTexCoord3s_DLL'
-      'glMultiTexCoord3s_DLL'⎕NA'opengl32|glMultiTexCoord3s U4 I2 I2 I2'
+      'glMultiTexCoord3s_DLL'⎕NA'',getdllname,'|glMultiTexCoord3s U4 I2 I2 I2'
   :EndIf
   {}glMultiTexCoord3s_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3sv (target v)
   :If 0=⎕NC'glMultiTexCoord3sv_DLL'
-      'glMultiTexCoord3sv_DLL'⎕NA'opengl32|glMultiTexCoord3sv U4 <I2[3]'
+      'glMultiTexCoord3sv_DLL'⎕NA'',getdllname,'|glMultiTexCoord3sv U4 <I2[3]'
   :EndIf
   {}glMultiTexCoord3sv_DLL target v
 ∇
 
 ∇ glMultiTexCoord4d (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4d_DLL'
-      'glMultiTexCoord4d_DLL'⎕NA'opengl32|glMultiTexCoord4d U4 F8 F8 F8 F8'
+      'glMultiTexCoord4d_DLL'⎕NA'',getdllname,'|glMultiTexCoord4d U4 F8 F8 F8 F8'
   :EndIf
   {}glMultiTexCoord4d_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4dv (target v)
   :If 0=⎕NC'glMultiTexCoord4dv_DLL'
-      'glMultiTexCoord4dv_DLL'⎕NA'opengl32|glMultiTexCoord4dv U4 <F8[4]'
+      'glMultiTexCoord4dv_DLL'⎕NA'',getdllname,'|glMultiTexCoord4dv U4 <F8[4]'
   :EndIf
   {}glMultiTexCoord4dv_DLL target v
 ∇
 
 ∇ glMultiTexCoord4f (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4f_DLL'
-      'glMultiTexCoord4f_DLL'⎕NA'opengl32|glMultiTexCoord4f U4 F4 F4 F4 F4'
+      'glMultiTexCoord4f_DLL'⎕NA'',getdllname,'|glMultiTexCoord4f U4 F4 F4 F4 F4'
   :EndIf
   {}glMultiTexCoord4f_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4fv (target v)
   :If 0=⎕NC'glMultiTexCoord4fv_DLL'
-      'glMultiTexCoord4fv_DLL'⎕NA'opengl32|glMultiTexCoord4fv U4 <F4[4]'
+      'glMultiTexCoord4fv_DLL'⎕NA'',getdllname,'|glMultiTexCoord4fv U4 <F4[4]'
   :EndIf
   {}glMultiTexCoord4fv_DLL target v
 ∇
 
 ∇ glMultiTexCoord4i (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4i_DLL'
-      'glMultiTexCoord4i_DLL'⎕NA'opengl32|glMultiTexCoord4i U4 I4 I4 I4 I4'
+      'glMultiTexCoord4i_DLL'⎕NA'',getdllname,'|glMultiTexCoord4i U4 I4 I4 I4 I4'
   :EndIf
   {}glMultiTexCoord4i_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4iv (target v)
   :If 0=⎕NC'glMultiTexCoord4iv_DLL'
-      'glMultiTexCoord4iv_DLL'⎕NA'opengl32|glMultiTexCoord4iv U4 <I4[4]'
+      'glMultiTexCoord4iv_DLL'⎕NA'',getdllname,'|glMultiTexCoord4iv U4 <I4[4]'
   :EndIf
   {}glMultiTexCoord4iv_DLL target v
 ∇
 
 ∇ glMultiTexCoord4s (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4s_DLL'
-      'glMultiTexCoord4s_DLL'⎕NA'opengl32|glMultiTexCoord4s U4 I2 I2 I2 I2'
+      'glMultiTexCoord4s_DLL'⎕NA'',getdllname,'|glMultiTexCoord4s U4 I2 I2 I2 I2'
   :EndIf
   {}glMultiTexCoord4s_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4sv (target v)
   :If 0=⎕NC'glMultiTexCoord4sv_DLL'
-      'glMultiTexCoord4sv_DLL'⎕NA'opengl32|glMultiTexCoord4sv U4 <I2[4]'
+      'glMultiTexCoord4sv_DLL'⎕NA'',getdllname,'|glMultiTexCoord4sv U4 <I2[4]'
   :EndIf
   {}glMultiTexCoord4sv_DLL target v
 ∇
 
 ∇ glLoadTransposeMatrixf m
   :If 0=⎕NC'glLoadTransposeMatrixf_DLL'
-      'glLoadTransposeMatrixf_DLL'⎕NA'opengl32|glLoadTransposeMatrixf <F4[16]'
+      'glLoadTransposeMatrixf_DLL'⎕NA'',getdllname,'|glLoadTransposeMatrixf <F4[16]'
   :EndIf
   {}glLoadTransposeMatrixf_DLL m
 ∇
 
 ∇ glLoadTransposeMatrixd m
   :If 0=⎕NC'glLoadTransposeMatrixd_DLL'
-      'glLoadTransposeMatrixd_DLL'⎕NA'opengl32|glLoadTransposeMatrixd <F8[16]'
+      'glLoadTransposeMatrixd_DLL'⎕NA'',getdllname,'|glLoadTransposeMatrixd <F8[16]'
   :EndIf
   {}glLoadTransposeMatrixd_DLL m
 ∇
 
 ∇ glMultTransposeMatrixf m
   :If 0=⎕NC'glMultTransposeMatrixf_DLL'
-      'glMultTransposeMatrixf_DLL'⎕NA'opengl32|glMultTransposeMatrixf <F4[16]'
+      'glMultTransposeMatrixf_DLL'⎕NA'',getdllname,'|glMultTransposeMatrixf <F4[16]'
   :EndIf
   {}glMultTransposeMatrixf_DLL m
 ∇
 
 ∇ glMultTransposeMatrixd m
   :If 0=⎕NC'glMultTransposeMatrixd_DLL'
-      'glMultTransposeMatrixd_DLL'⎕NA'opengl32|glMultTransposeMatrixd <F8[16]'
+      'glMultTransposeMatrixd_DLL'⎕NA'',getdllname,'|glMultTransposeMatrixd <F8[16]'
   :EndIf
   {}glMultTransposeMatrixd_DLL m
 ∇
 
 ∇ glBlendFuncSeparate (sfactorRGB dfactorRGB sfactorAlpha dfactorAlpha)
   :If 0=⎕NC'glBlendFuncSeparate_DLL'
-      'glBlendFuncSeparate_DLL'⎕NA'opengl32|glBlendFuncSeparate U4 U4 U4 U4'
+      'glBlendFuncSeparate_DLL'⎕NA'',getdllname,'|glBlendFuncSeparate U4 U4 U4 U4'
   :EndIf
   {}glBlendFuncSeparate_DLL sfactorRGB dfactorRGB sfactorAlpha dfactorAlpha
 ∇
 
 ∇ glMultiDrawArrays (mode first count drawcount)
   :If 0=⎕NC'glMultiDrawArrays_DLL'
-      'glMultiDrawArrays_DLL'⎕NA'opengl32|glMultiDrawArrays U4 <I4[] <I4[] I4'
+      'glMultiDrawArrays_DLL'⎕NA'',getdllname,'|glMultiDrawArrays U4 <I4[] <I4[] I4'
   :EndIf
   {}glMultiDrawArrays_DLL mode first count drawcount
 ∇
@@ -8612,56 +8620,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glPointParameterf (pname param)
   :If 0=⎕NC'glPointParameterf_DLL'
-      'glPointParameterf_DLL'⎕NA'opengl32|glPointParameterf U4 F4'
+      'glPointParameterf_DLL'⎕NA'',getdllname,'|glPointParameterf U4 F4'
   :EndIf
   {}glPointParameterf_DLL pname param
 ∇
 
 ∇ glPointParameterfv (pname params)
   :If 0=⎕NC'glPointParameterfv_DLL'
-      'glPointParameterfv_DLL'⎕NA'opengl32|glPointParameterfv U4 <F4[]'
+      'glPointParameterfv_DLL'⎕NA'',getdllname,'|glPointParameterfv U4 <F4[]'
   :EndIf
   {}glPointParameterfv_DLL pname params
 ∇
 
 ∇ glPointParameteri (pname param)
   :If 0=⎕NC'glPointParameteri_DLL'
-      'glPointParameteri_DLL'⎕NA'opengl32|glPointParameteri U4 I4'
+      'glPointParameteri_DLL'⎕NA'',getdllname,'|glPointParameteri U4 I4'
   :EndIf
   {}glPointParameteri_DLL pname param
 ∇
 
 ∇ glPointParameteriv (pname params)
   :If 0=⎕NC'glPointParameteriv_DLL'
-      'glPointParameteriv_DLL'⎕NA'opengl32|glPointParameteriv U4 <I4[]'
+      'glPointParameteriv_DLL'⎕NA'',getdllname,'|glPointParameteriv U4 <I4[]'
   :EndIf
   {}glPointParameteriv_DLL pname params
 ∇
 
 ∇ glFogCoordf coord
   :If 0=⎕NC'glFogCoordf_DLL'
-      'glFogCoordf_DLL'⎕NA'opengl32|glFogCoordf F4'
+      'glFogCoordf_DLL'⎕NA'',getdllname,'|glFogCoordf F4'
   :EndIf
   {}glFogCoordf_DLL coord
 ∇
 
 ∇ glFogCoordfv coord
   :If 0=⎕NC'glFogCoordfv_DLL'
-      'glFogCoordfv_DLL'⎕NA'opengl32|glFogCoordfv <F4[1]'
+      'glFogCoordfv_DLL'⎕NA'',getdllname,'|glFogCoordfv <F4[1]'
   :EndIf
   {}glFogCoordfv_DLL coord
 ∇
 
 ∇ glFogCoordd coord
   :If 0=⎕NC'glFogCoordd_DLL'
-      'glFogCoordd_DLL'⎕NA'opengl32|glFogCoordd F8'
+      'glFogCoordd_DLL'⎕NA'',getdllname,'|glFogCoordd F8'
   :EndIf
   {}glFogCoordd_DLL coord
 ∇
 
 ∇ glFogCoorddv coord
   :If 0=⎕NC'glFogCoorddv_DLL'
-      'glFogCoorddv_DLL'⎕NA'opengl32|glFogCoorddv <F8[1]'
+      'glFogCoorddv_DLL'⎕NA'',getdllname,'|glFogCoorddv <F8[1]'
   :EndIf
   {}glFogCoorddv_DLL coord
 ∇
@@ -8675,112 +8683,112 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glSecondaryColor3b (red green blue)
   :If 0=⎕NC'glSecondaryColor3b_DLL'
-      'glSecondaryColor3b_DLL'⎕NA'opengl32|glSecondaryColor3b I1 I1 I1'
+      'glSecondaryColor3b_DLL'⎕NA'',getdllname,'|glSecondaryColor3b I1 I1 I1'
   :EndIf
   {}glSecondaryColor3b_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3bv v
   :If 0=⎕NC'glSecondaryColor3bv_DLL'
-      'glSecondaryColor3bv_DLL'⎕NA'opengl32|glSecondaryColor3bv <I1[3]'
+      'glSecondaryColor3bv_DLL'⎕NA'',getdllname,'|glSecondaryColor3bv <I1[3]'
   :EndIf
   {}glSecondaryColor3bv_DLL v
 ∇
 
 ∇ glSecondaryColor3d (red green blue)
   :If 0=⎕NC'glSecondaryColor3d_DLL'
-      'glSecondaryColor3d_DLL'⎕NA'opengl32|glSecondaryColor3d F8 F8 F8'
+      'glSecondaryColor3d_DLL'⎕NA'',getdllname,'|glSecondaryColor3d F8 F8 F8'
   :EndIf
   {}glSecondaryColor3d_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3dv v
   :If 0=⎕NC'glSecondaryColor3dv_DLL'
-      'glSecondaryColor3dv_DLL'⎕NA'opengl32|glSecondaryColor3dv <F8[3]'
+      'glSecondaryColor3dv_DLL'⎕NA'',getdllname,'|glSecondaryColor3dv <F8[3]'
   :EndIf
   {}glSecondaryColor3dv_DLL v
 ∇
 
 ∇ glSecondaryColor3f (red green blue)
   :If 0=⎕NC'glSecondaryColor3f_DLL'
-      'glSecondaryColor3f_DLL'⎕NA'opengl32|glSecondaryColor3f F4 F4 F4'
+      'glSecondaryColor3f_DLL'⎕NA'',getdllname,'|glSecondaryColor3f F4 F4 F4'
   :EndIf
   {}glSecondaryColor3f_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3fv v
   :If 0=⎕NC'glSecondaryColor3fv_DLL'
-      'glSecondaryColor3fv_DLL'⎕NA'opengl32|glSecondaryColor3fv <F4[3]'
+      'glSecondaryColor3fv_DLL'⎕NA'',getdllname,'|glSecondaryColor3fv <F4[3]'
   :EndIf
   {}glSecondaryColor3fv_DLL v
 ∇
 
 ∇ glSecondaryColor3i (red green blue)
   :If 0=⎕NC'glSecondaryColor3i_DLL'
-      'glSecondaryColor3i_DLL'⎕NA'opengl32|glSecondaryColor3i I4 I4 I4'
+      'glSecondaryColor3i_DLL'⎕NA'',getdllname,'|glSecondaryColor3i I4 I4 I4'
   :EndIf
   {}glSecondaryColor3i_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3iv v
   :If 0=⎕NC'glSecondaryColor3iv_DLL'
-      'glSecondaryColor3iv_DLL'⎕NA'opengl32|glSecondaryColor3iv <I4[3]'
+      'glSecondaryColor3iv_DLL'⎕NA'',getdllname,'|glSecondaryColor3iv <I4[3]'
   :EndIf
   {}glSecondaryColor3iv_DLL v
 ∇
 
 ∇ glSecondaryColor3s (red green blue)
   :If 0=⎕NC'glSecondaryColor3s_DLL'
-      'glSecondaryColor3s_DLL'⎕NA'opengl32|glSecondaryColor3s I2 I2 I2'
+      'glSecondaryColor3s_DLL'⎕NA'',getdllname,'|glSecondaryColor3s I2 I2 I2'
   :EndIf
   {}glSecondaryColor3s_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3sv v
   :If 0=⎕NC'glSecondaryColor3sv_DLL'
-      'glSecondaryColor3sv_DLL'⎕NA'opengl32|glSecondaryColor3sv <I2[3]'
+      'glSecondaryColor3sv_DLL'⎕NA'',getdllname,'|glSecondaryColor3sv <I2[3]'
   :EndIf
   {}glSecondaryColor3sv_DLL v
 ∇
 
 ∇ glSecondaryColor3ub (red green blue)
   :If 0=⎕NC'glSecondaryColor3ub_DLL'
-      'glSecondaryColor3ub_DLL'⎕NA'opengl32|glSecondaryColor3ub U1 U1 U1'
+      'glSecondaryColor3ub_DLL'⎕NA'',getdllname,'|glSecondaryColor3ub U1 U1 U1'
   :EndIf
   {}glSecondaryColor3ub_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3ubv v
   :If 0=⎕NC'glSecondaryColor3ubv_DLL'
-      'glSecondaryColor3ubv_DLL'⎕NA'opengl32|glSecondaryColor3ubv <U1[3]'
+      'glSecondaryColor3ubv_DLL'⎕NA'',getdllname,'|glSecondaryColor3ubv <U1[3]'
   :EndIf
   {}glSecondaryColor3ubv_DLL v
 ∇
 
 ∇ glSecondaryColor3ui (red green blue)
   :If 0=⎕NC'glSecondaryColor3ui_DLL'
-      'glSecondaryColor3ui_DLL'⎕NA'opengl32|glSecondaryColor3ui U4 U4 U4'
+      'glSecondaryColor3ui_DLL'⎕NA'',getdllname,'|glSecondaryColor3ui U4 U4 U4'
   :EndIf
   {}glSecondaryColor3ui_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3uiv v
   :If 0=⎕NC'glSecondaryColor3uiv_DLL'
-      'glSecondaryColor3uiv_DLL'⎕NA'opengl32|glSecondaryColor3uiv <U4[3]'
+      'glSecondaryColor3uiv_DLL'⎕NA'',getdllname,'|glSecondaryColor3uiv <U4[3]'
   :EndIf
   {}glSecondaryColor3uiv_DLL v
 ∇
 
 ∇ glSecondaryColor3us (red green blue)
   :If 0=⎕NC'glSecondaryColor3us_DLL'
-      'glSecondaryColor3us_DLL'⎕NA'opengl32|glSecondaryColor3us U2 U2 U2'
+      'glSecondaryColor3us_DLL'⎕NA'',getdllname,'|glSecondaryColor3us U2 U2 U2'
   :EndIf
   {}glSecondaryColor3us_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3usv v
   :If 0=⎕NC'glSecondaryColor3usv_DLL'
-      'glSecondaryColor3usv_DLL'⎕NA'opengl32|glSecondaryColor3usv <U2[3]'
+      'glSecondaryColor3usv_DLL'⎕NA'',getdllname,'|glSecondaryColor3usv <U2[3]'
   :EndIf
   {}glSecondaryColor3usv_DLL v
 ∇
@@ -8794,196 +8802,196 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glWindowPos2d (x y)
   :If 0=⎕NC'glWindowPos2d_DLL'
-      'glWindowPos2d_DLL'⎕NA'opengl32|glWindowPos2d F8 F8'
+      'glWindowPos2d_DLL'⎕NA'',getdllname,'|glWindowPos2d F8 F8'
   :EndIf
   {}glWindowPos2d_DLL x y
 ∇
 
 ∇ glWindowPos2dv v
   :If 0=⎕NC'glWindowPos2dv_DLL'
-      'glWindowPos2dv_DLL'⎕NA'opengl32|glWindowPos2dv <F8[2]'
+      'glWindowPos2dv_DLL'⎕NA'',getdllname,'|glWindowPos2dv <F8[2]'
   :EndIf
   {}glWindowPos2dv_DLL v
 ∇
 
 ∇ glWindowPos2f (x y)
   :If 0=⎕NC'glWindowPos2f_DLL'
-      'glWindowPos2f_DLL'⎕NA'opengl32|glWindowPos2f F4 F4'
+      'glWindowPos2f_DLL'⎕NA'',getdllname,'|glWindowPos2f F4 F4'
   :EndIf
   {}glWindowPos2f_DLL x y
 ∇
 
 ∇ glWindowPos2fv v
   :If 0=⎕NC'glWindowPos2fv_DLL'
-      'glWindowPos2fv_DLL'⎕NA'opengl32|glWindowPos2fv <F4[2]'
+      'glWindowPos2fv_DLL'⎕NA'',getdllname,'|glWindowPos2fv <F4[2]'
   :EndIf
   {}glWindowPos2fv_DLL v
 ∇
 
 ∇ glWindowPos2i (x y)
   :If 0=⎕NC'glWindowPos2i_DLL'
-      'glWindowPos2i_DLL'⎕NA'opengl32|glWindowPos2i I4 I4'
+      'glWindowPos2i_DLL'⎕NA'',getdllname,'|glWindowPos2i I4 I4'
   :EndIf
   {}glWindowPos2i_DLL x y
 ∇
 
 ∇ glWindowPos2iv v
   :If 0=⎕NC'glWindowPos2iv_DLL'
-      'glWindowPos2iv_DLL'⎕NA'opengl32|glWindowPos2iv <I4[2]'
+      'glWindowPos2iv_DLL'⎕NA'',getdllname,'|glWindowPos2iv <I4[2]'
   :EndIf
   {}glWindowPos2iv_DLL v
 ∇
 
 ∇ glWindowPos2s (x y)
   :If 0=⎕NC'glWindowPos2s_DLL'
-      'glWindowPos2s_DLL'⎕NA'opengl32|glWindowPos2s I2 I2'
+      'glWindowPos2s_DLL'⎕NA'',getdllname,'|glWindowPos2s I2 I2'
   :EndIf
   {}glWindowPos2s_DLL x y
 ∇
 
 ∇ glWindowPos2sv v
   :If 0=⎕NC'glWindowPos2sv_DLL'
-      'glWindowPos2sv_DLL'⎕NA'opengl32|glWindowPos2sv <I2[2]'
+      'glWindowPos2sv_DLL'⎕NA'',getdllname,'|glWindowPos2sv <I2[2]'
   :EndIf
   {}glWindowPos2sv_DLL v
 ∇
 
 ∇ glWindowPos3d (x y z)
   :If 0=⎕NC'glWindowPos3d_DLL'
-      'glWindowPos3d_DLL'⎕NA'opengl32|glWindowPos3d F8 F8 F8'
+      'glWindowPos3d_DLL'⎕NA'',getdllname,'|glWindowPos3d F8 F8 F8'
   :EndIf
   {}glWindowPos3d_DLL x y z
 ∇
 
 ∇ glWindowPos3dv v
   :If 0=⎕NC'glWindowPos3dv_DLL'
-      'glWindowPos3dv_DLL'⎕NA'opengl32|glWindowPos3dv <F8[3]'
+      'glWindowPos3dv_DLL'⎕NA'',getdllname,'|glWindowPos3dv <F8[3]'
   :EndIf
   {}glWindowPos3dv_DLL v
 ∇
 
 ∇ glWindowPos3f (x y z)
   :If 0=⎕NC'glWindowPos3f_DLL'
-      'glWindowPos3f_DLL'⎕NA'opengl32|glWindowPos3f F4 F4 F4'
+      'glWindowPos3f_DLL'⎕NA'',getdllname,'|glWindowPos3f F4 F4 F4'
   :EndIf
   {}glWindowPos3f_DLL x y z
 ∇
 
 ∇ glWindowPos3fv v
   :If 0=⎕NC'glWindowPos3fv_DLL'
-      'glWindowPos3fv_DLL'⎕NA'opengl32|glWindowPos3fv <F4[3]'
+      'glWindowPos3fv_DLL'⎕NA'',getdllname,'|glWindowPos3fv <F4[3]'
   :EndIf
   {}glWindowPos3fv_DLL v
 ∇
 
 ∇ glWindowPos3i (x y z)
   :If 0=⎕NC'glWindowPos3i_DLL'
-      'glWindowPos3i_DLL'⎕NA'opengl32|glWindowPos3i I4 I4 I4'
+      'glWindowPos3i_DLL'⎕NA'',getdllname,'|glWindowPos3i I4 I4 I4'
   :EndIf
   {}glWindowPos3i_DLL x y z
 ∇
 
 ∇ glWindowPos3iv v
   :If 0=⎕NC'glWindowPos3iv_DLL'
-      'glWindowPos3iv_DLL'⎕NA'opengl32|glWindowPos3iv <I4[3]'
+      'glWindowPos3iv_DLL'⎕NA'',getdllname,'|glWindowPos3iv <I4[3]'
   :EndIf
   {}glWindowPos3iv_DLL v
 ∇
 
 ∇ glWindowPos3s (x y z)
   :If 0=⎕NC'glWindowPos3s_DLL'
-      'glWindowPos3s_DLL'⎕NA'opengl32|glWindowPos3s I2 I2 I2'
+      'glWindowPos3s_DLL'⎕NA'',getdllname,'|glWindowPos3s I2 I2 I2'
   :EndIf
   {}glWindowPos3s_DLL x y z
 ∇
 
 ∇ glWindowPos3sv v
   :If 0=⎕NC'glWindowPos3sv_DLL'
-      'glWindowPos3sv_DLL'⎕NA'opengl32|glWindowPos3sv <I2[3]'
+      'glWindowPos3sv_DLL'⎕NA'',getdllname,'|glWindowPos3sv <I2[3]'
   :EndIf
   {}glWindowPos3sv_DLL v
 ∇
 
 ∇ r←glGenQueries (n ids)
   :If 0=⎕NC'glGenQueries_DLL'
-      'glGenQueries_DLL'⎕NA'opengl32|glGenQueries I4 >U4[]'
+      'glGenQueries_DLL'⎕NA'',getdllname,'|glGenQueries I4 >U4[]'
   :EndIf
   r←glGenQueries_DLL n ids
 ∇
 
 ∇ glDeleteQueries (n ids)
   :If 0=⎕NC'glDeleteQueries_DLL'
-      'glDeleteQueries_DLL'⎕NA'opengl32|glDeleteQueries I4 <U4[]'
+      'glDeleteQueries_DLL'⎕NA'',getdllname,'|glDeleteQueries I4 <U4[]'
   :EndIf
   {}glDeleteQueries_DLL n ids
 ∇
 
 ∇ r←glIsQuery id
   :If 0=⎕NC'glIsQuery_DLL'
-      'glIsQuery_DLL'⎕NA'U1 opengl32|glIsQuery U4'
+      'glIsQuery_DLL'⎕NA'U1 ',getdllname,'|glIsQuery U4'
   :EndIf
   r←glIsQuery_DLL id
 ∇
 
 ∇ glBeginQuery (target id)
   :If 0=⎕NC'glBeginQuery_DLL'
-      'glBeginQuery_DLL'⎕NA'opengl32|glBeginQuery U4 U4'
+      'glBeginQuery_DLL'⎕NA'',getdllname,'|glBeginQuery U4 U4'
   :EndIf
   {}glBeginQuery_DLL target id
 ∇
 
 ∇ glEndQuery target
   :If 0=⎕NC'glEndQuery_DLL'
-      'glEndQuery_DLL'⎕NA'opengl32|glEndQuery U4'
+      'glEndQuery_DLL'⎕NA'',getdllname,'|glEndQuery U4'
   :EndIf
   {}glEndQuery_DLL target
 ∇
 
 ∇ r←glGetQueryiv (target pname params)
   :If 0=⎕NC'glGetQueryiv_DLL'
-      'glGetQueryiv_DLL'⎕NA'opengl32|glGetQueryiv U4 U4 >I4[]'
+      'glGetQueryiv_DLL'⎕NA'',getdllname,'|glGetQueryiv U4 U4 >I4[]'
   :EndIf
   r←glGetQueryiv_DLL target pname params
 ∇
 
 ∇ r←glGetQueryObjectiv (id pname params)
   :If 0=⎕NC'glGetQueryObjectiv_DLL'
-      'glGetQueryObjectiv_DLL'⎕NA'opengl32|glGetQueryObjectiv U4 U4 >I4[]'
+      'glGetQueryObjectiv_DLL'⎕NA'',getdllname,'|glGetQueryObjectiv U4 U4 >I4[]'
   :EndIf
   r←glGetQueryObjectiv_DLL id pname params
 ∇
 
 ∇ r←glGetQueryObjectuiv (id pname params)
   :If 0=⎕NC'glGetQueryObjectuiv_DLL'
-      'glGetQueryObjectuiv_DLL'⎕NA'opengl32|glGetQueryObjectuiv U4 U4 >U4[]'
+      'glGetQueryObjectuiv_DLL'⎕NA'',getdllname,'|glGetQueryObjectuiv U4 U4 >U4[]'
   :EndIf
   r←glGetQueryObjectuiv_DLL id pname params
 ∇
 
 ∇ glBindBuffer (target buffer)
   :If 0=⎕NC'glBindBuffer_DLL'
-      'glBindBuffer_DLL'⎕NA'opengl32|glBindBuffer U4 U4'
+      'glBindBuffer_DLL'⎕NA'',getdllname,'|glBindBuffer U4 U4'
   :EndIf
   {}glBindBuffer_DLL target buffer
 ∇
 
 ∇ glDeleteBuffers (n buffers)
   :If 0=⎕NC'glDeleteBuffers_DLL'
-      'glDeleteBuffers_DLL'⎕NA'opengl32|glDeleteBuffers I4 <U4[]'
+      'glDeleteBuffers_DLL'⎕NA'',getdllname,'|glDeleteBuffers I4 <U4[]'
   :EndIf
   {}glDeleteBuffers_DLL n buffers
 ∇
 
 ∇ r←glGenBuffers (n buffers)
   :If 0=⎕NC'glGenBuffers_DLL'
-      'glGenBuffers_DLL'⎕NA'opengl32|glGenBuffers I4 >U4[]'
+      'glGenBuffers_DLL'⎕NA'',getdllname,'|glGenBuffers I4 >U4[]'
   :EndIf
   r←glGenBuffers_DLL n buffers
 ∇
 
 ∇ r←glIsBuffer buffer
   :If 0=⎕NC'glIsBuffer_DLL'
-      'glIsBuffer_DLL'⎕NA'U1 opengl32|glIsBuffer U4'
+      'glIsBuffer_DLL'⎕NA'U1 ',getdllname,'|glIsBuffer U4'
   :EndIf
   r←glIsBuffer_DLL buffer
 ∇
@@ -9018,14 +9026,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glUnmapBuffer target
   :If 0=⎕NC'glUnmapBuffer_DLL'
-      'glUnmapBuffer_DLL'⎕NA'U1 opengl32|glUnmapBuffer U4'
+      'glUnmapBuffer_DLL'⎕NA'U1 ',getdllname,'|glUnmapBuffer U4'
   :EndIf
   r←glUnmapBuffer_DLL target
 ∇
 
 ∇ r←glGetBufferParameteriv (target pname params)
   :If 0=⎕NC'glGetBufferParameteriv_DLL'
-      'glGetBufferParameteriv_DLL'⎕NA'opengl32|glGetBufferParameteriv U4 U4 >I4[]'
+      'glGetBufferParameteriv_DLL'⎕NA'',getdllname,'|glGetBufferParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetBufferParameteriv_DLL target pname params
 ∇
@@ -9039,42 +9047,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBlendEquationSeparate (modeRGB modeAlpha)
   :If 0=⎕NC'glBlendEquationSeparate_DLL'
-      'glBlendEquationSeparate_DLL'⎕NA'opengl32|glBlendEquationSeparate U4 U4'
+      'glBlendEquationSeparate_DLL'⎕NA'',getdllname,'|glBlendEquationSeparate U4 U4'
   :EndIf
   {}glBlendEquationSeparate_DLL modeRGB modeAlpha
 ∇
 
 ∇ glDrawBuffers (n bufs)
   :If 0=⎕NC'glDrawBuffers_DLL'
-      'glDrawBuffers_DLL'⎕NA'opengl32|glDrawBuffers I4 <U4[]'
+      'glDrawBuffers_DLL'⎕NA'',getdllname,'|glDrawBuffers I4 <U4[]'
   :EndIf
   {}glDrawBuffers_DLL n bufs
 ∇
 
 ∇ glStencilOpSeparate (face sfail dpfail dppass)
   :If 0=⎕NC'glStencilOpSeparate_DLL'
-      'glStencilOpSeparate_DLL'⎕NA'opengl32|glStencilOpSeparate U4 U4 U4 U4'
+      'glStencilOpSeparate_DLL'⎕NA'',getdllname,'|glStencilOpSeparate U4 U4 U4 U4'
   :EndIf
   {}glStencilOpSeparate_DLL face sfail dpfail dppass
 ∇
 
 ∇ glStencilFuncSeparate (face func ref mask)
   :If 0=⎕NC'glStencilFuncSeparate_DLL'
-      'glStencilFuncSeparate_DLL'⎕NA'opengl32|glStencilFuncSeparate U4 U4 I4 U4'
+      'glStencilFuncSeparate_DLL'⎕NA'',getdllname,'|glStencilFuncSeparate U4 U4 I4 U4'
   :EndIf
   {}glStencilFuncSeparate_DLL face func ref mask
 ∇
 
 ∇ glStencilMaskSeparate (face mask)
   :If 0=⎕NC'glStencilMaskSeparate_DLL'
-      'glStencilMaskSeparate_DLL'⎕NA'opengl32|glStencilMaskSeparate U4 U4'
+      'glStencilMaskSeparate_DLL'⎕NA'',getdllname,'|glStencilMaskSeparate U4 U4'
   :EndIf
   {}glStencilMaskSeparate_DLL face mask
 ∇
 
 ∇ glAttachShader (program shader)
   :If 0=⎕NC'glAttachShader_DLL'
-      'glAttachShader_DLL'⎕NA'opengl32|glAttachShader U4 U4'
+      'glAttachShader_DLL'⎕NA'',getdllname,'|glAttachShader U4 U4'
   :EndIf
   {}glAttachShader_DLL program shader
 ∇
@@ -9088,56 +9096,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCompileShader shader
   :If 0=⎕NC'glCompileShader_DLL'
-      'glCompileShader_DLL'⎕NA'opengl32|glCompileShader U4'
+      'glCompileShader_DLL'⎕NA'',getdllname,'|glCompileShader U4'
   :EndIf
   {}glCompileShader_DLL shader
 ∇
 
 ∇ r←glCreateProgram
   :If 0=⎕NC'glCreateProgram_DLL'
-      'glCreateProgram_DLL'⎕NA'U4 opengl32|glCreateProgram'
+      'glCreateProgram_DLL'⎕NA'U4 ',getdllname,'|glCreateProgram'
   :EndIf
   r←glCreateProgram_DLL
 ∇
 
 ∇ r←glCreateShader type
   :If 0=⎕NC'glCreateShader_DLL'
-      'glCreateShader_DLL'⎕NA'U4 opengl32|glCreateShader U4'
+      'glCreateShader_DLL'⎕NA'U4 ',getdllname,'|glCreateShader U4'
   :EndIf
   r←glCreateShader_DLL type
 ∇
 
 ∇ glDeleteProgram program
   :If 0=⎕NC'glDeleteProgram_DLL'
-      'glDeleteProgram_DLL'⎕NA'opengl32|glDeleteProgram U4'
+      'glDeleteProgram_DLL'⎕NA'',getdllname,'|glDeleteProgram U4'
   :EndIf
   {}glDeleteProgram_DLL program
 ∇
 
 ∇ glDeleteShader shader
   :If 0=⎕NC'glDeleteShader_DLL'
-      'glDeleteShader_DLL'⎕NA'opengl32|glDeleteShader U4'
+      'glDeleteShader_DLL'⎕NA'',getdllname,'|glDeleteShader U4'
   :EndIf
   {}glDeleteShader_DLL shader
 ∇
 
 ∇ glDetachShader (program shader)
   :If 0=⎕NC'glDetachShader_DLL'
-      'glDetachShader_DLL'⎕NA'opengl32|glDetachShader U4 U4'
+      'glDetachShader_DLL'⎕NA'',getdllname,'|glDetachShader U4 U4'
   :EndIf
   {}glDetachShader_DLL program shader
 ∇
 
 ∇ glDisableVertexAttribArray index
   :If 0=⎕NC'glDisableVertexAttribArray_DLL'
-      'glDisableVertexAttribArray_DLL'⎕NA'opengl32|glDisableVertexAttribArray U4'
+      'glDisableVertexAttribArray_DLL'⎕NA'',getdllname,'|glDisableVertexAttribArray U4'
   :EndIf
   {}glDisableVertexAttribArray_DLL index
 ∇
 
 ∇ glEnableVertexAttribArray index
   :If 0=⎕NC'glEnableVertexAttribArray_DLL'
-      'glEnableVertexAttribArray_DLL'⎕NA'opengl32|glEnableVertexAttribArray U4'
+      'glEnableVertexAttribArray_DLL'⎕NA'',getdllname,'|glEnableVertexAttribArray U4'
   :EndIf
   {}glEnableVertexAttribArray_DLL index
 ∇
@@ -9158,7 +9166,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetAttachedShaders (program maxCount obj)
   :If 0=⎕NC'glGetAttachedShaders_DLL'
-      'glGetAttachedShaders_DLL'⎕NA'opengl32|glGetAttachedShaders U4 I4 >I4[1] >U4[]'
+      'glGetAttachedShaders_DLL'⎕NA'',getdllname,'|glGetAttachedShaders U4 I4 >I4[1] >U4[]'
   :EndIf
   r←glGetAttachedShaders_DLL program maxCount 1 obj
 ∇
@@ -9172,7 +9180,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetProgramiv (program pname params)
   :If 0=⎕NC'glGetProgramiv_DLL'
-      'glGetProgramiv_DLL'⎕NA'opengl32|glGetProgramiv U4 U4 >I4[]'
+      'glGetProgramiv_DLL'⎕NA'',getdllname,'|glGetProgramiv U4 U4 >I4[]'
   :EndIf
   r←glGetProgramiv_DLL program pname params
 ∇
@@ -9186,7 +9194,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetShaderiv (shader pname params)
   :If 0=⎕NC'glGetShaderiv_DLL'
-      'glGetShaderiv_DLL'⎕NA'opengl32|glGetShaderiv U4 U4 >I4[]'
+      'glGetShaderiv_DLL'⎕NA'',getdllname,'|glGetShaderiv U4 U4 >I4[]'
   :EndIf
   r←glGetShaderiv_DLL shader pname params
 ∇
@@ -9214,35 +9222,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetUniformfv (program location params)
   :If 0=⎕NC'glGetUniformfv_DLL'
-      'glGetUniformfv_DLL'⎕NA'opengl32|glGetUniformfv U4 I4 >F4[]'
+      'glGetUniformfv_DLL'⎕NA'',getdllname,'|glGetUniformfv U4 I4 >F4[]'
   :EndIf
   r←glGetUniformfv_DLL program location params
 ∇
 
 ∇ r←glGetUniformiv (program location params)
   :If 0=⎕NC'glGetUniformiv_DLL'
-      'glGetUniformiv_DLL'⎕NA'opengl32|glGetUniformiv U4 I4 >I4[]'
+      'glGetUniformiv_DLL'⎕NA'',getdllname,'|glGetUniformiv U4 I4 >I4[]'
   :EndIf
   r←glGetUniformiv_DLL program location params
 ∇
 
 ∇ r←glGetVertexAttribdv (index pname)
   :If 0=⎕NC'glGetVertexAttribdv_DLL'
-      'glGetVertexAttribdv_DLL'⎕NA'opengl32|glGetVertexAttribdv U4 U4 >F8[4]'
+      'glGetVertexAttribdv_DLL'⎕NA'',getdllname,'|glGetVertexAttribdv U4 U4 >F8[4]'
   :EndIf
   r←glGetVertexAttribdv_DLL index pname 4
 ∇
 
 ∇ r←glGetVertexAttribfv (index pname)
   :If 0=⎕NC'glGetVertexAttribfv_DLL'
-      'glGetVertexAttribfv_DLL'⎕NA'opengl32|glGetVertexAttribfv U4 U4 >F4[4]'
+      'glGetVertexAttribfv_DLL'⎕NA'',getdllname,'|glGetVertexAttribfv U4 U4 >F4[4]'
   :EndIf
   r←glGetVertexAttribfv_DLL index pname 4
 ∇
 
 ∇ r←glGetVertexAttribiv (index pname)
   :If 0=⎕NC'glGetVertexAttribiv_DLL'
-      'glGetVertexAttribiv_DLL'⎕NA'opengl32|glGetVertexAttribiv U4 U4 >I4[4]'
+      'glGetVertexAttribiv_DLL'⎕NA'',getdllname,'|glGetVertexAttribiv U4 U4 >I4[4]'
   :EndIf
   r←glGetVertexAttribiv_DLL index pname 4
 ∇
@@ -9256,21 +9264,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glIsProgram program
   :If 0=⎕NC'glIsProgram_DLL'
-      'glIsProgram_DLL'⎕NA'U1 opengl32|glIsProgram U4'
+      'glIsProgram_DLL'⎕NA'U1 ',getdllname,'|glIsProgram U4'
   :EndIf
   r←glIsProgram_DLL program
 ∇
 
 ∇ r←glIsShader shader
   :If 0=⎕NC'glIsShader_DLL'
-      'glIsShader_DLL'⎕NA'U1 opengl32|glIsShader U4'
+      'glIsShader_DLL'⎕NA'U1 ',getdllname,'|glIsShader U4'
   :EndIf
   r←glIsShader_DLL shader
 ∇
 
 ∇ glLinkProgram program
   :If 0=⎕NC'glLinkProgram_DLL'
-      'glLinkProgram_DLL'⎕NA'opengl32|glLinkProgram U4'
+      'glLinkProgram_DLL'⎕NA'',getdllname,'|glLinkProgram U4'
   :EndIf
   {}glLinkProgram_DLL program
 ∇
@@ -9284,399 +9292,399 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUseProgram program
   :If 0=⎕NC'glUseProgram_DLL'
-      'glUseProgram_DLL'⎕NA'opengl32|glUseProgram U4'
+      'glUseProgram_DLL'⎕NA'',getdllname,'|glUseProgram U4'
   :EndIf
   {}glUseProgram_DLL program
 ∇
 
 ∇ glUniform1f (location v0)
   :If 0=⎕NC'glUniform1f_DLL'
-      'glUniform1f_DLL'⎕NA'opengl32|glUniform1f I4 F4'
+      'glUniform1f_DLL'⎕NA'',getdllname,'|glUniform1f I4 F4'
   :EndIf
   {}glUniform1f_DLL location v0
 ∇
 
 ∇ glUniform2f (location v0 v1)
   :If 0=⎕NC'glUniform2f_DLL'
-      'glUniform2f_DLL'⎕NA'opengl32|glUniform2f I4 F4 F4'
+      'glUniform2f_DLL'⎕NA'',getdllname,'|glUniform2f I4 F4 F4'
   :EndIf
   {}glUniform2f_DLL location v0 v1
 ∇
 
 ∇ glUniform3f (location v0 v1 v2)
   :If 0=⎕NC'glUniform3f_DLL'
-      'glUniform3f_DLL'⎕NA'opengl32|glUniform3f I4 F4 F4 F4'
+      'glUniform3f_DLL'⎕NA'',getdllname,'|glUniform3f I4 F4 F4 F4'
   :EndIf
   {}glUniform3f_DLL location v0 v1 v2
 ∇
 
 ∇ glUniform4f (location v0 v1 v2 v3)
   :If 0=⎕NC'glUniform4f_DLL'
-      'glUniform4f_DLL'⎕NA'opengl32|glUniform4f I4 F4 F4 F4 F4'
+      'glUniform4f_DLL'⎕NA'',getdllname,'|glUniform4f I4 F4 F4 F4 F4'
   :EndIf
   {}glUniform4f_DLL location v0 v1 v2 v3
 ∇
 
 ∇ glUniform1i (location v0)
   :If 0=⎕NC'glUniform1i_DLL'
-      'glUniform1i_DLL'⎕NA'opengl32|glUniform1i I4 I4'
+      'glUniform1i_DLL'⎕NA'',getdllname,'|glUniform1i I4 I4'
   :EndIf
   {}glUniform1i_DLL location v0
 ∇
 
 ∇ glUniform2i (location v0 v1)
   :If 0=⎕NC'glUniform2i_DLL'
-      'glUniform2i_DLL'⎕NA'opengl32|glUniform2i I4 I4 I4'
+      'glUniform2i_DLL'⎕NA'',getdllname,'|glUniform2i I4 I4 I4'
   :EndIf
   {}glUniform2i_DLL location v0 v1
 ∇
 
 ∇ glUniform3i (location v0 v1 v2)
   :If 0=⎕NC'glUniform3i_DLL'
-      'glUniform3i_DLL'⎕NA'opengl32|glUniform3i I4 I4 I4 I4'
+      'glUniform3i_DLL'⎕NA'',getdllname,'|glUniform3i I4 I4 I4 I4'
   :EndIf
   {}glUniform3i_DLL location v0 v1 v2
 ∇
 
 ∇ glUniform4i (location v0 v1 v2 v3)
   :If 0=⎕NC'glUniform4i_DLL'
-      'glUniform4i_DLL'⎕NA'opengl32|glUniform4i I4 I4 I4 I4 I4'
+      'glUniform4i_DLL'⎕NA'',getdllname,'|glUniform4i I4 I4 I4 I4 I4'
   :EndIf
   {}glUniform4i_DLL location v0 v1 v2 v3
 ∇
 
 ∇ glUniform1fv (location count value)
   :If 0=⎕NC'glUniform1fv_DLL'
-      'glUniform1fv_DLL'⎕NA'opengl32|glUniform1fv I4 I4 <F4[]'
+      'glUniform1fv_DLL'⎕NA'',getdllname,'|glUniform1fv I4 I4 <F4[]'
   :EndIf
   {}glUniform1fv_DLL location count value
 ∇
 
 ∇ glUniform2fv (location count value)
   :If 0=⎕NC'glUniform2fv_DLL'
-      'glUniform2fv_DLL'⎕NA'opengl32|glUniform2fv I4 I4 <F4[]'
+      'glUniform2fv_DLL'⎕NA'',getdllname,'|glUniform2fv I4 I4 <F4[]'
   :EndIf
   {}glUniform2fv_DLL location count value
 ∇
 
 ∇ glUniform3fv (location count value)
   :If 0=⎕NC'glUniform3fv_DLL'
-      'glUniform3fv_DLL'⎕NA'opengl32|glUniform3fv I4 I4 <F4[]'
+      'glUniform3fv_DLL'⎕NA'',getdllname,'|glUniform3fv I4 I4 <F4[]'
   :EndIf
   {}glUniform3fv_DLL location count value
 ∇
 
 ∇ glUniform4fv (location count value)
   :If 0=⎕NC'glUniform4fv_DLL'
-      'glUniform4fv_DLL'⎕NA'opengl32|glUniform4fv I4 I4 <F4[]'
+      'glUniform4fv_DLL'⎕NA'',getdllname,'|glUniform4fv I4 I4 <F4[]'
   :EndIf
   {}glUniform4fv_DLL location count value
 ∇
 
 ∇ glUniform1iv (location count value)
   :If 0=⎕NC'glUniform1iv_DLL'
-      'glUniform1iv_DLL'⎕NA'opengl32|glUniform1iv I4 I4 <I4[]'
+      'glUniform1iv_DLL'⎕NA'',getdllname,'|glUniform1iv I4 I4 <I4[]'
   :EndIf
   {}glUniform1iv_DLL location count value
 ∇
 
 ∇ glUniform2iv (location count value)
   :If 0=⎕NC'glUniform2iv_DLL'
-      'glUniform2iv_DLL'⎕NA'opengl32|glUniform2iv I4 I4 <I4[]'
+      'glUniform2iv_DLL'⎕NA'',getdllname,'|glUniform2iv I4 I4 <I4[]'
   :EndIf
   {}glUniform2iv_DLL location count value
 ∇
 
 ∇ glUniform3iv (location count value)
   :If 0=⎕NC'glUniform3iv_DLL'
-      'glUniform3iv_DLL'⎕NA'opengl32|glUniform3iv I4 I4 <I4[]'
+      'glUniform3iv_DLL'⎕NA'',getdllname,'|glUniform3iv I4 I4 <I4[]'
   :EndIf
   {}glUniform3iv_DLL location count value
 ∇
 
 ∇ glUniform4iv (location count value)
   :If 0=⎕NC'glUniform4iv_DLL'
-      'glUniform4iv_DLL'⎕NA'opengl32|glUniform4iv I4 I4 <I4[]'
+      'glUniform4iv_DLL'⎕NA'',getdllname,'|glUniform4iv I4 I4 <I4[]'
   :EndIf
   {}glUniform4iv_DLL location count value
 ∇
 
 ∇ glUniformMatrix2fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2fv_DLL'
-      'glUniformMatrix2fv_DLL'⎕NA'opengl32|glUniformMatrix2fv I4 I4 U1 <F4[]'
+      'glUniformMatrix2fv_DLL'⎕NA'',getdllname,'|glUniformMatrix2fv I4 I4 U1 <F4[]'
   :EndIf
   {}glUniformMatrix2fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3fv_DLL'
-      'glUniformMatrix3fv_DLL'⎕NA'opengl32|glUniformMatrix3fv I4 I4 U1 <F4[]'
+      'glUniformMatrix3fv_DLL'⎕NA'',getdllname,'|glUniformMatrix3fv I4 I4 U1 <F4[]'
   :EndIf
   {}glUniformMatrix3fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4fv_DLL'
-      'glUniformMatrix4fv_DLL'⎕NA'opengl32|glUniformMatrix4fv I4 I4 U1 <F4[]'
+      'glUniformMatrix4fv_DLL'⎕NA'',getdllname,'|glUniformMatrix4fv I4 I4 U1 <F4[]'
   :EndIf
   {}glUniformMatrix4fv_DLL location count transpose value
 ∇
 
 ∇ glValidateProgram program
   :If 0=⎕NC'glValidateProgram_DLL'
-      'glValidateProgram_DLL'⎕NA'opengl32|glValidateProgram U4'
+      'glValidateProgram_DLL'⎕NA'',getdllname,'|glValidateProgram U4'
   :EndIf
   {}glValidateProgram_DLL program
 ∇
 
 ∇ glVertexAttrib1d (index x)
   :If 0=⎕NC'glVertexAttrib1d_DLL'
-      'glVertexAttrib1d_DLL'⎕NA'opengl32|glVertexAttrib1d U4 F8'
+      'glVertexAttrib1d_DLL'⎕NA'',getdllname,'|glVertexAttrib1d U4 F8'
   :EndIf
   {}glVertexAttrib1d_DLL index x
 ∇
 
 ∇ glVertexAttrib1dv (index v)
   :If 0=⎕NC'glVertexAttrib1dv_DLL'
-      'glVertexAttrib1dv_DLL'⎕NA'opengl32|glVertexAttrib1dv U4 <F8[1]'
+      'glVertexAttrib1dv_DLL'⎕NA'',getdllname,'|glVertexAttrib1dv U4 <F8[1]'
   :EndIf
   {}glVertexAttrib1dv_DLL index v
 ∇
 
 ∇ glVertexAttrib1f (index x)
   :If 0=⎕NC'glVertexAttrib1f_DLL'
-      'glVertexAttrib1f_DLL'⎕NA'opengl32|glVertexAttrib1f U4 F4'
+      'glVertexAttrib1f_DLL'⎕NA'',getdllname,'|glVertexAttrib1f U4 F4'
   :EndIf
   {}glVertexAttrib1f_DLL index x
 ∇
 
 ∇ glVertexAttrib1fv (index v)
   :If 0=⎕NC'glVertexAttrib1fv_DLL'
-      'glVertexAttrib1fv_DLL'⎕NA'opengl32|glVertexAttrib1fv U4 <F4[1]'
+      'glVertexAttrib1fv_DLL'⎕NA'',getdllname,'|glVertexAttrib1fv U4 <F4[1]'
   :EndIf
   {}glVertexAttrib1fv_DLL index v
 ∇
 
 ∇ glVertexAttrib1s (index x)
   :If 0=⎕NC'glVertexAttrib1s_DLL'
-      'glVertexAttrib1s_DLL'⎕NA'opengl32|glVertexAttrib1s U4 I2'
+      'glVertexAttrib1s_DLL'⎕NA'',getdllname,'|glVertexAttrib1s U4 I2'
   :EndIf
   {}glVertexAttrib1s_DLL index x
 ∇
 
 ∇ glVertexAttrib1sv (index v)
   :If 0=⎕NC'glVertexAttrib1sv_DLL'
-      'glVertexAttrib1sv_DLL'⎕NA'opengl32|glVertexAttrib1sv U4 <I2[1]'
+      'glVertexAttrib1sv_DLL'⎕NA'',getdllname,'|glVertexAttrib1sv U4 <I2[1]'
   :EndIf
   {}glVertexAttrib1sv_DLL index v
 ∇
 
 ∇ glVertexAttrib2d (index x y)
   :If 0=⎕NC'glVertexAttrib2d_DLL'
-      'glVertexAttrib2d_DLL'⎕NA'opengl32|glVertexAttrib2d U4 F8 F8'
+      'glVertexAttrib2d_DLL'⎕NA'',getdllname,'|glVertexAttrib2d U4 F8 F8'
   :EndIf
   {}glVertexAttrib2d_DLL index x y
 ∇
 
 ∇ glVertexAttrib2dv (index v)
   :If 0=⎕NC'glVertexAttrib2dv_DLL'
-      'glVertexAttrib2dv_DLL'⎕NA'opengl32|glVertexAttrib2dv U4 <F8[2]'
+      'glVertexAttrib2dv_DLL'⎕NA'',getdllname,'|glVertexAttrib2dv U4 <F8[2]'
   :EndIf
   {}glVertexAttrib2dv_DLL index v
 ∇
 
 ∇ glVertexAttrib2f (index x y)
   :If 0=⎕NC'glVertexAttrib2f_DLL'
-      'glVertexAttrib2f_DLL'⎕NA'opengl32|glVertexAttrib2f U4 F4 F4'
+      'glVertexAttrib2f_DLL'⎕NA'',getdllname,'|glVertexAttrib2f U4 F4 F4'
   :EndIf
   {}glVertexAttrib2f_DLL index x y
 ∇
 
 ∇ glVertexAttrib2fv (index v)
   :If 0=⎕NC'glVertexAttrib2fv_DLL'
-      'glVertexAttrib2fv_DLL'⎕NA'opengl32|glVertexAttrib2fv U4 <F4[2]'
+      'glVertexAttrib2fv_DLL'⎕NA'',getdllname,'|glVertexAttrib2fv U4 <F4[2]'
   :EndIf
   {}glVertexAttrib2fv_DLL index v
 ∇
 
 ∇ glVertexAttrib2s (index x y)
   :If 0=⎕NC'glVertexAttrib2s_DLL'
-      'glVertexAttrib2s_DLL'⎕NA'opengl32|glVertexAttrib2s U4 I2 I2'
+      'glVertexAttrib2s_DLL'⎕NA'',getdllname,'|glVertexAttrib2s U4 I2 I2'
   :EndIf
   {}glVertexAttrib2s_DLL index x y
 ∇
 
 ∇ glVertexAttrib2sv (index v)
   :If 0=⎕NC'glVertexAttrib2sv_DLL'
-      'glVertexAttrib2sv_DLL'⎕NA'opengl32|glVertexAttrib2sv U4 <I2[2]'
+      'glVertexAttrib2sv_DLL'⎕NA'',getdllname,'|glVertexAttrib2sv U4 <I2[2]'
   :EndIf
   {}glVertexAttrib2sv_DLL index v
 ∇
 
 ∇ glVertexAttrib3d (index x y z)
   :If 0=⎕NC'glVertexAttrib3d_DLL'
-      'glVertexAttrib3d_DLL'⎕NA'opengl32|glVertexAttrib3d U4 F8 F8 F8'
+      'glVertexAttrib3d_DLL'⎕NA'',getdllname,'|glVertexAttrib3d U4 F8 F8 F8'
   :EndIf
   {}glVertexAttrib3d_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3dv (index v)
   :If 0=⎕NC'glVertexAttrib3dv_DLL'
-      'glVertexAttrib3dv_DLL'⎕NA'opengl32|glVertexAttrib3dv U4 <F8[3]'
+      'glVertexAttrib3dv_DLL'⎕NA'',getdllname,'|glVertexAttrib3dv U4 <F8[3]'
   :EndIf
   {}glVertexAttrib3dv_DLL index v
 ∇
 
 ∇ glVertexAttrib3f (index x y z)
   :If 0=⎕NC'glVertexAttrib3f_DLL'
-      'glVertexAttrib3f_DLL'⎕NA'opengl32|glVertexAttrib3f U4 F4 F4 F4'
+      'glVertexAttrib3f_DLL'⎕NA'',getdllname,'|glVertexAttrib3f U4 F4 F4 F4'
   :EndIf
   {}glVertexAttrib3f_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3fv (index v)
   :If 0=⎕NC'glVertexAttrib3fv_DLL'
-      'glVertexAttrib3fv_DLL'⎕NA'opengl32|glVertexAttrib3fv U4 <F4[3]'
+      'glVertexAttrib3fv_DLL'⎕NA'',getdllname,'|glVertexAttrib3fv U4 <F4[3]'
   :EndIf
   {}glVertexAttrib3fv_DLL index v
 ∇
 
 ∇ glVertexAttrib3s (index x y z)
   :If 0=⎕NC'glVertexAttrib3s_DLL'
-      'glVertexAttrib3s_DLL'⎕NA'opengl32|glVertexAttrib3s U4 I2 I2 I2'
+      'glVertexAttrib3s_DLL'⎕NA'',getdllname,'|glVertexAttrib3s U4 I2 I2 I2'
   :EndIf
   {}glVertexAttrib3s_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3sv (index v)
   :If 0=⎕NC'glVertexAttrib3sv_DLL'
-      'glVertexAttrib3sv_DLL'⎕NA'opengl32|glVertexAttrib3sv U4 <I2[3]'
+      'glVertexAttrib3sv_DLL'⎕NA'',getdllname,'|glVertexAttrib3sv U4 <I2[3]'
   :EndIf
   {}glVertexAttrib3sv_DLL index v
 ∇
 
 ∇ glVertexAttrib4Nbv (index v)
   :If 0=⎕NC'glVertexAttrib4Nbv_DLL'
-      'glVertexAttrib4Nbv_DLL'⎕NA'opengl32|glVertexAttrib4Nbv U4 <I1[4]'
+      'glVertexAttrib4Nbv_DLL'⎕NA'',getdllname,'|glVertexAttrib4Nbv U4 <I1[4]'
   :EndIf
   {}glVertexAttrib4Nbv_DLL index v
 ∇
 
 ∇ glVertexAttrib4Niv (index v)
   :If 0=⎕NC'glVertexAttrib4Niv_DLL'
-      'glVertexAttrib4Niv_DLL'⎕NA'opengl32|glVertexAttrib4Niv U4 <I4[4]'
+      'glVertexAttrib4Niv_DLL'⎕NA'',getdllname,'|glVertexAttrib4Niv U4 <I4[4]'
   :EndIf
   {}glVertexAttrib4Niv_DLL index v
 ∇
 
 ∇ glVertexAttrib4Nsv (index v)
   :If 0=⎕NC'glVertexAttrib4Nsv_DLL'
-      'glVertexAttrib4Nsv_DLL'⎕NA'opengl32|glVertexAttrib4Nsv U4 <I2[4]'
+      'glVertexAttrib4Nsv_DLL'⎕NA'',getdllname,'|glVertexAttrib4Nsv U4 <I2[4]'
   :EndIf
   {}glVertexAttrib4Nsv_DLL index v
 ∇
 
 ∇ glVertexAttrib4Nub (index x y z w)
   :If 0=⎕NC'glVertexAttrib4Nub_DLL'
-      'glVertexAttrib4Nub_DLL'⎕NA'opengl32|glVertexAttrib4Nub U4 U1 U1 U1 U1'
+      'glVertexAttrib4Nub_DLL'⎕NA'',getdllname,'|glVertexAttrib4Nub U4 U1 U1 U1 U1'
   :EndIf
   {}glVertexAttrib4Nub_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4Nubv (index v)
   :If 0=⎕NC'glVertexAttrib4Nubv_DLL'
-      'glVertexAttrib4Nubv_DLL'⎕NA'opengl32|glVertexAttrib4Nubv U4 <U1[4]'
+      'glVertexAttrib4Nubv_DLL'⎕NA'',getdllname,'|glVertexAttrib4Nubv U4 <U1[4]'
   :EndIf
   {}glVertexAttrib4Nubv_DLL index v
 ∇
 
 ∇ glVertexAttrib4Nuiv (index v)
   :If 0=⎕NC'glVertexAttrib4Nuiv_DLL'
-      'glVertexAttrib4Nuiv_DLL'⎕NA'opengl32|glVertexAttrib4Nuiv U4 <U4[4]'
+      'glVertexAttrib4Nuiv_DLL'⎕NA'',getdllname,'|glVertexAttrib4Nuiv U4 <U4[4]'
   :EndIf
   {}glVertexAttrib4Nuiv_DLL index v
 ∇
 
 ∇ glVertexAttrib4Nusv (index v)
   :If 0=⎕NC'glVertexAttrib4Nusv_DLL'
-      'glVertexAttrib4Nusv_DLL'⎕NA'opengl32|glVertexAttrib4Nusv U4 <U2[4]'
+      'glVertexAttrib4Nusv_DLL'⎕NA'',getdllname,'|glVertexAttrib4Nusv U4 <U2[4]'
   :EndIf
   {}glVertexAttrib4Nusv_DLL index v
 ∇
 
 ∇ glVertexAttrib4bv (index v)
   :If 0=⎕NC'glVertexAttrib4bv_DLL'
-      'glVertexAttrib4bv_DLL'⎕NA'opengl32|glVertexAttrib4bv U4 <I1[4]'
+      'glVertexAttrib4bv_DLL'⎕NA'',getdllname,'|glVertexAttrib4bv U4 <I1[4]'
   :EndIf
   {}glVertexAttrib4bv_DLL index v
 ∇
 
 ∇ glVertexAttrib4d (index x y z w)
   :If 0=⎕NC'glVertexAttrib4d_DLL'
-      'glVertexAttrib4d_DLL'⎕NA'opengl32|glVertexAttrib4d U4 F8 F8 F8 F8'
+      'glVertexAttrib4d_DLL'⎕NA'',getdllname,'|glVertexAttrib4d U4 F8 F8 F8 F8'
   :EndIf
   {}glVertexAttrib4d_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4dv (index v)
   :If 0=⎕NC'glVertexAttrib4dv_DLL'
-      'glVertexAttrib4dv_DLL'⎕NA'opengl32|glVertexAttrib4dv U4 <F8[4]'
+      'glVertexAttrib4dv_DLL'⎕NA'',getdllname,'|glVertexAttrib4dv U4 <F8[4]'
   :EndIf
   {}glVertexAttrib4dv_DLL index v
 ∇
 
 ∇ glVertexAttrib4f (index x y z w)
   :If 0=⎕NC'glVertexAttrib4f_DLL'
-      'glVertexAttrib4f_DLL'⎕NA'opengl32|glVertexAttrib4f U4 F4 F4 F4 F4'
+      'glVertexAttrib4f_DLL'⎕NA'',getdllname,'|glVertexAttrib4f U4 F4 F4 F4 F4'
   :EndIf
   {}glVertexAttrib4f_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4fv (index v)
   :If 0=⎕NC'glVertexAttrib4fv_DLL'
-      'glVertexAttrib4fv_DLL'⎕NA'opengl32|glVertexAttrib4fv U4 <F4[4]'
+      'glVertexAttrib4fv_DLL'⎕NA'',getdllname,'|glVertexAttrib4fv U4 <F4[4]'
   :EndIf
   {}glVertexAttrib4fv_DLL index v
 ∇
 
 ∇ glVertexAttrib4iv (index v)
   :If 0=⎕NC'glVertexAttrib4iv_DLL'
-      'glVertexAttrib4iv_DLL'⎕NA'opengl32|glVertexAttrib4iv U4 <I4[4]'
+      'glVertexAttrib4iv_DLL'⎕NA'',getdllname,'|glVertexAttrib4iv U4 <I4[4]'
   :EndIf
   {}glVertexAttrib4iv_DLL index v
 ∇
 
 ∇ glVertexAttrib4s (index x y z w)
   :If 0=⎕NC'glVertexAttrib4s_DLL'
-      'glVertexAttrib4s_DLL'⎕NA'opengl32|glVertexAttrib4s U4 I2 I2 I2 I2'
+      'glVertexAttrib4s_DLL'⎕NA'',getdllname,'|glVertexAttrib4s U4 I2 I2 I2 I2'
   :EndIf
   {}glVertexAttrib4s_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4sv (index v)
   :If 0=⎕NC'glVertexAttrib4sv_DLL'
-      'glVertexAttrib4sv_DLL'⎕NA'opengl32|glVertexAttrib4sv U4 <I2[4]'
+      'glVertexAttrib4sv_DLL'⎕NA'',getdllname,'|glVertexAttrib4sv U4 <I2[4]'
   :EndIf
   {}glVertexAttrib4sv_DLL index v
 ∇
 
 ∇ glVertexAttrib4ubv (index v)
   :If 0=⎕NC'glVertexAttrib4ubv_DLL'
-      'glVertexAttrib4ubv_DLL'⎕NA'opengl32|glVertexAttrib4ubv U4 <U1[4]'
+      'glVertexAttrib4ubv_DLL'⎕NA'',getdllname,'|glVertexAttrib4ubv U4 <U1[4]'
   :EndIf
   {}glVertexAttrib4ubv_DLL index v
 ∇
 
 ∇ glVertexAttrib4uiv (index v)
   :If 0=⎕NC'glVertexAttrib4uiv_DLL'
-      'glVertexAttrib4uiv_DLL'⎕NA'opengl32|glVertexAttrib4uiv U4 <U4[4]'
+      'glVertexAttrib4uiv_DLL'⎕NA'',getdllname,'|glVertexAttrib4uiv U4 <U4[4]'
   :EndIf
   {}glVertexAttrib4uiv_DLL index v
 ∇
 
 ∇ glVertexAttrib4usv (index v)
   :If 0=⎕NC'glVertexAttrib4usv_DLL'
-      'glVertexAttrib4usv_DLL'⎕NA'opengl32|glVertexAttrib4usv U4 <U2[4]'
+      'glVertexAttrib4usv_DLL'⎕NA'',getdllname,'|glVertexAttrib4usv U4 <U2[4]'
   :EndIf
   {}glVertexAttrib4usv_DLL index v
 ∇
@@ -9690,98 +9698,98 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUniformMatrix2x3fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2x3fv_DLL'
-      'glUniformMatrix2x3fv_DLL'⎕NA'opengl32|glUniformMatrix2x3fv I4 I4 U1 <F4[6]'
+      'glUniformMatrix2x3fv_DLL'⎕NA'',getdllname,'|glUniformMatrix2x3fv I4 I4 U1 <F4[6]'
   :EndIf
   {}glUniformMatrix2x3fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3x2fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3x2fv_DLL'
-      'glUniformMatrix3x2fv_DLL'⎕NA'opengl32|glUniformMatrix3x2fv I4 I4 U1 <F4[6]'
+      'glUniformMatrix3x2fv_DLL'⎕NA'',getdllname,'|glUniformMatrix3x2fv I4 I4 U1 <F4[6]'
   :EndIf
   {}glUniformMatrix3x2fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix2x4fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2x4fv_DLL'
-      'glUniformMatrix2x4fv_DLL'⎕NA'opengl32|glUniformMatrix2x4fv I4 I4 U1 <F4[8]'
+      'glUniformMatrix2x4fv_DLL'⎕NA'',getdllname,'|glUniformMatrix2x4fv I4 I4 U1 <F4[8]'
   :EndIf
   {}glUniformMatrix2x4fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4x2fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4x2fv_DLL'
-      'glUniformMatrix4x2fv_DLL'⎕NA'opengl32|glUniformMatrix4x2fv I4 I4 U1 <F4[8]'
+      'glUniformMatrix4x2fv_DLL'⎕NA'',getdllname,'|glUniformMatrix4x2fv I4 I4 U1 <F4[8]'
   :EndIf
   {}glUniformMatrix4x2fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3x4fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3x4fv_DLL'
-      'glUniformMatrix3x4fv_DLL'⎕NA'opengl32|glUniformMatrix3x4fv I4 I4 U1 <F4[12]'
+      'glUniformMatrix3x4fv_DLL'⎕NA'',getdllname,'|glUniformMatrix3x4fv I4 I4 U1 <F4[12]'
   :EndIf
   {}glUniformMatrix3x4fv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4x3fv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4x3fv_DLL'
-      'glUniformMatrix4x3fv_DLL'⎕NA'opengl32|glUniformMatrix4x3fv I4 I4 U1 <F4[12]'
+      'glUniformMatrix4x3fv_DLL'⎕NA'',getdllname,'|glUniformMatrix4x3fv I4 I4 U1 <F4[12]'
   :EndIf
   {}glUniformMatrix4x3fv_DLL location count transpose value
 ∇
 
 ∇ glColorMaski (index r g b a)
   :If 0=⎕NC'glColorMaski_DLL'
-      'glColorMaski_DLL'⎕NA'opengl32|glColorMaski U4 U1 U1 U1 U1'
+      'glColorMaski_DLL'⎕NA'',getdllname,'|glColorMaski U4 U1 U1 U1 U1'
   :EndIf
   {}glColorMaski_DLL index r g b a
 ∇
 
 ∇ r←glGetBooleani_v (target index data)
   :If 0=⎕NC'glGetBooleani_v_DLL'
-      'glGetBooleani_v_DLL'⎕NA'opengl32|glGetBooleani_v U4 U4 >U1[]'
+      'glGetBooleani_v_DLL'⎕NA'',getdllname,'|glGetBooleani_v U4 U4 >U1[]'
   :EndIf
   r←glGetBooleani_v_DLL target index data
 ∇
 
 ∇ r←glGetIntegeri_v (target index data)
   :If 0=⎕NC'glGetIntegeri_v_DLL'
-      'glGetIntegeri_v_DLL'⎕NA'opengl32|glGetIntegeri_v U4 U4 >I4[]'
+      'glGetIntegeri_v_DLL'⎕NA'',getdllname,'|glGetIntegeri_v U4 U4 >I4[]'
   :EndIf
   r←glGetIntegeri_v_DLL target index data
 ∇
 
 ∇ glEnablei (target index)
   :If 0=⎕NC'glEnablei_DLL'
-      'glEnablei_DLL'⎕NA'opengl32|glEnablei U4 U4'
+      'glEnablei_DLL'⎕NA'',getdllname,'|glEnablei U4 U4'
   :EndIf
   {}glEnablei_DLL target index
 ∇
 
 ∇ glDisablei (target index)
   :If 0=⎕NC'glDisablei_DLL'
-      'glDisablei_DLL'⎕NA'opengl32|glDisablei U4 U4'
+      'glDisablei_DLL'⎕NA'',getdllname,'|glDisablei U4 U4'
   :EndIf
   {}glDisablei_DLL target index
 ∇
 
 ∇ r←glIsEnabledi (target index)
   :If 0=⎕NC'glIsEnabledi_DLL'
-      'glIsEnabledi_DLL'⎕NA'U1 opengl32|glIsEnabledi U4 U4'
+      'glIsEnabledi_DLL'⎕NA'U1 ',getdllname,'|glIsEnabledi U4 U4'
   :EndIf
   r←glIsEnabledi_DLL target index
 ∇
 
 ∇ glBeginTransformFeedback primitiveMode
   :If 0=⎕NC'glBeginTransformFeedback_DLL'
-      'glBeginTransformFeedback_DLL'⎕NA'opengl32|glBeginTransformFeedback U4'
+      'glBeginTransformFeedback_DLL'⎕NA'',getdllname,'|glBeginTransformFeedback U4'
   :EndIf
   {}glBeginTransformFeedback_DLL primitiveMode
 ∇
 
 ∇ glEndTransformFeedback
   :If 0=⎕NC'glEndTransformFeedback_DLL'
-      'glEndTransformFeedback_DLL'⎕NA'opengl32|glEndTransformFeedback'
+      'glEndTransformFeedback_DLL'⎕NA'',getdllname,'|glEndTransformFeedback'
   :EndIf
   {}glEndTransformFeedback_DLL
 ∇
@@ -9795,7 +9803,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindBufferBase (target index buffer)
   :If 0=⎕NC'glBindBufferBase_DLL'
-      'glBindBufferBase_DLL'⎕NA'opengl32|glBindBufferBase U4 U4 U4'
+      'glBindBufferBase_DLL'⎕NA'',getdllname,'|glBindBufferBase U4 U4 U4'
   :EndIf
   {}glBindBufferBase_DLL target index buffer
 ∇
@@ -9816,21 +9824,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glClampColor (target clamp)
   :If 0=⎕NC'glClampColor_DLL'
-      'glClampColor_DLL'⎕NA'opengl32|glClampColor U4 U4'
+      'glClampColor_DLL'⎕NA'',getdllname,'|glClampColor U4 U4'
   :EndIf
   {}glClampColor_DLL target clamp
 ∇
 
 ∇ glBeginConditionalRender (id mode)
   :If 0=⎕NC'glBeginConditionalRender_DLL'
-      'glBeginConditionalRender_DLL'⎕NA'opengl32|glBeginConditionalRender U4 U4'
+      'glBeginConditionalRender_DLL'⎕NA'',getdllname,'|glBeginConditionalRender U4 U4'
   :EndIf
   {}glBeginConditionalRender_DLL id mode
 ∇
 
 ∇ glEndConditionalRender
   :If 0=⎕NC'glEndConditionalRender_DLL'
-      'glEndConditionalRender_DLL'⎕NA'opengl32|glEndConditionalRender'
+      'glEndConditionalRender_DLL'⎕NA'',getdllname,'|glEndConditionalRender'
   :EndIf
   {}glEndConditionalRender_DLL
 ∇
@@ -9844,161 +9852,161 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetVertexAttribIiv (index pname)
   :If 0=⎕NC'glGetVertexAttribIiv_DLL'
-      'glGetVertexAttribIiv_DLL'⎕NA'opengl32|glGetVertexAttribIiv U4 U4 >I4[1]'
+      'glGetVertexAttribIiv_DLL'⎕NA'',getdllname,'|glGetVertexAttribIiv U4 U4 >I4[1]'
   :EndIf
   r←glGetVertexAttribIiv_DLL index pname 1
 ∇
 
 ∇ r←glGetVertexAttribIuiv (index pname)
   :If 0=⎕NC'glGetVertexAttribIuiv_DLL'
-      'glGetVertexAttribIuiv_DLL'⎕NA'opengl32|glGetVertexAttribIuiv U4 U4 >U4[1]'
+      'glGetVertexAttribIuiv_DLL'⎕NA'',getdllname,'|glGetVertexAttribIuiv U4 U4 >U4[1]'
   :EndIf
   r←glGetVertexAttribIuiv_DLL index pname 1
 ∇
 
 ∇ glVertexAttribI1i (index x)
   :If 0=⎕NC'glVertexAttribI1i_DLL'
-      'glVertexAttribI1i_DLL'⎕NA'opengl32|glVertexAttribI1i U4 I4'
+      'glVertexAttribI1i_DLL'⎕NA'',getdllname,'|glVertexAttribI1i U4 I4'
   :EndIf
   {}glVertexAttribI1i_DLL index x
 ∇
 
 ∇ glVertexAttribI2i (index x y)
   :If 0=⎕NC'glVertexAttribI2i_DLL'
-      'glVertexAttribI2i_DLL'⎕NA'opengl32|glVertexAttribI2i U4 I4 I4'
+      'glVertexAttribI2i_DLL'⎕NA'',getdllname,'|glVertexAttribI2i U4 I4 I4'
   :EndIf
   {}glVertexAttribI2i_DLL index x y
 ∇
 
 ∇ glVertexAttribI3i (index x y z)
   :If 0=⎕NC'glVertexAttribI3i_DLL'
-      'glVertexAttribI3i_DLL'⎕NA'opengl32|glVertexAttribI3i U4 I4 I4 I4'
+      'glVertexAttribI3i_DLL'⎕NA'',getdllname,'|glVertexAttribI3i U4 I4 I4 I4'
   :EndIf
   {}glVertexAttribI3i_DLL index x y z
 ∇
 
 ∇ glVertexAttribI4i (index x y z w)
   :If 0=⎕NC'glVertexAttribI4i_DLL'
-      'glVertexAttribI4i_DLL'⎕NA'opengl32|glVertexAttribI4i U4 I4 I4 I4 I4'
+      'glVertexAttribI4i_DLL'⎕NA'',getdllname,'|glVertexAttribI4i U4 I4 I4 I4 I4'
   :EndIf
   {}glVertexAttribI4i_DLL index x y z w
 ∇
 
 ∇ glVertexAttribI1ui (index x)
   :If 0=⎕NC'glVertexAttribI1ui_DLL'
-      'glVertexAttribI1ui_DLL'⎕NA'opengl32|glVertexAttribI1ui U4 U4'
+      'glVertexAttribI1ui_DLL'⎕NA'',getdllname,'|glVertexAttribI1ui U4 U4'
   :EndIf
   {}glVertexAttribI1ui_DLL index x
 ∇
 
 ∇ glVertexAttribI2ui (index x y)
   :If 0=⎕NC'glVertexAttribI2ui_DLL'
-      'glVertexAttribI2ui_DLL'⎕NA'opengl32|glVertexAttribI2ui U4 U4 U4'
+      'glVertexAttribI2ui_DLL'⎕NA'',getdllname,'|glVertexAttribI2ui U4 U4 U4'
   :EndIf
   {}glVertexAttribI2ui_DLL index x y
 ∇
 
 ∇ glVertexAttribI3ui (index x y z)
   :If 0=⎕NC'glVertexAttribI3ui_DLL'
-      'glVertexAttribI3ui_DLL'⎕NA'opengl32|glVertexAttribI3ui U4 U4 U4 U4'
+      'glVertexAttribI3ui_DLL'⎕NA'',getdllname,'|glVertexAttribI3ui U4 U4 U4 U4'
   :EndIf
   {}glVertexAttribI3ui_DLL index x y z
 ∇
 
 ∇ glVertexAttribI4ui (index x y z w)
   :If 0=⎕NC'glVertexAttribI4ui_DLL'
-      'glVertexAttribI4ui_DLL'⎕NA'opengl32|glVertexAttribI4ui U4 U4 U4 U4 U4'
+      'glVertexAttribI4ui_DLL'⎕NA'',getdllname,'|glVertexAttribI4ui U4 U4 U4 U4 U4'
   :EndIf
   {}glVertexAttribI4ui_DLL index x y z w
 ∇
 
 ∇ glVertexAttribI1iv (index v)
   :If 0=⎕NC'glVertexAttribI1iv_DLL'
-      'glVertexAttribI1iv_DLL'⎕NA'opengl32|glVertexAttribI1iv U4 <I4[1]'
+      'glVertexAttribI1iv_DLL'⎕NA'',getdllname,'|glVertexAttribI1iv U4 <I4[1]'
   :EndIf
   {}glVertexAttribI1iv_DLL index v
 ∇
 
 ∇ glVertexAttribI2iv (index v)
   :If 0=⎕NC'glVertexAttribI2iv_DLL'
-      'glVertexAttribI2iv_DLL'⎕NA'opengl32|glVertexAttribI2iv U4 <I4[2]'
+      'glVertexAttribI2iv_DLL'⎕NA'',getdllname,'|glVertexAttribI2iv U4 <I4[2]'
   :EndIf
   {}glVertexAttribI2iv_DLL index v
 ∇
 
 ∇ glVertexAttribI3iv (index v)
   :If 0=⎕NC'glVertexAttribI3iv_DLL'
-      'glVertexAttribI3iv_DLL'⎕NA'opengl32|glVertexAttribI3iv U4 <I4[3]'
+      'glVertexAttribI3iv_DLL'⎕NA'',getdllname,'|glVertexAttribI3iv U4 <I4[3]'
   :EndIf
   {}glVertexAttribI3iv_DLL index v
 ∇
 
 ∇ glVertexAttribI4iv (index v)
   :If 0=⎕NC'glVertexAttribI4iv_DLL'
-      'glVertexAttribI4iv_DLL'⎕NA'opengl32|glVertexAttribI4iv U4 <I4[4]'
+      'glVertexAttribI4iv_DLL'⎕NA'',getdllname,'|glVertexAttribI4iv U4 <I4[4]'
   :EndIf
   {}glVertexAttribI4iv_DLL index v
 ∇
 
 ∇ glVertexAttribI1uiv (index v)
   :If 0=⎕NC'glVertexAttribI1uiv_DLL'
-      'glVertexAttribI1uiv_DLL'⎕NA'opengl32|glVertexAttribI1uiv U4 <U4[1]'
+      'glVertexAttribI1uiv_DLL'⎕NA'',getdllname,'|glVertexAttribI1uiv U4 <U4[1]'
   :EndIf
   {}glVertexAttribI1uiv_DLL index v
 ∇
 
 ∇ glVertexAttribI2uiv (index v)
   :If 0=⎕NC'glVertexAttribI2uiv_DLL'
-      'glVertexAttribI2uiv_DLL'⎕NA'opengl32|glVertexAttribI2uiv U4 <U4[2]'
+      'glVertexAttribI2uiv_DLL'⎕NA'',getdllname,'|glVertexAttribI2uiv U4 <U4[2]'
   :EndIf
   {}glVertexAttribI2uiv_DLL index v
 ∇
 
 ∇ glVertexAttribI3uiv (index v)
   :If 0=⎕NC'glVertexAttribI3uiv_DLL'
-      'glVertexAttribI3uiv_DLL'⎕NA'opengl32|glVertexAttribI3uiv U4 <U4[3]'
+      'glVertexAttribI3uiv_DLL'⎕NA'',getdllname,'|glVertexAttribI3uiv U4 <U4[3]'
   :EndIf
   {}glVertexAttribI3uiv_DLL index v
 ∇
 
 ∇ glVertexAttribI4uiv (index v)
   :If 0=⎕NC'glVertexAttribI4uiv_DLL'
-      'glVertexAttribI4uiv_DLL'⎕NA'opengl32|glVertexAttribI4uiv U4 <U4[4]'
+      'glVertexAttribI4uiv_DLL'⎕NA'',getdllname,'|glVertexAttribI4uiv U4 <U4[4]'
   :EndIf
   {}glVertexAttribI4uiv_DLL index v
 ∇
 
 ∇ glVertexAttribI4bv (index v)
   :If 0=⎕NC'glVertexAttribI4bv_DLL'
-      'glVertexAttribI4bv_DLL'⎕NA'opengl32|glVertexAttribI4bv U4 <I1[4]'
+      'glVertexAttribI4bv_DLL'⎕NA'',getdllname,'|glVertexAttribI4bv U4 <I1[4]'
   :EndIf
   {}glVertexAttribI4bv_DLL index v
 ∇
 
 ∇ glVertexAttribI4sv (index v)
   :If 0=⎕NC'glVertexAttribI4sv_DLL'
-      'glVertexAttribI4sv_DLL'⎕NA'opengl32|glVertexAttribI4sv U4 <I2[4]'
+      'glVertexAttribI4sv_DLL'⎕NA'',getdllname,'|glVertexAttribI4sv U4 <I2[4]'
   :EndIf
   {}glVertexAttribI4sv_DLL index v
 ∇
 
 ∇ glVertexAttribI4ubv (index v)
   :If 0=⎕NC'glVertexAttribI4ubv_DLL'
-      'glVertexAttribI4ubv_DLL'⎕NA'opengl32|glVertexAttribI4ubv U4 <U1[4]'
+      'glVertexAttribI4ubv_DLL'⎕NA'',getdllname,'|glVertexAttribI4ubv U4 <U1[4]'
   :EndIf
   {}glVertexAttribI4ubv_DLL index v
 ∇
 
 ∇ glVertexAttribI4usv (index v)
   :If 0=⎕NC'glVertexAttribI4usv_DLL'
-      'glVertexAttribI4usv_DLL'⎕NA'opengl32|glVertexAttribI4usv U4 <U2[4]'
+      'glVertexAttribI4usv_DLL'⎕NA'',getdllname,'|glVertexAttribI4usv U4 <U2[4]'
   :EndIf
   {}glVertexAttribI4usv_DLL index v
 ∇
 
 ∇ r←glGetUniformuiv (program location params)
   :If 0=⎕NC'glGetUniformuiv_DLL'
-      'glGetUniformuiv_DLL'⎕NA'opengl32|glGetUniformuiv U4 I4 >U4[]'
+      'glGetUniformuiv_DLL'⎕NA'',getdllname,'|glGetUniformuiv U4 I4 >U4[]'
   :EndIf
   r←glGetUniformuiv_DLL program location params
 ∇
@@ -10019,126 +10027,126 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUniform1ui (location v0)
   :If 0=⎕NC'glUniform1ui_DLL'
-      'glUniform1ui_DLL'⎕NA'opengl32|glUniform1ui I4 U4'
+      'glUniform1ui_DLL'⎕NA'',getdllname,'|glUniform1ui I4 U4'
   :EndIf
   {}glUniform1ui_DLL location v0
 ∇
 
 ∇ glUniform2ui (location v0 v1)
   :If 0=⎕NC'glUniform2ui_DLL'
-      'glUniform2ui_DLL'⎕NA'opengl32|glUniform2ui I4 U4 U4'
+      'glUniform2ui_DLL'⎕NA'',getdllname,'|glUniform2ui I4 U4 U4'
   :EndIf
   {}glUniform2ui_DLL location v0 v1
 ∇
 
 ∇ glUniform3ui (location v0 v1 v2)
   :If 0=⎕NC'glUniform3ui_DLL'
-      'glUniform3ui_DLL'⎕NA'opengl32|glUniform3ui I4 U4 U4 U4'
+      'glUniform3ui_DLL'⎕NA'',getdllname,'|glUniform3ui I4 U4 U4 U4'
   :EndIf
   {}glUniform3ui_DLL location v0 v1 v2
 ∇
 
 ∇ glUniform4ui (location v0 v1 v2 v3)
   :If 0=⎕NC'glUniform4ui_DLL'
-      'glUniform4ui_DLL'⎕NA'opengl32|glUniform4ui I4 U4 U4 U4 U4'
+      'glUniform4ui_DLL'⎕NA'',getdllname,'|glUniform4ui I4 U4 U4 U4 U4'
   :EndIf
   {}glUniform4ui_DLL location v0 v1 v2 v3
 ∇
 
 ∇ glUniform1uiv (location count value)
   :If 0=⎕NC'glUniform1uiv_DLL'
-      'glUniform1uiv_DLL'⎕NA'opengl32|glUniform1uiv I4 I4 <U4[]'
+      'glUniform1uiv_DLL'⎕NA'',getdllname,'|glUniform1uiv I4 I4 <U4[]'
   :EndIf
   {}glUniform1uiv_DLL location count value
 ∇
 
 ∇ glUniform2uiv (location count value)
   :If 0=⎕NC'glUniform2uiv_DLL'
-      'glUniform2uiv_DLL'⎕NA'opengl32|glUniform2uiv I4 I4 <U4[]'
+      'glUniform2uiv_DLL'⎕NA'',getdllname,'|glUniform2uiv I4 I4 <U4[]'
   :EndIf
   {}glUniform2uiv_DLL location count value
 ∇
 
 ∇ glUniform3uiv (location count value)
   :If 0=⎕NC'glUniform3uiv_DLL'
-      'glUniform3uiv_DLL'⎕NA'opengl32|glUniform3uiv I4 I4 <U4[]'
+      'glUniform3uiv_DLL'⎕NA'',getdllname,'|glUniform3uiv I4 I4 <U4[]'
   :EndIf
   {}glUniform3uiv_DLL location count value
 ∇
 
 ∇ glUniform4uiv (location count value)
   :If 0=⎕NC'glUniform4uiv_DLL'
-      'glUniform4uiv_DLL'⎕NA'opengl32|glUniform4uiv I4 I4 <U4[]'
+      'glUniform4uiv_DLL'⎕NA'',getdllname,'|glUniform4uiv I4 I4 <U4[]'
   :EndIf
   {}glUniform4uiv_DLL location count value
 ∇
 
 ∇ glTexParameterIiv (target pname params)
   :If 0=⎕NC'glTexParameterIiv_DLL'
-      'glTexParameterIiv_DLL'⎕NA'opengl32|glTexParameterIiv U4 U4 <I4[]'
+      'glTexParameterIiv_DLL'⎕NA'',getdllname,'|glTexParameterIiv U4 U4 <I4[]'
   :EndIf
   {}glTexParameterIiv_DLL target pname params
 ∇
 
 ∇ glTexParameterIuiv (target pname params)
   :If 0=⎕NC'glTexParameterIuiv_DLL'
-      'glTexParameterIuiv_DLL'⎕NA'opengl32|glTexParameterIuiv U4 U4 <U4[]'
+      'glTexParameterIuiv_DLL'⎕NA'',getdllname,'|glTexParameterIuiv U4 U4 <U4[]'
   :EndIf
   {}glTexParameterIuiv_DLL target pname params
 ∇
 
 ∇ r←glGetTexParameterIiv (target pname params)
   :If 0=⎕NC'glGetTexParameterIiv_DLL'
-      'glGetTexParameterIiv_DLL'⎕NA'opengl32|glGetTexParameterIiv U4 U4 >I4[]'
+      'glGetTexParameterIiv_DLL'⎕NA'',getdllname,'|glGetTexParameterIiv U4 U4 >I4[]'
   :EndIf
   r←glGetTexParameterIiv_DLL target pname params
 ∇
 
 ∇ r←glGetTexParameterIuiv (target pname params)
   :If 0=⎕NC'glGetTexParameterIuiv_DLL'
-      'glGetTexParameterIuiv_DLL'⎕NA'opengl32|glGetTexParameterIuiv U4 U4 >U4[]'
+      'glGetTexParameterIuiv_DLL'⎕NA'',getdllname,'|glGetTexParameterIuiv U4 U4 >U4[]'
   :EndIf
   r←glGetTexParameterIuiv_DLL target pname params
 ∇
 
 ∇ glClearBufferiv (buffer drawbuffer value)
   :If 0=⎕NC'glClearBufferiv_DLL'
-      'glClearBufferiv_DLL'⎕NA'opengl32|glClearBufferiv U4 I4 <I4[]'
+      'glClearBufferiv_DLL'⎕NA'',getdllname,'|glClearBufferiv U4 I4 <I4[]'
   :EndIf
   {}glClearBufferiv_DLL buffer drawbuffer value
 ∇
 
 ∇ glClearBufferuiv (buffer drawbuffer value)
   :If 0=⎕NC'glClearBufferuiv_DLL'
-      'glClearBufferuiv_DLL'⎕NA'opengl32|glClearBufferuiv U4 I4 <U4[]'
+      'glClearBufferuiv_DLL'⎕NA'',getdllname,'|glClearBufferuiv U4 I4 <U4[]'
   :EndIf
   {}glClearBufferuiv_DLL buffer drawbuffer value
 ∇
 
 ∇ glClearBufferfv (buffer drawbuffer value)
   :If 0=⎕NC'glClearBufferfv_DLL'
-      'glClearBufferfv_DLL'⎕NA'opengl32|glClearBufferfv U4 I4 <F4[]'
+      'glClearBufferfv_DLL'⎕NA'',getdllname,'|glClearBufferfv U4 I4 <F4[]'
   :EndIf
   {}glClearBufferfv_DLL buffer drawbuffer value
 ∇
 
 ∇ glClearBufferfi (buffer drawbuffer depth stencil)
   :If 0=⎕NC'glClearBufferfi_DLL'
-      'glClearBufferfi_DLL'⎕NA'opengl32|glClearBufferfi U4 I4 F4 I4'
+      'glClearBufferfi_DLL'⎕NA'',getdllname,'|glClearBufferfi U4 I4 F4 I4'
   :EndIf
   {}glClearBufferfi_DLL buffer drawbuffer depth stencil
 ∇
 
 ∇ r←glGetStringi (name index)
   :If 0=⎕NC'glGetStringi_DLL'
-      'glGetStringi_DLL'⎕NA'P opengl32|glGetStringi U4 U4'
+      'glGetStringi_DLL'⎕NA'P ',getdllname,'|glGetStringi U4 U4'
   :EndIf
   r←ptostring glGetStringi_DLL name index
 ∇
 
 ∇ glDrawArraysInstanced (mode first count instancecount)
   :If 0=⎕NC'glDrawArraysInstanced_DLL'
-      'glDrawArraysInstanced_DLL'⎕NA'opengl32|glDrawArraysInstanced U4 I4 I4 I4'
+      'glDrawArraysInstanced_DLL'⎕NA'',getdllname,'|glDrawArraysInstanced U4 I4 I4 I4'
   :EndIf
   {}glDrawArraysInstanced_DLL mode first count instancecount
 ∇
@@ -10152,350 +10160,350 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexBuffer (target internalformat buffer)
   :If 0=⎕NC'glTexBuffer_DLL'
-      'glTexBuffer_DLL'⎕NA'opengl32|glTexBuffer U4 U4 U4'
+      'glTexBuffer_DLL'⎕NA'',getdllname,'|glTexBuffer U4 U4 U4'
   :EndIf
   {}glTexBuffer_DLL target internalformat buffer
 ∇
 
 ∇ glPrimitiveRestartIndex index
   :If 0=⎕NC'glPrimitiveRestartIndex_DLL'
-      'glPrimitiveRestartIndex_DLL'⎕NA'opengl32|glPrimitiveRestartIndex U4'
+      'glPrimitiveRestartIndex_DLL'⎕NA'',getdllname,'|glPrimitiveRestartIndex U4'
   :EndIf
   {}glPrimitiveRestartIndex_DLL index
 ∇
 
 ∇ r←glGetInteger64i_v (target index data)
   :If 0=⎕NC'glGetInteger64i_v_DLL'
-      'glGetInteger64i_v_DLL'⎕NA'opengl32|glGetInteger64i_v U4 U4 >I8[]'
+      'glGetInteger64i_v_DLL'⎕NA'',getdllname,'|glGetInteger64i_v U4 U4 >I8[]'
   :EndIf
   r←glGetInteger64i_v_DLL target index data
 ∇
 
 ∇ r←glGetBufferParameteri64v (target pname params)
   :If 0=⎕NC'glGetBufferParameteri64v_DLL'
-      'glGetBufferParameteri64v_DLL'⎕NA'opengl32|glGetBufferParameteri64v U4 U4 >I8[]'
+      'glGetBufferParameteri64v_DLL'⎕NA'',getdllname,'|glGetBufferParameteri64v U4 U4 >I8[]'
   :EndIf
   r←glGetBufferParameteri64v_DLL target pname params
 ∇
 
 ∇ glFramebufferTexture (target attachment texture level)
   :If 0=⎕NC'glFramebufferTexture_DLL'
-      'glFramebufferTexture_DLL'⎕NA'opengl32|glFramebufferTexture U4 U4 U4 I4'
+      'glFramebufferTexture_DLL'⎕NA'',getdllname,'|glFramebufferTexture U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTexture_DLL target attachment texture level
 ∇
 
 ∇ glVertexAttribDivisor (index divisor)
   :If 0=⎕NC'glVertexAttribDivisor_DLL'
-      'glVertexAttribDivisor_DLL'⎕NA'opengl32|glVertexAttribDivisor U4 U4'
+      'glVertexAttribDivisor_DLL'⎕NA'',getdllname,'|glVertexAttribDivisor U4 U4'
   :EndIf
   {}glVertexAttribDivisor_DLL index divisor
 ∇
 
 ∇ glMinSampleShading value
   :If 0=⎕NC'glMinSampleShading_DLL'
-      'glMinSampleShading_DLL'⎕NA'opengl32|glMinSampleShading F4'
+      'glMinSampleShading_DLL'⎕NA'',getdllname,'|glMinSampleShading F4'
   :EndIf
   {}glMinSampleShading_DLL value
 ∇
 
 ∇ glBlendEquationi (buf mode)
   :If 0=⎕NC'glBlendEquationi_DLL'
-      'glBlendEquationi_DLL'⎕NA'opengl32|glBlendEquationi U4 U4'
+      'glBlendEquationi_DLL'⎕NA'',getdllname,'|glBlendEquationi U4 U4'
   :EndIf
   {}glBlendEquationi_DLL buf mode
 ∇
 
 ∇ glBlendEquationSeparatei (buf modeRGB modeAlpha)
   :If 0=⎕NC'glBlendEquationSeparatei_DLL'
-      'glBlendEquationSeparatei_DLL'⎕NA'opengl32|glBlendEquationSeparatei U4 U4 U4'
+      'glBlendEquationSeparatei_DLL'⎕NA'',getdllname,'|glBlendEquationSeparatei U4 U4 U4'
   :EndIf
   {}glBlendEquationSeparatei_DLL buf modeRGB modeAlpha
 ∇
 
 ∇ glBlendFunci (buf src dst)
   :If 0=⎕NC'glBlendFunci_DLL'
-      'glBlendFunci_DLL'⎕NA'opengl32|glBlendFunci U4 U4 U4'
+      'glBlendFunci_DLL'⎕NA'',getdllname,'|glBlendFunci U4 U4 U4'
   :EndIf
   {}glBlendFunci_DLL buf src dst
 ∇
 
 ∇ glBlendFuncSeparatei (buf srcRGB dstRGB srcAlpha dstAlpha)
   :If 0=⎕NC'glBlendFuncSeparatei_DLL'
-      'glBlendFuncSeparatei_DLL'⎕NA'opengl32|glBlendFuncSeparatei U4 U4 U4 U4 U4'
+      'glBlendFuncSeparatei_DLL'⎕NA'',getdllname,'|glBlendFuncSeparatei U4 U4 U4 U4 U4'
   :EndIf
   {}glBlendFuncSeparatei_DLL buf srcRGB dstRGB srcAlpha dstAlpha
 ∇
 
 ∇ glActiveTextureARB texture
   :If 0=⎕NC'glActiveTextureARB_DLL'
-      'glActiveTextureARB_DLL'⎕NA'opengl32|glActiveTextureARB U4'
+      'glActiveTextureARB_DLL'⎕NA'',getdllname,'|glActiveTextureARB U4'
   :EndIf
   {}glActiveTextureARB_DLL texture
 ∇
 
 ∇ glClientActiveTextureARB texture
   :If 0=⎕NC'glClientActiveTextureARB_DLL'
-      'glClientActiveTextureARB_DLL'⎕NA'opengl32|glClientActiveTextureARB U4'
+      'glClientActiveTextureARB_DLL'⎕NA'',getdllname,'|glClientActiveTextureARB U4'
   :EndIf
   {}glClientActiveTextureARB_DLL texture
 ∇
 
 ∇ glMultiTexCoord1dARB (target s)
   :If 0=⎕NC'glMultiTexCoord1dARB_DLL'
-      'glMultiTexCoord1dARB_DLL'⎕NA'opengl32|glMultiTexCoord1dARB U4 F8'
+      'glMultiTexCoord1dARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1dARB U4 F8'
   :EndIf
   {}glMultiTexCoord1dARB_DLL target s
 ∇
 
 ∇ glMultiTexCoord1dvARB (target v)
   :If 0=⎕NC'glMultiTexCoord1dvARB_DLL'
-      'glMultiTexCoord1dvARB_DLL'⎕NA'opengl32|glMultiTexCoord1dvARB U4 <F8[1]'
+      'glMultiTexCoord1dvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1dvARB U4 <F8[1]'
   :EndIf
   {}glMultiTexCoord1dvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord1fARB (target s)
   :If 0=⎕NC'glMultiTexCoord1fARB_DLL'
-      'glMultiTexCoord1fARB_DLL'⎕NA'opengl32|glMultiTexCoord1fARB U4 F4'
+      'glMultiTexCoord1fARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1fARB U4 F4'
   :EndIf
   {}glMultiTexCoord1fARB_DLL target s
 ∇
 
 ∇ glMultiTexCoord1fvARB (target v)
   :If 0=⎕NC'glMultiTexCoord1fvARB_DLL'
-      'glMultiTexCoord1fvARB_DLL'⎕NA'opengl32|glMultiTexCoord1fvARB U4 <F4[1]'
+      'glMultiTexCoord1fvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1fvARB U4 <F4[1]'
   :EndIf
   {}glMultiTexCoord1fvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord1iARB (target s)
   :If 0=⎕NC'glMultiTexCoord1iARB_DLL'
-      'glMultiTexCoord1iARB_DLL'⎕NA'opengl32|glMultiTexCoord1iARB U4 I4'
+      'glMultiTexCoord1iARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1iARB U4 I4'
   :EndIf
   {}glMultiTexCoord1iARB_DLL target s
 ∇
 
 ∇ glMultiTexCoord1ivARB (target v)
   :If 0=⎕NC'glMultiTexCoord1ivARB_DLL'
-      'glMultiTexCoord1ivARB_DLL'⎕NA'opengl32|glMultiTexCoord1ivARB U4 <I4[1]'
+      'glMultiTexCoord1ivARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1ivARB U4 <I4[1]'
   :EndIf
   {}glMultiTexCoord1ivARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord1sARB (target s)
   :If 0=⎕NC'glMultiTexCoord1sARB_DLL'
-      'glMultiTexCoord1sARB_DLL'⎕NA'opengl32|glMultiTexCoord1sARB U4 I2'
+      'glMultiTexCoord1sARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1sARB U4 I2'
   :EndIf
   {}glMultiTexCoord1sARB_DLL target s
 ∇
 
 ∇ glMultiTexCoord1svARB (target v)
   :If 0=⎕NC'glMultiTexCoord1svARB_DLL'
-      'glMultiTexCoord1svARB_DLL'⎕NA'opengl32|glMultiTexCoord1svARB U4 <I2[1]'
+      'glMultiTexCoord1svARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord1svARB U4 <I2[1]'
   :EndIf
   {}glMultiTexCoord1svARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord2dARB (target s t)
   :If 0=⎕NC'glMultiTexCoord2dARB_DLL'
-      'glMultiTexCoord2dARB_DLL'⎕NA'opengl32|glMultiTexCoord2dARB U4 F8 F8'
+      'glMultiTexCoord2dARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2dARB U4 F8 F8'
   :EndIf
   {}glMultiTexCoord2dARB_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2dvARB (target v)
   :If 0=⎕NC'glMultiTexCoord2dvARB_DLL'
-      'glMultiTexCoord2dvARB_DLL'⎕NA'opengl32|glMultiTexCoord2dvARB U4 <F8[2]'
+      'glMultiTexCoord2dvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2dvARB U4 <F8[2]'
   :EndIf
   {}glMultiTexCoord2dvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord2fARB (target s t)
   :If 0=⎕NC'glMultiTexCoord2fARB_DLL'
-      'glMultiTexCoord2fARB_DLL'⎕NA'opengl32|glMultiTexCoord2fARB U4 F4 F4'
+      'glMultiTexCoord2fARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2fARB U4 F4 F4'
   :EndIf
   {}glMultiTexCoord2fARB_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2fvARB (target v)
   :If 0=⎕NC'glMultiTexCoord2fvARB_DLL'
-      'glMultiTexCoord2fvARB_DLL'⎕NA'opengl32|glMultiTexCoord2fvARB U4 <F4[2]'
+      'glMultiTexCoord2fvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2fvARB U4 <F4[2]'
   :EndIf
   {}glMultiTexCoord2fvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord2iARB (target s t)
   :If 0=⎕NC'glMultiTexCoord2iARB_DLL'
-      'glMultiTexCoord2iARB_DLL'⎕NA'opengl32|glMultiTexCoord2iARB U4 I4 I4'
+      'glMultiTexCoord2iARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2iARB U4 I4 I4'
   :EndIf
   {}glMultiTexCoord2iARB_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2ivARB (target v)
   :If 0=⎕NC'glMultiTexCoord2ivARB_DLL'
-      'glMultiTexCoord2ivARB_DLL'⎕NA'opengl32|glMultiTexCoord2ivARB U4 <I4[2]'
+      'glMultiTexCoord2ivARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2ivARB U4 <I4[2]'
   :EndIf
   {}glMultiTexCoord2ivARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord2sARB (target s t)
   :If 0=⎕NC'glMultiTexCoord2sARB_DLL'
-      'glMultiTexCoord2sARB_DLL'⎕NA'opengl32|glMultiTexCoord2sARB U4 I2 I2'
+      'glMultiTexCoord2sARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2sARB U4 I2 I2'
   :EndIf
   {}glMultiTexCoord2sARB_DLL target s t
 ∇
 
 ∇ glMultiTexCoord2svARB (target v)
   :If 0=⎕NC'glMultiTexCoord2svARB_DLL'
-      'glMultiTexCoord2svARB_DLL'⎕NA'opengl32|glMultiTexCoord2svARB U4 <I2[2]'
+      'glMultiTexCoord2svARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord2svARB U4 <I2[2]'
   :EndIf
   {}glMultiTexCoord2svARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord3dARB (target s t r)
   :If 0=⎕NC'glMultiTexCoord3dARB_DLL'
-      'glMultiTexCoord3dARB_DLL'⎕NA'opengl32|glMultiTexCoord3dARB U4 F8 F8 F8'
+      'glMultiTexCoord3dARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3dARB U4 F8 F8 F8'
   :EndIf
   {}glMultiTexCoord3dARB_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3dvARB (target v)
   :If 0=⎕NC'glMultiTexCoord3dvARB_DLL'
-      'glMultiTexCoord3dvARB_DLL'⎕NA'opengl32|glMultiTexCoord3dvARB U4 <F8[3]'
+      'glMultiTexCoord3dvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3dvARB U4 <F8[3]'
   :EndIf
   {}glMultiTexCoord3dvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord3fARB (target s t r)
   :If 0=⎕NC'glMultiTexCoord3fARB_DLL'
-      'glMultiTexCoord3fARB_DLL'⎕NA'opengl32|glMultiTexCoord3fARB U4 F4 F4 F4'
+      'glMultiTexCoord3fARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3fARB U4 F4 F4 F4'
   :EndIf
   {}glMultiTexCoord3fARB_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3fvARB (target v)
   :If 0=⎕NC'glMultiTexCoord3fvARB_DLL'
-      'glMultiTexCoord3fvARB_DLL'⎕NA'opengl32|glMultiTexCoord3fvARB U4 <F4[3]'
+      'glMultiTexCoord3fvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3fvARB U4 <F4[3]'
   :EndIf
   {}glMultiTexCoord3fvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord3iARB (target s t r)
   :If 0=⎕NC'glMultiTexCoord3iARB_DLL'
-      'glMultiTexCoord3iARB_DLL'⎕NA'opengl32|glMultiTexCoord3iARB U4 I4 I4 I4'
+      'glMultiTexCoord3iARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3iARB U4 I4 I4 I4'
   :EndIf
   {}glMultiTexCoord3iARB_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3ivARB (target v)
   :If 0=⎕NC'glMultiTexCoord3ivARB_DLL'
-      'glMultiTexCoord3ivARB_DLL'⎕NA'opengl32|glMultiTexCoord3ivARB U4 <I4[3]'
+      'glMultiTexCoord3ivARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3ivARB U4 <I4[3]'
   :EndIf
   {}glMultiTexCoord3ivARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord3sARB (target s t r)
   :If 0=⎕NC'glMultiTexCoord3sARB_DLL'
-      'glMultiTexCoord3sARB_DLL'⎕NA'opengl32|glMultiTexCoord3sARB U4 I2 I2 I2'
+      'glMultiTexCoord3sARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3sARB U4 I2 I2 I2'
   :EndIf
   {}glMultiTexCoord3sARB_DLL target s t r
 ∇
 
 ∇ glMultiTexCoord3svARB (target v)
   :If 0=⎕NC'glMultiTexCoord3svARB_DLL'
-      'glMultiTexCoord3svARB_DLL'⎕NA'opengl32|glMultiTexCoord3svARB U4 <I2[3]'
+      'glMultiTexCoord3svARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord3svARB U4 <I2[3]'
   :EndIf
   {}glMultiTexCoord3svARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord4dARB (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4dARB_DLL'
-      'glMultiTexCoord4dARB_DLL'⎕NA'opengl32|glMultiTexCoord4dARB U4 F8 F8 F8 F8'
+      'glMultiTexCoord4dARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4dARB U4 F8 F8 F8 F8'
   :EndIf
   {}glMultiTexCoord4dARB_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4dvARB (target v)
   :If 0=⎕NC'glMultiTexCoord4dvARB_DLL'
-      'glMultiTexCoord4dvARB_DLL'⎕NA'opengl32|glMultiTexCoord4dvARB U4 <F8[4]'
+      'glMultiTexCoord4dvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4dvARB U4 <F8[4]'
   :EndIf
   {}glMultiTexCoord4dvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord4fARB (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4fARB_DLL'
-      'glMultiTexCoord4fARB_DLL'⎕NA'opengl32|glMultiTexCoord4fARB U4 F4 F4 F4 F4'
+      'glMultiTexCoord4fARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4fARB U4 F4 F4 F4 F4'
   :EndIf
   {}glMultiTexCoord4fARB_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4fvARB (target v)
   :If 0=⎕NC'glMultiTexCoord4fvARB_DLL'
-      'glMultiTexCoord4fvARB_DLL'⎕NA'opengl32|glMultiTexCoord4fvARB U4 <F4[4]'
+      'glMultiTexCoord4fvARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4fvARB U4 <F4[4]'
   :EndIf
   {}glMultiTexCoord4fvARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord4iARB (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4iARB_DLL'
-      'glMultiTexCoord4iARB_DLL'⎕NA'opengl32|glMultiTexCoord4iARB U4 I4 I4 I4 I4'
+      'glMultiTexCoord4iARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4iARB U4 I4 I4 I4 I4'
   :EndIf
   {}glMultiTexCoord4iARB_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4ivARB (target v)
   :If 0=⎕NC'glMultiTexCoord4ivARB_DLL'
-      'glMultiTexCoord4ivARB_DLL'⎕NA'opengl32|glMultiTexCoord4ivARB U4 <I4[4]'
+      'glMultiTexCoord4ivARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4ivARB U4 <I4[4]'
   :EndIf
   {}glMultiTexCoord4ivARB_DLL target v
 ∇
 
 ∇ glMultiTexCoord4sARB (target s t r q)
   :If 0=⎕NC'glMultiTexCoord4sARB_DLL'
-      'glMultiTexCoord4sARB_DLL'⎕NA'opengl32|glMultiTexCoord4sARB U4 I2 I2 I2 I2'
+      'glMultiTexCoord4sARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4sARB U4 I2 I2 I2 I2'
   :EndIf
   {}glMultiTexCoord4sARB_DLL target s t r q
 ∇
 
 ∇ glMultiTexCoord4svARB (target v)
   :If 0=⎕NC'glMultiTexCoord4svARB_DLL'
-      'glMultiTexCoord4svARB_DLL'⎕NA'opengl32|glMultiTexCoord4svARB U4 <I2[4]'
+      'glMultiTexCoord4svARB_DLL'⎕NA'',getdllname,'|glMultiTexCoord4svARB U4 <I2[4]'
   :EndIf
   {}glMultiTexCoord4svARB_DLL target v
 ∇
 
 ∇ glLoadTransposeMatrixfARB m
   :If 0=⎕NC'glLoadTransposeMatrixfARB_DLL'
-      'glLoadTransposeMatrixfARB_DLL'⎕NA'opengl32|glLoadTransposeMatrixfARB <F4[16]'
+      'glLoadTransposeMatrixfARB_DLL'⎕NA'',getdllname,'|glLoadTransposeMatrixfARB <F4[16]'
   :EndIf
   {}glLoadTransposeMatrixfARB_DLL m
 ∇
 
 ∇ glLoadTransposeMatrixdARB m
   :If 0=⎕NC'glLoadTransposeMatrixdARB_DLL'
-      'glLoadTransposeMatrixdARB_DLL'⎕NA'opengl32|glLoadTransposeMatrixdARB <F8[16]'
+      'glLoadTransposeMatrixdARB_DLL'⎕NA'',getdllname,'|glLoadTransposeMatrixdARB <F8[16]'
   :EndIf
   {}glLoadTransposeMatrixdARB_DLL m
 ∇
 
 ∇ glMultTransposeMatrixfARB m
   :If 0=⎕NC'glMultTransposeMatrixfARB_DLL'
-      'glMultTransposeMatrixfARB_DLL'⎕NA'opengl32|glMultTransposeMatrixfARB <F4[16]'
+      'glMultTransposeMatrixfARB_DLL'⎕NA'',getdllname,'|glMultTransposeMatrixfARB <F4[16]'
   :EndIf
   {}glMultTransposeMatrixfARB_DLL m
 ∇
 
 ∇ glMultTransposeMatrixdARB m
   :If 0=⎕NC'glMultTransposeMatrixdARB_DLL'
-      'glMultTransposeMatrixdARB_DLL'⎕NA'opengl32|glMultTransposeMatrixdARB <F8[16]'
+      'glMultTransposeMatrixdARB_DLL'⎕NA'',getdllname,'|glMultTransposeMatrixdARB <F8[16]'
   :EndIf
   {}glMultTransposeMatrixdARB_DLL m
 ∇
 
 ∇ glSampleCoverageARB (value invert)
   :If 0=⎕NC'glSampleCoverageARB_DLL'
-      'glSampleCoverageARB_DLL'⎕NA'opengl32|glSampleCoverageARB F4 U1'
+      'glSampleCoverageARB_DLL'⎕NA'',getdllname,'|glSampleCoverageARB F4 U1'
   :EndIf
   {}glSampleCoverageARB_DLL value invert
 ∇
@@ -10551,70 +10559,70 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glPointParameterfARB (pname param)
   :If 0=⎕NC'glPointParameterfARB_DLL'
-      'glPointParameterfARB_DLL'⎕NA'opengl32|glPointParameterfARB U4 F4'
+      'glPointParameterfARB_DLL'⎕NA'',getdllname,'|glPointParameterfARB U4 F4'
   :EndIf
   {}glPointParameterfARB_DLL pname param
 ∇
 
 ∇ glPointParameterfvARB (pname params)
   :If 0=⎕NC'glPointParameterfvARB_DLL'
-      'glPointParameterfvARB_DLL'⎕NA'opengl32|glPointParameterfvARB U4 <F4[]'
+      'glPointParameterfvARB_DLL'⎕NA'',getdllname,'|glPointParameterfvARB U4 <F4[]'
   :EndIf
   {}glPointParameterfvARB_DLL pname params
 ∇
 
 ∇ glWeightbvARB (size weights)
   :If 0=⎕NC'glWeightbvARB_DLL'
-      'glWeightbvARB_DLL'⎕NA'opengl32|glWeightbvARB I4 <I1[]'
+      'glWeightbvARB_DLL'⎕NA'',getdllname,'|glWeightbvARB I4 <I1[]'
   :EndIf
   {}glWeightbvARB_DLL size weights
 ∇
 
 ∇ glWeightsvARB (size weights)
   :If 0=⎕NC'glWeightsvARB_DLL'
-      'glWeightsvARB_DLL'⎕NA'opengl32|glWeightsvARB I4 <I2[]'
+      'glWeightsvARB_DLL'⎕NA'',getdllname,'|glWeightsvARB I4 <I2[]'
   :EndIf
   {}glWeightsvARB_DLL size weights
 ∇
 
 ∇ glWeightivARB (size weights)
   :If 0=⎕NC'glWeightivARB_DLL'
-      'glWeightivARB_DLL'⎕NA'opengl32|glWeightivARB I4 <I4[]'
+      'glWeightivARB_DLL'⎕NA'',getdllname,'|glWeightivARB I4 <I4[]'
   :EndIf
   {}glWeightivARB_DLL size weights
 ∇
 
 ∇ glWeightfvARB (size weights)
   :If 0=⎕NC'glWeightfvARB_DLL'
-      'glWeightfvARB_DLL'⎕NA'opengl32|glWeightfvARB I4 <F4[]'
+      'glWeightfvARB_DLL'⎕NA'',getdllname,'|glWeightfvARB I4 <F4[]'
   :EndIf
   {}glWeightfvARB_DLL size weights
 ∇
 
 ∇ glWeightdvARB (size weights)
   :If 0=⎕NC'glWeightdvARB_DLL'
-      'glWeightdvARB_DLL'⎕NA'opengl32|glWeightdvARB I4 <F8[]'
+      'glWeightdvARB_DLL'⎕NA'',getdllname,'|glWeightdvARB I4 <F8[]'
   :EndIf
   {}glWeightdvARB_DLL size weights
 ∇
 
 ∇ glWeightubvARB (size weights)
   :If 0=⎕NC'glWeightubvARB_DLL'
-      'glWeightubvARB_DLL'⎕NA'opengl32|glWeightubvARB I4 <U1[]'
+      'glWeightubvARB_DLL'⎕NA'',getdllname,'|glWeightubvARB I4 <U1[]'
   :EndIf
   {}glWeightubvARB_DLL size weights
 ∇
 
 ∇ glWeightusvARB (size weights)
   :If 0=⎕NC'glWeightusvARB_DLL'
-      'glWeightusvARB_DLL'⎕NA'opengl32|glWeightusvARB I4 <U2[]'
+      'glWeightusvARB_DLL'⎕NA'',getdllname,'|glWeightusvARB I4 <U2[]'
   :EndIf
   {}glWeightusvARB_DLL size weights
 ∇
 
 ∇ glWeightuivARB (size weights)
   :If 0=⎕NC'glWeightuivARB_DLL'
-      'glWeightuivARB_DLL'⎕NA'opengl32|glWeightuivARB I4 <U4[]'
+      'glWeightuivARB_DLL'⎕NA'',getdllname,'|glWeightuivARB I4 <U4[]'
   :EndIf
   {}glWeightuivARB_DLL size weights
 ∇
@@ -10628,35 +10636,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexBlendARB count
   :If 0=⎕NC'glVertexBlendARB_DLL'
-      'glVertexBlendARB_DLL'⎕NA'opengl32|glVertexBlendARB I4'
+      'glVertexBlendARB_DLL'⎕NA'',getdllname,'|glVertexBlendARB I4'
   :EndIf
   {}glVertexBlendARB_DLL count
 ∇
 
 ∇ glCurrentPaletteMatrixARB index
   :If 0=⎕NC'glCurrentPaletteMatrixARB_DLL'
-      'glCurrentPaletteMatrixARB_DLL'⎕NA'opengl32|glCurrentPaletteMatrixARB I4'
+      'glCurrentPaletteMatrixARB_DLL'⎕NA'',getdllname,'|glCurrentPaletteMatrixARB I4'
   :EndIf
   {}glCurrentPaletteMatrixARB_DLL index
 ∇
 
 ∇ glMatrixIndexubvARB (size indices)
   :If 0=⎕NC'glMatrixIndexubvARB_DLL'
-      'glMatrixIndexubvARB_DLL'⎕NA'opengl32|glMatrixIndexubvARB I4 <U1[]'
+      'glMatrixIndexubvARB_DLL'⎕NA'',getdllname,'|glMatrixIndexubvARB I4 <U1[]'
   :EndIf
   {}glMatrixIndexubvARB_DLL size indices
 ∇
 
 ∇ glMatrixIndexusvARB (size indices)
   :If 0=⎕NC'glMatrixIndexusvARB_DLL'
-      'glMatrixIndexusvARB_DLL'⎕NA'opengl32|glMatrixIndexusvARB I4 <U2[]'
+      'glMatrixIndexusvARB_DLL'⎕NA'',getdllname,'|glMatrixIndexusvARB I4 <U2[]'
   :EndIf
   {}glMatrixIndexusvARB_DLL size indices
 ∇
 
 ∇ glMatrixIndexuivARB (size indices)
   :If 0=⎕NC'glMatrixIndexuivARB_DLL'
-      'glMatrixIndexuivARB_DLL'⎕NA'opengl32|glMatrixIndexuivARB I4 <U4[]'
+      'glMatrixIndexuivARB_DLL'⎕NA'',getdllname,'|glMatrixIndexuivARB I4 <U4[]'
   :EndIf
   {}glMatrixIndexuivARB_DLL size indices
 ∇
@@ -10670,364 +10678,364 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glWindowPos2dARB (x y)
   :If 0=⎕NC'glWindowPos2dARB_DLL'
-      'glWindowPos2dARB_DLL'⎕NA'opengl32|glWindowPos2dARB F8 F8'
+      'glWindowPos2dARB_DLL'⎕NA'',getdllname,'|glWindowPos2dARB F8 F8'
   :EndIf
   {}glWindowPos2dARB_DLL x y
 ∇
 
 ∇ glWindowPos2dvARB v
   :If 0=⎕NC'glWindowPos2dvARB_DLL'
-      'glWindowPos2dvARB_DLL'⎕NA'opengl32|glWindowPos2dvARB <F8[2]'
+      'glWindowPos2dvARB_DLL'⎕NA'',getdllname,'|glWindowPos2dvARB <F8[2]'
   :EndIf
   {}glWindowPos2dvARB_DLL v
 ∇
 
 ∇ glWindowPos2fARB (x y)
   :If 0=⎕NC'glWindowPos2fARB_DLL'
-      'glWindowPos2fARB_DLL'⎕NA'opengl32|glWindowPos2fARB F4 F4'
+      'glWindowPos2fARB_DLL'⎕NA'',getdllname,'|glWindowPos2fARB F4 F4'
   :EndIf
   {}glWindowPos2fARB_DLL x y
 ∇
 
 ∇ glWindowPos2fvARB v
   :If 0=⎕NC'glWindowPos2fvARB_DLL'
-      'glWindowPos2fvARB_DLL'⎕NA'opengl32|glWindowPos2fvARB <F4[2]'
+      'glWindowPos2fvARB_DLL'⎕NA'',getdllname,'|glWindowPos2fvARB <F4[2]'
   :EndIf
   {}glWindowPos2fvARB_DLL v
 ∇
 
 ∇ glWindowPos2iARB (x y)
   :If 0=⎕NC'glWindowPos2iARB_DLL'
-      'glWindowPos2iARB_DLL'⎕NA'opengl32|glWindowPos2iARB I4 I4'
+      'glWindowPos2iARB_DLL'⎕NA'',getdllname,'|glWindowPos2iARB I4 I4'
   :EndIf
   {}glWindowPos2iARB_DLL x y
 ∇
 
 ∇ glWindowPos2ivARB v
   :If 0=⎕NC'glWindowPos2ivARB_DLL'
-      'glWindowPos2ivARB_DLL'⎕NA'opengl32|glWindowPos2ivARB <I4[2]'
+      'glWindowPos2ivARB_DLL'⎕NA'',getdllname,'|glWindowPos2ivARB <I4[2]'
   :EndIf
   {}glWindowPos2ivARB_DLL v
 ∇
 
 ∇ glWindowPos2sARB (x y)
   :If 0=⎕NC'glWindowPos2sARB_DLL'
-      'glWindowPos2sARB_DLL'⎕NA'opengl32|glWindowPos2sARB I2 I2'
+      'glWindowPos2sARB_DLL'⎕NA'',getdllname,'|glWindowPos2sARB I2 I2'
   :EndIf
   {}glWindowPos2sARB_DLL x y
 ∇
 
 ∇ glWindowPos2svARB v
   :If 0=⎕NC'glWindowPos2svARB_DLL'
-      'glWindowPos2svARB_DLL'⎕NA'opengl32|glWindowPos2svARB <I2[2]'
+      'glWindowPos2svARB_DLL'⎕NA'',getdllname,'|glWindowPos2svARB <I2[2]'
   :EndIf
   {}glWindowPos2svARB_DLL v
 ∇
 
 ∇ glWindowPos3dARB (x y z)
   :If 0=⎕NC'glWindowPos3dARB_DLL'
-      'glWindowPos3dARB_DLL'⎕NA'opengl32|glWindowPos3dARB F8 F8 F8'
+      'glWindowPos3dARB_DLL'⎕NA'',getdllname,'|glWindowPos3dARB F8 F8 F8'
   :EndIf
   {}glWindowPos3dARB_DLL x y z
 ∇
 
 ∇ glWindowPos3dvARB v
   :If 0=⎕NC'glWindowPos3dvARB_DLL'
-      'glWindowPos3dvARB_DLL'⎕NA'opengl32|glWindowPos3dvARB <F8[3]'
+      'glWindowPos3dvARB_DLL'⎕NA'',getdllname,'|glWindowPos3dvARB <F8[3]'
   :EndIf
   {}glWindowPos3dvARB_DLL v
 ∇
 
 ∇ glWindowPos3fARB (x y z)
   :If 0=⎕NC'glWindowPos3fARB_DLL'
-      'glWindowPos3fARB_DLL'⎕NA'opengl32|glWindowPos3fARB F4 F4 F4'
+      'glWindowPos3fARB_DLL'⎕NA'',getdllname,'|glWindowPos3fARB F4 F4 F4'
   :EndIf
   {}glWindowPos3fARB_DLL x y z
 ∇
 
 ∇ glWindowPos3fvARB v
   :If 0=⎕NC'glWindowPos3fvARB_DLL'
-      'glWindowPos3fvARB_DLL'⎕NA'opengl32|glWindowPos3fvARB <F4[3]'
+      'glWindowPos3fvARB_DLL'⎕NA'',getdllname,'|glWindowPos3fvARB <F4[3]'
   :EndIf
   {}glWindowPos3fvARB_DLL v
 ∇
 
 ∇ glWindowPos3iARB (x y z)
   :If 0=⎕NC'glWindowPos3iARB_DLL'
-      'glWindowPos3iARB_DLL'⎕NA'opengl32|glWindowPos3iARB I4 I4 I4'
+      'glWindowPos3iARB_DLL'⎕NA'',getdllname,'|glWindowPos3iARB I4 I4 I4'
   :EndIf
   {}glWindowPos3iARB_DLL x y z
 ∇
 
 ∇ glWindowPos3ivARB v
   :If 0=⎕NC'glWindowPos3ivARB_DLL'
-      'glWindowPos3ivARB_DLL'⎕NA'opengl32|glWindowPos3ivARB <I4[3]'
+      'glWindowPos3ivARB_DLL'⎕NA'',getdllname,'|glWindowPos3ivARB <I4[3]'
   :EndIf
   {}glWindowPos3ivARB_DLL v
 ∇
 
 ∇ glWindowPos3sARB (x y z)
   :If 0=⎕NC'glWindowPos3sARB_DLL'
-      'glWindowPos3sARB_DLL'⎕NA'opengl32|glWindowPos3sARB I2 I2 I2'
+      'glWindowPos3sARB_DLL'⎕NA'',getdllname,'|glWindowPos3sARB I2 I2 I2'
   :EndIf
   {}glWindowPos3sARB_DLL x y z
 ∇
 
 ∇ glWindowPos3svARB v
   :If 0=⎕NC'glWindowPos3svARB_DLL'
-      'glWindowPos3svARB_DLL'⎕NA'opengl32|glWindowPos3svARB <I2[3]'
+      'glWindowPos3svARB_DLL'⎕NA'',getdllname,'|glWindowPos3svARB <I2[3]'
   :EndIf
   {}glWindowPos3svARB_DLL v
 ∇
 
 ∇ glVertexAttrib1dARB (index x)
   :If 0=⎕NC'glVertexAttrib1dARB_DLL'
-      'glVertexAttrib1dARB_DLL'⎕NA'opengl32|glVertexAttrib1dARB U4 F8'
+      'glVertexAttrib1dARB_DLL'⎕NA'',getdllname,'|glVertexAttrib1dARB U4 F8'
   :EndIf
   {}glVertexAttrib1dARB_DLL index x
 ∇
 
 ∇ glVertexAttrib1dvARB (index v)
   :If 0=⎕NC'glVertexAttrib1dvARB_DLL'
-      'glVertexAttrib1dvARB_DLL'⎕NA'opengl32|glVertexAttrib1dvARB U4 <F8[1]'
+      'glVertexAttrib1dvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib1dvARB U4 <F8[1]'
   :EndIf
   {}glVertexAttrib1dvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib1fARB (index x)
   :If 0=⎕NC'glVertexAttrib1fARB_DLL'
-      'glVertexAttrib1fARB_DLL'⎕NA'opengl32|glVertexAttrib1fARB U4 F4'
+      'glVertexAttrib1fARB_DLL'⎕NA'',getdllname,'|glVertexAttrib1fARB U4 F4'
   :EndIf
   {}glVertexAttrib1fARB_DLL index x
 ∇
 
 ∇ glVertexAttrib1fvARB (index v)
   :If 0=⎕NC'glVertexAttrib1fvARB_DLL'
-      'glVertexAttrib1fvARB_DLL'⎕NA'opengl32|glVertexAttrib1fvARB U4 <F4[1]'
+      'glVertexAttrib1fvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib1fvARB U4 <F4[1]'
   :EndIf
   {}glVertexAttrib1fvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib1sARB (index x)
   :If 0=⎕NC'glVertexAttrib1sARB_DLL'
-      'glVertexAttrib1sARB_DLL'⎕NA'opengl32|glVertexAttrib1sARB U4 I2'
+      'glVertexAttrib1sARB_DLL'⎕NA'',getdllname,'|glVertexAttrib1sARB U4 I2'
   :EndIf
   {}glVertexAttrib1sARB_DLL index x
 ∇
 
 ∇ glVertexAttrib1svARB (index v)
   :If 0=⎕NC'glVertexAttrib1svARB_DLL'
-      'glVertexAttrib1svARB_DLL'⎕NA'opengl32|glVertexAttrib1svARB U4 <I2[1]'
+      'glVertexAttrib1svARB_DLL'⎕NA'',getdllname,'|glVertexAttrib1svARB U4 <I2[1]'
   :EndIf
   {}glVertexAttrib1svARB_DLL index v
 ∇
 
 ∇ glVertexAttrib2dARB (index x y)
   :If 0=⎕NC'glVertexAttrib2dARB_DLL'
-      'glVertexAttrib2dARB_DLL'⎕NA'opengl32|glVertexAttrib2dARB U4 F8 F8'
+      'glVertexAttrib2dARB_DLL'⎕NA'',getdllname,'|glVertexAttrib2dARB U4 F8 F8'
   :EndIf
   {}glVertexAttrib2dARB_DLL index x y
 ∇
 
 ∇ glVertexAttrib2dvARB (index v)
   :If 0=⎕NC'glVertexAttrib2dvARB_DLL'
-      'glVertexAttrib2dvARB_DLL'⎕NA'opengl32|glVertexAttrib2dvARB U4 <F8[2]'
+      'glVertexAttrib2dvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib2dvARB U4 <F8[2]'
   :EndIf
   {}glVertexAttrib2dvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib2fARB (index x y)
   :If 0=⎕NC'glVertexAttrib2fARB_DLL'
-      'glVertexAttrib2fARB_DLL'⎕NA'opengl32|glVertexAttrib2fARB U4 F4 F4'
+      'glVertexAttrib2fARB_DLL'⎕NA'',getdllname,'|glVertexAttrib2fARB U4 F4 F4'
   :EndIf
   {}glVertexAttrib2fARB_DLL index x y
 ∇
 
 ∇ glVertexAttrib2fvARB (index v)
   :If 0=⎕NC'glVertexAttrib2fvARB_DLL'
-      'glVertexAttrib2fvARB_DLL'⎕NA'opengl32|glVertexAttrib2fvARB U4 <F4[2]'
+      'glVertexAttrib2fvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib2fvARB U4 <F4[2]'
   :EndIf
   {}glVertexAttrib2fvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib2sARB (index x y)
   :If 0=⎕NC'glVertexAttrib2sARB_DLL'
-      'glVertexAttrib2sARB_DLL'⎕NA'opengl32|glVertexAttrib2sARB U4 I2 I2'
+      'glVertexAttrib2sARB_DLL'⎕NA'',getdllname,'|glVertexAttrib2sARB U4 I2 I2'
   :EndIf
   {}glVertexAttrib2sARB_DLL index x y
 ∇
 
 ∇ glVertexAttrib2svARB (index v)
   :If 0=⎕NC'glVertexAttrib2svARB_DLL'
-      'glVertexAttrib2svARB_DLL'⎕NA'opengl32|glVertexAttrib2svARB U4 <I2[2]'
+      'glVertexAttrib2svARB_DLL'⎕NA'',getdllname,'|glVertexAttrib2svARB U4 <I2[2]'
   :EndIf
   {}glVertexAttrib2svARB_DLL index v
 ∇
 
 ∇ glVertexAttrib3dARB (index x y z)
   :If 0=⎕NC'glVertexAttrib3dARB_DLL'
-      'glVertexAttrib3dARB_DLL'⎕NA'opengl32|glVertexAttrib3dARB U4 F8 F8 F8'
+      'glVertexAttrib3dARB_DLL'⎕NA'',getdllname,'|glVertexAttrib3dARB U4 F8 F8 F8'
   :EndIf
   {}glVertexAttrib3dARB_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3dvARB (index v)
   :If 0=⎕NC'glVertexAttrib3dvARB_DLL'
-      'glVertexAttrib3dvARB_DLL'⎕NA'opengl32|glVertexAttrib3dvARB U4 <F8[3]'
+      'glVertexAttrib3dvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib3dvARB U4 <F8[3]'
   :EndIf
   {}glVertexAttrib3dvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib3fARB (index x y z)
   :If 0=⎕NC'glVertexAttrib3fARB_DLL'
-      'glVertexAttrib3fARB_DLL'⎕NA'opengl32|glVertexAttrib3fARB U4 F4 F4 F4'
+      'glVertexAttrib3fARB_DLL'⎕NA'',getdllname,'|glVertexAttrib3fARB U4 F4 F4 F4'
   :EndIf
   {}glVertexAttrib3fARB_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3fvARB (index v)
   :If 0=⎕NC'glVertexAttrib3fvARB_DLL'
-      'glVertexAttrib3fvARB_DLL'⎕NA'opengl32|glVertexAttrib3fvARB U4 <F4[3]'
+      'glVertexAttrib3fvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib3fvARB U4 <F4[3]'
   :EndIf
   {}glVertexAttrib3fvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib3sARB (index x y z)
   :If 0=⎕NC'glVertexAttrib3sARB_DLL'
-      'glVertexAttrib3sARB_DLL'⎕NA'opengl32|glVertexAttrib3sARB U4 I2 I2 I2'
+      'glVertexAttrib3sARB_DLL'⎕NA'',getdllname,'|glVertexAttrib3sARB U4 I2 I2 I2'
   :EndIf
   {}glVertexAttrib3sARB_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3svARB (index v)
   :If 0=⎕NC'glVertexAttrib3svARB_DLL'
-      'glVertexAttrib3svARB_DLL'⎕NA'opengl32|glVertexAttrib3svARB U4 <I2[3]'
+      'glVertexAttrib3svARB_DLL'⎕NA'',getdllname,'|glVertexAttrib3svARB U4 <I2[3]'
   :EndIf
   {}glVertexAttrib3svARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4NbvARB (index v)
   :If 0=⎕NC'glVertexAttrib4NbvARB_DLL'
-      'glVertexAttrib4NbvARB_DLL'⎕NA'opengl32|glVertexAttrib4NbvARB U4 <I1[4]'
+      'glVertexAttrib4NbvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NbvARB U4 <I1[4]'
   :EndIf
   {}glVertexAttrib4NbvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4NivARB (index v)
   :If 0=⎕NC'glVertexAttrib4NivARB_DLL'
-      'glVertexAttrib4NivARB_DLL'⎕NA'opengl32|glVertexAttrib4NivARB U4 <I4[4]'
+      'glVertexAttrib4NivARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NivARB U4 <I4[4]'
   :EndIf
   {}glVertexAttrib4NivARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4NsvARB (index v)
   :If 0=⎕NC'glVertexAttrib4NsvARB_DLL'
-      'glVertexAttrib4NsvARB_DLL'⎕NA'opengl32|glVertexAttrib4NsvARB U4 <I2[4]'
+      'glVertexAttrib4NsvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NsvARB U4 <I2[4]'
   :EndIf
   {}glVertexAttrib4NsvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4NubARB (index x y z w)
   :If 0=⎕NC'glVertexAttrib4NubARB_DLL'
-      'glVertexAttrib4NubARB_DLL'⎕NA'opengl32|glVertexAttrib4NubARB U4 U1 U1 U1 U1'
+      'glVertexAttrib4NubARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NubARB U4 U1 U1 U1 U1'
   :EndIf
   {}glVertexAttrib4NubARB_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4NubvARB (index v)
   :If 0=⎕NC'glVertexAttrib4NubvARB_DLL'
-      'glVertexAttrib4NubvARB_DLL'⎕NA'opengl32|glVertexAttrib4NubvARB U4 <U1[4]'
+      'glVertexAttrib4NubvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NubvARB U4 <U1[4]'
   :EndIf
   {}glVertexAttrib4NubvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4NuivARB (index v)
   :If 0=⎕NC'glVertexAttrib4NuivARB_DLL'
-      'glVertexAttrib4NuivARB_DLL'⎕NA'opengl32|glVertexAttrib4NuivARB U4 <U4[4]'
+      'glVertexAttrib4NuivARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NuivARB U4 <U4[4]'
   :EndIf
   {}glVertexAttrib4NuivARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4NusvARB (index v)
   :If 0=⎕NC'glVertexAttrib4NusvARB_DLL'
-      'glVertexAttrib4NusvARB_DLL'⎕NA'opengl32|glVertexAttrib4NusvARB U4 <U2[4]'
+      'glVertexAttrib4NusvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4NusvARB U4 <U2[4]'
   :EndIf
   {}glVertexAttrib4NusvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4bvARB (index v)
   :If 0=⎕NC'glVertexAttrib4bvARB_DLL'
-      'glVertexAttrib4bvARB_DLL'⎕NA'opengl32|glVertexAttrib4bvARB U4 <I1[4]'
+      'glVertexAttrib4bvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4bvARB U4 <I1[4]'
   :EndIf
   {}glVertexAttrib4bvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4dARB (index x y z w)
   :If 0=⎕NC'glVertexAttrib4dARB_DLL'
-      'glVertexAttrib4dARB_DLL'⎕NA'opengl32|glVertexAttrib4dARB U4 F8 F8 F8 F8'
+      'glVertexAttrib4dARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4dARB U4 F8 F8 F8 F8'
   :EndIf
   {}glVertexAttrib4dARB_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4dvARB (index v)
   :If 0=⎕NC'glVertexAttrib4dvARB_DLL'
-      'glVertexAttrib4dvARB_DLL'⎕NA'opengl32|glVertexAttrib4dvARB U4 <F8[4]'
+      'glVertexAttrib4dvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4dvARB U4 <F8[4]'
   :EndIf
   {}glVertexAttrib4dvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4fARB (index x y z w)
   :If 0=⎕NC'glVertexAttrib4fARB_DLL'
-      'glVertexAttrib4fARB_DLL'⎕NA'opengl32|glVertexAttrib4fARB U4 F4 F4 F4 F4'
+      'glVertexAttrib4fARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4fARB U4 F4 F4 F4 F4'
   :EndIf
   {}glVertexAttrib4fARB_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4fvARB (index v)
   :If 0=⎕NC'glVertexAttrib4fvARB_DLL'
-      'glVertexAttrib4fvARB_DLL'⎕NA'opengl32|glVertexAttrib4fvARB U4 <F4[4]'
+      'glVertexAttrib4fvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4fvARB U4 <F4[4]'
   :EndIf
   {}glVertexAttrib4fvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4ivARB (index v)
   :If 0=⎕NC'glVertexAttrib4ivARB_DLL'
-      'glVertexAttrib4ivARB_DLL'⎕NA'opengl32|glVertexAttrib4ivARB U4 <I4[4]'
+      'glVertexAttrib4ivARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4ivARB U4 <I4[4]'
   :EndIf
   {}glVertexAttrib4ivARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4sARB (index x y z w)
   :If 0=⎕NC'glVertexAttrib4sARB_DLL'
-      'glVertexAttrib4sARB_DLL'⎕NA'opengl32|glVertexAttrib4sARB U4 I2 I2 I2 I2'
+      'glVertexAttrib4sARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4sARB U4 I2 I2 I2 I2'
   :EndIf
   {}glVertexAttrib4sARB_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4svARB (index v)
   :If 0=⎕NC'glVertexAttrib4svARB_DLL'
-      'glVertexAttrib4svARB_DLL'⎕NA'opengl32|glVertexAttrib4svARB U4 <I2[4]'
+      'glVertexAttrib4svARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4svARB U4 <I2[4]'
   :EndIf
   {}glVertexAttrib4svARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4ubvARB (index v)
   :If 0=⎕NC'glVertexAttrib4ubvARB_DLL'
-      'glVertexAttrib4ubvARB_DLL'⎕NA'opengl32|glVertexAttrib4ubvARB U4 <U1[4]'
+      'glVertexAttrib4ubvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4ubvARB U4 <U1[4]'
   :EndIf
   {}glVertexAttrib4ubvARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4uivARB (index v)
   :If 0=⎕NC'glVertexAttrib4uivARB_DLL'
-      'glVertexAttrib4uivARB_DLL'⎕NA'opengl32|glVertexAttrib4uivARB U4 <U4[4]'
+      'glVertexAttrib4uivARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4uivARB U4 <U4[4]'
   :EndIf
   {}glVertexAttrib4uivARB_DLL index v
 ∇
 
 ∇ glVertexAttrib4usvARB (index v)
   :If 0=⎕NC'glVertexAttrib4usvARB_DLL'
-      'glVertexAttrib4usvARB_DLL'⎕NA'opengl32|glVertexAttrib4usvARB U4 <U2[4]'
+      'glVertexAttrib4usvARB_DLL'⎕NA'',getdllname,'|glVertexAttrib4usvARB U4 <U2[4]'
   :EndIf
   {}glVertexAttrib4usvARB_DLL index v
 ∇
@@ -11041,14 +11049,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glEnableVertexAttribArrayARB index
   :If 0=⎕NC'glEnableVertexAttribArrayARB_DLL'
-      'glEnableVertexAttribArrayARB_DLL'⎕NA'opengl32|glEnableVertexAttribArrayARB U4'
+      'glEnableVertexAttribArrayARB_DLL'⎕NA'',getdllname,'|glEnableVertexAttribArrayARB U4'
   :EndIf
   {}glEnableVertexAttribArrayARB_DLL index
 ∇
 
 ∇ glDisableVertexAttribArrayARB index
   :If 0=⎕NC'glDisableVertexAttribArrayARB_DLL'
-      'glDisableVertexAttribArrayARB_DLL'⎕NA'opengl32|glDisableVertexAttribArrayARB U4'
+      'glDisableVertexAttribArrayARB_DLL'⎕NA'',getdllname,'|glDisableVertexAttribArrayARB U4'
   :EndIf
   {}glDisableVertexAttribArrayARB_DLL index
 ∇
@@ -11062,112 +11070,112 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindProgramARB (target program)
   :If 0=⎕NC'glBindProgramARB_DLL'
-      'glBindProgramARB_DLL'⎕NA'opengl32|glBindProgramARB U4 U4'
+      'glBindProgramARB_DLL'⎕NA'',getdllname,'|glBindProgramARB U4 U4'
   :EndIf
   {}glBindProgramARB_DLL target program
 ∇
 
 ∇ glDeleteProgramsARB (n programs)
   :If 0=⎕NC'glDeleteProgramsARB_DLL'
-      'glDeleteProgramsARB_DLL'⎕NA'opengl32|glDeleteProgramsARB I4 <U4[]'
+      'glDeleteProgramsARB_DLL'⎕NA'',getdllname,'|glDeleteProgramsARB I4 <U4[]'
   :EndIf
   {}glDeleteProgramsARB_DLL n programs
 ∇
 
 ∇ r←glGenProgramsARB (n programs)
   :If 0=⎕NC'glGenProgramsARB_DLL'
-      'glGenProgramsARB_DLL'⎕NA'opengl32|glGenProgramsARB I4 >U4[]'
+      'glGenProgramsARB_DLL'⎕NA'',getdllname,'|glGenProgramsARB I4 >U4[]'
   :EndIf
   r←glGenProgramsARB_DLL n programs
 ∇
 
 ∇ glProgramEnvParameter4dARB (target index x y z w)
   :If 0=⎕NC'glProgramEnvParameter4dARB_DLL'
-      'glProgramEnvParameter4dARB_DLL'⎕NA'opengl32|glProgramEnvParameter4dARB U4 U4 F8 F8 F8 F8'
+      'glProgramEnvParameter4dARB_DLL'⎕NA'',getdllname,'|glProgramEnvParameter4dARB U4 U4 F8 F8 F8 F8'
   :EndIf
   {}glProgramEnvParameter4dARB_DLL target index x y z w
 ∇
 
 ∇ glProgramEnvParameter4dvARB (target index params)
   :If 0=⎕NC'glProgramEnvParameter4dvARB_DLL'
-      'glProgramEnvParameter4dvARB_DLL'⎕NA'opengl32|glProgramEnvParameter4dvARB U4 U4 <F8[4]'
+      'glProgramEnvParameter4dvARB_DLL'⎕NA'',getdllname,'|glProgramEnvParameter4dvARB U4 U4 <F8[4]'
   :EndIf
   {}glProgramEnvParameter4dvARB_DLL target index params
 ∇
 
 ∇ glProgramEnvParameter4fARB (target index x y z w)
   :If 0=⎕NC'glProgramEnvParameter4fARB_DLL'
-      'glProgramEnvParameter4fARB_DLL'⎕NA'opengl32|glProgramEnvParameter4fARB U4 U4 F4 F4 F4 F4'
+      'glProgramEnvParameter4fARB_DLL'⎕NA'',getdllname,'|glProgramEnvParameter4fARB U4 U4 F4 F4 F4 F4'
   :EndIf
   {}glProgramEnvParameter4fARB_DLL target index x y z w
 ∇
 
 ∇ glProgramEnvParameter4fvARB (target index params)
   :If 0=⎕NC'glProgramEnvParameter4fvARB_DLL'
-      'glProgramEnvParameter4fvARB_DLL'⎕NA'opengl32|glProgramEnvParameter4fvARB U4 U4 <F4[4]'
+      'glProgramEnvParameter4fvARB_DLL'⎕NA'',getdllname,'|glProgramEnvParameter4fvARB U4 U4 <F4[4]'
   :EndIf
   {}glProgramEnvParameter4fvARB_DLL target index params
 ∇
 
 ∇ glProgramLocalParameter4dARB (target index x y z w)
   :If 0=⎕NC'glProgramLocalParameter4dARB_DLL'
-      'glProgramLocalParameter4dARB_DLL'⎕NA'opengl32|glProgramLocalParameter4dARB U4 U4 F8 F8 F8 F8'
+      'glProgramLocalParameter4dARB_DLL'⎕NA'',getdllname,'|glProgramLocalParameter4dARB U4 U4 F8 F8 F8 F8'
   :EndIf
   {}glProgramLocalParameter4dARB_DLL target index x y z w
 ∇
 
 ∇ glProgramLocalParameter4dvARB (target index params)
   :If 0=⎕NC'glProgramLocalParameter4dvARB_DLL'
-      'glProgramLocalParameter4dvARB_DLL'⎕NA'opengl32|glProgramLocalParameter4dvARB U4 U4 <F8[4]'
+      'glProgramLocalParameter4dvARB_DLL'⎕NA'',getdllname,'|glProgramLocalParameter4dvARB U4 U4 <F8[4]'
   :EndIf
   {}glProgramLocalParameter4dvARB_DLL target index params
 ∇
 
 ∇ glProgramLocalParameter4fARB (target index x y z w)
   :If 0=⎕NC'glProgramLocalParameter4fARB_DLL'
-      'glProgramLocalParameter4fARB_DLL'⎕NA'opengl32|glProgramLocalParameter4fARB U4 U4 F4 F4 F4 F4'
+      'glProgramLocalParameter4fARB_DLL'⎕NA'',getdllname,'|glProgramLocalParameter4fARB U4 U4 F4 F4 F4 F4'
   :EndIf
   {}glProgramLocalParameter4fARB_DLL target index x y z w
 ∇
 
 ∇ glProgramLocalParameter4fvARB (target index params)
   :If 0=⎕NC'glProgramLocalParameter4fvARB_DLL'
-      'glProgramLocalParameter4fvARB_DLL'⎕NA'opengl32|glProgramLocalParameter4fvARB U4 U4 <F4[4]'
+      'glProgramLocalParameter4fvARB_DLL'⎕NA'',getdllname,'|glProgramLocalParameter4fvARB U4 U4 <F4[4]'
   :EndIf
   {}glProgramLocalParameter4fvARB_DLL target index params
 ∇
 
 ∇ r←glGetProgramEnvParameterdvARB (target index)
   :If 0=⎕NC'glGetProgramEnvParameterdvARB_DLL'
-      'glGetProgramEnvParameterdvARB_DLL'⎕NA'opengl32|glGetProgramEnvParameterdvARB U4 U4 >F8[4]'
+      'glGetProgramEnvParameterdvARB_DLL'⎕NA'',getdllname,'|glGetProgramEnvParameterdvARB U4 U4 >F8[4]'
   :EndIf
   r←glGetProgramEnvParameterdvARB_DLL target index 4
 ∇
 
 ∇ r←glGetProgramEnvParameterfvARB (target index)
   :If 0=⎕NC'glGetProgramEnvParameterfvARB_DLL'
-      'glGetProgramEnvParameterfvARB_DLL'⎕NA'opengl32|glGetProgramEnvParameterfvARB U4 U4 >F4[4]'
+      'glGetProgramEnvParameterfvARB_DLL'⎕NA'',getdllname,'|glGetProgramEnvParameterfvARB U4 U4 >F4[4]'
   :EndIf
   r←glGetProgramEnvParameterfvARB_DLL target index 4
 ∇
 
 ∇ r←glGetProgramLocalParameterdvARB (target index)
   :If 0=⎕NC'glGetProgramLocalParameterdvARB_DLL'
-      'glGetProgramLocalParameterdvARB_DLL'⎕NA'opengl32|glGetProgramLocalParameterdvARB U4 U4 >F8[4]'
+      'glGetProgramLocalParameterdvARB_DLL'⎕NA'',getdllname,'|glGetProgramLocalParameterdvARB U4 U4 >F8[4]'
   :EndIf
   r←glGetProgramLocalParameterdvARB_DLL target index 4
 ∇
 
 ∇ r←glGetProgramLocalParameterfvARB (target index)
   :If 0=⎕NC'glGetProgramLocalParameterfvARB_DLL'
-      'glGetProgramLocalParameterfvARB_DLL'⎕NA'opengl32|glGetProgramLocalParameterfvARB U4 U4 >F4[4]'
+      'glGetProgramLocalParameterfvARB_DLL'⎕NA'',getdllname,'|glGetProgramLocalParameterfvARB U4 U4 >F4[4]'
   :EndIf
   r←glGetProgramLocalParameterfvARB_DLL target index 4
 ∇
 
 ∇ r←glGetProgramivARB (target pname)
   :If 0=⎕NC'glGetProgramivARB_DLL'
-      'glGetProgramivARB_DLL'⎕NA'opengl32|glGetProgramivARB U4 U4 >I4[1]'
+      'glGetProgramivARB_DLL'⎕NA'',getdllname,'|glGetProgramivARB U4 U4 >I4[1]'
   :EndIf
   r←glGetProgramivARB_DLL target pname 1
 ∇
@@ -11181,21 +11189,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetVertexAttribdvARB (index pname)
   :If 0=⎕NC'glGetVertexAttribdvARB_DLL'
-      'glGetVertexAttribdvARB_DLL'⎕NA'opengl32|glGetVertexAttribdvARB U4 U4 >F8[4]'
+      'glGetVertexAttribdvARB_DLL'⎕NA'',getdllname,'|glGetVertexAttribdvARB U4 U4 >F8[4]'
   :EndIf
   r←glGetVertexAttribdvARB_DLL index pname 4
 ∇
 
 ∇ r←glGetVertexAttribfvARB (index pname)
   :If 0=⎕NC'glGetVertexAttribfvARB_DLL'
-      'glGetVertexAttribfvARB_DLL'⎕NA'opengl32|glGetVertexAttribfvARB U4 U4 >F4[4]'
+      'glGetVertexAttribfvARB_DLL'⎕NA'',getdllname,'|glGetVertexAttribfvARB U4 U4 >F4[4]'
   :EndIf
   r←glGetVertexAttribfvARB_DLL index pname 4
 ∇
 
 ∇ r←glGetVertexAttribivARB (index pname)
   :If 0=⎕NC'glGetVertexAttribivARB_DLL'
-      'glGetVertexAttribivARB_DLL'⎕NA'opengl32|glGetVertexAttribivARB U4 U4 >I4[4]'
+      'glGetVertexAttribivARB_DLL'⎕NA'',getdllname,'|glGetVertexAttribivARB U4 U4 >I4[4]'
   :EndIf
   r←glGetVertexAttribivARB_DLL index pname 4
 ∇
@@ -11209,35 +11217,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glIsProgramARB program
   :If 0=⎕NC'glIsProgramARB_DLL'
-      'glIsProgramARB_DLL'⎕NA'U1 opengl32|glIsProgramARB U4'
+      'glIsProgramARB_DLL'⎕NA'U1 ',getdllname,'|glIsProgramARB U4'
   :EndIf
   r←glIsProgramARB_DLL program
 ∇
 
 ∇ glBindBufferARB (target buffer)
   :If 0=⎕NC'glBindBufferARB_DLL'
-      'glBindBufferARB_DLL'⎕NA'opengl32|glBindBufferARB U4 U4'
+      'glBindBufferARB_DLL'⎕NA'',getdllname,'|glBindBufferARB U4 U4'
   :EndIf
   {}glBindBufferARB_DLL target buffer
 ∇
 
 ∇ glDeleteBuffersARB (n buffers)
   :If 0=⎕NC'glDeleteBuffersARB_DLL'
-      'glDeleteBuffersARB_DLL'⎕NA'opengl32|glDeleteBuffersARB I4 <U4[]'
+      'glDeleteBuffersARB_DLL'⎕NA'',getdllname,'|glDeleteBuffersARB I4 <U4[]'
   :EndIf
   {}glDeleteBuffersARB_DLL n buffers
 ∇
 
 ∇ r←glGenBuffersARB (n buffers)
   :If 0=⎕NC'glGenBuffersARB_DLL'
-      'glGenBuffersARB_DLL'⎕NA'opengl32|glGenBuffersARB I4 >U4[]'
+      'glGenBuffersARB_DLL'⎕NA'',getdllname,'|glGenBuffersARB I4 >U4[]'
   :EndIf
   r←glGenBuffersARB_DLL n buffers
 ∇
 
 ∇ r←glIsBufferARB buffer
   :If 0=⎕NC'glIsBufferARB_DLL'
-      'glIsBufferARB_DLL'⎕NA'U1 opengl32|glIsBufferARB U4'
+      'glIsBufferARB_DLL'⎕NA'U1 ',getdllname,'|glIsBufferARB U4'
   :EndIf
   r←glIsBufferARB_DLL buffer
 ∇
@@ -11272,14 +11280,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glUnmapBufferARB target
   :If 0=⎕NC'glUnmapBufferARB_DLL'
-      'glUnmapBufferARB_DLL'⎕NA'U1 opengl32|glUnmapBufferARB U4'
+      'glUnmapBufferARB_DLL'⎕NA'U1 ',getdllname,'|glUnmapBufferARB U4'
   :EndIf
   r←glUnmapBufferARB_DLL target
 ∇
 
 ∇ r←glGetBufferParameterivARB (target pname params)
   :If 0=⎕NC'glGetBufferParameterivARB_DLL'
-      'glGetBufferParameterivARB_DLL'⎕NA'opengl32|glGetBufferParameterivARB U4 U4 >I4[]'
+      'glGetBufferParameterivARB_DLL'⎕NA'',getdllname,'|glGetBufferParameterivARB U4 U4 >I4[]'
   :EndIf
   r←glGetBufferParameterivARB_DLL target pname params
 ∇
@@ -11293,84 +11301,84 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGenQueriesARB (n ids)
   :If 0=⎕NC'glGenQueriesARB_DLL'
-      'glGenQueriesARB_DLL'⎕NA'opengl32|glGenQueriesARB I4 >U4[]'
+      'glGenQueriesARB_DLL'⎕NA'',getdllname,'|glGenQueriesARB I4 >U4[]'
   :EndIf
   r←glGenQueriesARB_DLL n ids
 ∇
 
 ∇ glDeleteQueriesARB (n ids)
   :If 0=⎕NC'glDeleteQueriesARB_DLL'
-      'glDeleteQueriesARB_DLL'⎕NA'opengl32|glDeleteQueriesARB I4 <U4[]'
+      'glDeleteQueriesARB_DLL'⎕NA'',getdllname,'|glDeleteQueriesARB I4 <U4[]'
   :EndIf
   {}glDeleteQueriesARB_DLL n ids
 ∇
 
 ∇ r←glIsQueryARB id
   :If 0=⎕NC'glIsQueryARB_DLL'
-      'glIsQueryARB_DLL'⎕NA'U1 opengl32|glIsQueryARB U4'
+      'glIsQueryARB_DLL'⎕NA'U1 ',getdllname,'|glIsQueryARB U4'
   :EndIf
   r←glIsQueryARB_DLL id
 ∇
 
 ∇ glBeginQueryARB (target id)
   :If 0=⎕NC'glBeginQueryARB_DLL'
-      'glBeginQueryARB_DLL'⎕NA'opengl32|glBeginQueryARB U4 U4'
+      'glBeginQueryARB_DLL'⎕NA'',getdllname,'|glBeginQueryARB U4 U4'
   :EndIf
   {}glBeginQueryARB_DLL target id
 ∇
 
 ∇ glEndQueryARB target
   :If 0=⎕NC'glEndQueryARB_DLL'
-      'glEndQueryARB_DLL'⎕NA'opengl32|glEndQueryARB U4'
+      'glEndQueryARB_DLL'⎕NA'',getdllname,'|glEndQueryARB U4'
   :EndIf
   {}glEndQueryARB_DLL target
 ∇
 
 ∇ r←glGetQueryivARB (target pname params)
   :If 0=⎕NC'glGetQueryivARB_DLL'
-      'glGetQueryivARB_DLL'⎕NA'opengl32|glGetQueryivARB U4 U4 >I4[]'
+      'glGetQueryivARB_DLL'⎕NA'',getdllname,'|glGetQueryivARB U4 U4 >I4[]'
   :EndIf
   r←glGetQueryivARB_DLL target pname params
 ∇
 
 ∇ r←glGetQueryObjectivARB (id pname params)
   :If 0=⎕NC'glGetQueryObjectivARB_DLL'
-      'glGetQueryObjectivARB_DLL'⎕NA'opengl32|glGetQueryObjectivARB U4 U4 >I4[]'
+      'glGetQueryObjectivARB_DLL'⎕NA'',getdllname,'|glGetQueryObjectivARB U4 U4 >I4[]'
   :EndIf
   r←glGetQueryObjectivARB_DLL id pname params
 ∇
 
 ∇ r←glGetQueryObjectuivARB (id pname params)
   :If 0=⎕NC'glGetQueryObjectuivARB_DLL'
-      'glGetQueryObjectuivARB_DLL'⎕NA'opengl32|glGetQueryObjectuivARB U4 U4 >U4[]'
+      'glGetQueryObjectuivARB_DLL'⎕NA'',getdllname,'|glGetQueryObjectuivARB U4 U4 >U4[]'
   :EndIf
   r←glGetQueryObjectuivARB_DLL id pname params
 ∇
 
 ∇ glDeleteObjectARB obj
   :If 0=⎕NC'glDeleteObjectARB_DLL'
-      'glDeleteObjectARB_DLL'⎕NA'opengl32|glDeleteObjectARB U4'
+      'glDeleteObjectARB_DLL'⎕NA'',getdllname,'|glDeleteObjectARB U4'
   :EndIf
   {}glDeleteObjectARB_DLL obj
 ∇
 
 ∇ r←glGetHandleARB pname
   :If 0=⎕NC'glGetHandleARB_DLL'
-      'glGetHandleARB_DLL'⎕NA'U4 opengl32|glGetHandleARB U4'
+      'glGetHandleARB_DLL'⎕NA'U4 ',getdllname,'|glGetHandleARB U4'
   :EndIf
   r←glGetHandleARB_DLL pname
 ∇
 
 ∇ glDetachObjectARB (containerObj attachedObj)
   :If 0=⎕NC'glDetachObjectARB_DLL'
-      'glDetachObjectARB_DLL'⎕NA'opengl32|glDetachObjectARB U4 U4'
+      'glDetachObjectARB_DLL'⎕NA'',getdllname,'|glDetachObjectARB U4 U4'
   :EndIf
   {}glDetachObjectARB_DLL containerObj attachedObj
 ∇
 
 ∇ r←glCreateShaderObjectARB shaderType
   :If 0=⎕NC'glCreateShaderObjectARB_DLL'
-      'glCreateShaderObjectARB_DLL'⎕NA'U4 opengl32|glCreateShaderObjectARB U4'
+      'glCreateShaderObjectARB_DLL'⎕NA'U4 ',getdllname,'|glCreateShaderObjectARB U4'
   :EndIf
   r←glCreateShaderObjectARB_DLL shaderType
 ∇
@@ -11384,189 +11392,189 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCompileShaderARB shaderObj
   :If 0=⎕NC'glCompileShaderARB_DLL'
-      'glCompileShaderARB_DLL'⎕NA'opengl32|glCompileShaderARB U4'
+      'glCompileShaderARB_DLL'⎕NA'',getdllname,'|glCompileShaderARB U4'
   :EndIf
   {}glCompileShaderARB_DLL shaderObj
 ∇
 
 ∇ r←glCreateProgramObjectARB
   :If 0=⎕NC'glCreateProgramObjectARB_DLL'
-      'glCreateProgramObjectARB_DLL'⎕NA'U4 opengl32|glCreateProgramObjectARB'
+      'glCreateProgramObjectARB_DLL'⎕NA'U4 ',getdllname,'|glCreateProgramObjectARB'
   :EndIf
   r←glCreateProgramObjectARB_DLL
 ∇
 
 ∇ glAttachObjectARB (containerObj obj)
   :If 0=⎕NC'glAttachObjectARB_DLL'
-      'glAttachObjectARB_DLL'⎕NA'opengl32|glAttachObjectARB U4 U4'
+      'glAttachObjectARB_DLL'⎕NA'',getdllname,'|glAttachObjectARB U4 U4'
   :EndIf
   {}glAttachObjectARB_DLL containerObj obj
 ∇
 
 ∇ glLinkProgramARB programObj
   :If 0=⎕NC'glLinkProgramARB_DLL'
-      'glLinkProgramARB_DLL'⎕NA'opengl32|glLinkProgramARB U4'
+      'glLinkProgramARB_DLL'⎕NA'',getdllname,'|glLinkProgramARB U4'
   :EndIf
   {}glLinkProgramARB_DLL programObj
 ∇
 
 ∇ glUseProgramObjectARB programObj
   :If 0=⎕NC'glUseProgramObjectARB_DLL'
-      'glUseProgramObjectARB_DLL'⎕NA'opengl32|glUseProgramObjectARB U4'
+      'glUseProgramObjectARB_DLL'⎕NA'',getdllname,'|glUseProgramObjectARB U4'
   :EndIf
   {}glUseProgramObjectARB_DLL programObj
 ∇
 
 ∇ glValidateProgramARB programObj
   :If 0=⎕NC'glValidateProgramARB_DLL'
-      'glValidateProgramARB_DLL'⎕NA'opengl32|glValidateProgramARB U4'
+      'glValidateProgramARB_DLL'⎕NA'',getdllname,'|glValidateProgramARB U4'
   :EndIf
   {}glValidateProgramARB_DLL programObj
 ∇
 
 ∇ glUniform1fARB (location v0)
   :If 0=⎕NC'glUniform1fARB_DLL'
-      'glUniform1fARB_DLL'⎕NA'opengl32|glUniform1fARB I4 F4'
+      'glUniform1fARB_DLL'⎕NA'',getdllname,'|glUniform1fARB I4 F4'
   :EndIf
   {}glUniform1fARB_DLL location v0
 ∇
 
 ∇ glUniform2fARB (location v0 v1)
   :If 0=⎕NC'glUniform2fARB_DLL'
-      'glUniform2fARB_DLL'⎕NA'opengl32|glUniform2fARB I4 F4 F4'
+      'glUniform2fARB_DLL'⎕NA'',getdllname,'|glUniform2fARB I4 F4 F4'
   :EndIf
   {}glUniform2fARB_DLL location v0 v1
 ∇
 
 ∇ glUniform3fARB (location v0 v1 v2)
   :If 0=⎕NC'glUniform3fARB_DLL'
-      'glUniform3fARB_DLL'⎕NA'opengl32|glUniform3fARB I4 F4 F4 F4'
+      'glUniform3fARB_DLL'⎕NA'',getdllname,'|glUniform3fARB I4 F4 F4 F4'
   :EndIf
   {}glUniform3fARB_DLL location v0 v1 v2
 ∇
 
 ∇ glUniform4fARB (location v0 v1 v2 v3)
   :If 0=⎕NC'glUniform4fARB_DLL'
-      'glUniform4fARB_DLL'⎕NA'opengl32|glUniform4fARB I4 F4 F4 F4 F4'
+      'glUniform4fARB_DLL'⎕NA'',getdllname,'|glUniform4fARB I4 F4 F4 F4 F4'
   :EndIf
   {}glUniform4fARB_DLL location v0 v1 v2 v3
 ∇
 
 ∇ glUniform1iARB (location v0)
   :If 0=⎕NC'glUniform1iARB_DLL'
-      'glUniform1iARB_DLL'⎕NA'opengl32|glUniform1iARB I4 I4'
+      'glUniform1iARB_DLL'⎕NA'',getdllname,'|glUniform1iARB I4 I4'
   :EndIf
   {}glUniform1iARB_DLL location v0
 ∇
 
 ∇ glUniform2iARB (location v0 v1)
   :If 0=⎕NC'glUniform2iARB_DLL'
-      'glUniform2iARB_DLL'⎕NA'opengl32|glUniform2iARB I4 I4 I4'
+      'glUniform2iARB_DLL'⎕NA'',getdllname,'|glUniform2iARB I4 I4 I4'
   :EndIf
   {}glUniform2iARB_DLL location v0 v1
 ∇
 
 ∇ glUniform3iARB (location v0 v1 v2)
   :If 0=⎕NC'glUniform3iARB_DLL'
-      'glUniform3iARB_DLL'⎕NA'opengl32|glUniform3iARB I4 I4 I4 I4'
+      'glUniform3iARB_DLL'⎕NA'',getdllname,'|glUniform3iARB I4 I4 I4 I4'
   :EndIf
   {}glUniform3iARB_DLL location v0 v1 v2
 ∇
 
 ∇ glUniform4iARB (location v0 v1 v2 v3)
   :If 0=⎕NC'glUniform4iARB_DLL'
-      'glUniform4iARB_DLL'⎕NA'opengl32|glUniform4iARB I4 I4 I4 I4 I4'
+      'glUniform4iARB_DLL'⎕NA'',getdllname,'|glUniform4iARB I4 I4 I4 I4 I4'
   :EndIf
   {}glUniform4iARB_DLL location v0 v1 v2 v3
 ∇
 
 ∇ glUniform1fvARB (location count value)
   :If 0=⎕NC'glUniform1fvARB_DLL'
-      'glUniform1fvARB_DLL'⎕NA'opengl32|glUniform1fvARB I4 I4 <F4[]'
+      'glUniform1fvARB_DLL'⎕NA'',getdllname,'|glUniform1fvARB I4 I4 <F4[]'
   :EndIf
   {}glUniform1fvARB_DLL location count value
 ∇
 
 ∇ glUniform2fvARB (location count value)
   :If 0=⎕NC'glUniform2fvARB_DLL'
-      'glUniform2fvARB_DLL'⎕NA'opengl32|glUniform2fvARB I4 I4 <F4[]'
+      'glUniform2fvARB_DLL'⎕NA'',getdllname,'|glUniform2fvARB I4 I4 <F4[]'
   :EndIf
   {}glUniform2fvARB_DLL location count value
 ∇
 
 ∇ glUniform3fvARB (location count value)
   :If 0=⎕NC'glUniform3fvARB_DLL'
-      'glUniform3fvARB_DLL'⎕NA'opengl32|glUniform3fvARB I4 I4 <F4[]'
+      'glUniform3fvARB_DLL'⎕NA'',getdllname,'|glUniform3fvARB I4 I4 <F4[]'
   :EndIf
   {}glUniform3fvARB_DLL location count value
 ∇
 
 ∇ glUniform4fvARB (location count value)
   :If 0=⎕NC'glUniform4fvARB_DLL'
-      'glUniform4fvARB_DLL'⎕NA'opengl32|glUniform4fvARB I4 I4 <F4[]'
+      'glUniform4fvARB_DLL'⎕NA'',getdllname,'|glUniform4fvARB I4 I4 <F4[]'
   :EndIf
   {}glUniform4fvARB_DLL location count value
 ∇
 
 ∇ glUniform1ivARB (location count value)
   :If 0=⎕NC'glUniform1ivARB_DLL'
-      'glUniform1ivARB_DLL'⎕NA'opengl32|glUniform1ivARB I4 I4 <I4[]'
+      'glUniform1ivARB_DLL'⎕NA'',getdllname,'|glUniform1ivARB I4 I4 <I4[]'
   :EndIf
   {}glUniform1ivARB_DLL location count value
 ∇
 
 ∇ glUniform2ivARB (location count value)
   :If 0=⎕NC'glUniform2ivARB_DLL'
-      'glUniform2ivARB_DLL'⎕NA'opengl32|glUniform2ivARB I4 I4 <I4[]'
+      'glUniform2ivARB_DLL'⎕NA'',getdllname,'|glUniform2ivARB I4 I4 <I4[]'
   :EndIf
   {}glUniform2ivARB_DLL location count value
 ∇
 
 ∇ glUniform3ivARB (location count value)
   :If 0=⎕NC'glUniform3ivARB_DLL'
-      'glUniform3ivARB_DLL'⎕NA'opengl32|glUniform3ivARB I4 I4 <I4[]'
+      'glUniform3ivARB_DLL'⎕NA'',getdllname,'|glUniform3ivARB I4 I4 <I4[]'
   :EndIf
   {}glUniform3ivARB_DLL location count value
 ∇
 
 ∇ glUniform4ivARB (location count value)
   :If 0=⎕NC'glUniform4ivARB_DLL'
-      'glUniform4ivARB_DLL'⎕NA'opengl32|glUniform4ivARB I4 I4 <I4[]'
+      'glUniform4ivARB_DLL'⎕NA'',getdllname,'|glUniform4ivARB I4 I4 <I4[]'
   :EndIf
   {}glUniform4ivARB_DLL location count value
 ∇
 
 ∇ glUniformMatrix2fvARB (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2fvARB_DLL'
-      'glUniformMatrix2fvARB_DLL'⎕NA'opengl32|glUniformMatrix2fvARB I4 I4 U1 <F4[]'
+      'glUniformMatrix2fvARB_DLL'⎕NA'',getdllname,'|glUniformMatrix2fvARB I4 I4 U1 <F4[]'
   :EndIf
   {}glUniformMatrix2fvARB_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3fvARB (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3fvARB_DLL'
-      'glUniformMatrix3fvARB_DLL'⎕NA'opengl32|glUniformMatrix3fvARB I4 I4 U1 <F4[]'
+      'glUniformMatrix3fvARB_DLL'⎕NA'',getdllname,'|glUniformMatrix3fvARB I4 I4 U1 <F4[]'
   :EndIf
   {}glUniformMatrix3fvARB_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4fvARB (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4fvARB_DLL'
-      'glUniformMatrix4fvARB_DLL'⎕NA'opengl32|glUniformMatrix4fvARB I4 I4 U1 <F4[]'
+      'glUniformMatrix4fvARB_DLL'⎕NA'',getdllname,'|glUniformMatrix4fvARB I4 I4 U1 <F4[]'
   :EndIf
   {}glUniformMatrix4fvARB_DLL location count transpose value
 ∇
 
 ∇ r←glGetObjectParameterfvARB (obj pname params)
   :If 0=⎕NC'glGetObjectParameterfvARB_DLL'
-      'glGetObjectParameterfvARB_DLL'⎕NA'opengl32|glGetObjectParameterfvARB U4 U4 >F4[]'
+      'glGetObjectParameterfvARB_DLL'⎕NA'',getdllname,'|glGetObjectParameterfvARB U4 U4 >F4[]'
   :EndIf
   r←glGetObjectParameterfvARB_DLL obj pname params
 ∇
 
 ∇ r←glGetObjectParameterivARB (obj pname params)
   :If 0=⎕NC'glGetObjectParameterivARB_DLL'
-      'glGetObjectParameterivARB_DLL'⎕NA'opengl32|glGetObjectParameterivARB U4 U4 >I4[]'
+      'glGetObjectParameterivARB_DLL'⎕NA'',getdllname,'|glGetObjectParameterivARB U4 U4 >I4[]'
   :EndIf
   r←glGetObjectParameterivARB_DLL obj pname params
 ∇
@@ -11580,7 +11588,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetAttachedObjectsARB (containerObj maxCount obj)
   :If 0=⎕NC'glGetAttachedObjectsARB_DLL'
-      'glGetAttachedObjectsARB_DLL'⎕NA'opengl32|glGetAttachedObjectsARB U4 I4 >I4[1] >U4[]'
+      'glGetAttachedObjectsARB_DLL'⎕NA'',getdllname,'|glGetAttachedObjectsARB U4 I4 >I4[1] >U4[]'
   :EndIf
   r←glGetAttachedObjectsARB_DLL containerObj maxCount 1 obj
 ∇
@@ -11601,14 +11609,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetUniformfvARB (programObj location params)
   :If 0=⎕NC'glGetUniformfvARB_DLL'
-      'glGetUniformfvARB_DLL'⎕NA'opengl32|glGetUniformfvARB U4 I4 >F4[]'
+      'glGetUniformfvARB_DLL'⎕NA'',getdllname,'|glGetUniformfvARB U4 I4 >F4[]'
   :EndIf
   r←glGetUniformfvARB_DLL programObj location params
 ∇
 
 ∇ r←glGetUniformivARB (programObj location params)
   :If 0=⎕NC'glGetUniformivARB_DLL'
-      'glGetUniformivARB_DLL'⎕NA'opengl32|glGetUniformivARB U4 I4 >I4[]'
+      'glGetUniformivARB_DLL'⎕NA'',getdllname,'|glGetUniformivARB U4 I4 >I4[]'
   :EndIf
   r←glGetUniformivARB_DLL programObj location params
 ∇
@@ -11643,21 +11651,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDrawBuffersARB (n bufs)
   :If 0=⎕NC'glDrawBuffersARB_DLL'
-      'glDrawBuffersARB_DLL'⎕NA'opengl32|glDrawBuffersARB I4 <U4[]'
+      'glDrawBuffersARB_DLL'⎕NA'',getdllname,'|glDrawBuffersARB I4 <U4[]'
   :EndIf
   {}glDrawBuffersARB_DLL n bufs
 ∇
 
 ∇ glClampColorARB (target clamp)
   :If 0=⎕NC'glClampColorARB_DLL'
-      'glClampColorARB_DLL'⎕NA'opengl32|glClampColorARB U4 U4'
+      'glClampColorARB_DLL'⎕NA'',getdllname,'|glClampColorARB U4 U4'
   :EndIf
   {}glClampColorARB_DLL target clamp
 ∇
 
 ∇ glDrawArraysInstancedARB (mode first count primcount)
   :If 0=⎕NC'glDrawArraysInstancedARB_DLL'
-      'glDrawArraysInstancedARB_DLL'⎕NA'opengl32|glDrawArraysInstancedARB U4 I4 I4 I4'
+      'glDrawArraysInstancedARB_DLL'⎕NA'',getdllname,'|glDrawArraysInstancedARB U4 I4 I4 I4'
   :EndIf
   {}glDrawArraysInstancedARB_DLL mode first count primcount
 ∇
@@ -11671,175 +11679,175 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glIsRenderbuffer renderbuffer
   :If 0=⎕NC'glIsRenderbuffer_DLL'
-      'glIsRenderbuffer_DLL'⎕NA'U1 opengl32|glIsRenderbuffer U4'
+      'glIsRenderbuffer_DLL'⎕NA'U1 ',getdllname,'|glIsRenderbuffer U4'
   :EndIf
   r←glIsRenderbuffer_DLL renderbuffer
 ∇
 
 ∇ glBindRenderbuffer (target renderbuffer)
   :If 0=⎕NC'glBindRenderbuffer_DLL'
-      'glBindRenderbuffer_DLL'⎕NA'opengl32|glBindRenderbuffer U4 U4'
+      'glBindRenderbuffer_DLL'⎕NA'',getdllname,'|glBindRenderbuffer U4 U4'
   :EndIf
   {}glBindRenderbuffer_DLL target renderbuffer
 ∇
 
 ∇ glDeleteRenderbuffers (n renderbuffers)
   :If 0=⎕NC'glDeleteRenderbuffers_DLL'
-      'glDeleteRenderbuffers_DLL'⎕NA'opengl32|glDeleteRenderbuffers I4 <U4[]'
+      'glDeleteRenderbuffers_DLL'⎕NA'',getdllname,'|glDeleteRenderbuffers I4 <U4[]'
   :EndIf
   {}glDeleteRenderbuffers_DLL n renderbuffers
 ∇
 
 ∇ r←glGenRenderbuffers (n renderbuffers)
   :If 0=⎕NC'glGenRenderbuffers_DLL'
-      'glGenRenderbuffers_DLL'⎕NA'opengl32|glGenRenderbuffers I4 >U4[]'
+      'glGenRenderbuffers_DLL'⎕NA'',getdllname,'|glGenRenderbuffers I4 >U4[]'
   :EndIf
   r←glGenRenderbuffers_DLL n renderbuffers
 ∇
 
 ∇ glRenderbufferStorage (target internalformat width height)
   :If 0=⎕NC'glRenderbufferStorage_DLL'
-      'glRenderbufferStorage_DLL'⎕NA'opengl32|glRenderbufferStorage U4 U4 I4 I4'
+      'glRenderbufferStorage_DLL'⎕NA'',getdllname,'|glRenderbufferStorage U4 U4 I4 I4'
   :EndIf
   {}glRenderbufferStorage_DLL target internalformat width height
 ∇
 
 ∇ r←glGetRenderbufferParameteriv (target pname params)
   :If 0=⎕NC'glGetRenderbufferParameteriv_DLL'
-      'glGetRenderbufferParameteriv_DLL'⎕NA'opengl32|glGetRenderbufferParameteriv U4 U4 >I4[]'
+      'glGetRenderbufferParameteriv_DLL'⎕NA'',getdllname,'|glGetRenderbufferParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetRenderbufferParameteriv_DLL target pname params
 ∇
 
 ∇ r←glIsFramebuffer framebuffer
   :If 0=⎕NC'glIsFramebuffer_DLL'
-      'glIsFramebuffer_DLL'⎕NA'U1 opengl32|glIsFramebuffer U4'
+      'glIsFramebuffer_DLL'⎕NA'U1 ',getdllname,'|glIsFramebuffer U4'
   :EndIf
   r←glIsFramebuffer_DLL framebuffer
 ∇
 
 ∇ glBindFramebuffer (target framebuffer)
   :If 0=⎕NC'glBindFramebuffer_DLL'
-      'glBindFramebuffer_DLL'⎕NA'opengl32|glBindFramebuffer U4 U4'
+      'glBindFramebuffer_DLL'⎕NA'',getdllname,'|glBindFramebuffer U4 U4'
   :EndIf
   {}glBindFramebuffer_DLL target framebuffer
 ∇
 
 ∇ glDeleteFramebuffers (n framebuffers)
   :If 0=⎕NC'glDeleteFramebuffers_DLL'
-      'glDeleteFramebuffers_DLL'⎕NA'opengl32|glDeleteFramebuffers I4 <U4[]'
+      'glDeleteFramebuffers_DLL'⎕NA'',getdllname,'|glDeleteFramebuffers I4 <U4[]'
   :EndIf
   {}glDeleteFramebuffers_DLL n framebuffers
 ∇
 
 ∇ r←glGenFramebuffers (n framebuffers)
   :If 0=⎕NC'glGenFramebuffers_DLL'
-      'glGenFramebuffers_DLL'⎕NA'opengl32|glGenFramebuffers I4 >U4[]'
+      'glGenFramebuffers_DLL'⎕NA'',getdllname,'|glGenFramebuffers I4 >U4[]'
   :EndIf
   r←glGenFramebuffers_DLL n framebuffers
 ∇
 
 ∇ r←glCheckFramebufferStatus target
   :If 0=⎕NC'glCheckFramebufferStatus_DLL'
-      'glCheckFramebufferStatus_DLL'⎕NA'U4 opengl32|glCheckFramebufferStatus U4'
+      'glCheckFramebufferStatus_DLL'⎕NA'U4 ',getdllname,'|glCheckFramebufferStatus U4'
   :EndIf
   r←glCheckFramebufferStatus_DLL target
 ∇
 
 ∇ glFramebufferTexture1D (target attachment textarget texture level)
   :If 0=⎕NC'glFramebufferTexture1D_DLL'
-      'glFramebufferTexture1D_DLL'⎕NA'opengl32|glFramebufferTexture1D U4 U4 U4 U4 I4'
+      'glFramebufferTexture1D_DLL'⎕NA'',getdllname,'|glFramebufferTexture1D U4 U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTexture1D_DLL target attachment textarget texture level
 ∇
 
 ∇ glFramebufferTexture2D (target attachment textarget texture level)
   :If 0=⎕NC'glFramebufferTexture2D_DLL'
-      'glFramebufferTexture2D_DLL'⎕NA'opengl32|glFramebufferTexture2D U4 U4 U4 U4 I4'
+      'glFramebufferTexture2D_DLL'⎕NA'',getdllname,'|glFramebufferTexture2D U4 U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTexture2D_DLL target attachment textarget texture level
 ∇
 
 ∇ glFramebufferTexture3D (target attachment textarget texture level zoffset)
   :If 0=⎕NC'glFramebufferTexture3D_DLL'
-      'glFramebufferTexture3D_DLL'⎕NA'opengl32|glFramebufferTexture3D U4 U4 U4 U4 I4 I4'
+      'glFramebufferTexture3D_DLL'⎕NA'',getdllname,'|glFramebufferTexture3D U4 U4 U4 U4 I4 I4'
   :EndIf
   {}glFramebufferTexture3D_DLL target attachment textarget texture level zoffset
 ∇
 
 ∇ glFramebufferRenderbuffer (target attachment renderbuffertarget renderbuffer)
   :If 0=⎕NC'glFramebufferRenderbuffer_DLL'
-      'glFramebufferRenderbuffer_DLL'⎕NA'opengl32|glFramebufferRenderbuffer U4 U4 U4 U4'
+      'glFramebufferRenderbuffer_DLL'⎕NA'',getdllname,'|glFramebufferRenderbuffer U4 U4 U4 U4'
   :EndIf
   {}glFramebufferRenderbuffer_DLL target attachment renderbuffertarget renderbuffer
 ∇
 
 ∇ r←glGetFramebufferAttachmentParameteriv (target attachment pname params)
   :If 0=⎕NC'glGetFramebufferAttachmentParameteriv_DLL'
-      'glGetFramebufferAttachmentParameteriv_DLL'⎕NA'opengl32|glGetFramebufferAttachmentParameteriv U4 U4 U4 >I4[]'
+      'glGetFramebufferAttachmentParameteriv_DLL'⎕NA'',getdllname,'|glGetFramebufferAttachmentParameteriv U4 U4 U4 >I4[]'
   :EndIf
   r←glGetFramebufferAttachmentParameteriv_DLL target attachment pname params
 ∇
 
 ∇ glGenerateMipmap target
   :If 0=⎕NC'glGenerateMipmap_DLL'
-      'glGenerateMipmap_DLL'⎕NA'opengl32|glGenerateMipmap U4'
+      'glGenerateMipmap_DLL'⎕NA'',getdllname,'|glGenerateMipmap U4'
   :EndIf
   {}glGenerateMipmap_DLL target
 ∇
 
 ∇ glBlitFramebuffer (srcX0 srcY0 srcX1 srcY1 dstX0 dstY0 dstX1 dstY1 mask filter)
   :If 0=⎕NC'glBlitFramebuffer_DLL'
-      'glBlitFramebuffer_DLL'⎕NA'opengl32|glBlitFramebuffer I4 I4 I4 I4 I4 I4 I4 I4 U4 U4'
+      'glBlitFramebuffer_DLL'⎕NA'',getdllname,'|glBlitFramebuffer I4 I4 I4 I4 I4 I4 I4 I4 U4 U4'
   :EndIf
   {}glBlitFramebuffer_DLL srcX0 srcY0 srcX1 srcY1 dstX0 dstY0 dstX1 dstY1 mask filter
 ∇
 
 ∇ glRenderbufferStorageMultisample (target samples internalformat width height)
   :If 0=⎕NC'glRenderbufferStorageMultisample_DLL'
-      'glRenderbufferStorageMultisample_DLL'⎕NA'opengl32|glRenderbufferStorageMultisample U4 I4 U4 I4 I4'
+      'glRenderbufferStorageMultisample_DLL'⎕NA'',getdllname,'|glRenderbufferStorageMultisample U4 I4 U4 I4 I4'
   :EndIf
   {}glRenderbufferStorageMultisample_DLL target samples internalformat width height
 ∇
 
 ∇ glFramebufferTextureLayer (target attachment texture level layer)
   :If 0=⎕NC'glFramebufferTextureLayer_DLL'
-      'glFramebufferTextureLayer_DLL'⎕NA'opengl32|glFramebufferTextureLayer U4 U4 U4 I4 I4'
+      'glFramebufferTextureLayer_DLL'⎕NA'',getdllname,'|glFramebufferTextureLayer U4 U4 U4 I4 I4'
   :EndIf
   {}glFramebufferTextureLayer_DLL target attachment texture level layer
 ∇
 
 ∇ glProgramParameteriARB (program pname value)
   :If 0=⎕NC'glProgramParameteriARB_DLL'
-      'glProgramParameteriARB_DLL'⎕NA'opengl32|glProgramParameteriARB U4 U4 I4'
+      'glProgramParameteriARB_DLL'⎕NA'',getdllname,'|glProgramParameteriARB U4 U4 I4'
   :EndIf
   {}glProgramParameteriARB_DLL program pname value
 ∇
 
 ∇ glFramebufferTextureARB (target attachment texture level)
   :If 0=⎕NC'glFramebufferTextureARB_DLL'
-      'glFramebufferTextureARB_DLL'⎕NA'opengl32|glFramebufferTextureARB U4 U4 U4 I4'
+      'glFramebufferTextureARB_DLL'⎕NA'',getdllname,'|glFramebufferTextureARB U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTextureARB_DLL target attachment texture level
 ∇
 
 ∇ glFramebufferTextureLayerARB (target attachment texture level layer)
   :If 0=⎕NC'glFramebufferTextureLayerARB_DLL'
-      'glFramebufferTextureLayerARB_DLL'⎕NA'opengl32|glFramebufferTextureLayerARB U4 U4 U4 I4 I4'
+      'glFramebufferTextureLayerARB_DLL'⎕NA'',getdllname,'|glFramebufferTextureLayerARB U4 U4 U4 I4 I4'
   :EndIf
   {}glFramebufferTextureLayerARB_DLL target attachment texture level layer
 ∇
 
 ∇ glFramebufferTextureFaceARB (target attachment texture level face)
   :If 0=⎕NC'glFramebufferTextureFaceARB_DLL'
-      'glFramebufferTextureFaceARB_DLL'⎕NA'opengl32|glFramebufferTextureFaceARB U4 U4 U4 I4 U4'
+      'glFramebufferTextureFaceARB_DLL'⎕NA'',getdllname,'|glFramebufferTextureFaceARB U4 U4 U4 I4 U4'
   :EndIf
   {}glFramebufferTextureFaceARB_DLL target attachment texture level face
 ∇
 
 ∇ glVertexAttribDivisorARB (index divisor)
   :If 0=⎕NC'glVertexAttribDivisorARB_DLL'
-      'glVertexAttribDivisorARB_DLL'⎕NA'opengl32|glVertexAttribDivisorARB U4 U4'
+      'glVertexAttribDivisorARB_DLL'⎕NA'',getdllname,'|glVertexAttribDivisorARB U4 U4'
   :EndIf
   {}glVertexAttribDivisorARB_DLL index divisor
 ∇
@@ -11860,35 +11868,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexBufferARB (target internalformat buffer)
   :If 0=⎕NC'glTexBufferARB_DLL'
-      'glTexBufferARB_DLL'⎕NA'opengl32|glTexBufferARB U4 U4 U4'
+      'glTexBufferARB_DLL'⎕NA'',getdllname,'|glTexBufferARB U4 U4 U4'
   :EndIf
   {}glTexBufferARB_DLL target internalformat buffer
 ∇
 
 ∇ glBindVertexArray array
   :If 0=⎕NC'glBindVertexArray_DLL'
-      'glBindVertexArray_DLL'⎕NA'opengl32|glBindVertexArray U4'
+      'glBindVertexArray_DLL'⎕NA'',getdllname,'|glBindVertexArray U4'
   :EndIf
   {}glBindVertexArray_DLL array
 ∇
 
 ∇ glDeleteVertexArrays (n arrays)
   :If 0=⎕NC'glDeleteVertexArrays_DLL'
-      'glDeleteVertexArrays_DLL'⎕NA'opengl32|glDeleteVertexArrays I4 <U4[]'
+      'glDeleteVertexArrays_DLL'⎕NA'',getdllname,'|glDeleteVertexArrays I4 <U4[]'
   :EndIf
   {}glDeleteVertexArrays_DLL n arrays
 ∇
 
 ∇ r←glGenVertexArrays (n arrays)
   :If 0=⎕NC'glGenVertexArrays_DLL'
-      'glGenVertexArrays_DLL'⎕NA'opengl32|glGenVertexArrays I4 >U4[]'
+      'glGenVertexArrays_DLL'⎕NA'',getdllname,'|glGenVertexArrays I4 >U4[]'
   :EndIf
   r←glGenVertexArrays_DLL n arrays
 ∇
 
 ∇ r←glIsVertexArray array
   :If 0=⎕NC'glIsVertexArray_DLL'
-      'glIsVertexArray_DLL'⎕NA'U1 opengl32|glIsVertexArray U4'
+      'glIsVertexArray_DLL'⎕NA'U1 ',getdllname,'|glIsVertexArray U4'
   :EndIf
   r←glIsVertexArray_DLL array
 ∇
@@ -11902,7 +11910,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetActiveUniformsiv (program uniformCount uniformIndices pname params)
   :If 0=⎕NC'glGetActiveUniformsiv_DLL'
-      'glGetActiveUniformsiv_DLL'⎕NA'opengl32|glGetActiveUniformsiv U4 I4 <U4[] U4 >I4[]'
+      'glGetActiveUniformsiv_DLL'⎕NA'',getdllname,'|glGetActiveUniformsiv U4 I4 <U4[] U4 >I4[]'
   :EndIf
   r←glGetActiveUniformsiv_DLL program uniformCount uniformIndices pname params
 ∇
@@ -11923,7 +11931,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetActiveUniformBlockiv (program uniformBlockIndex pname params)
   :If 0=⎕NC'glGetActiveUniformBlockiv_DLL'
-      'glGetActiveUniformBlockiv_DLL'⎕NA'opengl32|glGetActiveUniformBlockiv U4 U4 U4 >I4[]'
+      'glGetActiveUniformBlockiv_DLL'⎕NA'',getdllname,'|glGetActiveUniformBlockiv U4 U4 U4 >I4[]'
   :EndIf
   r←glGetActiveUniformBlockiv_DLL program uniformBlockIndex pname params
 ∇
@@ -11937,7 +11945,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUniformBlockBinding (program uniformBlockIndex uniformBlockBinding)
   :If 0=⎕NC'glUniformBlockBinding_DLL'
-      'glUniformBlockBinding_DLL'⎕NA'opengl32|glUniformBlockBinding U4 U4 U4'
+      'glUniformBlockBinding_DLL'⎕NA'',getdllname,'|glUniformBlockBinding U4 U4 U4'
   :EndIf
   {}glUniformBlockBinding_DLL program uniformBlockIndex uniformBlockBinding
 ∇
@@ -11979,7 +11987,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glProvokingVertex mode
   :If 0=⎕NC'glProvokingVertex_DLL'
-      'glProvokingVertex_DLL'⎕NA'opengl32|glProvokingVertex U4'
+      'glProvokingVertex_DLL'⎕NA'',getdllname,'|glProvokingVertex U4'
   :EndIf
   {}glProvokingVertex_DLL mode
 ∇
@@ -12021,7 +12029,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetInteger64v (pname params)
   :If 0=⎕NC'glGetInteger64v_DLL'
-      'glGetInteger64v_DLL'⎕NA'opengl32|glGetInteger64v U4 >I8[]'
+      'glGetInteger64v_DLL'⎕NA'',getdllname,'|glGetInteger64v U4 >I8[]'
   :EndIf
   r←glGetInteger64v_DLL pname params
 ∇
@@ -12035,63 +12043,63 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexImage2DMultisample (target samples internalformat width height fixedsamplelocations)
   :If 0=⎕NC'glTexImage2DMultisample_DLL'
-      'glTexImage2DMultisample_DLL'⎕NA'opengl32|glTexImage2DMultisample U4 I4 I4 I4 I4 U1'
+      'glTexImage2DMultisample_DLL'⎕NA'',getdllname,'|glTexImage2DMultisample U4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTexImage2DMultisample_DLL target samples internalformat width height fixedsamplelocations
 ∇
 
 ∇ glTexImage3DMultisample (target samples internalformat width height depth fixedsamplelocations)
   :If 0=⎕NC'glTexImage3DMultisample_DLL'
-      'glTexImage3DMultisample_DLL'⎕NA'opengl32|glTexImage3DMultisample U4 I4 I4 I4 I4 I4 U1'
+      'glTexImage3DMultisample_DLL'⎕NA'',getdllname,'|glTexImage3DMultisample U4 I4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTexImage3DMultisample_DLL target samples internalformat width height depth fixedsamplelocations
 ∇
 
 ∇ r←glGetMultisamplefv (pname index val)
   :If 0=⎕NC'glGetMultisamplefv_DLL'
-      'glGetMultisamplefv_DLL'⎕NA'opengl32|glGetMultisamplefv U4 U4 >F4[]'
+      'glGetMultisamplefv_DLL'⎕NA'',getdllname,'|glGetMultisamplefv U4 U4 >F4[]'
   :EndIf
   r←glGetMultisamplefv_DLL pname index val
 ∇
 
 ∇ glSampleMaski (index mask)
   :If 0=⎕NC'glSampleMaski_DLL'
-      'glSampleMaski_DLL'⎕NA'opengl32|glSampleMaski U4 U4'
+      'glSampleMaski_DLL'⎕NA'',getdllname,'|glSampleMaski U4 U4'
   :EndIf
   {}glSampleMaski_DLL index mask
 ∇
 
 ∇ glBlendEquationiARB (buf mode)
   :If 0=⎕NC'glBlendEquationiARB_DLL'
-      'glBlendEquationiARB_DLL'⎕NA'opengl32|glBlendEquationiARB U4 U4'
+      'glBlendEquationiARB_DLL'⎕NA'',getdllname,'|glBlendEquationiARB U4 U4'
   :EndIf
   {}glBlendEquationiARB_DLL buf mode
 ∇
 
 ∇ glBlendEquationSeparateiARB (buf modeRGB modeAlpha)
   :If 0=⎕NC'glBlendEquationSeparateiARB_DLL'
-      'glBlendEquationSeparateiARB_DLL'⎕NA'opengl32|glBlendEquationSeparateiARB U4 U4 U4'
+      'glBlendEquationSeparateiARB_DLL'⎕NA'',getdllname,'|glBlendEquationSeparateiARB U4 U4 U4'
   :EndIf
   {}glBlendEquationSeparateiARB_DLL buf modeRGB modeAlpha
 ∇
 
 ∇ glBlendFunciARB (buf src dst)
   :If 0=⎕NC'glBlendFunciARB_DLL'
-      'glBlendFunciARB_DLL'⎕NA'opengl32|glBlendFunciARB U4 U4 U4'
+      'glBlendFunciARB_DLL'⎕NA'',getdllname,'|glBlendFunciARB U4 U4 U4'
   :EndIf
   {}glBlendFunciARB_DLL buf src dst
 ∇
 
 ∇ glBlendFuncSeparateiARB (buf srcRGB dstRGB srcAlpha dstAlpha)
   :If 0=⎕NC'glBlendFuncSeparateiARB_DLL'
-      'glBlendFuncSeparateiARB_DLL'⎕NA'opengl32|glBlendFuncSeparateiARB U4 U4 U4 U4 U4'
+      'glBlendFuncSeparateiARB_DLL'⎕NA'',getdllname,'|glBlendFuncSeparateiARB U4 U4 U4 U4 U4'
   :EndIf
   {}glBlendFuncSeparateiARB_DLL buf srcRGB dstRGB srcAlpha dstAlpha
 ∇
 
 ∇ glMinSampleShadingARB value
   :If 0=⎕NC'glMinSampleShadingARB_DLL'
-      'glMinSampleShadingARB_DLL'⎕NA'opengl32|glMinSampleShadingARB F4'
+      'glMinSampleShadingARB_DLL'⎕NA'',getdllname,'|glMinSampleShadingARB F4'
   :EndIf
   {}glMinSampleShadingARB_DLL value
 ∇
@@ -12154,385 +12162,385 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGenSamplers (count samplers)
   :If 0=⎕NC'glGenSamplers_DLL'
-      'glGenSamplers_DLL'⎕NA'opengl32|glGenSamplers I4 >U4[]'
+      'glGenSamplers_DLL'⎕NA'',getdllname,'|glGenSamplers I4 >U4[]'
   :EndIf
   r←glGenSamplers_DLL count samplers
 ∇
 
 ∇ glDeleteSamplers (count samplers)
   :If 0=⎕NC'glDeleteSamplers_DLL'
-      'glDeleteSamplers_DLL'⎕NA'opengl32|glDeleteSamplers I4 <U4[]'
+      'glDeleteSamplers_DLL'⎕NA'',getdllname,'|glDeleteSamplers I4 <U4[]'
   :EndIf
   {}glDeleteSamplers_DLL count samplers
 ∇
 
 ∇ r←glIsSampler sampler
   :If 0=⎕NC'glIsSampler_DLL'
-      'glIsSampler_DLL'⎕NA'U1 opengl32|glIsSampler U4'
+      'glIsSampler_DLL'⎕NA'U1 ',getdllname,'|glIsSampler U4'
   :EndIf
   r←glIsSampler_DLL sampler
 ∇
 
 ∇ glBindSampler (unit sampler)
   :If 0=⎕NC'glBindSampler_DLL'
-      'glBindSampler_DLL'⎕NA'opengl32|glBindSampler U4 U4'
+      'glBindSampler_DLL'⎕NA'',getdllname,'|glBindSampler U4 U4'
   :EndIf
   {}glBindSampler_DLL unit sampler
 ∇
 
 ∇ glSamplerParameteri (sampler pname param)
   :If 0=⎕NC'glSamplerParameteri_DLL'
-      'glSamplerParameteri_DLL'⎕NA'opengl32|glSamplerParameteri U4 U4 I4'
+      'glSamplerParameteri_DLL'⎕NA'',getdllname,'|glSamplerParameteri U4 U4 I4'
   :EndIf
   {}glSamplerParameteri_DLL sampler pname param
 ∇
 
 ∇ glSamplerParameteriv (sampler pname param)
   :If 0=⎕NC'glSamplerParameteriv_DLL'
-      'glSamplerParameteriv_DLL'⎕NA'opengl32|glSamplerParameteriv U4 U4 <I4[]'
+      'glSamplerParameteriv_DLL'⎕NA'',getdllname,'|glSamplerParameteriv U4 U4 <I4[]'
   :EndIf
   {}glSamplerParameteriv_DLL sampler pname param
 ∇
 
 ∇ glSamplerParameterf (sampler pname param)
   :If 0=⎕NC'glSamplerParameterf_DLL'
-      'glSamplerParameterf_DLL'⎕NA'opengl32|glSamplerParameterf U4 U4 F4'
+      'glSamplerParameterf_DLL'⎕NA'',getdllname,'|glSamplerParameterf U4 U4 F4'
   :EndIf
   {}glSamplerParameterf_DLL sampler pname param
 ∇
 
 ∇ glSamplerParameterfv (sampler pname param)
   :If 0=⎕NC'glSamplerParameterfv_DLL'
-      'glSamplerParameterfv_DLL'⎕NA'opengl32|glSamplerParameterfv U4 U4 <F4[]'
+      'glSamplerParameterfv_DLL'⎕NA'',getdllname,'|glSamplerParameterfv U4 U4 <F4[]'
   :EndIf
   {}glSamplerParameterfv_DLL sampler pname param
 ∇
 
 ∇ glSamplerParameterIiv (sampler pname param)
   :If 0=⎕NC'glSamplerParameterIiv_DLL'
-      'glSamplerParameterIiv_DLL'⎕NA'opengl32|glSamplerParameterIiv U4 U4 <I4[]'
+      'glSamplerParameterIiv_DLL'⎕NA'',getdllname,'|glSamplerParameterIiv U4 U4 <I4[]'
   :EndIf
   {}glSamplerParameterIiv_DLL sampler pname param
 ∇
 
 ∇ glSamplerParameterIuiv (sampler pname param)
   :If 0=⎕NC'glSamplerParameterIuiv_DLL'
-      'glSamplerParameterIuiv_DLL'⎕NA'opengl32|glSamplerParameterIuiv U4 U4 <U4[]'
+      'glSamplerParameterIuiv_DLL'⎕NA'',getdllname,'|glSamplerParameterIuiv U4 U4 <U4[]'
   :EndIf
   {}glSamplerParameterIuiv_DLL sampler pname param
 ∇
 
 ∇ r←glGetSamplerParameteriv (sampler pname params)
   :If 0=⎕NC'glGetSamplerParameteriv_DLL'
-      'glGetSamplerParameteriv_DLL'⎕NA'opengl32|glGetSamplerParameteriv U4 U4 >I4[]'
+      'glGetSamplerParameteriv_DLL'⎕NA'',getdllname,'|glGetSamplerParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetSamplerParameteriv_DLL sampler pname params
 ∇
 
 ∇ r←glGetSamplerParameterIiv (sampler pname params)
   :If 0=⎕NC'glGetSamplerParameterIiv_DLL'
-      'glGetSamplerParameterIiv_DLL'⎕NA'opengl32|glGetSamplerParameterIiv U4 U4 >I4[]'
+      'glGetSamplerParameterIiv_DLL'⎕NA'',getdllname,'|glGetSamplerParameterIiv U4 U4 >I4[]'
   :EndIf
   r←glGetSamplerParameterIiv_DLL sampler pname params
 ∇
 
 ∇ r←glGetSamplerParameterfv (sampler pname params)
   :If 0=⎕NC'glGetSamplerParameterfv_DLL'
-      'glGetSamplerParameterfv_DLL'⎕NA'opengl32|glGetSamplerParameterfv U4 U4 >F4[]'
+      'glGetSamplerParameterfv_DLL'⎕NA'',getdllname,'|glGetSamplerParameterfv U4 U4 >F4[]'
   :EndIf
   r←glGetSamplerParameterfv_DLL sampler pname params
 ∇
 
 ∇ r←glGetSamplerParameterIuiv (sampler pname params)
   :If 0=⎕NC'glGetSamplerParameterIuiv_DLL'
-      'glGetSamplerParameterIuiv_DLL'⎕NA'opengl32|glGetSamplerParameterIuiv U4 U4 >U4[]'
+      'glGetSamplerParameterIuiv_DLL'⎕NA'',getdllname,'|glGetSamplerParameterIuiv U4 U4 >U4[]'
   :EndIf
   r←glGetSamplerParameterIuiv_DLL sampler pname params
 ∇
 
 ∇ glQueryCounter (id target)
   :If 0=⎕NC'glQueryCounter_DLL'
-      'glQueryCounter_DLL'⎕NA'opengl32|glQueryCounter U4 U4'
+      'glQueryCounter_DLL'⎕NA'',getdllname,'|glQueryCounter U4 U4'
   :EndIf
   {}glQueryCounter_DLL id target
 ∇
 
 ∇ r←glGetQueryObjecti64v (id pname params)
   :If 0=⎕NC'glGetQueryObjecti64v_DLL'
-      'glGetQueryObjecti64v_DLL'⎕NA'opengl32|glGetQueryObjecti64v U4 U4 >I8[]'
+      'glGetQueryObjecti64v_DLL'⎕NA'',getdllname,'|glGetQueryObjecti64v U4 U4 >I8[]'
   :EndIf
   r←glGetQueryObjecti64v_DLL id pname params
 ∇
 
 ∇ r←glGetQueryObjectui64v (id pname params)
   :If 0=⎕NC'glGetQueryObjectui64v_DLL'
-      'glGetQueryObjectui64v_DLL'⎕NA'opengl32|glGetQueryObjectui64v U4 U4 >U8[]'
+      'glGetQueryObjectui64v_DLL'⎕NA'',getdllname,'|glGetQueryObjectui64v U4 U4 >U8[]'
   :EndIf
   r←glGetQueryObjectui64v_DLL id pname params
 ∇
 
 ∇ glVertexP2ui (type value)
   :If 0=⎕NC'glVertexP2ui_DLL'
-      'glVertexP2ui_DLL'⎕NA'opengl32|glVertexP2ui U4 U4'
+      'glVertexP2ui_DLL'⎕NA'',getdllname,'|glVertexP2ui U4 U4'
   :EndIf
   {}glVertexP2ui_DLL type value
 ∇
 
 ∇ glVertexP2uiv (type value)
   :If 0=⎕NC'glVertexP2uiv_DLL'
-      'glVertexP2uiv_DLL'⎕NA'opengl32|glVertexP2uiv U4 <U4[1]'
+      'glVertexP2uiv_DLL'⎕NA'',getdllname,'|glVertexP2uiv U4 <U4[1]'
   :EndIf
   {}glVertexP2uiv_DLL type value
 ∇
 
 ∇ glVertexP3ui (type value)
   :If 0=⎕NC'glVertexP3ui_DLL'
-      'glVertexP3ui_DLL'⎕NA'opengl32|glVertexP3ui U4 U4'
+      'glVertexP3ui_DLL'⎕NA'',getdllname,'|glVertexP3ui U4 U4'
   :EndIf
   {}glVertexP3ui_DLL type value
 ∇
 
 ∇ glVertexP3uiv (type value)
   :If 0=⎕NC'glVertexP3uiv_DLL'
-      'glVertexP3uiv_DLL'⎕NA'opengl32|glVertexP3uiv U4 <U4[1]'
+      'glVertexP3uiv_DLL'⎕NA'',getdllname,'|glVertexP3uiv U4 <U4[1]'
   :EndIf
   {}glVertexP3uiv_DLL type value
 ∇
 
 ∇ glVertexP4ui (type value)
   :If 0=⎕NC'glVertexP4ui_DLL'
-      'glVertexP4ui_DLL'⎕NA'opengl32|glVertexP4ui U4 U4'
+      'glVertexP4ui_DLL'⎕NA'',getdllname,'|glVertexP4ui U4 U4'
   :EndIf
   {}glVertexP4ui_DLL type value
 ∇
 
 ∇ glVertexP4uiv (type value)
   :If 0=⎕NC'glVertexP4uiv_DLL'
-      'glVertexP4uiv_DLL'⎕NA'opengl32|glVertexP4uiv U4 <U4[1]'
+      'glVertexP4uiv_DLL'⎕NA'',getdllname,'|glVertexP4uiv U4 <U4[1]'
   :EndIf
   {}glVertexP4uiv_DLL type value
 ∇
 
 ∇ glTexCoordP1ui (type coords)
   :If 0=⎕NC'glTexCoordP1ui_DLL'
-      'glTexCoordP1ui_DLL'⎕NA'opengl32|glTexCoordP1ui U4 U4'
+      'glTexCoordP1ui_DLL'⎕NA'',getdllname,'|glTexCoordP1ui U4 U4'
   :EndIf
   {}glTexCoordP1ui_DLL type coords
 ∇
 
 ∇ glTexCoordP1uiv (type coords)
   :If 0=⎕NC'glTexCoordP1uiv_DLL'
-      'glTexCoordP1uiv_DLL'⎕NA'opengl32|glTexCoordP1uiv U4 <U4[1]'
+      'glTexCoordP1uiv_DLL'⎕NA'',getdllname,'|glTexCoordP1uiv U4 <U4[1]'
   :EndIf
   {}glTexCoordP1uiv_DLL type coords
 ∇
 
 ∇ glTexCoordP2ui (type coords)
   :If 0=⎕NC'glTexCoordP2ui_DLL'
-      'glTexCoordP2ui_DLL'⎕NA'opengl32|glTexCoordP2ui U4 U4'
+      'glTexCoordP2ui_DLL'⎕NA'',getdllname,'|glTexCoordP2ui U4 U4'
   :EndIf
   {}glTexCoordP2ui_DLL type coords
 ∇
 
 ∇ glTexCoordP2uiv (type coords)
   :If 0=⎕NC'glTexCoordP2uiv_DLL'
-      'glTexCoordP2uiv_DLL'⎕NA'opengl32|glTexCoordP2uiv U4 <U4[1]'
+      'glTexCoordP2uiv_DLL'⎕NA'',getdllname,'|glTexCoordP2uiv U4 <U4[1]'
   :EndIf
   {}glTexCoordP2uiv_DLL type coords
 ∇
 
 ∇ glTexCoordP3ui (type coords)
   :If 0=⎕NC'glTexCoordP3ui_DLL'
-      'glTexCoordP3ui_DLL'⎕NA'opengl32|glTexCoordP3ui U4 U4'
+      'glTexCoordP3ui_DLL'⎕NA'',getdllname,'|glTexCoordP3ui U4 U4'
   :EndIf
   {}glTexCoordP3ui_DLL type coords
 ∇
 
 ∇ glTexCoordP3uiv (type coords)
   :If 0=⎕NC'glTexCoordP3uiv_DLL'
-      'glTexCoordP3uiv_DLL'⎕NA'opengl32|glTexCoordP3uiv U4 <U4[1]'
+      'glTexCoordP3uiv_DLL'⎕NA'',getdllname,'|glTexCoordP3uiv U4 <U4[1]'
   :EndIf
   {}glTexCoordP3uiv_DLL type coords
 ∇
 
 ∇ glTexCoordP4ui (type coords)
   :If 0=⎕NC'glTexCoordP4ui_DLL'
-      'glTexCoordP4ui_DLL'⎕NA'opengl32|glTexCoordP4ui U4 U4'
+      'glTexCoordP4ui_DLL'⎕NA'',getdllname,'|glTexCoordP4ui U4 U4'
   :EndIf
   {}glTexCoordP4ui_DLL type coords
 ∇
 
 ∇ glTexCoordP4uiv (type coords)
   :If 0=⎕NC'glTexCoordP4uiv_DLL'
-      'glTexCoordP4uiv_DLL'⎕NA'opengl32|glTexCoordP4uiv U4 <U4[1]'
+      'glTexCoordP4uiv_DLL'⎕NA'',getdllname,'|glTexCoordP4uiv U4 <U4[1]'
   :EndIf
   {}glTexCoordP4uiv_DLL type coords
 ∇
 
 ∇ glMultiTexCoordP1ui (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP1ui_DLL'
-      'glMultiTexCoordP1ui_DLL'⎕NA'opengl32|glMultiTexCoordP1ui U4 U4 U4'
+      'glMultiTexCoordP1ui_DLL'⎕NA'',getdllname,'|glMultiTexCoordP1ui U4 U4 U4'
   :EndIf
   {}glMultiTexCoordP1ui_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP1uiv (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP1uiv_DLL'
-      'glMultiTexCoordP1uiv_DLL'⎕NA'opengl32|glMultiTexCoordP1uiv U4 U4 <U4[1]'
+      'glMultiTexCoordP1uiv_DLL'⎕NA'',getdllname,'|glMultiTexCoordP1uiv U4 U4 <U4[1]'
   :EndIf
   {}glMultiTexCoordP1uiv_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP2ui (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP2ui_DLL'
-      'glMultiTexCoordP2ui_DLL'⎕NA'opengl32|glMultiTexCoordP2ui U4 U4 U4'
+      'glMultiTexCoordP2ui_DLL'⎕NA'',getdllname,'|glMultiTexCoordP2ui U4 U4 U4'
   :EndIf
   {}glMultiTexCoordP2ui_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP2uiv (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP2uiv_DLL'
-      'glMultiTexCoordP2uiv_DLL'⎕NA'opengl32|glMultiTexCoordP2uiv U4 U4 <U4[1]'
+      'glMultiTexCoordP2uiv_DLL'⎕NA'',getdllname,'|glMultiTexCoordP2uiv U4 U4 <U4[1]'
   :EndIf
   {}glMultiTexCoordP2uiv_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP3ui (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP3ui_DLL'
-      'glMultiTexCoordP3ui_DLL'⎕NA'opengl32|glMultiTexCoordP3ui U4 U4 U4'
+      'glMultiTexCoordP3ui_DLL'⎕NA'',getdllname,'|glMultiTexCoordP3ui U4 U4 U4'
   :EndIf
   {}glMultiTexCoordP3ui_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP3uiv (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP3uiv_DLL'
-      'glMultiTexCoordP3uiv_DLL'⎕NA'opengl32|glMultiTexCoordP3uiv U4 U4 <U4[1]'
+      'glMultiTexCoordP3uiv_DLL'⎕NA'',getdllname,'|glMultiTexCoordP3uiv U4 U4 <U4[1]'
   :EndIf
   {}glMultiTexCoordP3uiv_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP4ui (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP4ui_DLL'
-      'glMultiTexCoordP4ui_DLL'⎕NA'opengl32|glMultiTexCoordP4ui U4 U4 U4'
+      'glMultiTexCoordP4ui_DLL'⎕NA'',getdllname,'|glMultiTexCoordP4ui U4 U4 U4'
   :EndIf
   {}glMultiTexCoordP4ui_DLL texture type coords
 ∇
 
 ∇ glMultiTexCoordP4uiv (texture type coords)
   :If 0=⎕NC'glMultiTexCoordP4uiv_DLL'
-      'glMultiTexCoordP4uiv_DLL'⎕NA'opengl32|glMultiTexCoordP4uiv U4 U4 <U4[1]'
+      'glMultiTexCoordP4uiv_DLL'⎕NA'',getdllname,'|glMultiTexCoordP4uiv U4 U4 <U4[1]'
   :EndIf
   {}glMultiTexCoordP4uiv_DLL texture type coords
 ∇
 
 ∇ glNormalP3ui (type coords)
   :If 0=⎕NC'glNormalP3ui_DLL'
-      'glNormalP3ui_DLL'⎕NA'opengl32|glNormalP3ui U4 U4'
+      'glNormalP3ui_DLL'⎕NA'',getdllname,'|glNormalP3ui U4 U4'
   :EndIf
   {}glNormalP3ui_DLL type coords
 ∇
 
 ∇ glNormalP3uiv (type coords)
   :If 0=⎕NC'glNormalP3uiv_DLL'
-      'glNormalP3uiv_DLL'⎕NA'opengl32|glNormalP3uiv U4 <U4[1]'
+      'glNormalP3uiv_DLL'⎕NA'',getdllname,'|glNormalP3uiv U4 <U4[1]'
   :EndIf
   {}glNormalP3uiv_DLL type coords
 ∇
 
 ∇ glColorP3ui (type color)
   :If 0=⎕NC'glColorP3ui_DLL'
-      'glColorP3ui_DLL'⎕NA'opengl32|glColorP3ui U4 U4'
+      'glColorP3ui_DLL'⎕NA'',getdllname,'|glColorP3ui U4 U4'
   :EndIf
   {}glColorP3ui_DLL type color
 ∇
 
 ∇ glColorP3uiv (type color)
   :If 0=⎕NC'glColorP3uiv_DLL'
-      'glColorP3uiv_DLL'⎕NA'opengl32|glColorP3uiv U4 <U4[1]'
+      'glColorP3uiv_DLL'⎕NA'',getdllname,'|glColorP3uiv U4 <U4[1]'
   :EndIf
   {}glColorP3uiv_DLL type color
 ∇
 
 ∇ glColorP4ui (type color)
   :If 0=⎕NC'glColorP4ui_DLL'
-      'glColorP4ui_DLL'⎕NA'opengl32|glColorP4ui U4 U4'
+      'glColorP4ui_DLL'⎕NA'',getdllname,'|glColorP4ui U4 U4'
   :EndIf
   {}glColorP4ui_DLL type color
 ∇
 
 ∇ glColorP4uiv (type color)
   :If 0=⎕NC'glColorP4uiv_DLL'
-      'glColorP4uiv_DLL'⎕NA'opengl32|glColorP4uiv U4 <U4[1]'
+      'glColorP4uiv_DLL'⎕NA'',getdllname,'|glColorP4uiv U4 <U4[1]'
   :EndIf
   {}glColorP4uiv_DLL type color
 ∇
 
 ∇ glSecondaryColorP3ui (type color)
   :If 0=⎕NC'glSecondaryColorP3ui_DLL'
-      'glSecondaryColorP3ui_DLL'⎕NA'opengl32|glSecondaryColorP3ui U4 U4'
+      'glSecondaryColorP3ui_DLL'⎕NA'',getdllname,'|glSecondaryColorP3ui U4 U4'
   :EndIf
   {}glSecondaryColorP3ui_DLL type color
 ∇
 
 ∇ glSecondaryColorP3uiv (type color)
   :If 0=⎕NC'glSecondaryColorP3uiv_DLL'
-      'glSecondaryColorP3uiv_DLL'⎕NA'opengl32|glSecondaryColorP3uiv U4 <U4[1]'
+      'glSecondaryColorP3uiv_DLL'⎕NA'',getdllname,'|glSecondaryColorP3uiv U4 <U4[1]'
   :EndIf
   {}glSecondaryColorP3uiv_DLL type color
 ∇
 
 ∇ glVertexAttribP1ui (index type normalized value)
   :If 0=⎕NC'glVertexAttribP1ui_DLL'
-      'glVertexAttribP1ui_DLL'⎕NA'opengl32|glVertexAttribP1ui U4 U4 U1 U4'
+      'glVertexAttribP1ui_DLL'⎕NA'',getdllname,'|glVertexAttribP1ui U4 U4 U1 U4'
   :EndIf
   {}glVertexAttribP1ui_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP1uiv (index type normalized value)
   :If 0=⎕NC'glVertexAttribP1uiv_DLL'
-      'glVertexAttribP1uiv_DLL'⎕NA'opengl32|glVertexAttribP1uiv U4 U4 U1 <U4[1]'
+      'glVertexAttribP1uiv_DLL'⎕NA'',getdllname,'|glVertexAttribP1uiv U4 U4 U1 <U4[1]'
   :EndIf
   {}glVertexAttribP1uiv_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP2ui (index type normalized value)
   :If 0=⎕NC'glVertexAttribP2ui_DLL'
-      'glVertexAttribP2ui_DLL'⎕NA'opengl32|glVertexAttribP2ui U4 U4 U1 U4'
+      'glVertexAttribP2ui_DLL'⎕NA'',getdllname,'|glVertexAttribP2ui U4 U4 U1 U4'
   :EndIf
   {}glVertexAttribP2ui_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP2uiv (index type normalized value)
   :If 0=⎕NC'glVertexAttribP2uiv_DLL'
-      'glVertexAttribP2uiv_DLL'⎕NA'opengl32|glVertexAttribP2uiv U4 U4 U1 <U4[1]'
+      'glVertexAttribP2uiv_DLL'⎕NA'',getdllname,'|glVertexAttribP2uiv U4 U4 U1 <U4[1]'
   :EndIf
   {}glVertexAttribP2uiv_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP3ui (index type normalized value)
   :If 0=⎕NC'glVertexAttribP3ui_DLL'
-      'glVertexAttribP3ui_DLL'⎕NA'opengl32|glVertexAttribP3ui U4 U4 U1 U4'
+      'glVertexAttribP3ui_DLL'⎕NA'',getdllname,'|glVertexAttribP3ui U4 U4 U1 U4'
   :EndIf
   {}glVertexAttribP3ui_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP3uiv (index type normalized value)
   :If 0=⎕NC'glVertexAttribP3uiv_DLL'
-      'glVertexAttribP3uiv_DLL'⎕NA'opengl32|glVertexAttribP3uiv U4 U4 U1 <U4[1]'
+      'glVertexAttribP3uiv_DLL'⎕NA'',getdllname,'|glVertexAttribP3uiv U4 U4 U1 <U4[1]'
   :EndIf
   {}glVertexAttribP3uiv_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP4ui (index type normalized value)
   :If 0=⎕NC'glVertexAttribP4ui_DLL'
-      'glVertexAttribP4ui_DLL'⎕NA'opengl32|glVertexAttribP4ui U4 U4 U1 U4'
+      'glVertexAttribP4ui_DLL'⎕NA'',getdllname,'|glVertexAttribP4ui U4 U4 U1 U4'
   :EndIf
   {}glVertexAttribP4ui_DLL index type normalized value
 ∇
 
 ∇ glVertexAttribP4uiv (index type normalized value)
   :If 0=⎕NC'glVertexAttribP4uiv_DLL'
-      'glVertexAttribP4uiv_DLL'⎕NA'opengl32|glVertexAttribP4uiv U4 U4 U1 <U4[1]'
+      'glVertexAttribP4uiv_DLL'⎕NA'',getdllname,'|glVertexAttribP4uiv U4 U4 U1 <U4[1]'
   :EndIf
   {}glVertexAttribP4uiv_DLL index type normalized value
 ∇
@@ -12553,126 +12561,126 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUniform1d (location x)
   :If 0=⎕NC'glUniform1d_DLL'
-      'glUniform1d_DLL'⎕NA'opengl32|glUniform1d I4 F8'
+      'glUniform1d_DLL'⎕NA'',getdllname,'|glUniform1d I4 F8'
   :EndIf
   {}glUniform1d_DLL location x
 ∇
 
 ∇ glUniform2d (location x y)
   :If 0=⎕NC'glUniform2d_DLL'
-      'glUniform2d_DLL'⎕NA'opengl32|glUniform2d I4 F8 F8'
+      'glUniform2d_DLL'⎕NA'',getdllname,'|glUniform2d I4 F8 F8'
   :EndIf
   {}glUniform2d_DLL location x y
 ∇
 
 ∇ glUniform3d (location x y z)
   :If 0=⎕NC'glUniform3d_DLL'
-      'glUniform3d_DLL'⎕NA'opengl32|glUniform3d I4 F8 F8 F8'
+      'glUniform3d_DLL'⎕NA'',getdllname,'|glUniform3d I4 F8 F8 F8'
   :EndIf
   {}glUniform3d_DLL location x y z
 ∇
 
 ∇ glUniform4d (location x y z w)
   :If 0=⎕NC'glUniform4d_DLL'
-      'glUniform4d_DLL'⎕NA'opengl32|glUniform4d I4 F8 F8 F8 F8'
+      'glUniform4d_DLL'⎕NA'',getdllname,'|glUniform4d I4 F8 F8 F8 F8'
   :EndIf
   {}glUniform4d_DLL location x y z w
 ∇
 
 ∇ glUniform1dv (location count value)
   :If 0=⎕NC'glUniform1dv_DLL'
-      'glUniform1dv_DLL'⎕NA'opengl32|glUniform1dv I4 I4 <F8[]'
+      'glUniform1dv_DLL'⎕NA'',getdllname,'|glUniform1dv I4 I4 <F8[]'
   :EndIf
   {}glUniform1dv_DLL location count value
 ∇
 
 ∇ glUniform2dv (location count value)
   :If 0=⎕NC'glUniform2dv_DLL'
-      'glUniform2dv_DLL'⎕NA'opengl32|glUniform2dv I4 I4 <F8[]'
+      'glUniform2dv_DLL'⎕NA'',getdllname,'|glUniform2dv I4 I4 <F8[]'
   :EndIf
   {}glUniform2dv_DLL location count value
 ∇
 
 ∇ glUniform3dv (location count value)
   :If 0=⎕NC'glUniform3dv_DLL'
-      'glUniform3dv_DLL'⎕NA'opengl32|glUniform3dv I4 I4 <F8[]'
+      'glUniform3dv_DLL'⎕NA'',getdllname,'|glUniform3dv I4 I4 <F8[]'
   :EndIf
   {}glUniform3dv_DLL location count value
 ∇
 
 ∇ glUniform4dv (location count value)
   :If 0=⎕NC'glUniform4dv_DLL'
-      'glUniform4dv_DLL'⎕NA'opengl32|glUniform4dv I4 I4 <F8[]'
+      'glUniform4dv_DLL'⎕NA'',getdllname,'|glUniform4dv I4 I4 <F8[]'
   :EndIf
   {}glUniform4dv_DLL location count value
 ∇
 
 ∇ glUniformMatrix2dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2dv_DLL'
-      'glUniformMatrix2dv_DLL'⎕NA'opengl32|glUniformMatrix2dv I4 I4 U1 <F8[]'
+      'glUniformMatrix2dv_DLL'⎕NA'',getdllname,'|glUniformMatrix2dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix2dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3dv_DLL'
-      'glUniformMatrix3dv_DLL'⎕NA'opengl32|glUniformMatrix3dv I4 I4 U1 <F8[]'
+      'glUniformMatrix3dv_DLL'⎕NA'',getdllname,'|glUniformMatrix3dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix3dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4dv_DLL'
-      'glUniformMatrix4dv_DLL'⎕NA'opengl32|glUniformMatrix4dv I4 I4 U1 <F8[]'
+      'glUniformMatrix4dv_DLL'⎕NA'',getdllname,'|glUniformMatrix4dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix4dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix2x3dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2x3dv_DLL'
-      'glUniformMatrix2x3dv_DLL'⎕NA'opengl32|glUniformMatrix2x3dv I4 I4 U1 <F8[]'
+      'glUniformMatrix2x3dv_DLL'⎕NA'',getdllname,'|glUniformMatrix2x3dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix2x3dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix2x4dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix2x4dv_DLL'
-      'glUniformMatrix2x4dv_DLL'⎕NA'opengl32|glUniformMatrix2x4dv I4 I4 U1 <F8[]'
+      'glUniformMatrix2x4dv_DLL'⎕NA'',getdllname,'|glUniformMatrix2x4dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix2x4dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3x2dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3x2dv_DLL'
-      'glUniformMatrix3x2dv_DLL'⎕NA'opengl32|glUniformMatrix3x2dv I4 I4 U1 <F8[]'
+      'glUniformMatrix3x2dv_DLL'⎕NA'',getdllname,'|glUniformMatrix3x2dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix3x2dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix3x4dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix3x4dv_DLL'
-      'glUniformMatrix3x4dv_DLL'⎕NA'opengl32|glUniformMatrix3x4dv I4 I4 U1 <F8[]'
+      'glUniformMatrix3x4dv_DLL'⎕NA'',getdllname,'|glUniformMatrix3x4dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix3x4dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4x2dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4x2dv_DLL'
-      'glUniformMatrix4x2dv_DLL'⎕NA'opengl32|glUniformMatrix4x2dv I4 I4 U1 <F8[]'
+      'glUniformMatrix4x2dv_DLL'⎕NA'',getdllname,'|glUniformMatrix4x2dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix4x2dv_DLL location count transpose value
 ∇
 
 ∇ glUniformMatrix4x3dv (location count transpose value)
   :If 0=⎕NC'glUniformMatrix4x3dv_DLL'
-      'glUniformMatrix4x3dv_DLL'⎕NA'opengl32|glUniformMatrix4x3dv I4 I4 U1 <F8[]'
+      'glUniformMatrix4x3dv_DLL'⎕NA'',getdllname,'|glUniformMatrix4x3dv I4 I4 U1 <F8[]'
   :EndIf
   {}glUniformMatrix4x3dv_DLL location count transpose value
 ∇
 
 ∇ r←glGetUniformdv (program location params)
   :If 0=⎕NC'glGetUniformdv_DLL'
-      'glGetUniformdv_DLL'⎕NA'opengl32|glGetUniformdv U4 I4 >F8[]'
+      'glGetUniformdv_DLL'⎕NA'',getdllname,'|glGetUniformdv U4 I4 >F8[]'
   :EndIf
   r←glGetUniformdv_DLL program location params
 ∇
@@ -12693,7 +12701,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetActiveSubroutineUniformiv (program shadertype index pname values)
   :If 0=⎕NC'glGetActiveSubroutineUniformiv_DLL'
-      'glGetActiveSubroutineUniformiv_DLL'⎕NA'opengl32|glGetActiveSubroutineUniformiv U4 U4 U4 U4 >I4[]'
+      'glGetActiveSubroutineUniformiv_DLL'⎕NA'',getdllname,'|glGetActiveSubroutineUniformiv U4 U4 U4 U4 >I4[]'
   :EndIf
   r←glGetActiveSubroutineUniformiv_DLL program shadertype index pname values
 ∇
@@ -12714,119 +12722,119 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUniformSubroutinesuiv (shadertype count indices)
   :If 0=⎕NC'glUniformSubroutinesuiv_DLL'
-      'glUniformSubroutinesuiv_DLL'⎕NA'opengl32|glUniformSubroutinesuiv U4 I4 <U4[]'
+      'glUniformSubroutinesuiv_DLL'⎕NA'',getdllname,'|glUniformSubroutinesuiv U4 I4 <U4[]'
   :EndIf
   {}glUniformSubroutinesuiv_DLL shadertype count indices
 ∇
 
 ∇ r←glGetUniformSubroutineuiv (shadertype location)
   :If 0=⎕NC'glGetUniformSubroutineuiv_DLL'
-      'glGetUniformSubroutineuiv_DLL'⎕NA'opengl32|glGetUniformSubroutineuiv U4 I4 >U4[1]'
+      'glGetUniformSubroutineuiv_DLL'⎕NA'',getdllname,'|glGetUniformSubroutineuiv U4 I4 >U4[1]'
   :EndIf
   r←glGetUniformSubroutineuiv_DLL shadertype location 1
 ∇
 
 ∇ r←glGetProgramStageiv (program shadertype pname)
   :If 0=⎕NC'glGetProgramStageiv_DLL'
-      'glGetProgramStageiv_DLL'⎕NA'opengl32|glGetProgramStageiv U4 U4 U4 >I4[1]'
+      'glGetProgramStageiv_DLL'⎕NA'',getdllname,'|glGetProgramStageiv U4 U4 U4 >I4[1]'
   :EndIf
   r←glGetProgramStageiv_DLL program shadertype pname 1
 ∇
 
 ∇ glPatchParameteri (pname value)
   :If 0=⎕NC'glPatchParameteri_DLL'
-      'glPatchParameteri_DLL'⎕NA'opengl32|glPatchParameteri U4 I4'
+      'glPatchParameteri_DLL'⎕NA'',getdllname,'|glPatchParameteri U4 I4'
   :EndIf
   {}glPatchParameteri_DLL pname value
 ∇
 
 ∇ glPatchParameterfv (pname values)
   :If 0=⎕NC'glPatchParameterfv_DLL'
-      'glPatchParameterfv_DLL'⎕NA'opengl32|glPatchParameterfv U4 <F4[]'
+      'glPatchParameterfv_DLL'⎕NA'',getdllname,'|glPatchParameterfv U4 <F4[]'
   :EndIf
   {}glPatchParameterfv_DLL pname values
 ∇
 
 ∇ glBindTransformFeedback (target id)
   :If 0=⎕NC'glBindTransformFeedback_DLL'
-      'glBindTransformFeedback_DLL'⎕NA'opengl32|glBindTransformFeedback U4 U4'
+      'glBindTransformFeedback_DLL'⎕NA'',getdllname,'|glBindTransformFeedback U4 U4'
   :EndIf
   {}glBindTransformFeedback_DLL target id
 ∇
 
 ∇ glDeleteTransformFeedbacks (n ids)
   :If 0=⎕NC'glDeleteTransformFeedbacks_DLL'
-      'glDeleteTransformFeedbacks_DLL'⎕NA'opengl32|glDeleteTransformFeedbacks I4 <U4[]'
+      'glDeleteTransformFeedbacks_DLL'⎕NA'',getdllname,'|glDeleteTransformFeedbacks I4 <U4[]'
   :EndIf
   {}glDeleteTransformFeedbacks_DLL n ids
 ∇
 
 ∇ r←glGenTransformFeedbacks (n ids)
   :If 0=⎕NC'glGenTransformFeedbacks_DLL'
-      'glGenTransformFeedbacks_DLL'⎕NA'opengl32|glGenTransformFeedbacks I4 >U4[]'
+      'glGenTransformFeedbacks_DLL'⎕NA'',getdllname,'|glGenTransformFeedbacks I4 >U4[]'
   :EndIf
   r←glGenTransformFeedbacks_DLL n ids
 ∇
 
 ∇ r←glIsTransformFeedback id
   :If 0=⎕NC'glIsTransformFeedback_DLL'
-      'glIsTransformFeedback_DLL'⎕NA'U1 opengl32|glIsTransformFeedback U4'
+      'glIsTransformFeedback_DLL'⎕NA'U1 ',getdllname,'|glIsTransformFeedback U4'
   :EndIf
   r←glIsTransformFeedback_DLL id
 ∇
 
 ∇ glPauseTransformFeedback
   :If 0=⎕NC'glPauseTransformFeedback_DLL'
-      'glPauseTransformFeedback_DLL'⎕NA'opengl32|glPauseTransformFeedback'
+      'glPauseTransformFeedback_DLL'⎕NA'',getdllname,'|glPauseTransformFeedback'
   :EndIf
   {}glPauseTransformFeedback_DLL
 ∇
 
 ∇ glResumeTransformFeedback
   :If 0=⎕NC'glResumeTransformFeedback_DLL'
-      'glResumeTransformFeedback_DLL'⎕NA'opengl32|glResumeTransformFeedback'
+      'glResumeTransformFeedback_DLL'⎕NA'',getdllname,'|glResumeTransformFeedback'
   :EndIf
   {}glResumeTransformFeedback_DLL
 ∇
 
 ∇ glDrawTransformFeedback (mode id)
   :If 0=⎕NC'glDrawTransformFeedback_DLL'
-      'glDrawTransformFeedback_DLL'⎕NA'opengl32|glDrawTransformFeedback U4 U4'
+      'glDrawTransformFeedback_DLL'⎕NA'',getdllname,'|glDrawTransformFeedback U4 U4'
   :EndIf
   {}glDrawTransformFeedback_DLL mode id
 ∇
 
 ∇ glDrawTransformFeedbackStream (mode id stream)
   :If 0=⎕NC'glDrawTransformFeedbackStream_DLL'
-      'glDrawTransformFeedbackStream_DLL'⎕NA'opengl32|glDrawTransformFeedbackStream U4 U4 U4'
+      'glDrawTransformFeedbackStream_DLL'⎕NA'',getdllname,'|glDrawTransformFeedbackStream U4 U4 U4'
   :EndIf
   {}glDrawTransformFeedbackStream_DLL mode id stream
 ∇
 
 ∇ glBeginQueryIndexed (target index id)
   :If 0=⎕NC'glBeginQueryIndexed_DLL'
-      'glBeginQueryIndexed_DLL'⎕NA'opengl32|glBeginQueryIndexed U4 U4 U4'
+      'glBeginQueryIndexed_DLL'⎕NA'',getdllname,'|glBeginQueryIndexed U4 U4 U4'
   :EndIf
   {}glBeginQueryIndexed_DLL target index id
 ∇
 
 ∇ glEndQueryIndexed (target index)
   :If 0=⎕NC'glEndQueryIndexed_DLL'
-      'glEndQueryIndexed_DLL'⎕NA'opengl32|glEndQueryIndexed U4 U4'
+      'glEndQueryIndexed_DLL'⎕NA'',getdllname,'|glEndQueryIndexed U4 U4'
   :EndIf
   {}glEndQueryIndexed_DLL target index
 ∇
 
 ∇ r←glGetQueryIndexediv (target index pname params)
   :If 0=⎕NC'glGetQueryIndexediv_DLL'
-      'glGetQueryIndexediv_DLL'⎕NA'opengl32|glGetQueryIndexediv U4 U4 U4 >I4[]'
+      'glGetQueryIndexediv_DLL'⎕NA'',getdllname,'|glGetQueryIndexediv U4 U4 U4 >I4[]'
   :EndIf
   r←glGetQueryIndexediv_DLL target index pname params
 ∇
 
 ∇ glReleaseShaderCompiler
   :If 0=⎕NC'glReleaseShaderCompiler_DLL'
-      'glReleaseShaderCompiler_DLL'⎕NA'opengl32|glReleaseShaderCompiler'
+      'glReleaseShaderCompiler_DLL'⎕NA'',getdllname,'|glReleaseShaderCompiler'
   :EndIf
   {}glReleaseShaderCompiler_DLL
 ∇
@@ -12840,21 +12848,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetShaderPrecisionFormat (shadertype precisiontype)
   :If 0=⎕NC'glGetShaderPrecisionFormat_DLL'
-      'glGetShaderPrecisionFormat_DLL'⎕NA'opengl32|glGetShaderPrecisionFormat U4 U4 >I4[2] >I4[2]'
+      'glGetShaderPrecisionFormat_DLL'⎕NA'',getdllname,'|glGetShaderPrecisionFormat U4 U4 >I4[2] >I4[2]'
   :EndIf
   r←glGetShaderPrecisionFormat_DLL shadertype precisiontype 2 2
 ∇
 
 ∇ glDepthRangef (n f)
   :If 0=⎕NC'glDepthRangef_DLL'
-      'glDepthRangef_DLL'⎕NA'opengl32|glDepthRangef F4 F4'
+      'glDepthRangef_DLL'⎕NA'',getdllname,'|glDepthRangef F4 F4'
   :EndIf
   {}glDepthRangef_DLL n f
 ∇
 
 ∇ glClearDepthf d
   :If 0=⎕NC'glClearDepthf_DLL'
-      'glClearDepthf_DLL'⎕NA'opengl32|glClearDepthf F4'
+      'glClearDepthf_DLL'⎕NA'',getdllname,'|glClearDepthf F4'
   :EndIf
   {}glClearDepthf_DLL d
 ∇
@@ -12875,21 +12883,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glProgramParameteri (program pname value)
   :If 0=⎕NC'glProgramParameteri_DLL'
-      'glProgramParameteri_DLL'⎕NA'opengl32|glProgramParameteri U4 U4 I4'
+      'glProgramParameteri_DLL'⎕NA'',getdllname,'|glProgramParameteri U4 U4 I4'
   :EndIf
   {}glProgramParameteri_DLL program pname value
 ∇
 
 ∇ glUseProgramStages (pipeline stages program)
   :If 0=⎕NC'glUseProgramStages_DLL'
-      'glUseProgramStages_DLL'⎕NA'opengl32|glUseProgramStages U4 U4 U4'
+      'glUseProgramStages_DLL'⎕NA'',getdllname,'|glUseProgramStages U4 U4 U4'
   :EndIf
   {}glUseProgramStages_DLL pipeline stages program
 ∇
 
 ∇ glActiveShaderProgram (pipeline program)
   :If 0=⎕NC'glActiveShaderProgram_DLL'
-      'glActiveShaderProgram_DLL'⎕NA'opengl32|glActiveShaderProgram U4 U4'
+      'glActiveShaderProgram_DLL'⎕NA'',getdllname,'|glActiveShaderProgram U4 U4'
   :EndIf
   {}glActiveShaderProgram_DLL pipeline program
 ∇
@@ -12903,392 +12911,392 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindProgramPipeline pipeline
   :If 0=⎕NC'glBindProgramPipeline_DLL'
-      'glBindProgramPipeline_DLL'⎕NA'opengl32|glBindProgramPipeline U4'
+      'glBindProgramPipeline_DLL'⎕NA'',getdllname,'|glBindProgramPipeline U4'
   :EndIf
   {}glBindProgramPipeline_DLL pipeline
 ∇
 
 ∇ glDeleteProgramPipelines (n pipelines)
   :If 0=⎕NC'glDeleteProgramPipelines_DLL'
-      'glDeleteProgramPipelines_DLL'⎕NA'opengl32|glDeleteProgramPipelines I4 <U4[]'
+      'glDeleteProgramPipelines_DLL'⎕NA'',getdllname,'|glDeleteProgramPipelines I4 <U4[]'
   :EndIf
   {}glDeleteProgramPipelines_DLL n pipelines
 ∇
 
 ∇ r←glGenProgramPipelines (n pipelines)
   :If 0=⎕NC'glGenProgramPipelines_DLL'
-      'glGenProgramPipelines_DLL'⎕NA'opengl32|glGenProgramPipelines I4 >U4[]'
+      'glGenProgramPipelines_DLL'⎕NA'',getdllname,'|glGenProgramPipelines I4 >U4[]'
   :EndIf
   r←glGenProgramPipelines_DLL n pipelines
 ∇
 
 ∇ r←glIsProgramPipeline pipeline
   :If 0=⎕NC'glIsProgramPipeline_DLL'
-      'glIsProgramPipeline_DLL'⎕NA'U1 opengl32|glIsProgramPipeline U4'
+      'glIsProgramPipeline_DLL'⎕NA'U1 ',getdllname,'|glIsProgramPipeline U4'
   :EndIf
   r←glIsProgramPipeline_DLL pipeline
 ∇
 
 ∇ r←glGetProgramPipelineiv (pipeline pname params)
   :If 0=⎕NC'glGetProgramPipelineiv_DLL'
-      'glGetProgramPipelineiv_DLL'⎕NA'opengl32|glGetProgramPipelineiv U4 U4 >I4[]'
+      'glGetProgramPipelineiv_DLL'⎕NA'',getdllname,'|glGetProgramPipelineiv U4 U4 >I4[]'
   :EndIf
   r←glGetProgramPipelineiv_DLL pipeline pname params
 ∇
 
 ∇ glProgramUniform1i (program location v0)
   :If 0=⎕NC'glProgramUniform1i_DLL'
-      'glProgramUniform1i_DLL'⎕NA'opengl32|glProgramUniform1i U4 I4 I4'
+      'glProgramUniform1i_DLL'⎕NA'',getdllname,'|glProgramUniform1i U4 I4 I4'
   :EndIf
   {}glProgramUniform1i_DLL program location v0
 ∇
 
 ∇ glProgramUniform1iv (program location count value)
   :If 0=⎕NC'glProgramUniform1iv_DLL'
-      'glProgramUniform1iv_DLL'⎕NA'opengl32|glProgramUniform1iv U4 I4 I4 <I4[1]'
+      'glProgramUniform1iv_DLL'⎕NA'',getdllname,'|glProgramUniform1iv U4 I4 I4 <I4[1]'
   :EndIf
   {}glProgramUniform1iv_DLL program location count value
 ∇
 
 ∇ glProgramUniform1f (program location v0)
   :If 0=⎕NC'glProgramUniform1f_DLL'
-      'glProgramUniform1f_DLL'⎕NA'opengl32|glProgramUniform1f U4 I4 F4'
+      'glProgramUniform1f_DLL'⎕NA'',getdllname,'|glProgramUniform1f U4 I4 F4'
   :EndIf
   {}glProgramUniform1f_DLL program location v0
 ∇
 
 ∇ glProgramUniform1fv (program location count value)
   :If 0=⎕NC'glProgramUniform1fv_DLL'
-      'glProgramUniform1fv_DLL'⎕NA'opengl32|glProgramUniform1fv U4 I4 I4 <F4[1]'
+      'glProgramUniform1fv_DLL'⎕NA'',getdllname,'|glProgramUniform1fv U4 I4 I4 <F4[1]'
   :EndIf
   {}glProgramUniform1fv_DLL program location count value
 ∇
 
 ∇ glProgramUniform1d (program location v0)
   :If 0=⎕NC'glProgramUniform1d_DLL'
-      'glProgramUniform1d_DLL'⎕NA'opengl32|glProgramUniform1d U4 I4 F8'
+      'glProgramUniform1d_DLL'⎕NA'',getdllname,'|glProgramUniform1d U4 I4 F8'
   :EndIf
   {}glProgramUniform1d_DLL program location v0
 ∇
 
 ∇ glProgramUniform1dv (program location count value)
   :If 0=⎕NC'glProgramUniform1dv_DLL'
-      'glProgramUniform1dv_DLL'⎕NA'opengl32|glProgramUniform1dv U4 I4 I4 <F8[1]'
+      'glProgramUniform1dv_DLL'⎕NA'',getdllname,'|glProgramUniform1dv U4 I4 I4 <F8[1]'
   :EndIf
   {}glProgramUniform1dv_DLL program location count value
 ∇
 
 ∇ glProgramUniform1ui (program location v0)
   :If 0=⎕NC'glProgramUniform1ui_DLL'
-      'glProgramUniform1ui_DLL'⎕NA'opengl32|glProgramUniform1ui U4 I4 U4'
+      'glProgramUniform1ui_DLL'⎕NA'',getdllname,'|glProgramUniform1ui U4 I4 U4'
   :EndIf
   {}glProgramUniform1ui_DLL program location v0
 ∇
 
 ∇ glProgramUniform1uiv (program location count value)
   :If 0=⎕NC'glProgramUniform1uiv_DLL'
-      'glProgramUniform1uiv_DLL'⎕NA'opengl32|glProgramUniform1uiv U4 I4 I4 <U4[1]'
+      'glProgramUniform1uiv_DLL'⎕NA'',getdllname,'|glProgramUniform1uiv U4 I4 I4 <U4[1]'
   :EndIf
   {}glProgramUniform1uiv_DLL program location count value
 ∇
 
 ∇ glProgramUniform2i (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2i_DLL'
-      'glProgramUniform2i_DLL'⎕NA'opengl32|glProgramUniform2i U4 I4 I4 I4'
+      'glProgramUniform2i_DLL'⎕NA'',getdllname,'|glProgramUniform2i U4 I4 I4 I4'
   :EndIf
   {}glProgramUniform2i_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform2iv (program location count value)
   :If 0=⎕NC'glProgramUniform2iv_DLL'
-      'glProgramUniform2iv_DLL'⎕NA'opengl32|glProgramUniform2iv U4 I4 I4 <I4[2]'
+      'glProgramUniform2iv_DLL'⎕NA'',getdllname,'|glProgramUniform2iv U4 I4 I4 <I4[2]'
   :EndIf
   {}glProgramUniform2iv_DLL program location count value
 ∇
 
 ∇ glProgramUniform2f (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2f_DLL'
-      'glProgramUniform2f_DLL'⎕NA'opengl32|glProgramUniform2f U4 I4 F4 F4'
+      'glProgramUniform2f_DLL'⎕NA'',getdllname,'|glProgramUniform2f U4 I4 F4 F4'
   :EndIf
   {}glProgramUniform2f_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform2fv (program location count value)
   :If 0=⎕NC'glProgramUniform2fv_DLL'
-      'glProgramUniform2fv_DLL'⎕NA'opengl32|glProgramUniform2fv U4 I4 I4 <F4[2]'
+      'glProgramUniform2fv_DLL'⎕NA'',getdllname,'|glProgramUniform2fv U4 I4 I4 <F4[2]'
   :EndIf
   {}glProgramUniform2fv_DLL program location count value
 ∇
 
 ∇ glProgramUniform2d (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2d_DLL'
-      'glProgramUniform2d_DLL'⎕NA'opengl32|glProgramUniform2d U4 I4 F8 F8'
+      'glProgramUniform2d_DLL'⎕NA'',getdllname,'|glProgramUniform2d U4 I4 F8 F8'
   :EndIf
   {}glProgramUniform2d_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform2dv (program location count value)
   :If 0=⎕NC'glProgramUniform2dv_DLL'
-      'glProgramUniform2dv_DLL'⎕NA'opengl32|glProgramUniform2dv U4 I4 I4 <F8[2]'
+      'glProgramUniform2dv_DLL'⎕NA'',getdllname,'|glProgramUniform2dv U4 I4 I4 <F8[2]'
   :EndIf
   {}glProgramUniform2dv_DLL program location count value
 ∇
 
 ∇ glProgramUniform2ui (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2ui_DLL'
-      'glProgramUniform2ui_DLL'⎕NA'opengl32|glProgramUniform2ui U4 I4 U4 U4'
+      'glProgramUniform2ui_DLL'⎕NA'',getdllname,'|glProgramUniform2ui U4 I4 U4 U4'
   :EndIf
   {}glProgramUniform2ui_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform2uiv (program location count value)
   :If 0=⎕NC'glProgramUniform2uiv_DLL'
-      'glProgramUniform2uiv_DLL'⎕NA'opengl32|glProgramUniform2uiv U4 I4 I4 <U4[2]'
+      'glProgramUniform2uiv_DLL'⎕NA'',getdllname,'|glProgramUniform2uiv U4 I4 I4 <U4[2]'
   :EndIf
   {}glProgramUniform2uiv_DLL program location count value
 ∇
 
 ∇ glProgramUniform3i (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3i_DLL'
-      'glProgramUniform3i_DLL'⎕NA'opengl32|glProgramUniform3i U4 I4 I4 I4 I4'
+      'glProgramUniform3i_DLL'⎕NA'',getdllname,'|glProgramUniform3i U4 I4 I4 I4 I4'
   :EndIf
   {}glProgramUniform3i_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform3iv (program location count value)
   :If 0=⎕NC'glProgramUniform3iv_DLL'
-      'glProgramUniform3iv_DLL'⎕NA'opengl32|glProgramUniform3iv U4 I4 I4 <I4[3]'
+      'glProgramUniform3iv_DLL'⎕NA'',getdllname,'|glProgramUniform3iv U4 I4 I4 <I4[3]'
   :EndIf
   {}glProgramUniform3iv_DLL program location count value
 ∇
 
 ∇ glProgramUniform3f (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3f_DLL'
-      'glProgramUniform3f_DLL'⎕NA'opengl32|glProgramUniform3f U4 I4 F4 F4 F4'
+      'glProgramUniform3f_DLL'⎕NA'',getdllname,'|glProgramUniform3f U4 I4 F4 F4 F4'
   :EndIf
   {}glProgramUniform3f_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform3fv (program location count value)
   :If 0=⎕NC'glProgramUniform3fv_DLL'
-      'glProgramUniform3fv_DLL'⎕NA'opengl32|glProgramUniform3fv U4 I4 I4 <F4[3]'
+      'glProgramUniform3fv_DLL'⎕NA'',getdllname,'|glProgramUniform3fv U4 I4 I4 <F4[3]'
   :EndIf
   {}glProgramUniform3fv_DLL program location count value
 ∇
 
 ∇ glProgramUniform3d (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3d_DLL'
-      'glProgramUniform3d_DLL'⎕NA'opengl32|glProgramUniform3d U4 I4 F8 F8 F8'
+      'glProgramUniform3d_DLL'⎕NA'',getdllname,'|glProgramUniform3d U4 I4 F8 F8 F8'
   :EndIf
   {}glProgramUniform3d_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform3dv (program location count value)
   :If 0=⎕NC'glProgramUniform3dv_DLL'
-      'glProgramUniform3dv_DLL'⎕NA'opengl32|glProgramUniform3dv U4 I4 I4 <F8[3]'
+      'glProgramUniform3dv_DLL'⎕NA'',getdllname,'|glProgramUniform3dv U4 I4 I4 <F8[3]'
   :EndIf
   {}glProgramUniform3dv_DLL program location count value
 ∇
 
 ∇ glProgramUniform3ui (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3ui_DLL'
-      'glProgramUniform3ui_DLL'⎕NA'opengl32|glProgramUniform3ui U4 I4 U4 U4 U4'
+      'glProgramUniform3ui_DLL'⎕NA'',getdllname,'|glProgramUniform3ui U4 I4 U4 U4 U4'
   :EndIf
   {}glProgramUniform3ui_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform3uiv (program location count value)
   :If 0=⎕NC'glProgramUniform3uiv_DLL'
-      'glProgramUniform3uiv_DLL'⎕NA'opengl32|glProgramUniform3uiv U4 I4 I4 <U4[3]'
+      'glProgramUniform3uiv_DLL'⎕NA'',getdllname,'|glProgramUniform3uiv U4 I4 I4 <U4[3]'
   :EndIf
   {}glProgramUniform3uiv_DLL program location count value
 ∇
 
 ∇ glProgramUniform4i (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4i_DLL'
-      'glProgramUniform4i_DLL'⎕NA'opengl32|glProgramUniform4i U4 I4 I4 I4 I4 I4'
+      'glProgramUniform4i_DLL'⎕NA'',getdllname,'|glProgramUniform4i U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glProgramUniform4i_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform4iv (program location count value)
   :If 0=⎕NC'glProgramUniform4iv_DLL'
-      'glProgramUniform4iv_DLL'⎕NA'opengl32|glProgramUniform4iv U4 I4 I4 <I4[4]'
+      'glProgramUniform4iv_DLL'⎕NA'',getdllname,'|glProgramUniform4iv U4 I4 I4 <I4[4]'
   :EndIf
   {}glProgramUniform4iv_DLL program location count value
 ∇
 
 ∇ glProgramUniform4f (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4f_DLL'
-      'glProgramUniform4f_DLL'⎕NA'opengl32|glProgramUniform4f U4 I4 F4 F4 F4 F4'
+      'glProgramUniform4f_DLL'⎕NA'',getdllname,'|glProgramUniform4f U4 I4 F4 F4 F4 F4'
   :EndIf
   {}glProgramUniform4f_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform4fv (program location count value)
   :If 0=⎕NC'glProgramUniform4fv_DLL'
-      'glProgramUniform4fv_DLL'⎕NA'opengl32|glProgramUniform4fv U4 I4 I4 <F4[4]'
+      'glProgramUniform4fv_DLL'⎕NA'',getdllname,'|glProgramUniform4fv U4 I4 I4 <F4[4]'
   :EndIf
   {}glProgramUniform4fv_DLL program location count value
 ∇
 
 ∇ glProgramUniform4d (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4d_DLL'
-      'glProgramUniform4d_DLL'⎕NA'opengl32|glProgramUniform4d U4 I4 F8 F8 F8 F8'
+      'glProgramUniform4d_DLL'⎕NA'',getdllname,'|glProgramUniform4d U4 I4 F8 F8 F8 F8'
   :EndIf
   {}glProgramUniform4d_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform4dv (program location count value)
   :If 0=⎕NC'glProgramUniform4dv_DLL'
-      'glProgramUniform4dv_DLL'⎕NA'opengl32|glProgramUniform4dv U4 I4 I4 <F8[4]'
+      'glProgramUniform4dv_DLL'⎕NA'',getdllname,'|glProgramUniform4dv U4 I4 I4 <F8[4]'
   :EndIf
   {}glProgramUniform4dv_DLL program location count value
 ∇
 
 ∇ glProgramUniform4ui (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4ui_DLL'
-      'glProgramUniform4ui_DLL'⎕NA'opengl32|glProgramUniform4ui U4 I4 U4 U4 U4 U4'
+      'glProgramUniform4ui_DLL'⎕NA'',getdllname,'|glProgramUniform4ui U4 I4 U4 U4 U4 U4'
   :EndIf
   {}glProgramUniform4ui_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform4uiv (program location count value)
   :If 0=⎕NC'glProgramUniform4uiv_DLL'
-      'glProgramUniform4uiv_DLL'⎕NA'opengl32|glProgramUniform4uiv U4 I4 I4 <U4[4]'
+      'glProgramUniform4uiv_DLL'⎕NA'',getdllname,'|glProgramUniform4uiv U4 I4 I4 <U4[4]'
   :EndIf
   {}glProgramUniform4uiv_DLL program location count value
 ∇
 
 ∇ glProgramUniformMatrix2fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2fv_DLL'
-      'glProgramUniformMatrix2fv_DLL'⎕NA'opengl32|glProgramUniformMatrix2fv U4 I4 I4 U1 <F4[2]'
+      'glProgramUniformMatrix2fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2fv U4 I4 I4 U1 <F4[2]'
   :EndIf
   {}glProgramUniformMatrix2fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3fv_DLL'
-      'glProgramUniformMatrix3fv_DLL'⎕NA'opengl32|glProgramUniformMatrix3fv U4 I4 I4 U1 <F4[3]'
+      'glProgramUniformMatrix3fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3fv U4 I4 I4 U1 <F4[3]'
   :EndIf
   {}glProgramUniformMatrix3fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4fv_DLL'
-      'glProgramUniformMatrix4fv_DLL'⎕NA'opengl32|glProgramUniformMatrix4fv U4 I4 I4 U1 <F4[4]'
+      'glProgramUniformMatrix4fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4fv U4 I4 I4 U1 <F4[4]'
   :EndIf
   {}glProgramUniformMatrix4fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2dv_DLL'
-      'glProgramUniformMatrix2dv_DLL'⎕NA'opengl32|glProgramUniformMatrix2dv U4 I4 I4 U1 <F8[2]'
+      'glProgramUniformMatrix2dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2dv U4 I4 I4 U1 <F8[2]'
   :EndIf
   {}glProgramUniformMatrix2dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3dv_DLL'
-      'glProgramUniformMatrix3dv_DLL'⎕NA'opengl32|glProgramUniformMatrix3dv U4 I4 I4 U1 <F8[3]'
+      'glProgramUniformMatrix3dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3dv U4 I4 I4 U1 <F8[3]'
   :EndIf
   {}glProgramUniformMatrix3dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4dv_DLL'
-      'glProgramUniformMatrix4dv_DLL'⎕NA'opengl32|glProgramUniformMatrix4dv U4 I4 I4 U1 <F8[4]'
+      'glProgramUniformMatrix4dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4dv U4 I4 I4 U1 <F8[4]'
   :EndIf
   {}glProgramUniformMatrix4dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x3fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x3fv_DLL'
-      'glProgramUniformMatrix2x3fv_DLL'⎕NA'opengl32|glProgramUniformMatrix2x3fv U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix2x3fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x3fv U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix2x3fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x2fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x2fv_DLL'
-      'glProgramUniformMatrix3x2fv_DLL'⎕NA'opengl32|glProgramUniformMatrix3x2fv U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix3x2fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x2fv U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix3x2fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x4fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x4fv_DLL'
-      'glProgramUniformMatrix2x4fv_DLL'⎕NA'opengl32|glProgramUniformMatrix2x4fv U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix2x4fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x4fv U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix2x4fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x2fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x2fv_DLL'
-      'glProgramUniformMatrix4x2fv_DLL'⎕NA'opengl32|glProgramUniformMatrix4x2fv U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix4x2fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x2fv U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix4x2fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x4fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x4fv_DLL'
-      'glProgramUniformMatrix3x4fv_DLL'⎕NA'opengl32|glProgramUniformMatrix3x4fv U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix3x4fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x4fv U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix3x4fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x3fv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x3fv_DLL'
-      'glProgramUniformMatrix4x3fv_DLL'⎕NA'opengl32|glProgramUniformMatrix4x3fv U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix4x3fv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x3fv U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix4x3fv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x3dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x3dv_DLL'
-      'glProgramUniformMatrix2x3dv_DLL'⎕NA'opengl32|glProgramUniformMatrix2x3dv U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix2x3dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x3dv U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix2x3dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x2dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x2dv_DLL'
-      'glProgramUniformMatrix3x2dv_DLL'⎕NA'opengl32|glProgramUniformMatrix3x2dv U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix3x2dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x2dv U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix3x2dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x4dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x4dv_DLL'
-      'glProgramUniformMatrix2x4dv_DLL'⎕NA'opengl32|glProgramUniformMatrix2x4dv U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix2x4dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x4dv U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix2x4dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x2dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x2dv_DLL'
-      'glProgramUniformMatrix4x2dv_DLL'⎕NA'opengl32|glProgramUniformMatrix4x2dv U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix4x2dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x2dv U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix4x2dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x4dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x4dv_DLL'
-      'glProgramUniformMatrix3x4dv_DLL'⎕NA'opengl32|glProgramUniformMatrix3x4dv U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix3x4dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x4dv U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix3x4dv_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x3dv (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x3dv_DLL'
-      'glProgramUniformMatrix4x3dv_DLL'⎕NA'opengl32|glProgramUniformMatrix4x3dv U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix4x3dv_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x3dv U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix4x3dv_DLL program location count transpose value
 ∇
 
 ∇ glValidateProgramPipeline pipeline
   :If 0=⎕NC'glValidateProgramPipeline_DLL'
-      'glValidateProgramPipeline_DLL'⎕NA'opengl32|glValidateProgramPipeline U4'
+      'glValidateProgramPipeline_DLL'⎕NA'',getdllname,'|glValidateProgramPipeline U4'
   :EndIf
   {}glValidateProgramPipeline_DLL pipeline
 ∇
@@ -13302,56 +13310,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexAttribL1d (index x)
   :If 0=⎕NC'glVertexAttribL1d_DLL'
-      'glVertexAttribL1d_DLL'⎕NA'opengl32|glVertexAttribL1d U4 F8'
+      'glVertexAttribL1d_DLL'⎕NA'',getdllname,'|glVertexAttribL1d U4 F8'
   :EndIf
   {}glVertexAttribL1d_DLL index x
 ∇
 
 ∇ glVertexAttribL2d (index x y)
   :If 0=⎕NC'glVertexAttribL2d_DLL'
-      'glVertexAttribL2d_DLL'⎕NA'opengl32|glVertexAttribL2d U4 F8 F8'
+      'glVertexAttribL2d_DLL'⎕NA'',getdllname,'|glVertexAttribL2d U4 F8 F8'
   :EndIf
   {}glVertexAttribL2d_DLL index x y
 ∇
 
 ∇ glVertexAttribL3d (index x y z)
   :If 0=⎕NC'glVertexAttribL3d_DLL'
-      'glVertexAttribL3d_DLL'⎕NA'opengl32|glVertexAttribL3d U4 F8 F8 F8'
+      'glVertexAttribL3d_DLL'⎕NA'',getdllname,'|glVertexAttribL3d U4 F8 F8 F8'
   :EndIf
   {}glVertexAttribL3d_DLL index x y z
 ∇
 
 ∇ glVertexAttribL4d (index x y z w)
   :If 0=⎕NC'glVertexAttribL4d_DLL'
-      'glVertexAttribL4d_DLL'⎕NA'opengl32|glVertexAttribL4d U4 F8 F8 F8 F8'
+      'glVertexAttribL4d_DLL'⎕NA'',getdllname,'|glVertexAttribL4d U4 F8 F8 F8 F8'
   :EndIf
   {}glVertexAttribL4d_DLL index x y z w
 ∇
 
 ∇ glVertexAttribL1dv (index v)
   :If 0=⎕NC'glVertexAttribL1dv_DLL'
-      'glVertexAttribL1dv_DLL'⎕NA'opengl32|glVertexAttribL1dv U4 <F8[1]'
+      'glVertexAttribL1dv_DLL'⎕NA'',getdllname,'|glVertexAttribL1dv U4 <F8[1]'
   :EndIf
   {}glVertexAttribL1dv_DLL index v
 ∇
 
 ∇ glVertexAttribL2dv (index v)
   :If 0=⎕NC'glVertexAttribL2dv_DLL'
-      'glVertexAttribL2dv_DLL'⎕NA'opengl32|glVertexAttribL2dv U4 <F8[2]'
+      'glVertexAttribL2dv_DLL'⎕NA'',getdllname,'|glVertexAttribL2dv U4 <F8[2]'
   :EndIf
   {}glVertexAttribL2dv_DLL index v
 ∇
 
 ∇ glVertexAttribL3dv (index v)
   :If 0=⎕NC'glVertexAttribL3dv_DLL'
-      'glVertexAttribL3dv_DLL'⎕NA'opengl32|glVertexAttribL3dv U4 <F8[3]'
+      'glVertexAttribL3dv_DLL'⎕NA'',getdllname,'|glVertexAttribL3dv U4 <F8[3]'
   :EndIf
   {}glVertexAttribL3dv_DLL index v
 ∇
 
 ∇ glVertexAttribL4dv (index v)
   :If 0=⎕NC'glVertexAttribL4dv_DLL'
-      'glVertexAttribL4dv_DLL'⎕NA'opengl32|glVertexAttribL4dv U4 <F8[4]'
+      'glVertexAttribL4dv_DLL'⎕NA'',getdllname,'|glVertexAttribL4dv U4 <F8[4]'
   :EndIf
   {}glVertexAttribL4dv_DLL index v
 ∇
@@ -13365,77 +13373,77 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetVertexAttribLdv (index pname params)
   :If 0=⎕NC'glGetVertexAttribLdv_DLL'
-      'glGetVertexAttribLdv_DLL'⎕NA'opengl32|glGetVertexAttribLdv U4 U4 >F8[]'
+      'glGetVertexAttribLdv_DLL'⎕NA'',getdllname,'|glGetVertexAttribLdv U4 U4 >F8[]'
   :EndIf
   r←glGetVertexAttribLdv_DLL index pname params
 ∇
 
 ∇ glViewportArrayv (first count v)
   :If 0=⎕NC'glViewportArrayv_DLL'
-      'glViewportArrayv_DLL'⎕NA'opengl32|glViewportArrayv U4 I4 <F4[]'
+      'glViewportArrayv_DLL'⎕NA'',getdllname,'|glViewportArrayv U4 I4 <F4[]'
   :EndIf
   {}glViewportArrayv_DLL first count v
 ∇
 
 ∇ glViewportIndexedf (index x y w h)
   :If 0=⎕NC'glViewportIndexedf_DLL'
-      'glViewportIndexedf_DLL'⎕NA'opengl32|glViewportIndexedf U4 F4 F4 F4 F4'
+      'glViewportIndexedf_DLL'⎕NA'',getdllname,'|glViewportIndexedf U4 F4 F4 F4 F4'
   :EndIf
   {}glViewportIndexedf_DLL index x y w h
 ∇
 
 ∇ glViewportIndexedfv (index v)
   :If 0=⎕NC'glViewportIndexedfv_DLL'
-      'glViewportIndexedfv_DLL'⎕NA'opengl32|glViewportIndexedfv U4 <F4[4]'
+      'glViewportIndexedfv_DLL'⎕NA'',getdllname,'|glViewportIndexedfv U4 <F4[4]'
   :EndIf
   {}glViewportIndexedfv_DLL index v
 ∇
 
 ∇ glScissorArrayv (first count v)
   :If 0=⎕NC'glScissorArrayv_DLL'
-      'glScissorArrayv_DLL'⎕NA'opengl32|glScissorArrayv U4 I4 <I4[]'
+      'glScissorArrayv_DLL'⎕NA'',getdllname,'|glScissorArrayv U4 I4 <I4[]'
   :EndIf
   {}glScissorArrayv_DLL first count v
 ∇
 
 ∇ glScissorIndexed (index left bottom width height)
   :If 0=⎕NC'glScissorIndexed_DLL'
-      'glScissorIndexed_DLL'⎕NA'opengl32|glScissorIndexed U4 I4 I4 I4 I4'
+      'glScissorIndexed_DLL'⎕NA'',getdllname,'|glScissorIndexed U4 I4 I4 I4 I4'
   :EndIf
   {}glScissorIndexed_DLL index left bottom width height
 ∇
 
 ∇ glScissorIndexedv (index v)
   :If 0=⎕NC'glScissorIndexedv_DLL'
-      'glScissorIndexedv_DLL'⎕NA'opengl32|glScissorIndexedv U4 <I4[4]'
+      'glScissorIndexedv_DLL'⎕NA'',getdllname,'|glScissorIndexedv U4 <I4[4]'
   :EndIf
   {}glScissorIndexedv_DLL index v
 ∇
 
 ∇ glDepthRangeArrayv (first count v)
   :If 0=⎕NC'glDepthRangeArrayv_DLL'
-      'glDepthRangeArrayv_DLL'⎕NA'opengl32|glDepthRangeArrayv U4 I4 <F8[]'
+      'glDepthRangeArrayv_DLL'⎕NA'',getdllname,'|glDepthRangeArrayv U4 I4 <F8[]'
   :EndIf
   {}glDepthRangeArrayv_DLL first count v
 ∇
 
 ∇ glDepthRangeIndexed (index n f)
   :If 0=⎕NC'glDepthRangeIndexed_DLL'
-      'glDepthRangeIndexed_DLL'⎕NA'opengl32|glDepthRangeIndexed U4 F8 F8'
+      'glDepthRangeIndexed_DLL'⎕NA'',getdllname,'|glDepthRangeIndexed U4 F8 F8'
   :EndIf
   {}glDepthRangeIndexed_DLL index n f
 ∇
 
 ∇ r←glGetFloati_v (target index data)
   :If 0=⎕NC'glGetFloati_v_DLL'
-      'glGetFloati_v_DLL'⎕NA'opengl32|glGetFloati_v U4 U4 >F4[]'
+      'glGetFloati_v_DLL'⎕NA'',getdllname,'|glGetFloati_v U4 U4 >F4[]'
   :EndIf
   r←glGetFloati_v_DLL target index data
 ∇
 
 ∇ r←glGetDoublei_v (target index data)
   :If 0=⎕NC'glGetDoublei_v_DLL'
-      'glGetDoublei_v_DLL'⎕NA'opengl32|glGetDoublei_v U4 U4 >F8[]'
+      'glGetDoublei_v_DLL'⎕NA'',getdllname,'|glGetDoublei_v U4 U4 >F8[]'
   :EndIf
   r←glGetDoublei_v_DLL target index data
 ∇
@@ -13449,7 +13457,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDebugMessageControlARB (source type severity count ids enabled)
   :If 0=⎕NC'glDebugMessageControlARB_DLL'
-      'glDebugMessageControlARB_DLL'⎕NA'opengl32|glDebugMessageControlARB U4 U4 U4 I4 <U4[] U1'
+      'glDebugMessageControlARB_DLL'⎕NA'',getdllname,'|glDebugMessageControlARB U4 U4 U4 I4 <U4[] U1'
   :EndIf
   {}glDebugMessageControlARB_DLL source type severity count ids enabled
 ∇
@@ -13477,56 +13485,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetGraphicsResetStatusARB
   :If 0=⎕NC'glGetGraphicsResetStatusARB_DLL'
-      'glGetGraphicsResetStatusARB_DLL'⎕NA'U4 opengl32|glGetGraphicsResetStatusARB'
+      'glGetGraphicsResetStatusARB_DLL'⎕NA'U4 ',getdllname,'|glGetGraphicsResetStatusARB'
   :EndIf
   r←glGetGraphicsResetStatusARB_DLL
 ∇
 
 ∇ r←glGetnMapdvARB (target query bufSize v)
   :If 0=⎕NC'glGetnMapdvARB_DLL'
-      'glGetnMapdvARB_DLL'⎕NA'opengl32|glGetnMapdvARB U4 U4 I4 >F8[]'
+      'glGetnMapdvARB_DLL'⎕NA'',getdllname,'|glGetnMapdvARB U4 U4 I4 >F8[]'
   :EndIf
   r←glGetnMapdvARB_DLL target query bufSize v
 ∇
 
 ∇ r←glGetnMapfvARB (target query bufSize v)
   :If 0=⎕NC'glGetnMapfvARB_DLL'
-      'glGetnMapfvARB_DLL'⎕NA'opengl32|glGetnMapfvARB U4 U4 I4 >F4[]'
+      'glGetnMapfvARB_DLL'⎕NA'',getdllname,'|glGetnMapfvARB U4 U4 I4 >F4[]'
   :EndIf
   r←glGetnMapfvARB_DLL target query bufSize v
 ∇
 
 ∇ r←glGetnMapivARB (target query bufSize v)
   :If 0=⎕NC'glGetnMapivARB_DLL'
-      'glGetnMapivARB_DLL'⎕NA'opengl32|glGetnMapivARB U4 U4 I4 >I4[]'
+      'glGetnMapivARB_DLL'⎕NA'',getdllname,'|glGetnMapivARB U4 U4 I4 >I4[]'
   :EndIf
   r←glGetnMapivARB_DLL target query bufSize v
 ∇
 
 ∇ r←glGetnPixelMapfvARB (map bufSize values)
   :If 0=⎕NC'glGetnPixelMapfvARB_DLL'
-      'glGetnPixelMapfvARB_DLL'⎕NA'opengl32|glGetnPixelMapfvARB U4 I4 >F4[]'
+      'glGetnPixelMapfvARB_DLL'⎕NA'',getdllname,'|glGetnPixelMapfvARB U4 I4 >F4[]'
   :EndIf
   r←glGetnPixelMapfvARB_DLL map bufSize values
 ∇
 
 ∇ r←glGetnPixelMapuivARB (map bufSize values)
   :If 0=⎕NC'glGetnPixelMapuivARB_DLL'
-      'glGetnPixelMapuivARB_DLL'⎕NA'opengl32|glGetnPixelMapuivARB U4 I4 >U4[]'
+      'glGetnPixelMapuivARB_DLL'⎕NA'',getdllname,'|glGetnPixelMapuivARB U4 I4 >U4[]'
   :EndIf
   r←glGetnPixelMapuivARB_DLL map bufSize values
 ∇
 
 ∇ r←glGetnPixelMapusvARB (map bufSize values)
   :If 0=⎕NC'glGetnPixelMapusvARB_DLL'
-      'glGetnPixelMapusvARB_DLL'⎕NA'opengl32|glGetnPixelMapusvARB U4 I4 >U2[]'
+      'glGetnPixelMapusvARB_DLL'⎕NA'',getdllname,'|glGetnPixelMapusvARB U4 I4 >U2[]'
   :EndIf
   r←glGetnPixelMapusvARB_DLL map bufSize values
 ∇
 
 ∇ r←glGetnPolygonStippleARB (bufSize pattern)
   :If 0=⎕NC'glGetnPolygonStippleARB_DLL'
-      'glGetnPolygonStippleARB_DLL'⎕NA'opengl32|glGetnPolygonStippleARB I4 >U1[]'
+      'glGetnPolygonStippleARB_DLL'⎕NA'',getdllname,'|glGetnPolygonStippleARB I4 >U1[]'
   :EndIf
   r←glGetnPolygonStippleARB_DLL bufSize pattern
 ∇
@@ -13589,35 +13597,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetnUniformfvARB (program location bufSize params)
   :If 0=⎕NC'glGetnUniformfvARB_DLL'
-      'glGetnUniformfvARB_DLL'⎕NA'opengl32|glGetnUniformfvARB U4 I4 I4 >F4[]'
+      'glGetnUniformfvARB_DLL'⎕NA'',getdllname,'|glGetnUniformfvARB U4 I4 I4 >F4[]'
   :EndIf
   r←glGetnUniformfvARB_DLL program location bufSize params
 ∇
 
 ∇ r←glGetnUniformivARB (program location bufSize params)
   :If 0=⎕NC'glGetnUniformivARB_DLL'
-      'glGetnUniformivARB_DLL'⎕NA'opengl32|glGetnUniformivARB U4 I4 I4 >I4[]'
+      'glGetnUniformivARB_DLL'⎕NA'',getdllname,'|glGetnUniformivARB U4 I4 I4 >I4[]'
   :EndIf
   r←glGetnUniformivARB_DLL program location bufSize params
 ∇
 
 ∇ r←glGetnUniformuivARB (program location bufSize params)
   :If 0=⎕NC'glGetnUniformuivARB_DLL'
-      'glGetnUniformuivARB_DLL'⎕NA'opengl32|glGetnUniformuivARB U4 I4 I4 >U4[]'
+      'glGetnUniformuivARB_DLL'⎕NA'',getdllname,'|glGetnUniformuivARB U4 I4 I4 >U4[]'
   :EndIf
   r←glGetnUniformuivARB_DLL program location bufSize params
 ∇
 
 ∇ r←glGetnUniformdvARB (program location bufSize params)
   :If 0=⎕NC'glGetnUniformdvARB_DLL'
-      'glGetnUniformdvARB_DLL'⎕NA'opengl32|glGetnUniformdvARB U4 I4 I4 >F8[]'
+      'glGetnUniformdvARB_DLL'⎕NA'',getdllname,'|glGetnUniformdvARB U4 I4 I4 >F8[]'
   :EndIf
   r←glGetnUniformdvARB_DLL program location bufSize params
 ∇
 
 ∇ glDrawArraysInstancedBaseInstance (mode first count instancecount baseinstance)
   :If 0=⎕NC'glDrawArraysInstancedBaseInstance_DLL'
-      'glDrawArraysInstancedBaseInstance_DLL'⎕NA'opengl32|glDrawArraysInstancedBaseInstance U4 I4 I4 I4 U4'
+      'glDrawArraysInstancedBaseInstance_DLL'⎕NA'',getdllname,'|glDrawArraysInstancedBaseInstance U4 I4 I4 I4 U4'
   :EndIf
   {}glDrawArraysInstancedBaseInstance_DLL mode first count instancecount baseinstance
 ∇
@@ -13638,91 +13646,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDrawTransformFeedbackInstanced (mode id instancecount)
   :If 0=⎕NC'glDrawTransformFeedbackInstanced_DLL'
-      'glDrawTransformFeedbackInstanced_DLL'⎕NA'opengl32|glDrawTransformFeedbackInstanced U4 U4 I4'
+      'glDrawTransformFeedbackInstanced_DLL'⎕NA'',getdllname,'|glDrawTransformFeedbackInstanced U4 U4 I4'
   :EndIf
   {}glDrawTransformFeedbackInstanced_DLL mode id instancecount
 ∇
 
 ∇ glDrawTransformFeedbackStreamInstanced (mode id stream instancecount)
   :If 0=⎕NC'glDrawTransformFeedbackStreamInstanced_DLL'
-      'glDrawTransformFeedbackStreamInstanced_DLL'⎕NA'opengl32|glDrawTransformFeedbackStreamInstanced U4 U4 U4 I4'
+      'glDrawTransformFeedbackStreamInstanced_DLL'⎕NA'',getdllname,'|glDrawTransformFeedbackStreamInstanced U4 U4 U4 I4'
   :EndIf
   {}glDrawTransformFeedbackStreamInstanced_DLL mode id stream instancecount
 ∇
 
 ∇ r←glGetInternalformativ (target internalformat pname bufSize params)
   :If 0=⎕NC'glGetInternalformativ_DLL'
-      'glGetInternalformativ_DLL'⎕NA'opengl32|glGetInternalformativ U4 U4 U4 I4 >I4[]'
+      'glGetInternalformativ_DLL'⎕NA'',getdllname,'|glGetInternalformativ U4 U4 U4 I4 >I4[]'
   :EndIf
   r←glGetInternalformativ_DLL target internalformat pname bufSize params
 ∇
 
 ∇ r←glGetActiveAtomicCounterBufferiv (program bufferIndex pname params)
   :If 0=⎕NC'glGetActiveAtomicCounterBufferiv_DLL'
-      'glGetActiveAtomicCounterBufferiv_DLL'⎕NA'opengl32|glGetActiveAtomicCounterBufferiv U4 U4 U4 >I4[]'
+      'glGetActiveAtomicCounterBufferiv_DLL'⎕NA'',getdllname,'|glGetActiveAtomicCounterBufferiv U4 U4 U4 >I4[]'
   :EndIf
   r←glGetActiveAtomicCounterBufferiv_DLL program bufferIndex pname params
 ∇
 
 ∇ glBindImageTexture (unit texture level layered layer access format)
   :If 0=⎕NC'glBindImageTexture_DLL'
-      'glBindImageTexture_DLL'⎕NA'opengl32|glBindImageTexture U4 U4 I4 U1 I4 U4 U4'
+      'glBindImageTexture_DLL'⎕NA'',getdllname,'|glBindImageTexture U4 U4 I4 U1 I4 U4 U4'
   :EndIf
   {}glBindImageTexture_DLL unit texture level layered layer access format
 ∇
 
 ∇ glMemoryBarrier barriers
   :If 0=⎕NC'glMemoryBarrier_DLL'
-      'glMemoryBarrier_DLL'⎕NA'opengl32|glMemoryBarrier U4'
+      'glMemoryBarrier_DLL'⎕NA'',getdllname,'|glMemoryBarrier U4'
   :EndIf
   {}glMemoryBarrier_DLL barriers
 ∇
 
 ∇ glTexStorage1D (target levels internalformat width)
   :If 0=⎕NC'glTexStorage1D_DLL'
-      'glTexStorage1D_DLL'⎕NA'opengl32|glTexStorage1D U4 I4 U4 I4'
+      'glTexStorage1D_DLL'⎕NA'',getdllname,'|glTexStorage1D U4 I4 U4 I4'
   :EndIf
   {}glTexStorage1D_DLL target levels internalformat width
 ∇
 
 ∇ glTexStorage2D (target levels internalformat width height)
   :If 0=⎕NC'glTexStorage2D_DLL'
-      'glTexStorage2D_DLL'⎕NA'opengl32|glTexStorage2D U4 I4 U4 I4 I4'
+      'glTexStorage2D_DLL'⎕NA'',getdllname,'|glTexStorage2D U4 I4 U4 I4 I4'
   :EndIf
   {}glTexStorage2D_DLL target levels internalformat width height
 ∇
 
 ∇ glTexStorage3D (target levels internalformat width height depth)
   :If 0=⎕NC'glTexStorage3D_DLL'
-      'glTexStorage3D_DLL'⎕NA'opengl32|glTexStorage3D U4 I4 U4 I4 I4 I4'
+      'glTexStorage3D_DLL'⎕NA'',getdllname,'|glTexStorage3D U4 I4 U4 I4 I4 I4'
   :EndIf
   {}glTexStorage3D_DLL target levels internalformat width height depth
 ∇
 
 ∇ glTextureStorage1DEXT (texture target levels internalformat width)
   :If 0=⎕NC'glTextureStorage1DEXT_DLL'
-      'glTextureStorage1DEXT_DLL'⎕NA'opengl32|glTextureStorage1DEXT U4 U4 I4 U4 I4'
+      'glTextureStorage1DEXT_DLL'⎕NA'',getdllname,'|glTextureStorage1DEXT U4 U4 I4 U4 I4'
   :EndIf
   {}glTextureStorage1DEXT_DLL texture target levels internalformat width
 ∇
 
 ∇ glTextureStorage2DEXT (texture target levels internalformat width height)
   :If 0=⎕NC'glTextureStorage2DEXT_DLL'
-      'glTextureStorage2DEXT_DLL'⎕NA'opengl32|glTextureStorage2DEXT U4 U4 I4 U4 I4 I4'
+      'glTextureStorage2DEXT_DLL'⎕NA'',getdllname,'|glTextureStorage2DEXT U4 U4 I4 U4 I4 I4'
   :EndIf
   {}glTextureStorage2DEXT_DLL texture target levels internalformat width height
 ∇
 
 ∇ glTextureStorage3DEXT (texture target levels internalformat width height depth)
   :If 0=⎕NC'glTextureStorage3DEXT_DLL'
-      'glTextureStorage3DEXT_DLL'⎕NA'opengl32|glTextureStorage3DEXT U4 U4 I4 U4 I4 I4 I4'
+      'glTextureStorage3DEXT_DLL'⎕NA'',getdllname,'|glTextureStorage3DEXT U4 U4 I4 U4 I4 I4 I4'
   :EndIf
   {}glTextureStorage3DEXT_DLL texture target levels internalformat width height depth
 ∇
 
 ∇ glDebugMessageControl (source type severity count ids enabled)
   :If 0=⎕NC'glDebugMessageControl_DLL'
-      'glDebugMessageControl_DLL'⎕NA'opengl32|glDebugMessageControl U4 U4 U4 I4 <U4[] U1'
+      'glDebugMessageControl_DLL'⎕NA'',getdllname,'|glDebugMessageControl U4 U4 U4 I4 <U4[] U1'
   :EndIf
   {}glDebugMessageControl_DLL source type severity count ids enabled
 ∇
@@ -13757,7 +13765,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glPopDebugGroup
   :If 0=⎕NC'glPopDebugGroup_DLL'
-      'glPopDebugGroup_DLL'⎕NA'opengl32|glPopDebugGroup'
+      'glPopDebugGroup_DLL'⎕NA'',getdllname,'|glPopDebugGroup'
   :EndIf
   {}glPopDebugGroup_DLL
 ∇
@@ -13820,7 +13828,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDispatchCompute (num_groups_x num_groups_y num_groups_z)
   :If 0=⎕NC'glDispatchCompute_DLL'
-      'glDispatchCompute_DLL'⎕NA'opengl32|glDispatchCompute U4 U4 U4'
+      'glDispatchCompute_DLL'⎕NA'',getdllname,'|glDispatchCompute U4 U4 U4'
   :EndIf
   {}glDispatchCompute_DLL num_groups_x num_groups_y num_groups_z
 ∇
@@ -13834,14 +13842,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyImageSubData (srcName srcTarget srcLevel srcX srcY srcZ dstName dstTarget dstLevel dstX dstY dstZ srcWidth srcHeight srcDepth)
   :If 0=⎕NC'glCopyImageSubData_DLL'
-      'glCopyImageSubData_DLL'⎕NA'opengl32|glCopyImageSubData U4 U4 I4 I4 I4 I4 U4 U4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyImageSubData_DLL'⎕NA'',getdllname,'|glCopyImageSubData U4 U4 I4 I4 I4 I4 U4 U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyImageSubData_DLL srcName srcTarget srcLevel srcX srcY srcZ dstName dstTarget dstLevel dstX dstY dstZ srcWidth srcHeight srcDepth
 ∇
 
 ∇ glTextureView (texture target origtexture internalformat minlevel numlevels minlayer numlayers)
   :If 0=⎕NC'glTextureView_DLL'
-      'glTextureView_DLL'⎕NA'opengl32|glTextureView U4 U4 U4 U4 U4 U4 U4 U4'
+      'glTextureView_DLL'⎕NA'',getdllname,'|glTextureView U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glTextureView_DLL texture target origtexture internalformat minlevel numlevels minlayer numlayers
 ∇
@@ -13855,35 +13863,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexAttribFormat (attribindex size type normalized relativeoffset)
   :If 0=⎕NC'glVertexAttribFormat_DLL'
-      'glVertexAttribFormat_DLL'⎕NA'opengl32|glVertexAttribFormat U4 I4 U4 U1 U4'
+      'glVertexAttribFormat_DLL'⎕NA'',getdllname,'|glVertexAttribFormat U4 I4 U4 U1 U4'
   :EndIf
   {}glVertexAttribFormat_DLL attribindex size type normalized relativeoffset
 ∇
 
 ∇ glVertexAttribIFormat (attribindex size type relativeoffset)
   :If 0=⎕NC'glVertexAttribIFormat_DLL'
-      'glVertexAttribIFormat_DLL'⎕NA'opengl32|glVertexAttribIFormat U4 I4 U4 U4'
+      'glVertexAttribIFormat_DLL'⎕NA'',getdllname,'|glVertexAttribIFormat U4 I4 U4 U4'
   :EndIf
   {}glVertexAttribIFormat_DLL attribindex size type relativeoffset
 ∇
 
 ∇ glVertexAttribLFormat (attribindex size type relativeoffset)
   :If 0=⎕NC'glVertexAttribLFormat_DLL'
-      'glVertexAttribLFormat_DLL'⎕NA'opengl32|glVertexAttribLFormat U4 I4 U4 U4'
+      'glVertexAttribLFormat_DLL'⎕NA'',getdllname,'|glVertexAttribLFormat U4 I4 U4 U4'
   :EndIf
   {}glVertexAttribLFormat_DLL attribindex size type relativeoffset
 ∇
 
 ∇ glVertexAttribBinding (attribindex bindingindex)
   :If 0=⎕NC'glVertexAttribBinding_DLL'
-      'glVertexAttribBinding_DLL'⎕NA'opengl32|glVertexAttribBinding U4 U4'
+      'glVertexAttribBinding_DLL'⎕NA'',getdllname,'|glVertexAttribBinding U4 U4'
   :EndIf
   {}glVertexAttribBinding_DLL attribindex bindingindex
 ∇
 
 ∇ glVertexBindingDivisor (bindingindex divisor)
   :If 0=⎕NC'glVertexBindingDivisor_DLL'
-      'glVertexBindingDivisor_DLL'⎕NA'opengl32|glVertexBindingDivisor U4 U4'
+      'glVertexBindingDivisor_DLL'⎕NA'',getdllname,'|glVertexBindingDivisor U4 U4'
   :EndIf
   {}glVertexBindingDivisor_DLL bindingindex divisor
 ∇
@@ -13897,84 +13905,84 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexArrayVertexAttribFormatEXT (vaobj attribindex size type normalized relativeoffset)
   :If 0=⎕NC'glVertexArrayVertexAttribFormatEXT_DLL'
-      'glVertexArrayVertexAttribFormatEXT_DLL'⎕NA'opengl32|glVertexArrayVertexAttribFormatEXT U4 U4 I4 U4 U1 U4'
+      'glVertexArrayVertexAttribFormatEXT_DLL'⎕NA'',getdllname,'|glVertexArrayVertexAttribFormatEXT U4 U4 I4 U4 U1 U4'
   :EndIf
   {}glVertexArrayVertexAttribFormatEXT_DLL vaobj attribindex size type normalized relativeoffset
 ∇
 
 ∇ glVertexArrayVertexAttribIFormatEXT (vaobj attribindex size type relativeoffset)
   :If 0=⎕NC'glVertexArrayVertexAttribIFormatEXT_DLL'
-      'glVertexArrayVertexAttribIFormatEXT_DLL'⎕NA'opengl32|glVertexArrayVertexAttribIFormatEXT U4 U4 I4 U4 U4'
+      'glVertexArrayVertexAttribIFormatEXT_DLL'⎕NA'',getdllname,'|glVertexArrayVertexAttribIFormatEXT U4 U4 I4 U4 U4'
   :EndIf
   {}glVertexArrayVertexAttribIFormatEXT_DLL vaobj attribindex size type relativeoffset
 ∇
 
 ∇ glVertexArrayVertexAttribLFormatEXT (vaobj attribindex size type relativeoffset)
   :If 0=⎕NC'glVertexArrayVertexAttribLFormatEXT_DLL'
-      'glVertexArrayVertexAttribLFormatEXT_DLL'⎕NA'opengl32|glVertexArrayVertexAttribLFormatEXT U4 U4 I4 U4 U4'
+      'glVertexArrayVertexAttribLFormatEXT_DLL'⎕NA'',getdllname,'|glVertexArrayVertexAttribLFormatEXT U4 U4 I4 U4 U4'
   :EndIf
   {}glVertexArrayVertexAttribLFormatEXT_DLL vaobj attribindex size type relativeoffset
 ∇
 
 ∇ glVertexArrayVertexAttribBindingEXT (vaobj attribindex bindingindex)
   :If 0=⎕NC'glVertexArrayVertexAttribBindingEXT_DLL'
-      'glVertexArrayVertexAttribBindingEXT_DLL'⎕NA'opengl32|glVertexArrayVertexAttribBindingEXT U4 U4 U4'
+      'glVertexArrayVertexAttribBindingEXT_DLL'⎕NA'',getdllname,'|glVertexArrayVertexAttribBindingEXT U4 U4 U4'
   :EndIf
   {}glVertexArrayVertexAttribBindingEXT_DLL vaobj attribindex bindingindex
 ∇
 
 ∇ glVertexArrayVertexBindingDivisorEXT (vaobj bindingindex divisor)
   :If 0=⎕NC'glVertexArrayVertexBindingDivisorEXT_DLL'
-      'glVertexArrayVertexBindingDivisorEXT_DLL'⎕NA'opengl32|glVertexArrayVertexBindingDivisorEXT U4 U4 U4'
+      'glVertexArrayVertexBindingDivisorEXT_DLL'⎕NA'',getdllname,'|glVertexArrayVertexBindingDivisorEXT U4 U4 U4'
   :EndIf
   {}glVertexArrayVertexBindingDivisorEXT_DLL vaobj bindingindex divisor
 ∇
 
 ∇ glFramebufferParameteri (target pname param)
   :If 0=⎕NC'glFramebufferParameteri_DLL'
-      'glFramebufferParameteri_DLL'⎕NA'opengl32|glFramebufferParameteri U4 U4 I4'
+      'glFramebufferParameteri_DLL'⎕NA'',getdllname,'|glFramebufferParameteri U4 U4 I4'
   :EndIf
   {}glFramebufferParameteri_DLL target pname param
 ∇
 
 ∇ r←glGetFramebufferParameteriv (target pname params)
   :If 0=⎕NC'glGetFramebufferParameteriv_DLL'
-      'glGetFramebufferParameteriv_DLL'⎕NA'opengl32|glGetFramebufferParameteriv U4 U4 >I4[]'
+      'glGetFramebufferParameteriv_DLL'⎕NA'',getdllname,'|glGetFramebufferParameteriv U4 U4 >I4[]'
   :EndIf
   r←glGetFramebufferParameteriv_DLL target pname params
 ∇
 
 ∇ glNamedFramebufferParameteriEXT (framebuffer pname param)
   :If 0=⎕NC'glNamedFramebufferParameteriEXT_DLL'
-      'glNamedFramebufferParameteriEXT_DLL'⎕NA'opengl32|glNamedFramebufferParameteriEXT U4 U4 I4'
+      'glNamedFramebufferParameteriEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferParameteriEXT U4 U4 I4'
   :EndIf
   {}glNamedFramebufferParameteriEXT_DLL framebuffer pname param
 ∇
 
 ∇ r←glGetNamedFramebufferParameterivEXT (framebuffer pname params)
   :If 0=⎕NC'glGetNamedFramebufferParameterivEXT_DLL'
-      'glGetNamedFramebufferParameterivEXT_DLL'⎕NA'opengl32|glGetNamedFramebufferParameterivEXT U4 U4 >I4[]'
+      'glGetNamedFramebufferParameterivEXT_DLL'⎕NA'',getdllname,'|glGetNamedFramebufferParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetNamedFramebufferParameterivEXT_DLL framebuffer pname params
 ∇
 
 ∇ r←glGetInternalformati64v (target internalformat pname bufSize params)
   :If 0=⎕NC'glGetInternalformati64v_DLL'
-      'glGetInternalformati64v_DLL'⎕NA'opengl32|glGetInternalformati64v U4 U4 U4 I4 >I8[]'
+      'glGetInternalformati64v_DLL'⎕NA'',getdllname,'|glGetInternalformati64v U4 U4 U4 I4 >I8[]'
   :EndIf
   r←glGetInternalformati64v_DLL target internalformat pname bufSize params
 ∇
 
 ∇ glInvalidateTexSubImage (texture level xoffset yoffset zoffset width height depth)
   :If 0=⎕NC'glInvalidateTexSubImage_DLL'
-      'glInvalidateTexSubImage_DLL'⎕NA'opengl32|glInvalidateTexSubImage U4 I4 I4 I4 I4 I4 I4 I4'
+      'glInvalidateTexSubImage_DLL'⎕NA'',getdllname,'|glInvalidateTexSubImage U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glInvalidateTexSubImage_DLL texture level xoffset yoffset zoffset width height depth
 ∇
 
 ∇ glInvalidateTexImage (texture level)
   :If 0=⎕NC'glInvalidateTexImage_DLL'
-      'glInvalidateTexImage_DLL'⎕NA'opengl32|glInvalidateTexImage U4 I4'
+      'glInvalidateTexImage_DLL'⎕NA'',getdllname,'|glInvalidateTexImage U4 I4'
   :EndIf
   {}glInvalidateTexImage_DLL texture level
 ∇
@@ -13988,21 +13996,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glInvalidateBufferData buffer
   :If 0=⎕NC'glInvalidateBufferData_DLL'
-      'glInvalidateBufferData_DLL'⎕NA'opengl32|glInvalidateBufferData U4'
+      'glInvalidateBufferData_DLL'⎕NA'',getdllname,'|glInvalidateBufferData U4'
   :EndIf
   {}glInvalidateBufferData_DLL buffer
 ∇
 
 ∇ glInvalidateFramebuffer (target numAttachments attachments)
   :If 0=⎕NC'glInvalidateFramebuffer_DLL'
-      'glInvalidateFramebuffer_DLL'⎕NA'opengl32|glInvalidateFramebuffer U4 I4 <U4[]'
+      'glInvalidateFramebuffer_DLL'⎕NA'',getdllname,'|glInvalidateFramebuffer U4 I4 <U4[]'
   :EndIf
   {}glInvalidateFramebuffer_DLL target numAttachments attachments
 ∇
 
 ∇ glInvalidateSubFramebuffer (target numAttachments attachments x y width height)
   :If 0=⎕NC'glInvalidateSubFramebuffer_DLL'
-      'glInvalidateSubFramebuffer_DLL'⎕NA'opengl32|glInvalidateSubFramebuffer U4 I4 <U4[] I4 I4 I4 I4'
+      'glInvalidateSubFramebuffer_DLL'⎕NA'',getdllname,'|glInvalidateSubFramebuffer U4 I4 <U4[] I4 I4 I4 I4'
   :EndIf
   {}glInvalidateSubFramebuffer_DLL target numAttachments attachments x y width height
 ∇
@@ -14023,7 +14031,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetProgramInterfaceiv (program programInterface pname params)
   :If 0=⎕NC'glGetProgramInterfaceiv_DLL'
-      'glGetProgramInterfaceiv_DLL'⎕NA'opengl32|glGetProgramInterfaceiv U4 U4 U4 >I4[]'
+      'glGetProgramInterfaceiv_DLL'⎕NA'',getdllname,'|glGetProgramInterfaceiv U4 U4 U4 >I4[]'
   :EndIf
   r←glGetProgramInterfaceiv_DLL program programInterface pname params
 ∇
@@ -14065,7 +14073,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glShaderStorageBlockBinding (program storageBlockIndex storageBlockBinding)
   :If 0=⎕NC'glShaderStorageBlockBinding_DLL'
-      'glShaderStorageBlockBinding_DLL'⎕NA'opengl32|glShaderStorageBlockBinding U4 U4 U4'
+      'glShaderStorageBlockBinding_DLL'⎕NA'',getdllname,'|glShaderStorageBlockBinding U4 U4 U4'
   :EndIf
   {}glShaderStorageBlockBinding_DLL program storageBlockIndex storageBlockBinding
 ∇
@@ -14086,91 +14094,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexStorage2DMultisample (target samples internalformat width height fixedsamplelocations)
   :If 0=⎕NC'glTexStorage2DMultisample_DLL'
-      'glTexStorage2DMultisample_DLL'⎕NA'opengl32|glTexStorage2DMultisample U4 I4 U4 I4 I4 U1'
+      'glTexStorage2DMultisample_DLL'⎕NA'',getdllname,'|glTexStorage2DMultisample U4 I4 U4 I4 I4 U1'
   :EndIf
   {}glTexStorage2DMultisample_DLL target samples internalformat width height fixedsamplelocations
 ∇
 
 ∇ glTexStorage3DMultisample (target samples internalformat width height depth fixedsamplelocations)
   :If 0=⎕NC'glTexStorage3DMultisample_DLL'
-      'glTexStorage3DMultisample_DLL'⎕NA'opengl32|glTexStorage3DMultisample U4 I4 U4 I4 I4 I4 U1'
+      'glTexStorage3DMultisample_DLL'⎕NA'',getdllname,'|glTexStorage3DMultisample U4 I4 U4 I4 I4 I4 U1'
   :EndIf
   {}glTexStorage3DMultisample_DLL target samples internalformat width height depth fixedsamplelocations
 ∇
 
 ∇ glTextureStorage2DMultisampleEXT (texture target samples internalformat width height fixedsamplelocations)
   :If 0=⎕NC'glTextureStorage2DMultisampleEXT_DLL'
-      'glTextureStorage2DMultisampleEXT_DLL'⎕NA'opengl32|glTextureStorage2DMultisampleEXT U4 U4 I4 U4 I4 I4 U1'
+      'glTextureStorage2DMultisampleEXT_DLL'⎕NA'',getdllname,'|glTextureStorage2DMultisampleEXT U4 U4 I4 U4 I4 I4 U1'
   :EndIf
   {}glTextureStorage2DMultisampleEXT_DLL texture target samples internalformat width height fixedsamplelocations
 ∇
 
 ∇ glTextureStorage3DMultisampleEXT (texture target samples internalformat width height depth fixedsamplelocations)
   :If 0=⎕NC'glTextureStorage3DMultisampleEXT_DLL'
-      'glTextureStorage3DMultisampleEXT_DLL'⎕NA'opengl32|glTextureStorage3DMultisampleEXT U4 U4 I4 U4 I4 I4 I4 U1'
+      'glTextureStorage3DMultisampleEXT_DLL'⎕NA'',getdllname,'|glTextureStorage3DMultisampleEXT U4 U4 I4 U4 I4 I4 I4 U1'
   :EndIf
   {}glTextureStorage3DMultisampleEXT_DLL texture target samples internalformat width height depth fixedsamplelocations
 ∇
 
 ∇ glBlendColorEXT (red green blue alpha)
   :If 0=⎕NC'glBlendColorEXT_DLL'
-      'glBlendColorEXT_DLL'⎕NA'opengl32|glBlendColorEXT F4 F4 F4 F4'
+      'glBlendColorEXT_DLL'⎕NA'',getdllname,'|glBlendColorEXT F4 F4 F4 F4'
   :EndIf
   {}glBlendColorEXT_DLL red green blue alpha
 ∇
 
 ∇ glPolygonOffsetEXT (factor bias)
   :If 0=⎕NC'glPolygonOffsetEXT_DLL'
-      'glPolygonOffsetEXT_DLL'⎕NA'opengl32|glPolygonOffsetEXT F4 F4'
+      'glPolygonOffsetEXT_DLL'⎕NA'',getdllname,'|glPolygonOffsetEXT F4 F4'
   :EndIf
   {}glPolygonOffsetEXT_DLL factor bias
 ∇
 
 ∇ TexImage3DEXT_U1 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_U1_DLL'
-      'TexImage3DEXT_U1_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexImage3DEXT_U1_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexImage3DEXT_U1_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3DEXT_I1 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_I1_DLL'
-      'TexImage3DEXT_I1_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexImage3DEXT_I1_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexImage3DEXT_I1_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3DEXT_U2 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_U2_DLL'
-      'TexImage3DEXT_U2_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexImage3DEXT_U2_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexImage3DEXT_U2_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3DEXT_I2 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_I2_DLL'
-      'TexImage3DEXT_I2_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexImage3DEXT_I2_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexImage3DEXT_I2_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3DEXT_U4 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_U4_DLL'
-      'TexImage3DEXT_U4_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexImage3DEXT_U4_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexImage3DEXT_U4_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3DEXT_I4 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_I4_DLL'
-      'TexImage3DEXT_I4_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexImage3DEXT_I4_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexImage3DEXT_I4_DLL target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TexImage3DEXT_F4 (target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TexImage3DEXT_F4_DLL'
-      'TexImage3DEXT_F4_DLL'⎕NA'opengl32|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexImage3DEXT_F4_DLL'⎕NA'',getdllname,'|glTexImage3DEXT U4 I4 U4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexImage3DEXT_F4_DLL target level internalformat width height depth border format type pixels
 ∇
@@ -14228,49 +14236,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexSubImage3DEXT_U1 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_U1_DLL'
-      'TexSubImage3DEXT_U1_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage3DEXT_U1_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage3DEXT_U1_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3DEXT_I1 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_I1_DLL'
-      'TexSubImage3DEXT_I1_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage3DEXT_I1_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage3DEXT_I1_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3DEXT_U2 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_U2_DLL'
-      'TexSubImage3DEXT_U2_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage3DEXT_U2_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage3DEXT_U2_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3DEXT_I2 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_I2_DLL'
-      'TexSubImage3DEXT_I2_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage3DEXT_I2_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage3DEXT_I2_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3DEXT_U4 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_U4_DLL'
-      'TexSubImage3DEXT_U4_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage3DEXT_U4_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage3DEXT_U4_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3DEXT_I4 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_I4_DLL'
-      'TexSubImage3DEXT_I4_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage3DEXT_I4_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage3DEXT_I4_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TexSubImage3DEXT_F4 (target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TexSubImage3DEXT_F4_DLL'
-      'TexSubImage3DEXT_F4_DLL'⎕NA'opengl32|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage3DEXT_F4_DLL'⎕NA'',getdllname,'|glTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage3DEXT_F4_DLL target level xoffset yoffset zoffset width height depth format type pixels
 ∇
@@ -14328,63 +14336,63 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetTexFilterFuncSGIS (target filter weights)
   :If 0=⎕NC'glGetTexFilterFuncSGIS_DLL'
-      'glGetTexFilterFuncSGIS_DLL'⎕NA'opengl32|glGetTexFilterFuncSGIS U4 U4 >F4[]'
+      'glGetTexFilterFuncSGIS_DLL'⎕NA'',getdllname,'|glGetTexFilterFuncSGIS U4 U4 >F4[]'
   :EndIf
   r←glGetTexFilterFuncSGIS_DLL target filter weights
 ∇
 
 ∇ glTexFilterFuncSGIS (target filter n weights)
   :If 0=⎕NC'glTexFilterFuncSGIS_DLL'
-      'glTexFilterFuncSGIS_DLL'⎕NA'opengl32|glTexFilterFuncSGIS U4 U4 I4 <F4[]'
+      'glTexFilterFuncSGIS_DLL'⎕NA'',getdllname,'|glTexFilterFuncSGIS U4 U4 I4 <F4[]'
   :EndIf
   {}glTexFilterFuncSGIS_DLL target filter n weights
 ∇
 
 ∇ TexSubImage1DEXT_U1 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_U1_DLL'
-      'TexSubImage1DEXT_U1_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage1DEXT_U1_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage1DEXT_U1_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1DEXT_I1 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_I1_DLL'
-      'TexSubImage1DEXT_I1_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage1DEXT_I1_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage1DEXT_I1_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1DEXT_U2 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_U2_DLL'
-      'TexSubImage1DEXT_U2_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage1DEXT_U2_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage1DEXT_U2_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1DEXT_I2 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_I2_DLL'
-      'TexSubImage1DEXT_I2_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage1DEXT_I2_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage1DEXT_I2_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1DEXT_U4 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_U4_DLL'
-      'TexSubImage1DEXT_U4_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage1DEXT_U4_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage1DEXT_U4_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1DEXT_I4 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_I4_DLL'
-      'TexSubImage1DEXT_I4_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage1DEXT_I4_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage1DEXT_I4_DLL target level xoffset width format type pixels
 ∇
 
 ∇ TexSubImage1DEXT_F4 (target level xoffset width format type pixels)
   :If 0=⎕NC'TexSubImage1DEXT_F4_DLL'
-      'TexSubImage1DEXT_F4_DLL'⎕NA'opengl32|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage1DEXT_F4_DLL'⎕NA'',getdllname,'|glTexSubImage1DEXT U4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage1DEXT_F4_DLL target level xoffset width format type pixels
 ∇
@@ -14442,49 +14450,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexSubImage2DEXT_U1 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_U1_DLL'
-      'TexSubImage2DEXT_U1_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage2DEXT_U1_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage2DEXT_U1_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2DEXT_I1 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_I1_DLL'
-      'TexSubImage2DEXT_I1_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage2DEXT_I1_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage2DEXT_I1_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2DEXT_U2 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_U2_DLL'
-      'TexSubImage2DEXT_U2_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage2DEXT_U2_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage2DEXT_U2_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2DEXT_I2 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_I2_DLL'
-      'TexSubImage2DEXT_I2_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage2DEXT_I2_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage2DEXT_I2_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2DEXT_U4 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_U4_DLL'
-      'TexSubImage2DEXT_U4_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage2DEXT_U4_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage2DEXT_U4_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2DEXT_I4 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_I4_DLL'
-      'TexSubImage2DEXT_I4_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage2DEXT_I4_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage2DEXT_I4_DLL target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TexSubImage2DEXT_F4 (target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TexSubImage2DEXT_F4_DLL'
-      'TexSubImage2DEXT_F4_DLL'⎕NA'opengl32|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage2DEXT_F4_DLL'⎕NA'',getdllname,'|glTexSubImage2DEXT U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage2DEXT_F4_DLL target level xoffset yoffset width height format type pixels
 ∇
@@ -14542,35 +14550,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyTexImage1DEXT (target level internalformat x y width border)
   :If 0=⎕NC'glCopyTexImage1DEXT_DLL'
-      'glCopyTexImage1DEXT_DLL'⎕NA'opengl32|glCopyTexImage1DEXT U4 I4 U4 I4 I4 I4 I4'
+      'glCopyTexImage1DEXT_DLL'⎕NA'',getdllname,'|glCopyTexImage1DEXT U4 I4 U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexImage1DEXT_DLL target level internalformat x y width border
 ∇
 
 ∇ glCopyTexImage2DEXT (target level internalformat x y width height border)
   :If 0=⎕NC'glCopyTexImage2DEXT_DLL'
-      'glCopyTexImage2DEXT_DLL'⎕NA'opengl32|glCopyTexImage2DEXT U4 I4 U4 I4 I4 I4 I4 I4'
+      'glCopyTexImage2DEXT_DLL'⎕NA'',getdllname,'|glCopyTexImage2DEXT U4 I4 U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexImage2DEXT_DLL target level internalformat x y width height border
 ∇
 
 ∇ glCopyTexSubImage1DEXT (target level xoffset x y width)
   :If 0=⎕NC'glCopyTexSubImage1DEXT_DLL'
-      'glCopyTexSubImage1DEXT_DLL'⎕NA'opengl32|glCopyTexSubImage1DEXT U4 I4 I4 I4 I4 I4'
+      'glCopyTexSubImage1DEXT_DLL'⎕NA'',getdllname,'|glCopyTexSubImage1DEXT U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexSubImage1DEXT_DLL target level xoffset x y width
 ∇
 
 ∇ glCopyTexSubImage2DEXT (target level xoffset yoffset x y width height)
   :If 0=⎕NC'glCopyTexSubImage2DEXT_DLL'
-      'glCopyTexSubImage2DEXT_DLL'⎕NA'opengl32|glCopyTexSubImage2DEXT U4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyTexSubImage2DEXT_DLL'⎕NA'',getdllname,'|glCopyTexSubImage2DEXT U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexSubImage2DEXT_DLL target level xoffset yoffset x y width height
 ∇
 
 ∇ glCopyTexSubImage3DEXT (target level xoffset yoffset zoffset x y width height)
   :If 0=⎕NC'glCopyTexSubImage3DEXT_DLL'
-      'glCopyTexSubImage3DEXT_DLL'⎕NA'opengl32|glCopyTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyTexSubImage3DEXT_DLL'⎕NA'',getdllname,'|glCopyTexSubImage3DEXT U4 I4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTexSubImage3DEXT_DLL target level xoffset yoffset zoffset x y width height
 ∇
@@ -14584,14 +14592,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetHistogramParameterfvEXT (target pname params)
   :If 0=⎕NC'glGetHistogramParameterfvEXT_DLL'
-      'glGetHistogramParameterfvEXT_DLL'⎕NA'opengl32|glGetHistogramParameterfvEXT U4 U4 >F4[]'
+      'glGetHistogramParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetHistogramParameterfvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetHistogramParameterfvEXT_DLL target pname params
 ∇
 
 ∇ r←glGetHistogramParameterivEXT (target pname params)
   :If 0=⎕NC'glGetHistogramParameterivEXT_DLL'
-      'glGetHistogramParameterivEXT_DLL'⎕NA'opengl32|glGetHistogramParameterivEXT U4 U4 >I4[]'
+      'glGetHistogramParameterivEXT_DLL'⎕NA'',getdllname,'|glGetHistogramParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetHistogramParameterivEXT_DLL target pname params
 ∇
@@ -14605,91 +14613,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetMinmaxParameterfvEXT (target pname params)
   :If 0=⎕NC'glGetMinmaxParameterfvEXT_DLL'
-      'glGetMinmaxParameterfvEXT_DLL'⎕NA'opengl32|glGetMinmaxParameterfvEXT U4 U4 >F4[]'
+      'glGetMinmaxParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetMinmaxParameterfvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetMinmaxParameterfvEXT_DLL target pname params
 ∇
 
 ∇ r←glGetMinmaxParameterivEXT (target pname params)
   :If 0=⎕NC'glGetMinmaxParameterivEXT_DLL'
-      'glGetMinmaxParameterivEXT_DLL'⎕NA'opengl32|glGetMinmaxParameterivEXT U4 U4 >I4[]'
+      'glGetMinmaxParameterivEXT_DLL'⎕NA'',getdllname,'|glGetMinmaxParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetMinmaxParameterivEXT_DLL target pname params
 ∇
 
 ∇ glHistogramEXT (target width internalformat sink)
   :If 0=⎕NC'glHistogramEXT_DLL'
-      'glHistogramEXT_DLL'⎕NA'opengl32|glHistogramEXT U4 I4 U4 U1'
+      'glHistogramEXT_DLL'⎕NA'',getdllname,'|glHistogramEXT U4 I4 U4 U1'
   :EndIf
   {}glHistogramEXT_DLL target width internalformat sink
 ∇
 
 ∇ glMinmaxEXT (target internalformat sink)
   :If 0=⎕NC'glMinmaxEXT_DLL'
-      'glMinmaxEXT_DLL'⎕NA'opengl32|glMinmaxEXT U4 U4 U1'
+      'glMinmaxEXT_DLL'⎕NA'',getdllname,'|glMinmaxEXT U4 U4 U1'
   :EndIf
   {}glMinmaxEXT_DLL target internalformat sink
 ∇
 
 ∇ glResetHistogramEXT target
   :If 0=⎕NC'glResetHistogramEXT_DLL'
-      'glResetHistogramEXT_DLL'⎕NA'opengl32|glResetHistogramEXT U4'
+      'glResetHistogramEXT_DLL'⎕NA'',getdllname,'|glResetHistogramEXT U4'
   :EndIf
   {}glResetHistogramEXT_DLL target
 ∇
 
 ∇ glResetMinmaxEXT target
   :If 0=⎕NC'glResetMinmaxEXT_DLL'
-      'glResetMinmaxEXT_DLL'⎕NA'opengl32|glResetMinmaxEXT U4'
+      'glResetMinmaxEXT_DLL'⎕NA'',getdllname,'|glResetMinmaxEXT U4'
   :EndIf
   {}glResetMinmaxEXT_DLL target
 ∇
 
 ∇ ConvolutionFilter1DEXT_U1 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_U1_DLL'
-      'ConvolutionFilter1DEXT_U1_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <U1[]'
+      'ConvolutionFilter1DEXT_U1_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <U1[]'
   :EndIf
   {}ConvolutionFilter1DEXT_U1_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1DEXT_I1 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_I1_DLL'
-      'ConvolutionFilter1DEXT_I1_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <I1[]'
+      'ConvolutionFilter1DEXT_I1_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <I1[]'
   :EndIf
   {}ConvolutionFilter1DEXT_I1_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1DEXT_U2 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_U2_DLL'
-      'ConvolutionFilter1DEXT_U2_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <U2[]'
+      'ConvolutionFilter1DEXT_U2_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <U2[]'
   :EndIf
   {}ConvolutionFilter1DEXT_U2_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1DEXT_I2 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_I2_DLL'
-      'ConvolutionFilter1DEXT_I2_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <I2[]'
+      'ConvolutionFilter1DEXT_I2_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <I2[]'
   :EndIf
   {}ConvolutionFilter1DEXT_I2_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1DEXT_U4 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_U4_DLL'
-      'ConvolutionFilter1DEXT_U4_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <U4[]'
+      'ConvolutionFilter1DEXT_U4_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <U4[]'
   :EndIf
   {}ConvolutionFilter1DEXT_U4_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1DEXT_I4 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_I4_DLL'
-      'ConvolutionFilter1DEXT_I4_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <I4[]'
+      'ConvolutionFilter1DEXT_I4_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <I4[]'
   :EndIf
   {}ConvolutionFilter1DEXT_I4_DLL target internalformat width format type image
 ∇
 
 ∇ ConvolutionFilter1DEXT_F4 (target internalformat width format type image)
   :If 0=⎕NC'ConvolutionFilter1DEXT_F4_DLL'
-      'ConvolutionFilter1DEXT_F4_DLL'⎕NA'opengl32|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <F4[]'
+      'ConvolutionFilter1DEXT_F4_DLL'⎕NA'',getdllname,'|glConvolutionFilter1DEXT U4 U4 I4 U4 U4 <F4[]'
   :EndIf
   {}ConvolutionFilter1DEXT_F4_DLL target internalformat width format type image
 ∇
@@ -14747,49 +14755,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ ConvolutionFilter2DEXT_U1 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_U1_DLL'
-      'ConvolutionFilter2DEXT_U1_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <U1[]'
+      'ConvolutionFilter2DEXT_U1_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}ConvolutionFilter2DEXT_U1_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2DEXT_I1 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_I1_DLL'
-      'ConvolutionFilter2DEXT_I1_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <I1[]'
+      'ConvolutionFilter2DEXT_I1_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}ConvolutionFilter2DEXT_I1_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2DEXT_U2 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_U2_DLL'
-      'ConvolutionFilter2DEXT_U2_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <U2[]'
+      'ConvolutionFilter2DEXT_U2_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}ConvolutionFilter2DEXT_U2_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2DEXT_I2 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_I2_DLL'
-      'ConvolutionFilter2DEXT_I2_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <I2[]'
+      'ConvolutionFilter2DEXT_I2_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}ConvolutionFilter2DEXT_I2_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2DEXT_U4 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_U4_DLL'
-      'ConvolutionFilter2DEXT_U4_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <U4[]'
+      'ConvolutionFilter2DEXT_U4_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}ConvolutionFilter2DEXT_U4_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2DEXT_I4 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_I4_DLL'
-      'ConvolutionFilter2DEXT_I4_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <I4[]'
+      'ConvolutionFilter2DEXT_I4_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}ConvolutionFilter2DEXT_I4_DLL target internalformat width height format type image
 ∇
 
 ∇ ConvolutionFilter2DEXT_F4 (target internalformat width height format type image)
   :If 0=⎕NC'ConvolutionFilter2DEXT_F4_DLL'
-      'ConvolutionFilter2DEXT_F4_DLL'⎕NA'opengl32|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <F4[]'
+      'ConvolutionFilter2DEXT_F4_DLL'⎕NA'',getdllname,'|glConvolutionFilter2DEXT U4 U4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}ConvolutionFilter2DEXT_F4_DLL target internalformat width height format type image
 ∇
@@ -14847,42 +14855,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glConvolutionParameterfEXT (target pname params)
   :If 0=⎕NC'glConvolutionParameterfEXT_DLL'
-      'glConvolutionParameterfEXT_DLL'⎕NA'opengl32|glConvolutionParameterfEXT U4 U4 F4'
+      'glConvolutionParameterfEXT_DLL'⎕NA'',getdllname,'|glConvolutionParameterfEXT U4 U4 F4'
   :EndIf
   {}glConvolutionParameterfEXT_DLL target pname params
 ∇
 
 ∇ glConvolutionParameterfvEXT (target pname params)
   :If 0=⎕NC'glConvolutionParameterfvEXT_DLL'
-      'glConvolutionParameterfvEXT_DLL'⎕NA'opengl32|glConvolutionParameterfvEXT U4 U4 <F4[]'
+      'glConvolutionParameterfvEXT_DLL'⎕NA'',getdllname,'|glConvolutionParameterfvEXT U4 U4 <F4[]'
   :EndIf
   {}glConvolutionParameterfvEXT_DLL target pname params
 ∇
 
 ∇ glConvolutionParameteriEXT (target pname params)
   :If 0=⎕NC'glConvolutionParameteriEXT_DLL'
-      'glConvolutionParameteriEXT_DLL'⎕NA'opengl32|glConvolutionParameteriEXT U4 U4 I4'
+      'glConvolutionParameteriEXT_DLL'⎕NA'',getdllname,'|glConvolutionParameteriEXT U4 U4 I4'
   :EndIf
   {}glConvolutionParameteriEXT_DLL target pname params
 ∇
 
 ∇ glConvolutionParameterivEXT (target pname params)
   :If 0=⎕NC'glConvolutionParameterivEXT_DLL'
-      'glConvolutionParameterivEXT_DLL'⎕NA'opengl32|glConvolutionParameterivEXT U4 U4 <I4[]'
+      'glConvolutionParameterivEXT_DLL'⎕NA'',getdllname,'|glConvolutionParameterivEXT U4 U4 <I4[]'
   :EndIf
   {}glConvolutionParameterivEXT_DLL target pname params
 ∇
 
 ∇ glCopyConvolutionFilter1DEXT (target internalformat x y width)
   :If 0=⎕NC'glCopyConvolutionFilter1DEXT_DLL'
-      'glCopyConvolutionFilter1DEXT_DLL'⎕NA'opengl32|glCopyConvolutionFilter1DEXT U4 U4 I4 I4 I4'
+      'glCopyConvolutionFilter1DEXT_DLL'⎕NA'',getdllname,'|glCopyConvolutionFilter1DEXT U4 U4 I4 I4 I4'
   :EndIf
   {}glCopyConvolutionFilter1DEXT_DLL target internalformat x y width
 ∇
 
 ∇ glCopyConvolutionFilter2DEXT (target internalformat x y width height)
   :If 0=⎕NC'glCopyConvolutionFilter2DEXT_DLL'
-      'glCopyConvolutionFilter2DEXT_DLL'⎕NA'opengl32|glCopyConvolutionFilter2DEXT U4 U4 I4 I4 I4 I4'
+      'glCopyConvolutionFilter2DEXT_DLL'⎕NA'',getdllname,'|glCopyConvolutionFilter2DEXT U4 U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyConvolutionFilter2DEXT_DLL target internalformat x y width height
 ∇
@@ -14896,14 +14904,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetConvolutionParameterfvEXT (target pname params)
   :If 0=⎕NC'glGetConvolutionParameterfvEXT_DLL'
-      'glGetConvolutionParameterfvEXT_DLL'⎕NA'opengl32|glGetConvolutionParameterfvEXT U4 U4 >F4[]'
+      'glGetConvolutionParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetConvolutionParameterfvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetConvolutionParameterfvEXT_DLL target pname params
 ∇
 
 ∇ r←glGetConvolutionParameterivEXT (target pname params)
   :If 0=⎕NC'glGetConvolutionParameterivEXT_DLL'
-      'glGetConvolutionParameterivEXT_DLL'⎕NA'opengl32|glGetConvolutionParameterivEXT U4 U4 >I4[]'
+      'glGetConvolutionParameterivEXT_DLL'⎕NA'',getdllname,'|glGetConvolutionParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetConvolutionParameterivEXT_DLL target pname params
 ∇
@@ -14924,49 +14932,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ ColorTableSGI_U1 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_U1_DLL'
-      'ColorTableSGI_U1_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <U1[]'
+      'ColorTableSGI_U1_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <U1[]'
   :EndIf
   {}ColorTableSGI_U1_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTableSGI_I1 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_I1_DLL'
-      'ColorTableSGI_I1_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <I1[]'
+      'ColorTableSGI_I1_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <I1[]'
   :EndIf
   {}ColorTableSGI_I1_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTableSGI_U2 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_U2_DLL'
-      'ColorTableSGI_U2_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <U2[]'
+      'ColorTableSGI_U2_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <U2[]'
   :EndIf
   {}ColorTableSGI_U2_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTableSGI_I2 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_I2_DLL'
-      'ColorTableSGI_I2_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <I2[]'
+      'ColorTableSGI_I2_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <I2[]'
   :EndIf
   {}ColorTableSGI_I2_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTableSGI_U4 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_U4_DLL'
-      'ColorTableSGI_U4_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <U4[]'
+      'ColorTableSGI_U4_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <U4[]'
   :EndIf
   {}ColorTableSGI_U4_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTableSGI_I4 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_I4_DLL'
-      'ColorTableSGI_I4_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <I4[]'
+      'ColorTableSGI_I4_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <I4[]'
   :EndIf
   {}ColorTableSGI_I4_DLL target internalformat width format type table
 ∇
 
 ∇ ColorTableSGI_F4 (target internalformat width format type table)
   :If 0=⎕NC'ColorTableSGI_F4_DLL'
-      'ColorTableSGI_F4_DLL'⎕NA'opengl32|glColorTableSGI U4 U4 I4 U4 U4 <F4[]'
+      'ColorTableSGI_F4_DLL'⎕NA'',getdllname,'|glColorTableSGI U4 U4 I4 U4 U4 <F4[]'
   :EndIf
   {}ColorTableSGI_F4_DLL target internalformat width format type table
 ∇
@@ -15024,21 +15032,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glColorTableParameterfvSGI (target pname params)
   :If 0=⎕NC'glColorTableParameterfvSGI_DLL'
-      'glColorTableParameterfvSGI_DLL'⎕NA'opengl32|glColorTableParameterfvSGI U4 U4 <F4[]'
+      'glColorTableParameterfvSGI_DLL'⎕NA'',getdllname,'|glColorTableParameterfvSGI U4 U4 <F4[]'
   :EndIf
   {}glColorTableParameterfvSGI_DLL target pname params
 ∇
 
 ∇ glColorTableParameterivSGI (target pname params)
   :If 0=⎕NC'glColorTableParameterivSGI_DLL'
-      'glColorTableParameterivSGI_DLL'⎕NA'opengl32|glColorTableParameterivSGI U4 U4 <I4[]'
+      'glColorTableParameterivSGI_DLL'⎕NA'',getdllname,'|glColorTableParameterivSGI U4 U4 <I4[]'
   :EndIf
   {}glColorTableParameterivSGI_DLL target pname params
 ∇
 
 ∇ glCopyColorTableSGI (target internalformat x y width)
   :If 0=⎕NC'glCopyColorTableSGI_DLL'
-      'glCopyColorTableSGI_DLL'⎕NA'opengl32|glCopyColorTableSGI U4 U4 I4 I4 I4'
+      'glCopyColorTableSGI_DLL'⎕NA'',getdllname,'|glCopyColorTableSGI U4 U4 I4 I4 I4'
   :EndIf
   {}glCopyColorTableSGI_DLL target internalformat x y width
 ∇
@@ -15052,112 +15060,112 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetColorTableParameterfvSGI (target pname params)
   :If 0=⎕NC'glGetColorTableParameterfvSGI_DLL'
-      'glGetColorTableParameterfvSGI_DLL'⎕NA'opengl32|glGetColorTableParameterfvSGI U4 U4 >F4[]'
+      'glGetColorTableParameterfvSGI_DLL'⎕NA'',getdllname,'|glGetColorTableParameterfvSGI U4 U4 >F4[]'
   :EndIf
   r←glGetColorTableParameterfvSGI_DLL target pname params
 ∇
 
 ∇ r←glGetColorTableParameterivSGI (target pname params)
   :If 0=⎕NC'glGetColorTableParameterivSGI_DLL'
-      'glGetColorTableParameterivSGI_DLL'⎕NA'opengl32|glGetColorTableParameterivSGI U4 U4 >I4[]'
+      'glGetColorTableParameterivSGI_DLL'⎕NA'',getdllname,'|glGetColorTableParameterivSGI U4 U4 >I4[]'
   :EndIf
   r←glGetColorTableParameterivSGI_DLL target pname params
 ∇
 
 ∇ glPixelTexGenSGIX mode
   :If 0=⎕NC'glPixelTexGenSGIX_DLL'
-      'glPixelTexGenSGIX_DLL'⎕NA'opengl32|glPixelTexGenSGIX U4'
+      'glPixelTexGenSGIX_DLL'⎕NA'',getdllname,'|glPixelTexGenSGIX U4'
   :EndIf
   {}glPixelTexGenSGIX_DLL mode
 ∇
 
 ∇ glPixelTexGenParameteriSGIS (pname param)
   :If 0=⎕NC'glPixelTexGenParameteriSGIS_DLL'
-      'glPixelTexGenParameteriSGIS_DLL'⎕NA'opengl32|glPixelTexGenParameteriSGIS U4 I4'
+      'glPixelTexGenParameteriSGIS_DLL'⎕NA'',getdllname,'|glPixelTexGenParameteriSGIS U4 I4'
   :EndIf
   {}glPixelTexGenParameteriSGIS_DLL pname param
 ∇
 
 ∇ glPixelTexGenParameterivSGIS (pname params)
   :If 0=⎕NC'glPixelTexGenParameterivSGIS_DLL'
-      'glPixelTexGenParameterivSGIS_DLL'⎕NA'opengl32|glPixelTexGenParameterivSGIS U4 <I4[]'
+      'glPixelTexGenParameterivSGIS_DLL'⎕NA'',getdllname,'|glPixelTexGenParameterivSGIS U4 <I4[]'
   :EndIf
   {}glPixelTexGenParameterivSGIS_DLL pname params
 ∇
 
 ∇ glPixelTexGenParameterfSGIS (pname param)
   :If 0=⎕NC'glPixelTexGenParameterfSGIS_DLL'
-      'glPixelTexGenParameterfSGIS_DLL'⎕NA'opengl32|glPixelTexGenParameterfSGIS U4 F4'
+      'glPixelTexGenParameterfSGIS_DLL'⎕NA'',getdllname,'|glPixelTexGenParameterfSGIS U4 F4'
   :EndIf
   {}glPixelTexGenParameterfSGIS_DLL pname param
 ∇
 
 ∇ glPixelTexGenParameterfvSGIS (pname params)
   :If 0=⎕NC'glPixelTexGenParameterfvSGIS_DLL'
-      'glPixelTexGenParameterfvSGIS_DLL'⎕NA'opengl32|glPixelTexGenParameterfvSGIS U4 <F4[]'
+      'glPixelTexGenParameterfvSGIS_DLL'⎕NA'',getdllname,'|glPixelTexGenParameterfvSGIS U4 <F4[]'
   :EndIf
   {}glPixelTexGenParameterfvSGIS_DLL pname params
 ∇
 
 ∇ r←glGetPixelTexGenParameterivSGIS (pname params)
   :If 0=⎕NC'glGetPixelTexGenParameterivSGIS_DLL'
-      'glGetPixelTexGenParameterivSGIS_DLL'⎕NA'opengl32|glGetPixelTexGenParameterivSGIS U4 >I4[]'
+      'glGetPixelTexGenParameterivSGIS_DLL'⎕NA'',getdllname,'|glGetPixelTexGenParameterivSGIS U4 >I4[]'
   :EndIf
   r←glGetPixelTexGenParameterivSGIS_DLL pname params
 ∇
 
 ∇ r←glGetPixelTexGenParameterfvSGIS (pname params)
   :If 0=⎕NC'glGetPixelTexGenParameterfvSGIS_DLL'
-      'glGetPixelTexGenParameterfvSGIS_DLL'⎕NA'opengl32|glGetPixelTexGenParameterfvSGIS U4 >F4[]'
+      'glGetPixelTexGenParameterfvSGIS_DLL'⎕NA'',getdllname,'|glGetPixelTexGenParameterfvSGIS U4 >F4[]'
   :EndIf
   r←glGetPixelTexGenParameterfvSGIS_DLL pname params
 ∇
 
 ∇ TexImage4DSGIS_U1 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_U1_DLL'
-      'TexImage4DSGIS_U1_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexImage4DSGIS_U1_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexImage4DSGIS_U1_DLL target level internalformat width height depth size4d border format type pixels
 ∇
 
 ∇ TexImage4DSGIS_I1 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_I1_DLL'
-      'TexImage4DSGIS_I1_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexImage4DSGIS_I1_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexImage4DSGIS_I1_DLL target level internalformat width height depth size4d border format type pixels
 ∇
 
 ∇ TexImage4DSGIS_U2 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_U2_DLL'
-      'TexImage4DSGIS_U2_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexImage4DSGIS_U2_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexImage4DSGIS_U2_DLL target level internalformat width height depth size4d border format type pixels
 ∇
 
 ∇ TexImage4DSGIS_I2 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_I2_DLL'
-      'TexImage4DSGIS_I2_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexImage4DSGIS_I2_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexImage4DSGIS_I2_DLL target level internalformat width height depth size4d border format type pixels
 ∇
 
 ∇ TexImage4DSGIS_U4 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_U4_DLL'
-      'TexImage4DSGIS_U4_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexImage4DSGIS_U4_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexImage4DSGIS_U4_DLL target level internalformat width height depth size4d border format type pixels
 ∇
 
 ∇ TexImage4DSGIS_I4 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_I4_DLL'
-      'TexImage4DSGIS_I4_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexImage4DSGIS_I4_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexImage4DSGIS_I4_DLL target level internalformat width height depth size4d border format type pixels
 ∇
 
 ∇ TexImage4DSGIS_F4 (target level internalformat width height depth size4d border format type pixels)
   :If 0=⎕NC'TexImage4DSGIS_F4_DLL'
-      'TexImage4DSGIS_F4_DLL'⎕NA'opengl32|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexImage4DSGIS_F4_DLL'⎕NA'',getdllname,'|glTexImage4DSGIS U4 I4 U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexImage4DSGIS_F4_DLL target level internalformat width height depth size4d border format type pixels
 ∇
@@ -15215,49 +15223,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TexSubImage4DSGIS_U1 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_U1_DLL'
-      'TexSubImage4DSGIS_U1_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TexSubImage4DSGIS_U1_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TexSubImage4DSGIS_U1_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
 
 ∇ TexSubImage4DSGIS_I1 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_I1_DLL'
-      'TexSubImage4DSGIS_I1_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TexSubImage4DSGIS_I1_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TexSubImage4DSGIS_I1_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
 
 ∇ TexSubImage4DSGIS_U2 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_U2_DLL'
-      'TexSubImage4DSGIS_U2_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TexSubImage4DSGIS_U2_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TexSubImage4DSGIS_U2_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
 
 ∇ TexSubImage4DSGIS_I2 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_I2_DLL'
-      'TexSubImage4DSGIS_I2_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TexSubImage4DSGIS_I2_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TexSubImage4DSGIS_I2_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
 
 ∇ TexSubImage4DSGIS_U4 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_U4_DLL'
-      'TexSubImage4DSGIS_U4_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TexSubImage4DSGIS_U4_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TexSubImage4DSGIS_U4_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
 
 ∇ TexSubImage4DSGIS_I4 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_I4_DLL'
-      'TexSubImage4DSGIS_I4_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TexSubImage4DSGIS_I4_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TexSubImage4DSGIS_I4_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
 
 ∇ TexSubImage4DSGIS_F4 (target level xoffset yoffset zoffset woffset width height depth size4d format type pixels)
   :If 0=⎕NC'TexSubImage4DSGIS_F4_DLL'
-      'TexSubImage4DSGIS_F4_DLL'⎕NA'opengl32|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TexSubImage4DSGIS_F4_DLL'⎕NA'',getdllname,'|glTexSubImage4DSGIS U4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TexSubImage4DSGIS_F4_DLL target level xoffset yoffset zoffset woffset width height depth size4d format type pixels
 ∇
@@ -15315,91 +15323,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glAreTexturesResidentEXT (n textures residences)
   :If 0=⎕NC'glAreTexturesResidentEXT_DLL'
-      'glAreTexturesResidentEXT_DLL'⎕NA'U1 opengl32|glAreTexturesResidentEXT I4 <U4[] >U1[]'
+      'glAreTexturesResidentEXT_DLL'⎕NA'U1 ',getdllname,'|glAreTexturesResidentEXT I4 <U4[] >U1[]'
   :EndIf
   r←glAreTexturesResidentEXT_DLL n textures residences
 ∇
 
 ∇ glBindTextureEXT (target texture)
   :If 0=⎕NC'glBindTextureEXT_DLL'
-      'glBindTextureEXT_DLL'⎕NA'opengl32|glBindTextureEXT U4 U4'
+      'glBindTextureEXT_DLL'⎕NA'',getdllname,'|glBindTextureEXT U4 U4'
   :EndIf
   {}glBindTextureEXT_DLL target texture
 ∇
 
 ∇ glDeleteTexturesEXT (n textures)
   :If 0=⎕NC'glDeleteTexturesEXT_DLL'
-      'glDeleteTexturesEXT_DLL'⎕NA'opengl32|glDeleteTexturesEXT I4 <U4[]'
+      'glDeleteTexturesEXT_DLL'⎕NA'',getdllname,'|glDeleteTexturesEXT I4 <U4[]'
   :EndIf
   {}glDeleteTexturesEXT_DLL n textures
 ∇
 
 ∇ r←glGenTexturesEXT (n textures)
   :If 0=⎕NC'glGenTexturesEXT_DLL'
-      'glGenTexturesEXT_DLL'⎕NA'opengl32|glGenTexturesEXT I4 >U4[]'
+      'glGenTexturesEXT_DLL'⎕NA'',getdllname,'|glGenTexturesEXT I4 >U4[]'
   :EndIf
   r←glGenTexturesEXT_DLL n textures
 ∇
 
 ∇ r←glIsTextureEXT texture
   :If 0=⎕NC'glIsTextureEXT_DLL'
-      'glIsTextureEXT_DLL'⎕NA'U1 opengl32|glIsTextureEXT U4'
+      'glIsTextureEXT_DLL'⎕NA'U1 ',getdllname,'|glIsTextureEXT U4'
   :EndIf
   r←glIsTextureEXT_DLL texture
 ∇
 
 ∇ glPrioritizeTexturesEXT (n textures priorities)
   :If 0=⎕NC'glPrioritizeTexturesEXT_DLL'
-      'glPrioritizeTexturesEXT_DLL'⎕NA'opengl32|glPrioritizeTexturesEXT I4 <U4[] <F4[]'
+      'glPrioritizeTexturesEXT_DLL'⎕NA'',getdllname,'|glPrioritizeTexturesEXT I4 <U4[] <F4[]'
   :EndIf
   {}glPrioritizeTexturesEXT_DLL n textures priorities
 ∇
 
 ∇ glDetailTexFuncSGIS (target n points)
   :If 0=⎕NC'glDetailTexFuncSGIS_DLL'
-      'glDetailTexFuncSGIS_DLL'⎕NA'opengl32|glDetailTexFuncSGIS U4 I4 <F4[]'
+      'glDetailTexFuncSGIS_DLL'⎕NA'',getdllname,'|glDetailTexFuncSGIS U4 I4 <F4[]'
   :EndIf
   {}glDetailTexFuncSGIS_DLL target n points
 ∇
 
 ∇ r←glGetDetailTexFuncSGIS (target points)
   :If 0=⎕NC'glGetDetailTexFuncSGIS_DLL'
-      'glGetDetailTexFuncSGIS_DLL'⎕NA'opengl32|glGetDetailTexFuncSGIS U4 >F4[]'
+      'glGetDetailTexFuncSGIS_DLL'⎕NA'',getdllname,'|glGetDetailTexFuncSGIS U4 >F4[]'
   :EndIf
   r←glGetDetailTexFuncSGIS_DLL target points
 ∇
 
 ∇ glSharpenTexFuncSGIS (target n points)
   :If 0=⎕NC'glSharpenTexFuncSGIS_DLL'
-      'glSharpenTexFuncSGIS_DLL'⎕NA'opengl32|glSharpenTexFuncSGIS U4 I4 <F4[]'
+      'glSharpenTexFuncSGIS_DLL'⎕NA'',getdllname,'|glSharpenTexFuncSGIS U4 I4 <F4[]'
   :EndIf
   {}glSharpenTexFuncSGIS_DLL target n points
 ∇
 
 ∇ r←glGetSharpenTexFuncSGIS (target points)
   :If 0=⎕NC'glGetSharpenTexFuncSGIS_DLL'
-      'glGetSharpenTexFuncSGIS_DLL'⎕NA'opengl32|glGetSharpenTexFuncSGIS U4 >F4[]'
+      'glGetSharpenTexFuncSGIS_DLL'⎕NA'',getdllname,'|glGetSharpenTexFuncSGIS U4 >F4[]'
   :EndIf
   r←glGetSharpenTexFuncSGIS_DLL target points
 ∇
 
 ∇ glSampleMaskSGIS (value invert)
   :If 0=⎕NC'glSampleMaskSGIS_DLL'
-      'glSampleMaskSGIS_DLL'⎕NA'opengl32|glSampleMaskSGIS F4 U1'
+      'glSampleMaskSGIS_DLL'⎕NA'',getdllname,'|glSampleMaskSGIS F4 U1'
   :EndIf
   {}glSampleMaskSGIS_DLL value invert
 ∇
 
 ∇ glSamplePatternSGIS pattern
   :If 0=⎕NC'glSamplePatternSGIS_DLL'
-      'glSamplePatternSGIS_DLL'⎕NA'opengl32|glSamplePatternSGIS U4'
+      'glSamplePatternSGIS_DLL'⎕NA'',getdllname,'|glSamplePatternSGIS U4'
   :EndIf
   {}glSamplePatternSGIS_DLL pattern
 ∇
 
 ∇ glArrayElementEXT i
   :If 0=⎕NC'glArrayElementEXT_DLL'
-      'glArrayElementEXT_DLL'⎕NA'opengl32|glArrayElementEXT I4'
+      'glArrayElementEXT_DLL'⎕NA'',getdllname,'|glArrayElementEXT I4'
   :EndIf
   {}glArrayElementEXT_DLL i
 ∇
@@ -15413,14 +15421,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDrawArraysEXT (mode first count)
   :If 0=⎕NC'glDrawArraysEXT_DLL'
-      'glDrawArraysEXT_DLL'⎕NA'opengl32|glDrawArraysEXT U4 I4 I4'
+      'glDrawArraysEXT_DLL'⎕NA'',getdllname,'|glDrawArraysEXT U4 I4 I4'
   :EndIf
   {}glDrawArraysEXT_DLL mode first count
 ∇
 
 ∇ glEdgeFlagPointerEXT (stride count pointer)
   :If 0=⎕NC'glEdgeFlagPointerEXT_DLL'
-      'glEdgeFlagPointerEXT_DLL'⎕NA'opengl32|glEdgeFlagPointerEXT I4 I4 <U1[]'
+      'glEdgeFlagPointerEXT_DLL'⎕NA'',getdllname,'|glEdgeFlagPointerEXT I4 I4 <U1[]'
   :EndIf
   {}glEdgeFlagPointerEXT_DLL stride count pointer
 ∇
@@ -15462,266 +15470,266 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBlendEquationEXT mode
   :If 0=⎕NC'glBlendEquationEXT_DLL'
-      'glBlendEquationEXT_DLL'⎕NA'opengl32|glBlendEquationEXT U4'
+      'glBlendEquationEXT_DLL'⎕NA'',getdllname,'|glBlendEquationEXT U4'
   :EndIf
   {}glBlendEquationEXT_DLL mode
 ∇
 
 ∇ glSpriteParameterfSGIX (pname param)
   :If 0=⎕NC'glSpriteParameterfSGIX_DLL'
-      'glSpriteParameterfSGIX_DLL'⎕NA'opengl32|glSpriteParameterfSGIX U4 F4'
+      'glSpriteParameterfSGIX_DLL'⎕NA'',getdllname,'|glSpriteParameterfSGIX U4 F4'
   :EndIf
   {}glSpriteParameterfSGIX_DLL pname param
 ∇
 
 ∇ glSpriteParameterfvSGIX (pname params)
   :If 0=⎕NC'glSpriteParameterfvSGIX_DLL'
-      'glSpriteParameterfvSGIX_DLL'⎕NA'opengl32|glSpriteParameterfvSGIX U4 <F4[]'
+      'glSpriteParameterfvSGIX_DLL'⎕NA'',getdllname,'|glSpriteParameterfvSGIX U4 <F4[]'
   :EndIf
   {}glSpriteParameterfvSGIX_DLL pname params
 ∇
 
 ∇ glSpriteParameteriSGIX (pname param)
   :If 0=⎕NC'glSpriteParameteriSGIX_DLL'
-      'glSpriteParameteriSGIX_DLL'⎕NA'opengl32|glSpriteParameteriSGIX U4 I4'
+      'glSpriteParameteriSGIX_DLL'⎕NA'',getdllname,'|glSpriteParameteriSGIX U4 I4'
   :EndIf
   {}glSpriteParameteriSGIX_DLL pname param
 ∇
 
 ∇ glSpriteParameterivSGIX (pname params)
   :If 0=⎕NC'glSpriteParameterivSGIX_DLL'
-      'glSpriteParameterivSGIX_DLL'⎕NA'opengl32|glSpriteParameterivSGIX U4 <I4[]'
+      'glSpriteParameterivSGIX_DLL'⎕NA'',getdllname,'|glSpriteParameterivSGIX U4 <I4[]'
   :EndIf
   {}glSpriteParameterivSGIX_DLL pname params
 ∇
 
 ∇ glPointParameterfEXT (pname param)
   :If 0=⎕NC'glPointParameterfEXT_DLL'
-      'glPointParameterfEXT_DLL'⎕NA'opengl32|glPointParameterfEXT U4 F4'
+      'glPointParameterfEXT_DLL'⎕NA'',getdllname,'|glPointParameterfEXT U4 F4'
   :EndIf
   {}glPointParameterfEXT_DLL pname param
 ∇
 
 ∇ glPointParameterfvEXT (pname params)
   :If 0=⎕NC'glPointParameterfvEXT_DLL'
-      'glPointParameterfvEXT_DLL'⎕NA'opengl32|glPointParameterfvEXT U4 <F4[]'
+      'glPointParameterfvEXT_DLL'⎕NA'',getdllname,'|glPointParameterfvEXT U4 <F4[]'
   :EndIf
   {}glPointParameterfvEXT_DLL pname params
 ∇
 
 ∇ glPointParameterfSGIS (pname param)
   :If 0=⎕NC'glPointParameterfSGIS_DLL'
-      'glPointParameterfSGIS_DLL'⎕NA'opengl32|glPointParameterfSGIS U4 F4'
+      'glPointParameterfSGIS_DLL'⎕NA'',getdllname,'|glPointParameterfSGIS U4 F4'
   :EndIf
   {}glPointParameterfSGIS_DLL pname param
 ∇
 
 ∇ glPointParameterfvSGIS (pname params)
   :If 0=⎕NC'glPointParameterfvSGIS_DLL'
-      'glPointParameterfvSGIS_DLL'⎕NA'opengl32|glPointParameterfvSGIS U4 <F4[]'
+      'glPointParameterfvSGIS_DLL'⎕NA'',getdllname,'|glPointParameterfvSGIS U4 <F4[]'
   :EndIf
   {}glPointParameterfvSGIS_DLL pname params
 ∇
 
 ∇ r←glGetInstrumentsSGIX
   :If 0=⎕NC'glGetInstrumentsSGIX_DLL'
-      'glGetInstrumentsSGIX_DLL'⎕NA'I4 opengl32|glGetInstrumentsSGIX'
+      'glGetInstrumentsSGIX_DLL'⎕NA'I4 ',getdllname,'|glGetInstrumentsSGIX'
   :EndIf
   r←glGetInstrumentsSGIX_DLL
 ∇
 
 ∇ r←glInstrumentsBufferSGIX (size buffer)
   :If 0=⎕NC'glInstrumentsBufferSGIX_DLL'
-      'glInstrumentsBufferSGIX_DLL'⎕NA'opengl32|glInstrumentsBufferSGIX I4 >I4[]'
+      'glInstrumentsBufferSGIX_DLL'⎕NA'',getdllname,'|glInstrumentsBufferSGIX I4 >I4[]'
   :EndIf
   r←glInstrumentsBufferSGIX_DLL size buffer
 ∇
 
 ∇ r←glPollInstrumentsSGIX
   :If 0=⎕NC'glPollInstrumentsSGIX_DLL'
-      'glPollInstrumentsSGIX_DLL'⎕NA'I4 opengl32|glPollInstrumentsSGIX >I4[1]'
+      'glPollInstrumentsSGIX_DLL'⎕NA'I4 ',getdllname,'|glPollInstrumentsSGIX >I4[1]'
   :EndIf
   r←glPollInstrumentsSGIX_DLL 1
 ∇
 
 ∇ glReadInstrumentsSGIX marker
   :If 0=⎕NC'glReadInstrumentsSGIX_DLL'
-      'glReadInstrumentsSGIX_DLL'⎕NA'opengl32|glReadInstrumentsSGIX I4'
+      'glReadInstrumentsSGIX_DLL'⎕NA'',getdllname,'|glReadInstrumentsSGIX I4'
   :EndIf
   {}glReadInstrumentsSGIX_DLL marker
 ∇
 
 ∇ glStartInstrumentsSGIX
   :If 0=⎕NC'glStartInstrumentsSGIX_DLL'
-      'glStartInstrumentsSGIX_DLL'⎕NA'opengl32|glStartInstrumentsSGIX'
+      'glStartInstrumentsSGIX_DLL'⎕NA'',getdllname,'|glStartInstrumentsSGIX'
   :EndIf
   {}glStartInstrumentsSGIX_DLL
 ∇
 
 ∇ glStopInstrumentsSGIX marker
   :If 0=⎕NC'glStopInstrumentsSGIX_DLL'
-      'glStopInstrumentsSGIX_DLL'⎕NA'opengl32|glStopInstrumentsSGIX I4'
+      'glStopInstrumentsSGIX_DLL'⎕NA'',getdllname,'|glStopInstrumentsSGIX I4'
   :EndIf
   {}glStopInstrumentsSGIX_DLL marker
 ∇
 
 ∇ glFrameZoomSGIX factor
   :If 0=⎕NC'glFrameZoomSGIX_DLL'
-      'glFrameZoomSGIX_DLL'⎕NA'opengl32|glFrameZoomSGIX I4'
+      'glFrameZoomSGIX_DLL'⎕NA'',getdllname,'|glFrameZoomSGIX I4'
   :EndIf
   {}glFrameZoomSGIX_DLL factor
 ∇
 
 ∇ glTagSampleBufferSGIX
   :If 0=⎕NC'glTagSampleBufferSGIX_DLL'
-      'glTagSampleBufferSGIX_DLL'⎕NA'opengl32|glTagSampleBufferSGIX'
+      'glTagSampleBufferSGIX_DLL'⎕NA'',getdllname,'|glTagSampleBufferSGIX'
   :EndIf
   {}glTagSampleBufferSGIX_DLL
 ∇
 
 ∇ glDeformationMap3dSGIX (target u1 u2 ustride uorder v1 v2 vstride vorder w1 w2 wstride worder points)
   :If 0=⎕NC'glDeformationMap3dSGIX_DLL'
-      'glDeformationMap3dSGIX_DLL'⎕NA'opengl32|glDeformationMap3dSGIX U4 F8 F8 I4 I4 F8 F8 I4 I4 F8 F8 I4 I4 <F8[]'
+      'glDeformationMap3dSGIX_DLL'⎕NA'',getdllname,'|glDeformationMap3dSGIX U4 F8 F8 I4 I4 F8 F8 I4 I4 F8 F8 I4 I4 <F8[]'
   :EndIf
   {}glDeformationMap3dSGIX_DLL target u1 u2 ustride uorder v1 v2 vstride vorder w1 w2 wstride worder points
 ∇
 
 ∇ glDeformationMap3fSGIX (target u1 u2 ustride uorder v1 v2 vstride vorder w1 w2 wstride worder points)
   :If 0=⎕NC'glDeformationMap3fSGIX_DLL'
-      'glDeformationMap3fSGIX_DLL'⎕NA'opengl32|glDeformationMap3fSGIX U4 F4 F4 I4 I4 F4 F4 I4 I4 F4 F4 I4 I4 <F4[]'
+      'glDeformationMap3fSGIX_DLL'⎕NA'',getdllname,'|glDeformationMap3fSGIX U4 F4 F4 I4 I4 F4 F4 I4 I4 F4 F4 I4 I4 <F4[]'
   :EndIf
   {}glDeformationMap3fSGIX_DLL target u1 u2 ustride uorder v1 v2 vstride vorder w1 w2 wstride worder points
 ∇
 
 ∇ glDeformSGIX mask
   :If 0=⎕NC'glDeformSGIX_DLL'
-      'glDeformSGIX_DLL'⎕NA'opengl32|glDeformSGIX U4'
+      'glDeformSGIX_DLL'⎕NA'',getdllname,'|glDeformSGIX U4'
   :EndIf
   {}glDeformSGIX_DLL mask
 ∇
 
 ∇ glLoadIdentityDeformationMapSGIX mask
   :If 0=⎕NC'glLoadIdentityDeformationMapSGIX_DLL'
-      'glLoadIdentityDeformationMapSGIX_DLL'⎕NA'opengl32|glLoadIdentityDeformationMapSGIX U4'
+      'glLoadIdentityDeformationMapSGIX_DLL'⎕NA'',getdllname,'|glLoadIdentityDeformationMapSGIX U4'
   :EndIf
   {}glLoadIdentityDeformationMapSGIX_DLL mask
 ∇
 
 ∇ glReferencePlaneSGIX equation
   :If 0=⎕NC'glReferencePlaneSGIX_DLL'
-      'glReferencePlaneSGIX_DLL'⎕NA'opengl32|glReferencePlaneSGIX <F8[4]'
+      'glReferencePlaneSGIX_DLL'⎕NA'',getdllname,'|glReferencePlaneSGIX <F8[4]'
   :EndIf
   {}glReferencePlaneSGIX_DLL equation
 ∇
 
 ∇ glFlushRasterSGIX
   :If 0=⎕NC'glFlushRasterSGIX_DLL'
-      'glFlushRasterSGIX_DLL'⎕NA'opengl32|glFlushRasterSGIX'
+      'glFlushRasterSGIX_DLL'⎕NA'',getdllname,'|glFlushRasterSGIX'
   :EndIf
   {}glFlushRasterSGIX_DLL
 ∇
 
 ∇ glFogFuncSGIS (n points)
   :If 0=⎕NC'glFogFuncSGIS_DLL'
-      'glFogFuncSGIS_DLL'⎕NA'opengl32|glFogFuncSGIS I4 <F4[]'
+      'glFogFuncSGIS_DLL'⎕NA'',getdllname,'|glFogFuncSGIS I4 <F4[]'
   :EndIf
   {}glFogFuncSGIS_DLL n points
 ∇
 
 ∇ r←glGetFogFuncSGIS points
   :If 0=⎕NC'glGetFogFuncSGIS_DLL'
-      'glGetFogFuncSGIS_DLL'⎕NA'opengl32|glGetFogFuncSGIS >F4[]'
+      'glGetFogFuncSGIS_DLL'⎕NA'',getdllname,'|glGetFogFuncSGIS >F4[]'
   :EndIf
   r←glGetFogFuncSGIS_DLL points
 ∇
 
 ∇ glImageTransformParameteriHP (target pname param)
   :If 0=⎕NC'glImageTransformParameteriHP_DLL'
-      'glImageTransformParameteriHP_DLL'⎕NA'opengl32|glImageTransformParameteriHP U4 U4 I4'
+      'glImageTransformParameteriHP_DLL'⎕NA'',getdllname,'|glImageTransformParameteriHP U4 U4 I4'
   :EndIf
   {}glImageTransformParameteriHP_DLL target pname param
 ∇
 
 ∇ glImageTransformParameterfHP (target pname param)
   :If 0=⎕NC'glImageTransformParameterfHP_DLL'
-      'glImageTransformParameterfHP_DLL'⎕NA'opengl32|glImageTransformParameterfHP U4 U4 F4'
+      'glImageTransformParameterfHP_DLL'⎕NA'',getdllname,'|glImageTransformParameterfHP U4 U4 F4'
   :EndIf
   {}glImageTransformParameterfHP_DLL target pname param
 ∇
 
 ∇ glImageTransformParameterivHP (target pname params)
   :If 0=⎕NC'glImageTransformParameterivHP_DLL'
-      'glImageTransformParameterivHP_DLL'⎕NA'opengl32|glImageTransformParameterivHP U4 U4 <I4[]'
+      'glImageTransformParameterivHP_DLL'⎕NA'',getdllname,'|glImageTransformParameterivHP U4 U4 <I4[]'
   :EndIf
   {}glImageTransformParameterivHP_DLL target pname params
 ∇
 
 ∇ glImageTransformParameterfvHP (target pname params)
   :If 0=⎕NC'glImageTransformParameterfvHP_DLL'
-      'glImageTransformParameterfvHP_DLL'⎕NA'opengl32|glImageTransformParameterfvHP U4 U4 <F4[]'
+      'glImageTransformParameterfvHP_DLL'⎕NA'',getdllname,'|glImageTransformParameterfvHP U4 U4 <F4[]'
   :EndIf
   {}glImageTransformParameterfvHP_DLL target pname params
 ∇
 
 ∇ r←glGetImageTransformParameterivHP (target pname params)
   :If 0=⎕NC'glGetImageTransformParameterivHP_DLL'
-      'glGetImageTransformParameterivHP_DLL'⎕NA'opengl32|glGetImageTransformParameterivHP U4 U4 >I4[]'
+      'glGetImageTransformParameterivHP_DLL'⎕NA'',getdllname,'|glGetImageTransformParameterivHP U4 U4 >I4[]'
   :EndIf
   r←glGetImageTransformParameterivHP_DLL target pname params
 ∇
 
 ∇ r←glGetImageTransformParameterfvHP (target pname params)
   :If 0=⎕NC'glGetImageTransformParameterfvHP_DLL'
-      'glGetImageTransformParameterfvHP_DLL'⎕NA'opengl32|glGetImageTransformParameterfvHP U4 U4 >F4[]'
+      'glGetImageTransformParameterfvHP_DLL'⎕NA'',getdllname,'|glGetImageTransformParameterfvHP U4 U4 >F4[]'
   :EndIf
   r←glGetImageTransformParameterfvHP_DLL target pname params
 ∇
 
 ∇ ColorSubTableEXT_U1 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_U1_DLL'
-      'ColorSubTableEXT_U1_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <U1[]'
+      'ColorSubTableEXT_U1_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}ColorSubTableEXT_U1_DLL target start count format type data
 ∇
 
 ∇ ColorSubTableEXT_I1 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_I1_DLL'
-      'ColorSubTableEXT_I1_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <I1[]'
+      'ColorSubTableEXT_I1_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}ColorSubTableEXT_I1_DLL target start count format type data
 ∇
 
 ∇ ColorSubTableEXT_U2 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_U2_DLL'
-      'ColorSubTableEXT_U2_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <U2[]'
+      'ColorSubTableEXT_U2_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}ColorSubTableEXT_U2_DLL target start count format type data
 ∇
 
 ∇ ColorSubTableEXT_I2 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_I2_DLL'
-      'ColorSubTableEXT_I2_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <I2[]'
+      'ColorSubTableEXT_I2_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}ColorSubTableEXT_I2_DLL target start count format type data
 ∇
 
 ∇ ColorSubTableEXT_U4 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_U4_DLL'
-      'ColorSubTableEXT_U4_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <U4[]'
+      'ColorSubTableEXT_U4_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}ColorSubTableEXT_U4_DLL target start count format type data
 ∇
 
 ∇ ColorSubTableEXT_I4 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_I4_DLL'
-      'ColorSubTableEXT_I4_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <I4[]'
+      'ColorSubTableEXT_I4_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}ColorSubTableEXT_I4_DLL target start count format type data
 ∇
 
 ∇ ColorSubTableEXT_F4 (target start count format type data)
   :If 0=⎕NC'ColorSubTableEXT_F4_DLL'
-      'ColorSubTableEXT_F4_DLL'⎕NA'opengl32|glColorSubTableEXT U4 I4 I4 U4 U4 <F4[]'
+      'ColorSubTableEXT_F4_DLL'⎕NA'',getdllname,'|glColorSubTableEXT U4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}ColorSubTableEXT_F4_DLL target start count format type data
 ∇
@@ -15779,63 +15787,63 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyColorSubTableEXT (target start x y width)
   :If 0=⎕NC'glCopyColorSubTableEXT_DLL'
-      'glCopyColorSubTableEXT_DLL'⎕NA'opengl32|glCopyColorSubTableEXT U4 I4 I4 I4 I4'
+      'glCopyColorSubTableEXT_DLL'⎕NA'',getdllname,'|glCopyColorSubTableEXT U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyColorSubTableEXT_DLL target start x y width
 ∇
 
 ∇ glHintPGI (target mode)
   :If 0=⎕NC'glHintPGI_DLL'
-      'glHintPGI_DLL'⎕NA'opengl32|glHintPGI U4 I4'
+      'glHintPGI_DLL'⎕NA'',getdllname,'|glHintPGI U4 I4'
   :EndIf
   {}glHintPGI_DLL target mode
 ∇
 
 ∇ ColorTableEXT_U1 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_U1_DLL'
-      'ColorTableEXT_U1_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <U1[]'
+      'ColorTableEXT_U1_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <U1[]'
   :EndIf
   {}ColorTableEXT_U1_DLL target internalFormat width format type table
 ∇
 
 ∇ ColorTableEXT_I1 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_I1_DLL'
-      'ColorTableEXT_I1_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <I1[]'
+      'ColorTableEXT_I1_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <I1[]'
   :EndIf
   {}ColorTableEXT_I1_DLL target internalFormat width format type table
 ∇
 
 ∇ ColorTableEXT_U2 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_U2_DLL'
-      'ColorTableEXT_U2_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <U2[]'
+      'ColorTableEXT_U2_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <U2[]'
   :EndIf
   {}ColorTableEXT_U2_DLL target internalFormat width format type table
 ∇
 
 ∇ ColorTableEXT_I2 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_I2_DLL'
-      'ColorTableEXT_I2_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <I2[]'
+      'ColorTableEXT_I2_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <I2[]'
   :EndIf
   {}ColorTableEXT_I2_DLL target internalFormat width format type table
 ∇
 
 ∇ ColorTableEXT_U4 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_U4_DLL'
-      'ColorTableEXT_U4_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <U4[]'
+      'ColorTableEXT_U4_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <U4[]'
   :EndIf
   {}ColorTableEXT_U4_DLL target internalFormat width format type table
 ∇
 
 ∇ ColorTableEXT_I4 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_I4_DLL'
-      'ColorTableEXT_I4_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <I4[]'
+      'ColorTableEXT_I4_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <I4[]'
   :EndIf
   {}ColorTableEXT_I4_DLL target internalFormat width format type table
 ∇
 
 ∇ ColorTableEXT_F4 (target internalFormat width format type table)
   :If 0=⎕NC'ColorTableEXT_F4_DLL'
-      'ColorTableEXT_F4_DLL'⎕NA'opengl32|glColorTableEXT U4 U4 I4 U4 U4 <F4[]'
+      'ColorTableEXT_F4_DLL'⎕NA'',getdllname,'|glColorTableEXT U4 U4 I4 U4 U4 <F4[]'
   :EndIf
   {}ColorTableEXT_F4_DLL target internalFormat width format type table
 ∇
@@ -15900,224 +15908,224 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetColorTableParameterivEXT (target pname params)
   :If 0=⎕NC'glGetColorTableParameterivEXT_DLL'
-      'glGetColorTableParameterivEXT_DLL'⎕NA'opengl32|glGetColorTableParameterivEXT U4 U4 >I4[]'
+      'glGetColorTableParameterivEXT_DLL'⎕NA'',getdllname,'|glGetColorTableParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetColorTableParameterivEXT_DLL target pname params
 ∇
 
 ∇ r←glGetColorTableParameterfvEXT (target pname params)
   :If 0=⎕NC'glGetColorTableParameterfvEXT_DLL'
-      'glGetColorTableParameterfvEXT_DLL'⎕NA'opengl32|glGetColorTableParameterfvEXT U4 U4 >F4[]'
+      'glGetColorTableParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetColorTableParameterfvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetColorTableParameterfvEXT_DLL target pname params
 ∇
 
 ∇ r←glGetListParameterfvSGIX (list pname params)
   :If 0=⎕NC'glGetListParameterfvSGIX_DLL'
-      'glGetListParameterfvSGIX_DLL'⎕NA'opengl32|glGetListParameterfvSGIX U4 U4 >F4[]'
+      'glGetListParameterfvSGIX_DLL'⎕NA'',getdllname,'|glGetListParameterfvSGIX U4 U4 >F4[]'
   :EndIf
   r←glGetListParameterfvSGIX_DLL list pname params
 ∇
 
 ∇ r←glGetListParameterivSGIX (list pname params)
   :If 0=⎕NC'glGetListParameterivSGIX_DLL'
-      'glGetListParameterivSGIX_DLL'⎕NA'opengl32|glGetListParameterivSGIX U4 U4 >I4[]'
+      'glGetListParameterivSGIX_DLL'⎕NA'',getdllname,'|glGetListParameterivSGIX U4 U4 >I4[]'
   :EndIf
   r←glGetListParameterivSGIX_DLL list pname params
 ∇
 
 ∇ glListParameterfSGIX (list pname param)
   :If 0=⎕NC'glListParameterfSGIX_DLL'
-      'glListParameterfSGIX_DLL'⎕NA'opengl32|glListParameterfSGIX U4 U4 F4'
+      'glListParameterfSGIX_DLL'⎕NA'',getdllname,'|glListParameterfSGIX U4 U4 F4'
   :EndIf
   {}glListParameterfSGIX_DLL list pname param
 ∇
 
 ∇ glListParameterfvSGIX (list pname params)
   :If 0=⎕NC'glListParameterfvSGIX_DLL'
-      'glListParameterfvSGIX_DLL'⎕NA'opengl32|glListParameterfvSGIX U4 U4 <F4[]'
+      'glListParameterfvSGIX_DLL'⎕NA'',getdllname,'|glListParameterfvSGIX U4 U4 <F4[]'
   :EndIf
   {}glListParameterfvSGIX_DLL list pname params
 ∇
 
 ∇ glListParameteriSGIX (list pname param)
   :If 0=⎕NC'glListParameteriSGIX_DLL'
-      'glListParameteriSGIX_DLL'⎕NA'opengl32|glListParameteriSGIX U4 U4 I4'
+      'glListParameteriSGIX_DLL'⎕NA'',getdllname,'|glListParameteriSGIX U4 U4 I4'
   :EndIf
   {}glListParameteriSGIX_DLL list pname param
 ∇
 
 ∇ glListParameterivSGIX (list pname params)
   :If 0=⎕NC'glListParameterivSGIX_DLL'
-      'glListParameterivSGIX_DLL'⎕NA'opengl32|glListParameterivSGIX U4 U4 <I4[]'
+      'glListParameterivSGIX_DLL'⎕NA'',getdllname,'|glListParameterivSGIX U4 U4 <I4[]'
   :EndIf
   {}glListParameterivSGIX_DLL list pname params
 ∇
 
 ∇ glIndexMaterialEXT (face mode)
   :If 0=⎕NC'glIndexMaterialEXT_DLL'
-      'glIndexMaterialEXT_DLL'⎕NA'opengl32|glIndexMaterialEXT U4 U4'
+      'glIndexMaterialEXT_DLL'⎕NA'',getdllname,'|glIndexMaterialEXT U4 U4'
   :EndIf
   {}glIndexMaterialEXT_DLL face mode
 ∇
 
 ∇ glIndexFuncEXT (func ref)
   :If 0=⎕NC'glIndexFuncEXT_DLL'
-      'glIndexFuncEXT_DLL'⎕NA'opengl32|glIndexFuncEXT U4 F4'
+      'glIndexFuncEXT_DLL'⎕NA'',getdllname,'|glIndexFuncEXT U4 F4'
   :EndIf
   {}glIndexFuncEXT_DLL func ref
 ∇
 
 ∇ glLockArraysEXT (first count)
   :If 0=⎕NC'glLockArraysEXT_DLL'
-      'glLockArraysEXT_DLL'⎕NA'opengl32|glLockArraysEXT I4 I4'
+      'glLockArraysEXT_DLL'⎕NA'',getdllname,'|glLockArraysEXT I4 I4'
   :EndIf
   {}glLockArraysEXT_DLL first count
 ∇
 
 ∇ glUnlockArraysEXT
   :If 0=⎕NC'glUnlockArraysEXT_DLL'
-      'glUnlockArraysEXT_DLL'⎕NA'opengl32|glUnlockArraysEXT'
+      'glUnlockArraysEXT_DLL'⎕NA'',getdllname,'|glUnlockArraysEXT'
   :EndIf
   {}glUnlockArraysEXT_DLL
 ∇
 
 ∇ r←glCullParameterdvEXT pname
   :If 0=⎕NC'glCullParameterdvEXT_DLL'
-      'glCullParameterdvEXT_DLL'⎕NA'opengl32|glCullParameterdvEXT U4 >F8[4]'
+      'glCullParameterdvEXT_DLL'⎕NA'',getdllname,'|glCullParameterdvEXT U4 >F8[4]'
   :EndIf
   r←glCullParameterdvEXT_DLL pname 4
 ∇
 
 ∇ r←glCullParameterfvEXT pname
   :If 0=⎕NC'glCullParameterfvEXT_DLL'
-      'glCullParameterfvEXT_DLL'⎕NA'opengl32|glCullParameterfvEXT U4 >F4[4]'
+      'glCullParameterfvEXT_DLL'⎕NA'',getdllname,'|glCullParameterfvEXT U4 >F4[4]'
   :EndIf
   r←glCullParameterfvEXT_DLL pname 4
 ∇
 
 ∇ glFragmentColorMaterialSGIX (face mode)
   :If 0=⎕NC'glFragmentColorMaterialSGIX_DLL'
-      'glFragmentColorMaterialSGIX_DLL'⎕NA'opengl32|glFragmentColorMaterialSGIX U4 U4'
+      'glFragmentColorMaterialSGIX_DLL'⎕NA'',getdllname,'|glFragmentColorMaterialSGIX U4 U4'
   :EndIf
   {}glFragmentColorMaterialSGIX_DLL face mode
 ∇
 
 ∇ glFragmentLightfSGIX (light pname param)
   :If 0=⎕NC'glFragmentLightfSGIX_DLL'
-      'glFragmentLightfSGIX_DLL'⎕NA'opengl32|glFragmentLightfSGIX U4 U4 F4'
+      'glFragmentLightfSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightfSGIX U4 U4 F4'
   :EndIf
   {}glFragmentLightfSGIX_DLL light pname param
 ∇
 
 ∇ glFragmentLightfvSGIX (light pname params)
   :If 0=⎕NC'glFragmentLightfvSGIX_DLL'
-      'glFragmentLightfvSGIX_DLL'⎕NA'opengl32|glFragmentLightfvSGIX U4 U4 <F4[]'
+      'glFragmentLightfvSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightfvSGIX U4 U4 <F4[]'
   :EndIf
   {}glFragmentLightfvSGIX_DLL light pname params
 ∇
 
 ∇ glFragmentLightiSGIX (light pname param)
   :If 0=⎕NC'glFragmentLightiSGIX_DLL'
-      'glFragmentLightiSGIX_DLL'⎕NA'opengl32|glFragmentLightiSGIX U4 U4 I4'
+      'glFragmentLightiSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightiSGIX U4 U4 I4'
   :EndIf
   {}glFragmentLightiSGIX_DLL light pname param
 ∇
 
 ∇ glFragmentLightivSGIX (light pname params)
   :If 0=⎕NC'glFragmentLightivSGIX_DLL'
-      'glFragmentLightivSGIX_DLL'⎕NA'opengl32|glFragmentLightivSGIX U4 U4 <I4[]'
+      'glFragmentLightivSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightivSGIX U4 U4 <I4[]'
   :EndIf
   {}glFragmentLightivSGIX_DLL light pname params
 ∇
 
 ∇ glFragmentLightModelfSGIX (pname param)
   :If 0=⎕NC'glFragmentLightModelfSGIX_DLL'
-      'glFragmentLightModelfSGIX_DLL'⎕NA'opengl32|glFragmentLightModelfSGIX U4 F4'
+      'glFragmentLightModelfSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightModelfSGIX U4 F4'
   :EndIf
   {}glFragmentLightModelfSGIX_DLL pname param
 ∇
 
 ∇ glFragmentLightModelfvSGIX (pname params)
   :If 0=⎕NC'glFragmentLightModelfvSGIX_DLL'
-      'glFragmentLightModelfvSGIX_DLL'⎕NA'opengl32|glFragmentLightModelfvSGIX U4 <F4[]'
+      'glFragmentLightModelfvSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightModelfvSGIX U4 <F4[]'
   :EndIf
   {}glFragmentLightModelfvSGIX_DLL pname params
 ∇
 
 ∇ glFragmentLightModeliSGIX (pname param)
   :If 0=⎕NC'glFragmentLightModeliSGIX_DLL'
-      'glFragmentLightModeliSGIX_DLL'⎕NA'opengl32|glFragmentLightModeliSGIX U4 I4'
+      'glFragmentLightModeliSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightModeliSGIX U4 I4'
   :EndIf
   {}glFragmentLightModeliSGIX_DLL pname param
 ∇
 
 ∇ glFragmentLightModelivSGIX (pname params)
   :If 0=⎕NC'glFragmentLightModelivSGIX_DLL'
-      'glFragmentLightModelivSGIX_DLL'⎕NA'opengl32|glFragmentLightModelivSGIX U4 <I4[]'
+      'glFragmentLightModelivSGIX_DLL'⎕NA'',getdllname,'|glFragmentLightModelivSGIX U4 <I4[]'
   :EndIf
   {}glFragmentLightModelivSGIX_DLL pname params
 ∇
 
 ∇ glFragmentMaterialfSGIX (face pname param)
   :If 0=⎕NC'glFragmentMaterialfSGIX_DLL'
-      'glFragmentMaterialfSGIX_DLL'⎕NA'opengl32|glFragmentMaterialfSGIX U4 U4 F4'
+      'glFragmentMaterialfSGIX_DLL'⎕NA'',getdllname,'|glFragmentMaterialfSGIX U4 U4 F4'
   :EndIf
   {}glFragmentMaterialfSGIX_DLL face pname param
 ∇
 
 ∇ glFragmentMaterialfvSGIX (face pname params)
   :If 0=⎕NC'glFragmentMaterialfvSGIX_DLL'
-      'glFragmentMaterialfvSGIX_DLL'⎕NA'opengl32|glFragmentMaterialfvSGIX U4 U4 <F4[]'
+      'glFragmentMaterialfvSGIX_DLL'⎕NA'',getdllname,'|glFragmentMaterialfvSGIX U4 U4 <F4[]'
   :EndIf
   {}glFragmentMaterialfvSGIX_DLL face pname params
 ∇
 
 ∇ glFragmentMaterialiSGIX (face pname param)
   :If 0=⎕NC'glFragmentMaterialiSGIX_DLL'
-      'glFragmentMaterialiSGIX_DLL'⎕NA'opengl32|glFragmentMaterialiSGIX U4 U4 I4'
+      'glFragmentMaterialiSGIX_DLL'⎕NA'',getdllname,'|glFragmentMaterialiSGIX U4 U4 I4'
   :EndIf
   {}glFragmentMaterialiSGIX_DLL face pname param
 ∇
 
 ∇ glFragmentMaterialivSGIX (face pname params)
   :If 0=⎕NC'glFragmentMaterialivSGIX_DLL'
-      'glFragmentMaterialivSGIX_DLL'⎕NA'opengl32|glFragmentMaterialivSGIX U4 U4 <I4[]'
+      'glFragmentMaterialivSGIX_DLL'⎕NA'',getdllname,'|glFragmentMaterialivSGIX U4 U4 <I4[]'
   :EndIf
   {}glFragmentMaterialivSGIX_DLL face pname params
 ∇
 
 ∇ r←glGetFragmentLightfvSGIX (light pname params)
   :If 0=⎕NC'glGetFragmentLightfvSGIX_DLL'
-      'glGetFragmentLightfvSGIX_DLL'⎕NA'opengl32|glGetFragmentLightfvSGIX U4 U4 >F4[]'
+      'glGetFragmentLightfvSGIX_DLL'⎕NA'',getdllname,'|glGetFragmentLightfvSGIX U4 U4 >F4[]'
   :EndIf
   r←glGetFragmentLightfvSGIX_DLL light pname params
 ∇
 
 ∇ r←glGetFragmentLightivSGIX (light pname params)
   :If 0=⎕NC'glGetFragmentLightivSGIX_DLL'
-      'glGetFragmentLightivSGIX_DLL'⎕NA'opengl32|glGetFragmentLightivSGIX U4 U4 >I4[]'
+      'glGetFragmentLightivSGIX_DLL'⎕NA'',getdllname,'|glGetFragmentLightivSGIX U4 U4 >I4[]'
   :EndIf
   r←glGetFragmentLightivSGIX_DLL light pname params
 ∇
 
 ∇ r←glGetFragmentMaterialfvSGIX (face pname params)
   :If 0=⎕NC'glGetFragmentMaterialfvSGIX_DLL'
-      'glGetFragmentMaterialfvSGIX_DLL'⎕NA'opengl32|glGetFragmentMaterialfvSGIX U4 U4 >F4[]'
+      'glGetFragmentMaterialfvSGIX_DLL'⎕NA'',getdllname,'|glGetFragmentMaterialfvSGIX U4 U4 >F4[]'
   :EndIf
   r←glGetFragmentMaterialfvSGIX_DLL face pname params
 ∇
 
 ∇ r←glGetFragmentMaterialivSGIX (face pname params)
   :If 0=⎕NC'glGetFragmentMaterialivSGIX_DLL'
-      'glGetFragmentMaterialivSGIX_DLL'⎕NA'opengl32|glGetFragmentMaterialivSGIX U4 U4 >I4[]'
+      'glGetFragmentMaterialivSGIX_DLL'⎕NA'',getdllname,'|glGetFragmentMaterialivSGIX U4 U4 >I4[]'
   :EndIf
   r←glGetFragmentMaterialivSGIX_DLL face pname params
 ∇
 
 ∇ glLightEnviSGIX (pname param)
   :If 0=⎕NC'glLightEnviSGIX_DLL'
-      'glLightEnviSGIX_DLL'⎕NA'opengl32|glLightEnviSGIX U4 I4'
+      'glLightEnviSGIX_DLL'⎕NA'',getdllname,'|glLightEnviSGIX U4 I4'
   :EndIf
   {}glLightEnviSGIX_DLL pname param
 ∇
@@ -16131,63 +16139,63 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glApplyTextureEXT mode
   :If 0=⎕NC'glApplyTextureEXT_DLL'
-      'glApplyTextureEXT_DLL'⎕NA'opengl32|glApplyTextureEXT U4'
+      'glApplyTextureEXT_DLL'⎕NA'',getdllname,'|glApplyTextureEXT U4'
   :EndIf
   {}glApplyTextureEXT_DLL mode
 ∇
 
 ∇ glTextureLightEXT pname
   :If 0=⎕NC'glTextureLightEXT_DLL'
-      'glTextureLightEXT_DLL'⎕NA'opengl32|glTextureLightEXT U4'
+      'glTextureLightEXT_DLL'⎕NA'',getdllname,'|glTextureLightEXT U4'
   :EndIf
   {}glTextureLightEXT_DLL pname
 ∇
 
 ∇ glTextureMaterialEXT (face mode)
   :If 0=⎕NC'glTextureMaterialEXT_DLL'
-      'glTextureMaterialEXT_DLL'⎕NA'opengl32|glTextureMaterialEXT U4 U4'
+      'glTextureMaterialEXT_DLL'⎕NA'',getdllname,'|glTextureMaterialEXT U4 U4'
   :EndIf
   {}glTextureMaterialEXT_DLL face mode
 ∇
 
 ∇ glAsyncMarkerSGIX marker
   :If 0=⎕NC'glAsyncMarkerSGIX_DLL'
-      'glAsyncMarkerSGIX_DLL'⎕NA'opengl32|glAsyncMarkerSGIX U4'
+      'glAsyncMarkerSGIX_DLL'⎕NA'',getdllname,'|glAsyncMarkerSGIX U4'
   :EndIf
   {}glAsyncMarkerSGIX_DLL marker
 ∇
 
 ∇ r←glFinishAsyncSGIX
   :If 0=⎕NC'glFinishAsyncSGIX_DLL'
-      'glFinishAsyncSGIX_DLL'⎕NA'I4 opengl32|glFinishAsyncSGIX >U4[1]'
+      'glFinishAsyncSGIX_DLL'⎕NA'I4 ',getdllname,'|glFinishAsyncSGIX >U4[1]'
   :EndIf
   r←glFinishAsyncSGIX_DLL 1
 ∇
 
 ∇ r←glPollAsyncSGIX
   :If 0=⎕NC'glPollAsyncSGIX_DLL'
-      'glPollAsyncSGIX_DLL'⎕NA'I4 opengl32|glPollAsyncSGIX >U4[1]'
+      'glPollAsyncSGIX_DLL'⎕NA'I4 ',getdllname,'|glPollAsyncSGIX >U4[1]'
   :EndIf
   r←glPollAsyncSGIX_DLL 1
 ∇
 
 ∇ r←glGenAsyncMarkersSGIX range
   :If 0=⎕NC'glGenAsyncMarkersSGIX_DLL'
-      'glGenAsyncMarkersSGIX_DLL'⎕NA'U4 opengl32|glGenAsyncMarkersSGIX I4'
+      'glGenAsyncMarkersSGIX_DLL'⎕NA'U4 ',getdllname,'|glGenAsyncMarkersSGIX I4'
   :EndIf
   r←glGenAsyncMarkersSGIX_DLL range
 ∇
 
 ∇ glDeleteAsyncMarkersSGIX (marker range)
   :If 0=⎕NC'glDeleteAsyncMarkersSGIX_DLL'
-      'glDeleteAsyncMarkersSGIX_DLL'⎕NA'opengl32|glDeleteAsyncMarkersSGIX U4 I4'
+      'glDeleteAsyncMarkersSGIX_DLL'⎕NA'',getdllname,'|glDeleteAsyncMarkersSGIX U4 I4'
   :EndIf
   {}glDeleteAsyncMarkersSGIX_DLL marker range
 ∇
 
 ∇ r←glIsAsyncMarkerSGIX marker
   :If 0=⎕NC'glIsAsyncMarkerSGIX_DLL'
-      'glIsAsyncMarkerSGIX_DLL'⎕NA'U1 opengl32|glIsAsyncMarkerSGIX U4'
+      'glIsAsyncMarkerSGIX_DLL'⎕NA'U1 ',getdllname,'|glIsAsyncMarkerSGIX U4'
   :EndIf
   r←glIsAsyncMarkerSGIX_DLL marker
 ∇
@@ -16222,154 +16230,154 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glPixelTransformParameteriEXT (target pname param)
   :If 0=⎕NC'glPixelTransformParameteriEXT_DLL'
-      'glPixelTransformParameteriEXT_DLL'⎕NA'opengl32|glPixelTransformParameteriEXT U4 U4 I4'
+      'glPixelTransformParameteriEXT_DLL'⎕NA'',getdllname,'|glPixelTransformParameteriEXT U4 U4 I4'
   :EndIf
   {}glPixelTransformParameteriEXT_DLL target pname param
 ∇
 
 ∇ glPixelTransformParameterfEXT (target pname param)
   :If 0=⎕NC'glPixelTransformParameterfEXT_DLL'
-      'glPixelTransformParameterfEXT_DLL'⎕NA'opengl32|glPixelTransformParameterfEXT U4 U4 F4'
+      'glPixelTransformParameterfEXT_DLL'⎕NA'',getdllname,'|glPixelTransformParameterfEXT U4 U4 F4'
   :EndIf
   {}glPixelTransformParameterfEXT_DLL target pname param
 ∇
 
 ∇ glPixelTransformParameterivEXT (target pname params)
   :If 0=⎕NC'glPixelTransformParameterivEXT_DLL'
-      'glPixelTransformParameterivEXT_DLL'⎕NA'opengl32|glPixelTransformParameterivEXT U4 U4 <I4[1]'
+      'glPixelTransformParameterivEXT_DLL'⎕NA'',getdllname,'|glPixelTransformParameterivEXT U4 U4 <I4[1]'
   :EndIf
   {}glPixelTransformParameterivEXT_DLL target pname params
 ∇
 
 ∇ glPixelTransformParameterfvEXT (target pname params)
   :If 0=⎕NC'glPixelTransformParameterfvEXT_DLL'
-      'glPixelTransformParameterfvEXT_DLL'⎕NA'opengl32|glPixelTransformParameterfvEXT U4 U4 <F4[1]'
+      'glPixelTransformParameterfvEXT_DLL'⎕NA'',getdllname,'|glPixelTransformParameterfvEXT U4 U4 <F4[1]'
   :EndIf
   {}glPixelTransformParameterfvEXT_DLL target pname params
 ∇
 
 ∇ r←glGetPixelTransformParameterivEXT (target pname params)
   :If 0=⎕NC'glGetPixelTransformParameterivEXT_DLL'
-      'glGetPixelTransformParameterivEXT_DLL'⎕NA'opengl32|glGetPixelTransformParameterivEXT U4 U4 >I4[]'
+      'glGetPixelTransformParameterivEXT_DLL'⎕NA'',getdllname,'|glGetPixelTransformParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetPixelTransformParameterivEXT_DLL target pname params
 ∇
 
 ∇ r←glGetPixelTransformParameterfvEXT (target pname params)
   :If 0=⎕NC'glGetPixelTransformParameterfvEXT_DLL'
-      'glGetPixelTransformParameterfvEXT_DLL'⎕NA'opengl32|glGetPixelTransformParameterfvEXT U4 U4 >F4[]'
+      'glGetPixelTransformParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetPixelTransformParameterfvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetPixelTransformParameterfvEXT_DLL target pname params
 ∇
 
 ∇ glSecondaryColor3bEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3bEXT_DLL'
-      'glSecondaryColor3bEXT_DLL'⎕NA'opengl32|glSecondaryColor3bEXT I1 I1 I1'
+      'glSecondaryColor3bEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3bEXT I1 I1 I1'
   :EndIf
   {}glSecondaryColor3bEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3bvEXT v
   :If 0=⎕NC'glSecondaryColor3bvEXT_DLL'
-      'glSecondaryColor3bvEXT_DLL'⎕NA'opengl32|glSecondaryColor3bvEXT <I1[3]'
+      'glSecondaryColor3bvEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3bvEXT <I1[3]'
   :EndIf
   {}glSecondaryColor3bvEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3dEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3dEXT_DLL'
-      'glSecondaryColor3dEXT_DLL'⎕NA'opengl32|glSecondaryColor3dEXT F8 F8 F8'
+      'glSecondaryColor3dEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3dEXT F8 F8 F8'
   :EndIf
   {}glSecondaryColor3dEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3dvEXT v
   :If 0=⎕NC'glSecondaryColor3dvEXT_DLL'
-      'glSecondaryColor3dvEXT_DLL'⎕NA'opengl32|glSecondaryColor3dvEXT <F8[3]'
+      'glSecondaryColor3dvEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3dvEXT <F8[3]'
   :EndIf
   {}glSecondaryColor3dvEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3fEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3fEXT_DLL'
-      'glSecondaryColor3fEXT_DLL'⎕NA'opengl32|glSecondaryColor3fEXT F4 F4 F4'
+      'glSecondaryColor3fEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3fEXT F4 F4 F4'
   :EndIf
   {}glSecondaryColor3fEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3fvEXT v
   :If 0=⎕NC'glSecondaryColor3fvEXT_DLL'
-      'glSecondaryColor3fvEXT_DLL'⎕NA'opengl32|glSecondaryColor3fvEXT <F4[3]'
+      'glSecondaryColor3fvEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3fvEXT <F4[3]'
   :EndIf
   {}glSecondaryColor3fvEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3iEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3iEXT_DLL'
-      'glSecondaryColor3iEXT_DLL'⎕NA'opengl32|glSecondaryColor3iEXT I4 I4 I4'
+      'glSecondaryColor3iEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3iEXT I4 I4 I4'
   :EndIf
   {}glSecondaryColor3iEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3ivEXT v
   :If 0=⎕NC'glSecondaryColor3ivEXT_DLL'
-      'glSecondaryColor3ivEXT_DLL'⎕NA'opengl32|glSecondaryColor3ivEXT <I4[3]'
+      'glSecondaryColor3ivEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3ivEXT <I4[3]'
   :EndIf
   {}glSecondaryColor3ivEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3sEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3sEXT_DLL'
-      'glSecondaryColor3sEXT_DLL'⎕NA'opengl32|glSecondaryColor3sEXT I2 I2 I2'
+      'glSecondaryColor3sEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3sEXT I2 I2 I2'
   :EndIf
   {}glSecondaryColor3sEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3svEXT v
   :If 0=⎕NC'glSecondaryColor3svEXT_DLL'
-      'glSecondaryColor3svEXT_DLL'⎕NA'opengl32|glSecondaryColor3svEXT <I2[3]'
+      'glSecondaryColor3svEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3svEXT <I2[3]'
   :EndIf
   {}glSecondaryColor3svEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3ubEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3ubEXT_DLL'
-      'glSecondaryColor3ubEXT_DLL'⎕NA'opengl32|glSecondaryColor3ubEXT U1 U1 U1'
+      'glSecondaryColor3ubEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3ubEXT U1 U1 U1'
   :EndIf
   {}glSecondaryColor3ubEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3ubvEXT v
   :If 0=⎕NC'glSecondaryColor3ubvEXT_DLL'
-      'glSecondaryColor3ubvEXT_DLL'⎕NA'opengl32|glSecondaryColor3ubvEXT <U1[3]'
+      'glSecondaryColor3ubvEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3ubvEXT <U1[3]'
   :EndIf
   {}glSecondaryColor3ubvEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3uiEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3uiEXT_DLL'
-      'glSecondaryColor3uiEXT_DLL'⎕NA'opengl32|glSecondaryColor3uiEXT U4 U4 U4'
+      'glSecondaryColor3uiEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3uiEXT U4 U4 U4'
   :EndIf
   {}glSecondaryColor3uiEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3uivEXT v
   :If 0=⎕NC'glSecondaryColor3uivEXT_DLL'
-      'glSecondaryColor3uivEXT_DLL'⎕NA'opengl32|glSecondaryColor3uivEXT <U4[3]'
+      'glSecondaryColor3uivEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3uivEXT <U4[3]'
   :EndIf
   {}glSecondaryColor3uivEXT_DLL v
 ∇
 
 ∇ glSecondaryColor3usEXT (red green blue)
   :If 0=⎕NC'glSecondaryColor3usEXT_DLL'
-      'glSecondaryColor3usEXT_DLL'⎕NA'opengl32|glSecondaryColor3usEXT U2 U2 U2'
+      'glSecondaryColor3usEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3usEXT U2 U2 U2'
   :EndIf
   {}glSecondaryColor3usEXT_DLL red green blue
 ∇
 
 ∇ glSecondaryColor3usvEXT v
   :If 0=⎕NC'glSecondaryColor3usvEXT_DLL'
-      'glSecondaryColor3usvEXT_DLL'⎕NA'opengl32|glSecondaryColor3usvEXT <U2[3]'
+      'glSecondaryColor3usvEXT_DLL'⎕NA'',getdllname,'|glSecondaryColor3usvEXT <U2[3]'
   :EndIf
   {}glSecondaryColor3usvEXT_DLL v
 ∇
@@ -16383,14 +16391,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTextureNormalEXT mode
   :If 0=⎕NC'glTextureNormalEXT_DLL'
-      'glTextureNormalEXT_DLL'⎕NA'opengl32|glTextureNormalEXT U4'
+      'glTextureNormalEXT_DLL'⎕NA'',getdllname,'|glTextureNormalEXT U4'
   :EndIf
   {}glTextureNormalEXT_DLL mode
 ∇
 
 ∇ glMultiDrawArraysEXT (mode first count primcount)
   :If 0=⎕NC'glMultiDrawArraysEXT_DLL'
-      'glMultiDrawArraysEXT_DLL'⎕NA'opengl32|glMultiDrawArraysEXT U4 <I4[] <I4[] I4'
+      'glMultiDrawArraysEXT_DLL'⎕NA'',getdllname,'|glMultiDrawArraysEXT U4 <I4[] <I4[] I4'
   :EndIf
   {}glMultiDrawArraysEXT_DLL mode first count primcount
 ∇
@@ -16404,28 +16412,28 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glFogCoordfEXT coord
   :If 0=⎕NC'glFogCoordfEXT_DLL'
-      'glFogCoordfEXT_DLL'⎕NA'opengl32|glFogCoordfEXT F4'
+      'glFogCoordfEXT_DLL'⎕NA'',getdllname,'|glFogCoordfEXT F4'
   :EndIf
   {}glFogCoordfEXT_DLL coord
 ∇
 
 ∇ glFogCoordfvEXT coord
   :If 0=⎕NC'glFogCoordfvEXT_DLL'
-      'glFogCoordfvEXT_DLL'⎕NA'opengl32|glFogCoordfvEXT <F4[1]'
+      'glFogCoordfvEXT_DLL'⎕NA'',getdllname,'|glFogCoordfvEXT <F4[1]'
   :EndIf
   {}glFogCoordfvEXT_DLL coord
 ∇
 
 ∇ glFogCoorddEXT coord
   :If 0=⎕NC'glFogCoorddEXT_DLL'
-      'glFogCoorddEXT_DLL'⎕NA'opengl32|glFogCoorddEXT F8'
+      'glFogCoorddEXT_DLL'⎕NA'',getdllname,'|glFogCoorddEXT F8'
   :EndIf
   {}glFogCoorddEXT_DLL coord
 ∇
 
 ∇ glFogCoorddvEXT coord
   :If 0=⎕NC'glFogCoorddvEXT_DLL'
-      'glFogCoorddvEXT_DLL'⎕NA'opengl32|glFogCoorddvEXT <F8[1]'
+      'glFogCoorddvEXT_DLL'⎕NA'',getdllname,'|glFogCoorddvEXT <F8[1]'
   :EndIf
   {}glFogCoorddvEXT_DLL coord
 ∇
@@ -16439,140 +16447,140 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTangent3bEXT (tx ty tz)
   :If 0=⎕NC'glTangent3bEXT_DLL'
-      'glTangent3bEXT_DLL'⎕NA'opengl32|glTangent3bEXT I1 I1 I1'
+      'glTangent3bEXT_DLL'⎕NA'',getdllname,'|glTangent3bEXT I1 I1 I1'
   :EndIf
   {}glTangent3bEXT_DLL tx ty tz
 ∇
 
 ∇ glTangent3bvEXT v
   :If 0=⎕NC'glTangent3bvEXT_DLL'
-      'glTangent3bvEXT_DLL'⎕NA'opengl32|glTangent3bvEXT <I1[3]'
+      'glTangent3bvEXT_DLL'⎕NA'',getdllname,'|glTangent3bvEXT <I1[3]'
   :EndIf
   {}glTangent3bvEXT_DLL v
 ∇
 
 ∇ glTangent3dEXT (tx ty tz)
   :If 0=⎕NC'glTangent3dEXT_DLL'
-      'glTangent3dEXT_DLL'⎕NA'opengl32|glTangent3dEXT F8 F8 F8'
+      'glTangent3dEXT_DLL'⎕NA'',getdllname,'|glTangent3dEXT F8 F8 F8'
   :EndIf
   {}glTangent3dEXT_DLL tx ty tz
 ∇
 
 ∇ glTangent3dvEXT v
   :If 0=⎕NC'glTangent3dvEXT_DLL'
-      'glTangent3dvEXT_DLL'⎕NA'opengl32|glTangent3dvEXT <F8[3]'
+      'glTangent3dvEXT_DLL'⎕NA'',getdllname,'|glTangent3dvEXT <F8[3]'
   :EndIf
   {}glTangent3dvEXT_DLL v
 ∇
 
 ∇ glTangent3fEXT (tx ty tz)
   :If 0=⎕NC'glTangent3fEXT_DLL'
-      'glTangent3fEXT_DLL'⎕NA'opengl32|glTangent3fEXT F4 F4 F4'
+      'glTangent3fEXT_DLL'⎕NA'',getdllname,'|glTangent3fEXT F4 F4 F4'
   :EndIf
   {}glTangent3fEXT_DLL tx ty tz
 ∇
 
 ∇ glTangent3fvEXT v
   :If 0=⎕NC'glTangent3fvEXT_DLL'
-      'glTangent3fvEXT_DLL'⎕NA'opengl32|glTangent3fvEXT <F4[3]'
+      'glTangent3fvEXT_DLL'⎕NA'',getdllname,'|glTangent3fvEXT <F4[3]'
   :EndIf
   {}glTangent3fvEXT_DLL v
 ∇
 
 ∇ glTangent3iEXT (tx ty tz)
   :If 0=⎕NC'glTangent3iEXT_DLL'
-      'glTangent3iEXT_DLL'⎕NA'opengl32|glTangent3iEXT I4 I4 I4'
+      'glTangent3iEXT_DLL'⎕NA'',getdllname,'|glTangent3iEXT I4 I4 I4'
   :EndIf
   {}glTangent3iEXT_DLL tx ty tz
 ∇
 
 ∇ glTangent3ivEXT v
   :If 0=⎕NC'glTangent3ivEXT_DLL'
-      'glTangent3ivEXT_DLL'⎕NA'opengl32|glTangent3ivEXT <I4[3]'
+      'glTangent3ivEXT_DLL'⎕NA'',getdllname,'|glTangent3ivEXT <I4[3]'
   :EndIf
   {}glTangent3ivEXT_DLL v
 ∇
 
 ∇ glTangent3sEXT (tx ty tz)
   :If 0=⎕NC'glTangent3sEXT_DLL'
-      'glTangent3sEXT_DLL'⎕NA'opengl32|glTangent3sEXT I2 I2 I2'
+      'glTangent3sEXT_DLL'⎕NA'',getdllname,'|glTangent3sEXT I2 I2 I2'
   :EndIf
   {}glTangent3sEXT_DLL tx ty tz
 ∇
 
 ∇ glTangent3svEXT v
   :If 0=⎕NC'glTangent3svEXT_DLL'
-      'glTangent3svEXT_DLL'⎕NA'opengl32|glTangent3svEXT <I2[3]'
+      'glTangent3svEXT_DLL'⎕NA'',getdllname,'|glTangent3svEXT <I2[3]'
   :EndIf
   {}glTangent3svEXT_DLL v
 ∇
 
 ∇ glBinormal3bEXT (bx by bz)
   :If 0=⎕NC'glBinormal3bEXT_DLL'
-      'glBinormal3bEXT_DLL'⎕NA'opengl32|glBinormal3bEXT I1 I1 I1'
+      'glBinormal3bEXT_DLL'⎕NA'',getdllname,'|glBinormal3bEXT I1 I1 I1'
   :EndIf
   {}glBinormal3bEXT_DLL bx by bz
 ∇
 
 ∇ glBinormal3bvEXT v
   :If 0=⎕NC'glBinormal3bvEXT_DLL'
-      'glBinormal3bvEXT_DLL'⎕NA'opengl32|glBinormal3bvEXT <I1[3]'
+      'glBinormal3bvEXT_DLL'⎕NA'',getdllname,'|glBinormal3bvEXT <I1[3]'
   :EndIf
   {}glBinormal3bvEXT_DLL v
 ∇
 
 ∇ glBinormal3dEXT (bx by bz)
   :If 0=⎕NC'glBinormal3dEXT_DLL'
-      'glBinormal3dEXT_DLL'⎕NA'opengl32|glBinormal3dEXT F8 F8 F8'
+      'glBinormal3dEXT_DLL'⎕NA'',getdllname,'|glBinormal3dEXT F8 F8 F8'
   :EndIf
   {}glBinormal3dEXT_DLL bx by bz
 ∇
 
 ∇ glBinormal3dvEXT v
   :If 0=⎕NC'glBinormal3dvEXT_DLL'
-      'glBinormal3dvEXT_DLL'⎕NA'opengl32|glBinormal3dvEXT <F8[3]'
+      'glBinormal3dvEXT_DLL'⎕NA'',getdllname,'|glBinormal3dvEXT <F8[3]'
   :EndIf
   {}glBinormal3dvEXT_DLL v
 ∇
 
 ∇ glBinormal3fEXT (bx by bz)
   :If 0=⎕NC'glBinormal3fEXT_DLL'
-      'glBinormal3fEXT_DLL'⎕NA'opengl32|glBinormal3fEXT F4 F4 F4'
+      'glBinormal3fEXT_DLL'⎕NA'',getdllname,'|glBinormal3fEXT F4 F4 F4'
   :EndIf
   {}glBinormal3fEXT_DLL bx by bz
 ∇
 
 ∇ glBinormal3fvEXT v
   :If 0=⎕NC'glBinormal3fvEXT_DLL'
-      'glBinormal3fvEXT_DLL'⎕NA'opengl32|glBinormal3fvEXT <F4[3]'
+      'glBinormal3fvEXT_DLL'⎕NA'',getdllname,'|glBinormal3fvEXT <F4[3]'
   :EndIf
   {}glBinormal3fvEXT_DLL v
 ∇
 
 ∇ glBinormal3iEXT (bx by bz)
   :If 0=⎕NC'glBinormal3iEXT_DLL'
-      'glBinormal3iEXT_DLL'⎕NA'opengl32|glBinormal3iEXT I4 I4 I4'
+      'glBinormal3iEXT_DLL'⎕NA'',getdllname,'|glBinormal3iEXT I4 I4 I4'
   :EndIf
   {}glBinormal3iEXT_DLL bx by bz
 ∇
 
 ∇ glBinormal3ivEXT v
   :If 0=⎕NC'glBinormal3ivEXT_DLL'
-      'glBinormal3ivEXT_DLL'⎕NA'opengl32|glBinormal3ivEXT <I4[3]'
+      'glBinormal3ivEXT_DLL'⎕NA'',getdllname,'|glBinormal3ivEXT <I4[3]'
   :EndIf
   {}glBinormal3ivEXT_DLL v
 ∇
 
 ∇ glBinormal3sEXT (bx by bz)
   :If 0=⎕NC'glBinormal3sEXT_DLL'
-      'glBinormal3sEXT_DLL'⎕NA'opengl32|glBinormal3sEXT I2 I2 I2'
+      'glBinormal3sEXT_DLL'⎕NA'',getdllname,'|glBinormal3sEXT I2 I2 I2'
   :EndIf
   {}glBinormal3sEXT_DLL bx by bz
 ∇
 
 ∇ glBinormal3svEXT v
   :If 0=⎕NC'glBinormal3svEXT_DLL'
-      'glBinormal3svEXT_DLL'⎕NA'opengl32|glBinormal3svEXT <I2[3]'
+      'glBinormal3svEXT_DLL'⎕NA'',getdllname,'|glBinormal3svEXT <I2[3]'
   :EndIf
   {}glBinormal3svEXT_DLL v
 ∇
@@ -16593,105 +16601,105 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glFinishTextureSUNX
   :If 0=⎕NC'glFinishTextureSUNX_DLL'
-      'glFinishTextureSUNX_DLL'⎕NA'opengl32|glFinishTextureSUNX'
+      'glFinishTextureSUNX_DLL'⎕NA'',getdllname,'|glFinishTextureSUNX'
   :EndIf
   {}glFinishTextureSUNX_DLL
 ∇
 
 ∇ glGlobalAlphaFactorbSUN factor
   :If 0=⎕NC'glGlobalAlphaFactorbSUN_DLL'
-      'glGlobalAlphaFactorbSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactorbSUN I1'
+      'glGlobalAlphaFactorbSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactorbSUN I1'
   :EndIf
   {}glGlobalAlphaFactorbSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactorsSUN factor
   :If 0=⎕NC'glGlobalAlphaFactorsSUN_DLL'
-      'glGlobalAlphaFactorsSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactorsSUN I2'
+      'glGlobalAlphaFactorsSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactorsSUN I2'
   :EndIf
   {}glGlobalAlphaFactorsSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactoriSUN factor
   :If 0=⎕NC'glGlobalAlphaFactoriSUN_DLL'
-      'glGlobalAlphaFactoriSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactoriSUN I4'
+      'glGlobalAlphaFactoriSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactoriSUN I4'
   :EndIf
   {}glGlobalAlphaFactoriSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactorfSUN factor
   :If 0=⎕NC'glGlobalAlphaFactorfSUN_DLL'
-      'glGlobalAlphaFactorfSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactorfSUN F4'
+      'glGlobalAlphaFactorfSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactorfSUN F4'
   :EndIf
   {}glGlobalAlphaFactorfSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactordSUN factor
   :If 0=⎕NC'glGlobalAlphaFactordSUN_DLL'
-      'glGlobalAlphaFactordSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactordSUN F8'
+      'glGlobalAlphaFactordSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactordSUN F8'
   :EndIf
   {}glGlobalAlphaFactordSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactorubSUN factor
   :If 0=⎕NC'glGlobalAlphaFactorubSUN_DLL'
-      'glGlobalAlphaFactorubSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactorubSUN U1'
+      'glGlobalAlphaFactorubSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactorubSUN U1'
   :EndIf
   {}glGlobalAlphaFactorubSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactorusSUN factor
   :If 0=⎕NC'glGlobalAlphaFactorusSUN_DLL'
-      'glGlobalAlphaFactorusSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactorusSUN U2'
+      'glGlobalAlphaFactorusSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactorusSUN U2'
   :EndIf
   {}glGlobalAlphaFactorusSUN_DLL factor
 ∇
 
 ∇ glGlobalAlphaFactoruiSUN factor
   :If 0=⎕NC'glGlobalAlphaFactoruiSUN_DLL'
-      'glGlobalAlphaFactoruiSUN_DLL'⎕NA'opengl32|glGlobalAlphaFactoruiSUN U4'
+      'glGlobalAlphaFactoruiSUN_DLL'⎕NA'',getdllname,'|glGlobalAlphaFactoruiSUN U4'
   :EndIf
   {}glGlobalAlphaFactoruiSUN_DLL factor
 ∇
 
 ∇ glReplacementCodeuiSUN code
   :If 0=⎕NC'glReplacementCodeuiSUN_DLL'
-      'glReplacementCodeuiSUN_DLL'⎕NA'opengl32|glReplacementCodeuiSUN U4'
+      'glReplacementCodeuiSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiSUN U4'
   :EndIf
   {}glReplacementCodeuiSUN_DLL code
 ∇
 
 ∇ glReplacementCodeusSUN code
   :If 0=⎕NC'glReplacementCodeusSUN_DLL'
-      'glReplacementCodeusSUN_DLL'⎕NA'opengl32|glReplacementCodeusSUN U2'
+      'glReplacementCodeusSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeusSUN U2'
   :EndIf
   {}glReplacementCodeusSUN_DLL code
 ∇
 
 ∇ glReplacementCodeubSUN code
   :If 0=⎕NC'glReplacementCodeubSUN_DLL'
-      'glReplacementCodeubSUN_DLL'⎕NA'opengl32|glReplacementCodeubSUN U1'
+      'glReplacementCodeubSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeubSUN U1'
   :EndIf
   {}glReplacementCodeubSUN_DLL code
 ∇
 
 ∇ glReplacementCodeuivSUN code
   :If 0=⎕NC'glReplacementCodeuivSUN_DLL'
-      'glReplacementCodeuivSUN_DLL'⎕NA'opengl32|glReplacementCodeuivSUN <U4[]'
+      'glReplacementCodeuivSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuivSUN <U4[]'
   :EndIf
   {}glReplacementCodeuivSUN_DLL code
 ∇
 
 ∇ glReplacementCodeusvSUN code
   :If 0=⎕NC'glReplacementCodeusvSUN_DLL'
-      'glReplacementCodeusvSUN_DLL'⎕NA'opengl32|glReplacementCodeusvSUN <U2[]'
+      'glReplacementCodeusvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeusvSUN <U2[]'
   :EndIf
   {}glReplacementCodeusvSUN_DLL code
 ∇
 
 ∇ glReplacementCodeubvSUN code
   :If 0=⎕NC'glReplacementCodeubvSUN_DLL'
-      'glReplacementCodeubvSUN_DLL'⎕NA'opengl32|glReplacementCodeubvSUN <U1[]'
+      'glReplacementCodeubvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeubvSUN <U1[]'
   :EndIf
   {}glReplacementCodeubvSUN_DLL code
 ∇
@@ -16705,308 +16713,308 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glColor4ubVertex2fSUN (r g b a x y)
   :If 0=⎕NC'glColor4ubVertex2fSUN_DLL'
-      'glColor4ubVertex2fSUN_DLL'⎕NA'opengl32|glColor4ubVertex2fSUN U1 U1 U1 U1 F4 F4'
+      'glColor4ubVertex2fSUN_DLL'⎕NA'',getdllname,'|glColor4ubVertex2fSUN U1 U1 U1 U1 F4 F4'
   :EndIf
   {}glColor4ubVertex2fSUN_DLL r g b a x y
 ∇
 
 ∇ glColor4ubVertex2fvSUN (c v)
   :If 0=⎕NC'glColor4ubVertex2fvSUN_DLL'
-      'glColor4ubVertex2fvSUN_DLL'⎕NA'opengl32|glColor4ubVertex2fvSUN <U1[4] <F4[2]'
+      'glColor4ubVertex2fvSUN_DLL'⎕NA'',getdllname,'|glColor4ubVertex2fvSUN <U1[4] <F4[2]'
   :EndIf
   {}glColor4ubVertex2fvSUN_DLL c v
 ∇
 
 ∇ glColor4ubVertex3fSUN (r g b a x y z)
   :If 0=⎕NC'glColor4ubVertex3fSUN_DLL'
-      'glColor4ubVertex3fSUN_DLL'⎕NA'opengl32|glColor4ubVertex3fSUN U1 U1 U1 U1 F4 F4 F4'
+      'glColor4ubVertex3fSUN_DLL'⎕NA'',getdllname,'|glColor4ubVertex3fSUN U1 U1 U1 U1 F4 F4 F4'
   :EndIf
   {}glColor4ubVertex3fSUN_DLL r g b a x y z
 ∇
 
 ∇ glColor4ubVertex3fvSUN (c v)
   :If 0=⎕NC'glColor4ubVertex3fvSUN_DLL'
-      'glColor4ubVertex3fvSUN_DLL'⎕NA'opengl32|glColor4ubVertex3fvSUN <U1[4] <F4[3]'
+      'glColor4ubVertex3fvSUN_DLL'⎕NA'',getdllname,'|glColor4ubVertex3fvSUN <U1[4] <F4[3]'
   :EndIf
   {}glColor4ubVertex3fvSUN_DLL c v
 ∇
 
 ∇ glColor3fVertex3fSUN (r g b x y z)
   :If 0=⎕NC'glColor3fVertex3fSUN_DLL'
-      'glColor3fVertex3fSUN_DLL'⎕NA'opengl32|glColor3fVertex3fSUN F4 F4 F4 F4 F4 F4'
+      'glColor3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glColor3fVertex3fSUN F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glColor3fVertex3fSUN_DLL r g b x y z
 ∇
 
 ∇ glColor3fVertex3fvSUN (c v)
   :If 0=⎕NC'glColor3fVertex3fvSUN_DLL'
-      'glColor3fVertex3fvSUN_DLL'⎕NA'opengl32|glColor3fVertex3fvSUN <F4[3] <F4[3]'
+      'glColor3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glColor3fVertex3fvSUN <F4[3] <F4[3]'
   :EndIf
   {}glColor3fVertex3fvSUN_DLL c v
 ∇
 
 ∇ glNormal3fVertex3fSUN (nx ny nz x y z)
   :If 0=⎕NC'glNormal3fVertex3fSUN_DLL'
-      'glNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4'
+      'glNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glNormal3fVertex3fSUN_DLL nx ny nz x y z
 ∇
 
 ∇ glNormal3fVertex3fvSUN (n v)
   :If 0=⎕NC'glNormal3fVertex3fvSUN_DLL'
-      'glNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glNormal3fVertex3fvSUN <F4[3] <F4[3]'
+      'glNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glNormal3fVertex3fvSUN <F4[3] <F4[3]'
   :EndIf
   {}glNormal3fVertex3fvSUN_DLL n v
 ∇
 
 ∇ glColor4fNormal3fVertex3fSUN (r g b a nx ny nz x y z)
   :If 0=⎕NC'glColor4fNormal3fVertex3fSUN_DLL'
-      'glColor4fNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glColor4fNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
+      'glColor4fNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glColor4fNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glColor4fNormal3fVertex3fSUN_DLL r g b a nx ny nz x y z
 ∇
 
 ∇ glColor4fNormal3fVertex3fvSUN (c n v)
   :If 0=⎕NC'glColor4fNormal3fVertex3fvSUN_DLL'
-      'glColor4fNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glColor4fNormal3fVertex3fvSUN <F4[4] <F4[3] <F4[3]'
+      'glColor4fNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glColor4fNormal3fVertex3fvSUN <F4[4] <F4[3] <F4[3]'
   :EndIf
   {}glColor4fNormal3fVertex3fvSUN_DLL c n v
 ∇
 
 ∇ glTexCoord2fVertex3fSUN (s t x y z)
   :If 0=⎕NC'glTexCoord2fVertex3fSUN_DLL'
-      'glTexCoord2fVertex3fSUN_DLL'⎕NA'opengl32|glTexCoord2fVertex3fSUN F4 F4 F4 F4 F4'
+      'glTexCoord2fVertex3fSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fVertex3fSUN F4 F4 F4 F4 F4'
   :EndIf
   {}glTexCoord2fVertex3fSUN_DLL s t x y z
 ∇
 
 ∇ glTexCoord2fVertex3fvSUN (tc v)
   :If 0=⎕NC'glTexCoord2fVertex3fvSUN_DLL'
-      'glTexCoord2fVertex3fvSUN_DLL'⎕NA'opengl32|glTexCoord2fVertex3fvSUN <F4[2] <F4[3]'
+      'glTexCoord2fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fVertex3fvSUN <F4[2] <F4[3]'
   :EndIf
   {}glTexCoord2fVertex3fvSUN_DLL tc v
 ∇
 
 ∇ glTexCoord4fVertex4fSUN (s t p q x y z w)
   :If 0=⎕NC'glTexCoord4fVertex4fSUN_DLL'
-      'glTexCoord4fVertex4fSUN_DLL'⎕NA'opengl32|glTexCoord4fVertex4fSUN F4 F4 F4 F4 F4 F4 F4 F4'
+      'glTexCoord4fVertex4fSUN_DLL'⎕NA'',getdllname,'|glTexCoord4fVertex4fSUN F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glTexCoord4fVertex4fSUN_DLL s t p q x y z w
 ∇
 
 ∇ glTexCoord4fVertex4fvSUN (tc v)
   :If 0=⎕NC'glTexCoord4fVertex4fvSUN_DLL'
-      'glTexCoord4fVertex4fvSUN_DLL'⎕NA'opengl32|glTexCoord4fVertex4fvSUN <F4[4] <F4[4]'
+      'glTexCoord4fVertex4fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord4fVertex4fvSUN <F4[4] <F4[4]'
   :EndIf
   {}glTexCoord4fVertex4fvSUN_DLL tc v
 ∇
 
 ∇ glTexCoord2fColor4ubVertex3fSUN (s t r g b a x y z)
   :If 0=⎕NC'glTexCoord2fColor4ubVertex3fSUN_DLL'
-      'glTexCoord2fColor4ubVertex3fSUN_DLL'⎕NA'opengl32|glTexCoord2fColor4ubVertex3fSUN F4 F4 U1 U1 U1 U1 F4 F4 F4'
+      'glTexCoord2fColor4ubVertex3fSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fColor4ubVertex3fSUN F4 F4 U1 U1 U1 U1 F4 F4 F4'
   :EndIf
   {}glTexCoord2fColor4ubVertex3fSUN_DLL s t r g b a x y z
 ∇
 
 ∇ glTexCoord2fColor4ubVertex3fvSUN (tc c v)
   :If 0=⎕NC'glTexCoord2fColor4ubVertex3fvSUN_DLL'
-      'glTexCoord2fColor4ubVertex3fvSUN_DLL'⎕NA'opengl32|glTexCoord2fColor4ubVertex3fvSUN <F4[2] <U1[4] <F4[3]'
+      'glTexCoord2fColor4ubVertex3fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fColor4ubVertex3fvSUN <F4[2] <U1[4] <F4[3]'
   :EndIf
   {}glTexCoord2fColor4ubVertex3fvSUN_DLL tc c v
 ∇
 
 ∇ glTexCoord2fColor3fVertex3fSUN (s t r g b x y z)
   :If 0=⎕NC'glTexCoord2fColor3fVertex3fSUN_DLL'
-      'glTexCoord2fColor3fVertex3fSUN_DLL'⎕NA'opengl32|glTexCoord2fColor3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4'
+      'glTexCoord2fColor3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fColor3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glTexCoord2fColor3fVertex3fSUN_DLL s t r g b x y z
 ∇
 
 ∇ glTexCoord2fColor3fVertex3fvSUN (tc c v)
   :If 0=⎕NC'glTexCoord2fColor3fVertex3fvSUN_DLL'
-      'glTexCoord2fColor3fVertex3fvSUN_DLL'⎕NA'opengl32|glTexCoord2fColor3fVertex3fvSUN <F4[2] <F4[3] <F4[3]'
+      'glTexCoord2fColor3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fColor3fVertex3fvSUN <F4[2] <F4[3] <F4[3]'
   :EndIf
   {}glTexCoord2fColor3fVertex3fvSUN_DLL tc c v
 ∇
 
 ∇ glTexCoord2fNormal3fVertex3fSUN (s t nx ny nz x y z)
   :If 0=⎕NC'glTexCoord2fNormal3fVertex3fSUN_DLL'
-      'glTexCoord2fNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glTexCoord2fNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4'
+      'glTexCoord2fNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glTexCoord2fNormal3fVertex3fSUN_DLL s t nx ny nz x y z
 ∇
 
 ∇ glTexCoord2fNormal3fVertex3fvSUN (tc n v)
   :If 0=⎕NC'glTexCoord2fNormal3fVertex3fvSUN_DLL'
-      'glTexCoord2fNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glTexCoord2fNormal3fVertex3fvSUN <F4[2] <F4[3] <F4[3]'
+      'glTexCoord2fNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fNormal3fVertex3fvSUN <F4[2] <F4[3] <F4[3]'
   :EndIf
   {}glTexCoord2fNormal3fVertex3fvSUN_DLL tc n v
 ∇
 
 ∇ glTexCoord2fColor4fNormal3fVertex3fSUN (s t r g b a nx ny nz x y z)
   :If 0=⎕NC'glTexCoord2fColor4fNormal3fVertex3fSUN_DLL'
-      'glTexCoord2fColor4fNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glTexCoord2fColor4fNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
+      'glTexCoord2fColor4fNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fColor4fNormal3fVertex3fSUN F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glTexCoord2fColor4fNormal3fVertex3fSUN_DLL s t r g b a nx ny nz x y z
 ∇
 
 ∇ glTexCoord2fColor4fNormal3fVertex3fvSUN (tc c n v)
   :If 0=⎕NC'glTexCoord2fColor4fNormal3fVertex3fvSUN_DLL'
-      'glTexCoord2fColor4fNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glTexCoord2fColor4fNormal3fVertex3fvSUN <F4[2] <F4[4] <F4[3] <F4[3]'
+      'glTexCoord2fColor4fNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord2fColor4fNormal3fVertex3fvSUN <F4[2] <F4[4] <F4[3] <F4[3]'
   :EndIf
   {}glTexCoord2fColor4fNormal3fVertex3fvSUN_DLL tc c n v
 ∇
 
 ∇ glTexCoord4fColor4fNormal3fVertex4fSUN (s t p q r g b a nx ny nz x y z w)
   :If 0=⎕NC'glTexCoord4fColor4fNormal3fVertex4fSUN_DLL'
-      'glTexCoord4fColor4fNormal3fVertex4fSUN_DLL'⎕NA'opengl32|glTexCoord4fColor4fNormal3fVertex4fSUN F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
+      'glTexCoord4fColor4fNormal3fVertex4fSUN_DLL'⎕NA'',getdllname,'|glTexCoord4fColor4fNormal3fVertex4fSUN F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glTexCoord4fColor4fNormal3fVertex4fSUN_DLL s t p q r g b a nx ny nz x y z w
 ∇
 
 ∇ glTexCoord4fColor4fNormal3fVertex4fvSUN (tc c n v)
   :If 0=⎕NC'glTexCoord4fColor4fNormal3fVertex4fvSUN_DLL'
-      'glTexCoord4fColor4fNormal3fVertex4fvSUN_DLL'⎕NA'opengl32|glTexCoord4fColor4fNormal3fVertex4fvSUN <F4[4] <F4[4] <F4[3] <F4[4]'
+      'glTexCoord4fColor4fNormal3fVertex4fvSUN_DLL'⎕NA'',getdllname,'|glTexCoord4fColor4fNormal3fVertex4fvSUN <F4[4] <F4[4] <F4[3] <F4[4]'
   :EndIf
   {}glTexCoord4fColor4fNormal3fVertex4fvSUN_DLL tc c n v
 ∇
 
 ∇ glReplacementCodeuiVertex3fSUN (rc x y z)
   :If 0=⎕NC'glReplacementCodeuiVertex3fSUN_DLL'
-      'glReplacementCodeuiVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiVertex3fSUN U4 F4 F4 F4'
+      'glReplacementCodeuiVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiVertex3fSUN U4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiVertex3fSUN_DLL rc x y z
 ∇
 
 ∇ glReplacementCodeuiVertex3fvSUN (rc v)
   :If 0=⎕NC'glReplacementCodeuiVertex3fvSUN_DLL'
-      'glReplacementCodeuiVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiVertex3fvSUN <U4[1] <F4[3]'
+      'glReplacementCodeuiVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiVertex3fvSUN <U4[1] <F4[3]'
   :EndIf
   {}glReplacementCodeuiVertex3fvSUN_DLL rc v
 ∇
 
 ∇ glReplacementCodeuiColor4ubVertex3fSUN (rc r g b a x y z)
   :If 0=⎕NC'glReplacementCodeuiColor4ubVertex3fSUN_DLL'
-      'glReplacementCodeuiColor4ubVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiColor4ubVertex3fSUN U4 U1 U1 U1 U1 F4 F4 F4'
+      'glReplacementCodeuiColor4ubVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiColor4ubVertex3fSUN U4 U1 U1 U1 U1 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiColor4ubVertex3fSUN_DLL rc r g b a x y z
 ∇
 
 ∇ glReplacementCodeuiColor4ubVertex3fvSUN (rc c v)
   :If 0=⎕NC'glReplacementCodeuiColor4ubVertex3fvSUN_DLL'
-      'glReplacementCodeuiColor4ubVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiColor4ubVertex3fvSUN <U4[1] <U1[4] <F4[3]'
+      'glReplacementCodeuiColor4ubVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiColor4ubVertex3fvSUN <U4[1] <U1[4] <F4[3]'
   :EndIf
   {}glReplacementCodeuiColor4ubVertex3fvSUN_DLL rc c v
 ∇
 
 ∇ glReplacementCodeuiColor3fVertex3fSUN (rc r g b x y z)
   :If 0=⎕NC'glReplacementCodeuiColor3fVertex3fSUN_DLL'
-      'glReplacementCodeuiColor3fVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiColor3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4'
+      'glReplacementCodeuiColor3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiColor3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiColor3fVertex3fSUN_DLL rc r g b x y z
 ∇
 
 ∇ glReplacementCodeuiColor3fVertex3fvSUN (rc c v)
   :If 0=⎕NC'glReplacementCodeuiColor3fVertex3fvSUN_DLL'
-      'glReplacementCodeuiColor3fVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiColor3fVertex3fvSUN <U4[1] <F4[3] <F4[3]'
+      'glReplacementCodeuiColor3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiColor3fVertex3fvSUN <U4[1] <F4[3] <F4[3]'
   :EndIf
   {}glReplacementCodeuiColor3fVertex3fvSUN_DLL rc c v
 ∇
 
 ∇ glReplacementCodeuiNormal3fVertex3fSUN (rc nx ny nz x y z)
   :If 0=⎕NC'glReplacementCodeuiNormal3fVertex3fSUN_DLL'
-      'glReplacementCodeuiNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4'
+      'glReplacementCodeuiNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiNormal3fVertex3fSUN_DLL rc nx ny nz x y z
 ∇
 
 ∇ glReplacementCodeuiNormal3fVertex3fvSUN (rc n v)
   :If 0=⎕NC'glReplacementCodeuiNormal3fVertex3fvSUN_DLL'
-      'glReplacementCodeuiNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiNormal3fVertex3fvSUN <U4[1] <F4[3] <F4[3]'
+      'glReplacementCodeuiNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiNormal3fVertex3fvSUN <U4[1] <F4[3] <F4[3]'
   :EndIf
   {}glReplacementCodeuiNormal3fVertex3fvSUN_DLL rc n v
 ∇
 
 ∇ glReplacementCodeuiColor4fNormal3fVertex3fSUN (rc r g b a nx ny nz x y z)
   :If 0=⎕NC'glReplacementCodeuiColor4fNormal3fVertex3fSUN_DLL'
-      'glReplacementCodeuiColor4fNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiColor4fNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
+      'glReplacementCodeuiColor4fNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiColor4fNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiColor4fNormal3fVertex3fSUN_DLL rc r g b a nx ny nz x y z
 ∇
 
 ∇ glReplacementCodeuiColor4fNormal3fVertex3fvSUN (rc c n v)
   :If 0=⎕NC'glReplacementCodeuiColor4fNormal3fVertex3fvSUN_DLL'
-      'glReplacementCodeuiColor4fNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiColor4fNormal3fVertex3fvSUN <U4[1] <F4[4] <F4[3] <F4[3]'
+      'glReplacementCodeuiColor4fNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiColor4fNormal3fVertex3fvSUN <U4[1] <F4[4] <F4[3] <F4[3]'
   :EndIf
   {}glReplacementCodeuiColor4fNormal3fVertex3fvSUN_DLL rc c n v
 ∇
 
 ∇ glReplacementCodeuiTexCoord2fVertex3fSUN (rc s t x y z)
   :If 0=⎕NC'glReplacementCodeuiTexCoord2fVertex3fSUN_DLL'
-      'glReplacementCodeuiTexCoord2fVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiTexCoord2fVertex3fSUN U4 F4 F4 F4 F4 F4'
+      'glReplacementCodeuiTexCoord2fVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiTexCoord2fVertex3fSUN U4 F4 F4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiTexCoord2fVertex3fSUN_DLL rc s t x y z
 ∇
 
 ∇ glReplacementCodeuiTexCoord2fVertex3fvSUN (rc tc v)
   :If 0=⎕NC'glReplacementCodeuiTexCoord2fVertex3fvSUN_DLL'
-      'glReplacementCodeuiTexCoord2fVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiTexCoord2fVertex3fvSUN <U4[1] <F4[2] <F4[3]'
+      'glReplacementCodeuiTexCoord2fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiTexCoord2fVertex3fvSUN <U4[1] <F4[2] <F4[3]'
   :EndIf
   {}glReplacementCodeuiTexCoord2fVertex3fvSUN_DLL rc tc v
 ∇
 
 ∇ glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN (rc s t nx ny nz x y z)
   :If 0=⎕NC'glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN_DLL'
-      'glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4 F4 F4'
+      'glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN_DLL rc s t nx ny nz x y z
 ∇
 
 ∇ glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN (rc tc n v)
   :If 0=⎕NC'glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN_DLL'
-      'glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN <U4[1] <F4[2] <F4[3] <F4[3]'
+      'glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN <U4[1] <F4[2] <F4[3] <F4[3]'
   :EndIf
   {}glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN_DLL rc tc n v
 ∇
 
 ∇ glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN (rc s t r g b a nx ny nz x y z)
   :If 0=⎕NC'glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN_DLL'
-      'glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN_DLL'⎕NA'opengl32|glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
+      'glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN U4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4 F4'
   :EndIf
   {}glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN_DLL rc s t r g b a nx ny nz x y z
 ∇
 
 ∇ glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN (rc tc c n v)
   :If 0=⎕NC'glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN_DLL'
-      'glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN_DLL'⎕NA'opengl32|glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN <U4[1] <F4[2] <F4[4] <F4[3] <F4[3]'
+      'glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN_DLL'⎕NA'',getdllname,'|glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN <U4[1] <F4[2] <F4[4] <F4[3] <F4[3]'
   :EndIf
   {}glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN_DLL rc tc c n v
 ∇
 
 ∇ glBlendFuncSeparateEXT (sfactorRGB dfactorRGB sfactorAlpha dfactorAlpha)
   :If 0=⎕NC'glBlendFuncSeparateEXT_DLL'
-      'glBlendFuncSeparateEXT_DLL'⎕NA'opengl32|glBlendFuncSeparateEXT U4 U4 U4 U4'
+      'glBlendFuncSeparateEXT_DLL'⎕NA'',getdllname,'|glBlendFuncSeparateEXT U4 U4 U4 U4'
   :EndIf
   {}glBlendFuncSeparateEXT_DLL sfactorRGB dfactorRGB sfactorAlpha dfactorAlpha
 ∇
 
 ∇ glBlendFuncSeparateINGR (sfactorRGB dfactorRGB sfactorAlpha dfactorAlpha)
   :If 0=⎕NC'glBlendFuncSeparateINGR_DLL'
-      'glBlendFuncSeparateINGR_DLL'⎕NA'opengl32|glBlendFuncSeparateINGR U4 U4 U4 U4'
+      'glBlendFuncSeparateINGR_DLL'⎕NA'',getdllname,'|glBlendFuncSeparateINGR U4 U4 U4 U4'
   :EndIf
   {}glBlendFuncSeparateINGR_DLL sfactorRGB dfactorRGB sfactorAlpha dfactorAlpha
 ∇
 
 ∇ glVertexWeightfEXT weight
   :If 0=⎕NC'glVertexWeightfEXT_DLL'
-      'glVertexWeightfEXT_DLL'⎕NA'opengl32|glVertexWeightfEXT F4'
+      'glVertexWeightfEXT_DLL'⎕NA'',getdllname,'|glVertexWeightfEXT F4'
   :EndIf
   {}glVertexWeightfEXT_DLL weight
 ∇
 
 ∇ glVertexWeightfvEXT weight
   :If 0=⎕NC'glVertexWeightfvEXT_DLL'
-      'glVertexWeightfvEXT_DLL'⎕NA'opengl32|glVertexWeightfvEXT <F4[1]'
+      'glVertexWeightfvEXT_DLL'⎕NA'',getdllname,'|glVertexWeightfvEXT <F4[1]'
   :EndIf
   {}glVertexWeightfvEXT_DLL weight
 ∇
@@ -17020,7 +17028,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glFlushVertexArrayRangeNV
   :If 0=⎕NC'glFlushVertexArrayRangeNV_DLL'
-      'glFlushVertexArrayRangeNV_DLL'⎕NA'opengl32|glFlushVertexArrayRangeNV'
+      'glFlushVertexArrayRangeNV_DLL'⎕NA'',getdllname,'|glFlushVertexArrayRangeNV'
   :EndIf
   {}glFlushVertexArrayRangeNV_DLL
 ∇
@@ -17034,273 +17042,273 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCombinerParameterfvNV (pname params)
   :If 0=⎕NC'glCombinerParameterfvNV_DLL'
-      'glCombinerParameterfvNV_DLL'⎕NA'opengl32|glCombinerParameterfvNV U4 <F4[]'
+      'glCombinerParameterfvNV_DLL'⎕NA'',getdllname,'|glCombinerParameterfvNV U4 <F4[]'
   :EndIf
   {}glCombinerParameterfvNV_DLL pname params
 ∇
 
 ∇ glCombinerParameterfNV (pname param)
   :If 0=⎕NC'glCombinerParameterfNV_DLL'
-      'glCombinerParameterfNV_DLL'⎕NA'opengl32|glCombinerParameterfNV U4 F4'
+      'glCombinerParameterfNV_DLL'⎕NA'',getdllname,'|glCombinerParameterfNV U4 F4'
   :EndIf
   {}glCombinerParameterfNV_DLL pname param
 ∇
 
 ∇ glCombinerParameterivNV (pname params)
   :If 0=⎕NC'glCombinerParameterivNV_DLL'
-      'glCombinerParameterivNV_DLL'⎕NA'opengl32|glCombinerParameterivNV U4 <I4[]'
+      'glCombinerParameterivNV_DLL'⎕NA'',getdllname,'|glCombinerParameterivNV U4 <I4[]'
   :EndIf
   {}glCombinerParameterivNV_DLL pname params
 ∇
 
 ∇ glCombinerParameteriNV (pname param)
   :If 0=⎕NC'glCombinerParameteriNV_DLL'
-      'glCombinerParameteriNV_DLL'⎕NA'opengl32|glCombinerParameteriNV U4 I4'
+      'glCombinerParameteriNV_DLL'⎕NA'',getdllname,'|glCombinerParameteriNV U4 I4'
   :EndIf
   {}glCombinerParameteriNV_DLL pname param
 ∇
 
 ∇ glCombinerInputNV (stage portion variable input mapping componentUsage)
   :If 0=⎕NC'glCombinerInputNV_DLL'
-      'glCombinerInputNV_DLL'⎕NA'opengl32|glCombinerInputNV U4 U4 U4 U4 U4 U4'
+      'glCombinerInputNV_DLL'⎕NA'',getdllname,'|glCombinerInputNV U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glCombinerInputNV_DLL stage portion variable input mapping componentUsage
 ∇
 
 ∇ glCombinerOutputNV (stage portion abOutput cdOutput sumOutput scale bias abDotProduct cdDotProduct muxSum)
   :If 0=⎕NC'glCombinerOutputNV_DLL'
-      'glCombinerOutputNV_DLL'⎕NA'opengl32|glCombinerOutputNV U4 U4 U4 U4 U4 U4 U4 U1 U1 U1'
+      'glCombinerOutputNV_DLL'⎕NA'',getdllname,'|glCombinerOutputNV U4 U4 U4 U4 U4 U4 U4 U1 U1 U1'
   :EndIf
   {}glCombinerOutputNV_DLL stage portion abOutput cdOutput sumOutput scale bias abDotProduct cdDotProduct muxSum
 ∇
 
 ∇ glFinalCombinerInputNV (variable input mapping componentUsage)
   :If 0=⎕NC'glFinalCombinerInputNV_DLL'
-      'glFinalCombinerInputNV_DLL'⎕NA'opengl32|glFinalCombinerInputNV U4 U4 U4 U4'
+      'glFinalCombinerInputNV_DLL'⎕NA'',getdllname,'|glFinalCombinerInputNV U4 U4 U4 U4'
   :EndIf
   {}glFinalCombinerInputNV_DLL variable input mapping componentUsage
 ∇
 
 ∇ r←glGetCombinerInputParameterfvNV (stage portion variable pname params)
   :If 0=⎕NC'glGetCombinerInputParameterfvNV_DLL'
-      'glGetCombinerInputParameterfvNV_DLL'⎕NA'opengl32|glGetCombinerInputParameterfvNV U4 U4 U4 U4 >F4[]'
+      'glGetCombinerInputParameterfvNV_DLL'⎕NA'',getdllname,'|glGetCombinerInputParameterfvNV U4 U4 U4 U4 >F4[]'
   :EndIf
   r←glGetCombinerInputParameterfvNV_DLL stage portion variable pname params
 ∇
 
 ∇ r←glGetCombinerInputParameterivNV (stage portion variable pname params)
   :If 0=⎕NC'glGetCombinerInputParameterivNV_DLL'
-      'glGetCombinerInputParameterivNV_DLL'⎕NA'opengl32|glGetCombinerInputParameterivNV U4 U4 U4 U4 >I4[]'
+      'glGetCombinerInputParameterivNV_DLL'⎕NA'',getdllname,'|glGetCombinerInputParameterivNV U4 U4 U4 U4 >I4[]'
   :EndIf
   r←glGetCombinerInputParameterivNV_DLL stage portion variable pname params
 ∇
 
 ∇ r←glGetCombinerOutputParameterfvNV (stage portion pname params)
   :If 0=⎕NC'glGetCombinerOutputParameterfvNV_DLL'
-      'glGetCombinerOutputParameterfvNV_DLL'⎕NA'opengl32|glGetCombinerOutputParameterfvNV U4 U4 U4 >F4[]'
+      'glGetCombinerOutputParameterfvNV_DLL'⎕NA'',getdllname,'|glGetCombinerOutputParameterfvNV U4 U4 U4 >F4[]'
   :EndIf
   r←glGetCombinerOutputParameterfvNV_DLL stage portion pname params
 ∇
 
 ∇ r←glGetCombinerOutputParameterivNV (stage portion pname params)
   :If 0=⎕NC'glGetCombinerOutputParameterivNV_DLL'
-      'glGetCombinerOutputParameterivNV_DLL'⎕NA'opengl32|glGetCombinerOutputParameterivNV U4 U4 U4 >I4[]'
+      'glGetCombinerOutputParameterivNV_DLL'⎕NA'',getdllname,'|glGetCombinerOutputParameterivNV U4 U4 U4 >I4[]'
   :EndIf
   r←glGetCombinerOutputParameterivNV_DLL stage portion pname params
 ∇
 
 ∇ r←glGetFinalCombinerInputParameterfvNV (variable pname params)
   :If 0=⎕NC'glGetFinalCombinerInputParameterfvNV_DLL'
-      'glGetFinalCombinerInputParameterfvNV_DLL'⎕NA'opengl32|glGetFinalCombinerInputParameterfvNV U4 U4 >F4[]'
+      'glGetFinalCombinerInputParameterfvNV_DLL'⎕NA'',getdllname,'|glGetFinalCombinerInputParameterfvNV U4 U4 >F4[]'
   :EndIf
   r←glGetFinalCombinerInputParameterfvNV_DLL variable pname params
 ∇
 
 ∇ r←glGetFinalCombinerInputParameterivNV (variable pname params)
   :If 0=⎕NC'glGetFinalCombinerInputParameterivNV_DLL'
-      'glGetFinalCombinerInputParameterivNV_DLL'⎕NA'opengl32|glGetFinalCombinerInputParameterivNV U4 U4 >I4[]'
+      'glGetFinalCombinerInputParameterivNV_DLL'⎕NA'',getdllname,'|glGetFinalCombinerInputParameterivNV U4 U4 >I4[]'
   :EndIf
   r←glGetFinalCombinerInputParameterivNV_DLL variable pname params
 ∇
 
 ∇ glResizeBuffersMESA
   :If 0=⎕NC'glResizeBuffersMESA_DLL'
-      'glResizeBuffersMESA_DLL'⎕NA'opengl32|glResizeBuffersMESA'
+      'glResizeBuffersMESA_DLL'⎕NA'',getdllname,'|glResizeBuffersMESA'
   :EndIf
   {}glResizeBuffersMESA_DLL
 ∇
 
 ∇ glWindowPos2dMESA (x y)
   :If 0=⎕NC'glWindowPos2dMESA_DLL'
-      'glWindowPos2dMESA_DLL'⎕NA'opengl32|glWindowPos2dMESA F8 F8'
+      'glWindowPos2dMESA_DLL'⎕NA'',getdllname,'|glWindowPos2dMESA F8 F8'
   :EndIf
   {}glWindowPos2dMESA_DLL x y
 ∇
 
 ∇ glWindowPos2dvMESA v
   :If 0=⎕NC'glWindowPos2dvMESA_DLL'
-      'glWindowPos2dvMESA_DLL'⎕NA'opengl32|glWindowPos2dvMESA <F8[2]'
+      'glWindowPos2dvMESA_DLL'⎕NA'',getdllname,'|glWindowPos2dvMESA <F8[2]'
   :EndIf
   {}glWindowPos2dvMESA_DLL v
 ∇
 
 ∇ glWindowPos2fMESA (x y)
   :If 0=⎕NC'glWindowPos2fMESA_DLL'
-      'glWindowPos2fMESA_DLL'⎕NA'opengl32|glWindowPos2fMESA F4 F4'
+      'glWindowPos2fMESA_DLL'⎕NA'',getdllname,'|glWindowPos2fMESA F4 F4'
   :EndIf
   {}glWindowPos2fMESA_DLL x y
 ∇
 
 ∇ glWindowPos2fvMESA v
   :If 0=⎕NC'glWindowPos2fvMESA_DLL'
-      'glWindowPos2fvMESA_DLL'⎕NA'opengl32|glWindowPos2fvMESA <F4[2]'
+      'glWindowPos2fvMESA_DLL'⎕NA'',getdllname,'|glWindowPos2fvMESA <F4[2]'
   :EndIf
   {}glWindowPos2fvMESA_DLL v
 ∇
 
 ∇ glWindowPos2iMESA (x y)
   :If 0=⎕NC'glWindowPos2iMESA_DLL'
-      'glWindowPos2iMESA_DLL'⎕NA'opengl32|glWindowPos2iMESA I4 I4'
+      'glWindowPos2iMESA_DLL'⎕NA'',getdllname,'|glWindowPos2iMESA I4 I4'
   :EndIf
   {}glWindowPos2iMESA_DLL x y
 ∇
 
 ∇ glWindowPos2ivMESA v
   :If 0=⎕NC'glWindowPos2ivMESA_DLL'
-      'glWindowPos2ivMESA_DLL'⎕NA'opengl32|glWindowPos2ivMESA <I4[2]'
+      'glWindowPos2ivMESA_DLL'⎕NA'',getdllname,'|glWindowPos2ivMESA <I4[2]'
   :EndIf
   {}glWindowPos2ivMESA_DLL v
 ∇
 
 ∇ glWindowPos2sMESA (x y)
   :If 0=⎕NC'glWindowPos2sMESA_DLL'
-      'glWindowPos2sMESA_DLL'⎕NA'opengl32|glWindowPos2sMESA I2 I2'
+      'glWindowPos2sMESA_DLL'⎕NA'',getdllname,'|glWindowPos2sMESA I2 I2'
   :EndIf
   {}glWindowPos2sMESA_DLL x y
 ∇
 
 ∇ glWindowPos2svMESA v
   :If 0=⎕NC'glWindowPos2svMESA_DLL'
-      'glWindowPos2svMESA_DLL'⎕NA'opengl32|glWindowPos2svMESA <I2[2]'
+      'glWindowPos2svMESA_DLL'⎕NA'',getdllname,'|glWindowPos2svMESA <I2[2]'
   :EndIf
   {}glWindowPos2svMESA_DLL v
 ∇
 
 ∇ glWindowPos3dMESA (x y z)
   :If 0=⎕NC'glWindowPos3dMESA_DLL'
-      'glWindowPos3dMESA_DLL'⎕NA'opengl32|glWindowPos3dMESA F8 F8 F8'
+      'glWindowPos3dMESA_DLL'⎕NA'',getdllname,'|glWindowPos3dMESA F8 F8 F8'
   :EndIf
   {}glWindowPos3dMESA_DLL x y z
 ∇
 
 ∇ glWindowPos3dvMESA v
   :If 0=⎕NC'glWindowPos3dvMESA_DLL'
-      'glWindowPos3dvMESA_DLL'⎕NA'opengl32|glWindowPos3dvMESA <F8[3]'
+      'glWindowPos3dvMESA_DLL'⎕NA'',getdllname,'|glWindowPos3dvMESA <F8[3]'
   :EndIf
   {}glWindowPos3dvMESA_DLL v
 ∇
 
 ∇ glWindowPos3fMESA (x y z)
   :If 0=⎕NC'glWindowPos3fMESA_DLL'
-      'glWindowPos3fMESA_DLL'⎕NA'opengl32|glWindowPos3fMESA F4 F4 F4'
+      'glWindowPos3fMESA_DLL'⎕NA'',getdllname,'|glWindowPos3fMESA F4 F4 F4'
   :EndIf
   {}glWindowPos3fMESA_DLL x y z
 ∇
 
 ∇ glWindowPos3fvMESA v
   :If 0=⎕NC'glWindowPos3fvMESA_DLL'
-      'glWindowPos3fvMESA_DLL'⎕NA'opengl32|glWindowPos3fvMESA <F4[3]'
+      'glWindowPos3fvMESA_DLL'⎕NA'',getdllname,'|glWindowPos3fvMESA <F4[3]'
   :EndIf
   {}glWindowPos3fvMESA_DLL v
 ∇
 
 ∇ glWindowPos3iMESA (x y z)
   :If 0=⎕NC'glWindowPos3iMESA_DLL'
-      'glWindowPos3iMESA_DLL'⎕NA'opengl32|glWindowPos3iMESA I4 I4 I4'
+      'glWindowPos3iMESA_DLL'⎕NA'',getdllname,'|glWindowPos3iMESA I4 I4 I4'
   :EndIf
   {}glWindowPos3iMESA_DLL x y z
 ∇
 
 ∇ glWindowPos3ivMESA v
   :If 0=⎕NC'glWindowPos3ivMESA_DLL'
-      'glWindowPos3ivMESA_DLL'⎕NA'opengl32|glWindowPos3ivMESA <I4[3]'
+      'glWindowPos3ivMESA_DLL'⎕NA'',getdllname,'|glWindowPos3ivMESA <I4[3]'
   :EndIf
   {}glWindowPos3ivMESA_DLL v
 ∇
 
 ∇ glWindowPos3sMESA (x y z)
   :If 0=⎕NC'glWindowPos3sMESA_DLL'
-      'glWindowPos3sMESA_DLL'⎕NA'opengl32|glWindowPos3sMESA I2 I2 I2'
+      'glWindowPos3sMESA_DLL'⎕NA'',getdllname,'|glWindowPos3sMESA I2 I2 I2'
   :EndIf
   {}glWindowPos3sMESA_DLL x y z
 ∇
 
 ∇ glWindowPos3svMESA v
   :If 0=⎕NC'glWindowPos3svMESA_DLL'
-      'glWindowPos3svMESA_DLL'⎕NA'opengl32|glWindowPos3svMESA <I2[3]'
+      'glWindowPos3svMESA_DLL'⎕NA'',getdllname,'|glWindowPos3svMESA <I2[3]'
   :EndIf
   {}glWindowPos3svMESA_DLL v
 ∇
 
 ∇ glWindowPos4dMESA (x y z w)
   :If 0=⎕NC'glWindowPos4dMESA_DLL'
-      'glWindowPos4dMESA_DLL'⎕NA'opengl32|glWindowPos4dMESA F8 F8 F8 F8'
+      'glWindowPos4dMESA_DLL'⎕NA'',getdllname,'|glWindowPos4dMESA F8 F8 F8 F8'
   :EndIf
   {}glWindowPos4dMESA_DLL x y z w
 ∇
 
 ∇ glWindowPos4dvMESA v
   :If 0=⎕NC'glWindowPos4dvMESA_DLL'
-      'glWindowPos4dvMESA_DLL'⎕NA'opengl32|glWindowPos4dvMESA <F8[4]'
+      'glWindowPos4dvMESA_DLL'⎕NA'',getdllname,'|glWindowPos4dvMESA <F8[4]'
   :EndIf
   {}glWindowPos4dvMESA_DLL v
 ∇
 
 ∇ glWindowPos4fMESA (x y z w)
   :If 0=⎕NC'glWindowPos4fMESA_DLL'
-      'glWindowPos4fMESA_DLL'⎕NA'opengl32|glWindowPos4fMESA F4 F4 F4 F4'
+      'glWindowPos4fMESA_DLL'⎕NA'',getdllname,'|glWindowPos4fMESA F4 F4 F4 F4'
   :EndIf
   {}glWindowPos4fMESA_DLL x y z w
 ∇
 
 ∇ glWindowPos4fvMESA v
   :If 0=⎕NC'glWindowPos4fvMESA_DLL'
-      'glWindowPos4fvMESA_DLL'⎕NA'opengl32|glWindowPos4fvMESA <F4[4]'
+      'glWindowPos4fvMESA_DLL'⎕NA'',getdllname,'|glWindowPos4fvMESA <F4[4]'
   :EndIf
   {}glWindowPos4fvMESA_DLL v
 ∇
 
 ∇ glWindowPos4iMESA (x y z w)
   :If 0=⎕NC'glWindowPos4iMESA_DLL'
-      'glWindowPos4iMESA_DLL'⎕NA'opengl32|glWindowPos4iMESA I4 I4 I4 I4'
+      'glWindowPos4iMESA_DLL'⎕NA'',getdllname,'|glWindowPos4iMESA I4 I4 I4 I4'
   :EndIf
   {}glWindowPos4iMESA_DLL x y z w
 ∇
 
 ∇ glWindowPos4ivMESA v
   :If 0=⎕NC'glWindowPos4ivMESA_DLL'
-      'glWindowPos4ivMESA_DLL'⎕NA'opengl32|glWindowPos4ivMESA <I4[4]'
+      'glWindowPos4ivMESA_DLL'⎕NA'',getdllname,'|glWindowPos4ivMESA <I4[4]'
   :EndIf
   {}glWindowPos4ivMESA_DLL v
 ∇
 
 ∇ glWindowPos4sMESA (x y z w)
   :If 0=⎕NC'glWindowPos4sMESA_DLL'
-      'glWindowPos4sMESA_DLL'⎕NA'opengl32|glWindowPos4sMESA I2 I2 I2 I2'
+      'glWindowPos4sMESA_DLL'⎕NA'',getdllname,'|glWindowPos4sMESA I2 I2 I2 I2'
   :EndIf
   {}glWindowPos4sMESA_DLL x y z w
 ∇
 
 ∇ glWindowPos4svMESA v
   :If 0=⎕NC'glWindowPos4svMESA_DLL'
-      'glWindowPos4svMESA_DLL'⎕NA'opengl32|glWindowPos4svMESA <I2[4]'
+      'glWindowPos4svMESA_DLL'⎕NA'',getdllname,'|glWindowPos4svMESA <I2[4]'
   :EndIf
   {}glWindowPos4svMESA_DLL v
 ∇
 
 ∇ glMultiModeDrawArraysIBM (mode first count primcount modestride)
   :If 0=⎕NC'glMultiModeDrawArraysIBM_DLL'
-      'glMultiModeDrawArraysIBM_DLL'⎕NA'opengl32|glMultiModeDrawArraysIBM <U4[] <I4[] <I4[] I4 I4'
+      'glMultiModeDrawArraysIBM_DLL'⎕NA'',getdllname,'|glMultiModeDrawArraysIBM <U4[] <I4[] <I4[] I4 I4'
   :EndIf
   {}glMultiModeDrawArraysIBM_DLL mode first count primcount modestride
 ∇
@@ -17370,28 +17378,28 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTbufferMask3DFX mask
   :If 0=⎕NC'glTbufferMask3DFX_DLL'
-      'glTbufferMask3DFX_DLL'⎕NA'opengl32|glTbufferMask3DFX U4'
+      'glTbufferMask3DFX_DLL'⎕NA'',getdllname,'|glTbufferMask3DFX U4'
   :EndIf
   {}glTbufferMask3DFX_DLL mask
 ∇
 
 ∇ glSampleMaskEXT (value invert)
   :If 0=⎕NC'glSampleMaskEXT_DLL'
-      'glSampleMaskEXT_DLL'⎕NA'opengl32|glSampleMaskEXT F4 U1'
+      'glSampleMaskEXT_DLL'⎕NA'',getdllname,'|glSampleMaskEXT F4 U1'
   :EndIf
   {}glSampleMaskEXT_DLL value invert
 ∇
 
 ∇ glSamplePatternEXT pattern
   :If 0=⎕NC'glSamplePatternEXT_DLL'
-      'glSamplePatternEXT_DLL'⎕NA'opengl32|glSamplePatternEXT U4'
+      'glSamplePatternEXT_DLL'⎕NA'',getdllname,'|glSamplePatternEXT U4'
   :EndIf
   {}glSamplePatternEXT_DLL pattern
 ∇
 
 ∇ glTextureColorMaskSGIS (red green blue alpha)
   :If 0=⎕NC'glTextureColorMaskSGIS_DLL'
-      'glTextureColorMaskSGIS_DLL'⎕NA'opengl32|glTextureColorMaskSGIS U1 U1 U1 U1'
+      'glTextureColorMaskSGIS_DLL'⎕NA'',getdllname,'|glTextureColorMaskSGIS U1 U1 U1 U1'
   :EndIf
   {}glTextureColorMaskSGIS_DLL red green blue alpha
 ∇
@@ -17405,49 +17413,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDeleteFencesNV (n fences)
   :If 0=⎕NC'glDeleteFencesNV_DLL'
-      'glDeleteFencesNV_DLL'⎕NA'opengl32|glDeleteFencesNV I4 <U4[]'
+      'glDeleteFencesNV_DLL'⎕NA'',getdllname,'|glDeleteFencesNV I4 <U4[]'
   :EndIf
   {}glDeleteFencesNV_DLL n fences
 ∇
 
 ∇ r←glGenFencesNV (n fences)
   :If 0=⎕NC'glGenFencesNV_DLL'
-      'glGenFencesNV_DLL'⎕NA'opengl32|glGenFencesNV I4 >U4[]'
+      'glGenFencesNV_DLL'⎕NA'',getdllname,'|glGenFencesNV I4 >U4[]'
   :EndIf
   r←glGenFencesNV_DLL n fences
 ∇
 
 ∇ r←glIsFenceNV fence
   :If 0=⎕NC'glIsFenceNV_DLL'
-      'glIsFenceNV_DLL'⎕NA'U1 opengl32|glIsFenceNV U4'
+      'glIsFenceNV_DLL'⎕NA'U1 ',getdllname,'|glIsFenceNV U4'
   :EndIf
   r←glIsFenceNV_DLL fence
 ∇
 
 ∇ r←glTestFenceNV fence
   :If 0=⎕NC'glTestFenceNV_DLL'
-      'glTestFenceNV_DLL'⎕NA'U1 opengl32|glTestFenceNV U4'
+      'glTestFenceNV_DLL'⎕NA'U1 ',getdllname,'|glTestFenceNV U4'
   :EndIf
   r←glTestFenceNV_DLL fence
 ∇
 
 ∇ r←glGetFenceivNV (fence pname params)
   :If 0=⎕NC'glGetFenceivNV_DLL'
-      'glGetFenceivNV_DLL'⎕NA'opengl32|glGetFenceivNV U4 U4 >I4[]'
+      'glGetFenceivNV_DLL'⎕NA'',getdllname,'|glGetFenceivNV U4 U4 >I4[]'
   :EndIf
   r←glGetFenceivNV_DLL fence pname params
 ∇
 
 ∇ glFinishFenceNV fence
   :If 0=⎕NC'glFinishFenceNV_DLL'
-      'glFinishFenceNV_DLL'⎕NA'opengl32|glFinishFenceNV U4'
+      'glFinishFenceNV_DLL'⎕NA'',getdllname,'|glFinishFenceNV U4'
   :EndIf
   {}glFinishFenceNV_DLL fence
 ∇
 
 ∇ glSetFenceNV (fence condition)
   :If 0=⎕NC'glSetFenceNV_DLL'
-      'glSetFenceNV_DLL'⎕NA'opengl32|glSetFenceNV U4 U4'
+      'glSetFenceNV_DLL'⎕NA'',getdllname,'|glSetFenceNV U4 U4'
   :EndIf
   {}glSetFenceNV_DLL fence condition
 ∇
@@ -17461,14 +17469,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glMapParameterivNV (target pname params)
   :If 0=⎕NC'glMapParameterivNV_DLL'
-      'glMapParameterivNV_DLL'⎕NA'opengl32|glMapParameterivNV U4 U4 <I4[]'
+      'glMapParameterivNV_DLL'⎕NA'',getdllname,'|glMapParameterivNV U4 U4 <I4[]'
   :EndIf
   {}glMapParameterivNV_DLL target pname params
 ∇
 
 ∇ glMapParameterfvNV (target pname params)
   :If 0=⎕NC'glMapParameterfvNV_DLL'
-      'glMapParameterfvNV_DLL'⎕NA'opengl32|glMapParameterfvNV U4 U4 <F4[]'
+      'glMapParameterfvNV_DLL'⎕NA'',getdllname,'|glMapParameterfvNV U4 U4 <F4[]'
   :EndIf
   {}glMapParameterfvNV_DLL target pname params
 ∇
@@ -17482,140 +17490,140 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetMapParameterivNV (target pname params)
   :If 0=⎕NC'glGetMapParameterivNV_DLL'
-      'glGetMapParameterivNV_DLL'⎕NA'opengl32|glGetMapParameterivNV U4 U4 >I4[]'
+      'glGetMapParameterivNV_DLL'⎕NA'',getdllname,'|glGetMapParameterivNV U4 U4 >I4[]'
   :EndIf
   r←glGetMapParameterivNV_DLL target pname params
 ∇
 
 ∇ r←glGetMapParameterfvNV (target pname params)
   :If 0=⎕NC'glGetMapParameterfvNV_DLL'
-      'glGetMapParameterfvNV_DLL'⎕NA'opengl32|glGetMapParameterfvNV U4 U4 >F4[]'
+      'glGetMapParameterfvNV_DLL'⎕NA'',getdllname,'|glGetMapParameterfvNV U4 U4 >F4[]'
   :EndIf
   r←glGetMapParameterfvNV_DLL target pname params
 ∇
 
 ∇ r←glGetMapAttribParameterivNV (target index pname params)
   :If 0=⎕NC'glGetMapAttribParameterivNV_DLL'
-      'glGetMapAttribParameterivNV_DLL'⎕NA'opengl32|glGetMapAttribParameterivNV U4 U4 U4 >I4[]'
+      'glGetMapAttribParameterivNV_DLL'⎕NA'',getdllname,'|glGetMapAttribParameterivNV U4 U4 U4 >I4[]'
   :EndIf
   r←glGetMapAttribParameterivNV_DLL target index pname params
 ∇
 
 ∇ r←glGetMapAttribParameterfvNV (target index pname params)
   :If 0=⎕NC'glGetMapAttribParameterfvNV_DLL'
-      'glGetMapAttribParameterfvNV_DLL'⎕NA'opengl32|glGetMapAttribParameterfvNV U4 U4 U4 >F4[]'
+      'glGetMapAttribParameterfvNV_DLL'⎕NA'',getdllname,'|glGetMapAttribParameterfvNV U4 U4 U4 >F4[]'
   :EndIf
   r←glGetMapAttribParameterfvNV_DLL target index pname params
 ∇
 
 ∇ glEvalMapsNV (target mode)
   :If 0=⎕NC'glEvalMapsNV_DLL'
-      'glEvalMapsNV_DLL'⎕NA'opengl32|glEvalMapsNV U4 U4'
+      'glEvalMapsNV_DLL'⎕NA'',getdllname,'|glEvalMapsNV U4 U4'
   :EndIf
   {}glEvalMapsNV_DLL target mode
 ∇
 
 ∇ glCombinerStageParameterfvNV (stage pname params)
   :If 0=⎕NC'glCombinerStageParameterfvNV_DLL'
-      'glCombinerStageParameterfvNV_DLL'⎕NA'opengl32|glCombinerStageParameterfvNV U4 U4 <F4[]'
+      'glCombinerStageParameterfvNV_DLL'⎕NA'',getdllname,'|glCombinerStageParameterfvNV U4 U4 <F4[]'
   :EndIf
   {}glCombinerStageParameterfvNV_DLL stage pname params
 ∇
 
 ∇ r←glGetCombinerStageParameterfvNV (stage pname params)
   :If 0=⎕NC'glGetCombinerStageParameterfvNV_DLL'
-      'glGetCombinerStageParameterfvNV_DLL'⎕NA'opengl32|glGetCombinerStageParameterfvNV U4 U4 >F4[]'
+      'glGetCombinerStageParameterfvNV_DLL'⎕NA'',getdllname,'|glGetCombinerStageParameterfvNV U4 U4 >F4[]'
   :EndIf
   r←glGetCombinerStageParameterfvNV_DLL stage pname params
 ∇
 
 ∇ r←glAreProgramsResidentNV (n programs residences)
   :If 0=⎕NC'glAreProgramsResidentNV_DLL'
-      'glAreProgramsResidentNV_DLL'⎕NA'U1 opengl32|glAreProgramsResidentNV I4 <U4[] >U1[]'
+      'glAreProgramsResidentNV_DLL'⎕NA'U1 ',getdllname,'|glAreProgramsResidentNV I4 <U4[] >U1[]'
   :EndIf
   r←glAreProgramsResidentNV_DLL n programs residences
 ∇
 
 ∇ glBindProgramNV (target id)
   :If 0=⎕NC'glBindProgramNV_DLL'
-      'glBindProgramNV_DLL'⎕NA'opengl32|glBindProgramNV U4 U4'
+      'glBindProgramNV_DLL'⎕NA'',getdllname,'|glBindProgramNV U4 U4'
   :EndIf
   {}glBindProgramNV_DLL target id
 ∇
 
 ∇ glDeleteProgramsNV (n programs)
   :If 0=⎕NC'glDeleteProgramsNV_DLL'
-      'glDeleteProgramsNV_DLL'⎕NA'opengl32|glDeleteProgramsNV I4 <U4[]'
+      'glDeleteProgramsNV_DLL'⎕NA'',getdllname,'|glDeleteProgramsNV I4 <U4[]'
   :EndIf
   {}glDeleteProgramsNV_DLL n programs
 ∇
 
 ∇ glExecuteProgramNV (target id params)
   :If 0=⎕NC'glExecuteProgramNV_DLL'
-      'glExecuteProgramNV_DLL'⎕NA'opengl32|glExecuteProgramNV U4 U4 <F4[4]'
+      'glExecuteProgramNV_DLL'⎕NA'',getdllname,'|glExecuteProgramNV U4 U4 <F4[4]'
   :EndIf
   {}glExecuteProgramNV_DLL target id params
 ∇
 
 ∇ r←glGenProgramsNV (n programs)
   :If 0=⎕NC'glGenProgramsNV_DLL'
-      'glGenProgramsNV_DLL'⎕NA'opengl32|glGenProgramsNV I4 >U4[]'
+      'glGenProgramsNV_DLL'⎕NA'',getdllname,'|glGenProgramsNV I4 >U4[]'
   :EndIf
   r←glGenProgramsNV_DLL n programs
 ∇
 
 ∇ r←glGetProgramParameterdvNV (target index pname)
   :If 0=⎕NC'glGetProgramParameterdvNV_DLL'
-      'glGetProgramParameterdvNV_DLL'⎕NA'opengl32|glGetProgramParameterdvNV U4 U4 U4 >F8[4]'
+      'glGetProgramParameterdvNV_DLL'⎕NA'',getdllname,'|glGetProgramParameterdvNV U4 U4 U4 >F8[4]'
   :EndIf
   r←glGetProgramParameterdvNV_DLL target index pname 4
 ∇
 
 ∇ r←glGetProgramParameterfvNV (target index pname)
   :If 0=⎕NC'glGetProgramParameterfvNV_DLL'
-      'glGetProgramParameterfvNV_DLL'⎕NA'opengl32|glGetProgramParameterfvNV U4 U4 U4 >F4[4]'
+      'glGetProgramParameterfvNV_DLL'⎕NA'',getdllname,'|glGetProgramParameterfvNV U4 U4 U4 >F4[4]'
   :EndIf
   r←glGetProgramParameterfvNV_DLL target index pname 4
 ∇
 
 ∇ r←glGetProgramivNV (id pname)
   :If 0=⎕NC'glGetProgramivNV_DLL'
-      'glGetProgramivNV_DLL'⎕NA'opengl32|glGetProgramivNV U4 U4 >I4[4]'
+      'glGetProgramivNV_DLL'⎕NA'',getdllname,'|glGetProgramivNV U4 U4 >I4[4]'
   :EndIf
   r←glGetProgramivNV_DLL id pname 4
 ∇
 
 ∇ r←glGetProgramStringNV (id pname program)
   :If 0=⎕NC'glGetProgramStringNV_DLL'
-      'glGetProgramStringNV_DLL'⎕NA'opengl32|glGetProgramStringNV U4 U4 >U1[]'
+      'glGetProgramStringNV_DLL'⎕NA'',getdllname,'|glGetProgramStringNV U4 U4 >U1[]'
   :EndIf
   r←glGetProgramStringNV_DLL id pname program
 ∇
 
 ∇ r←glGetTrackMatrixivNV (target address pname)
   :If 0=⎕NC'glGetTrackMatrixivNV_DLL'
-      'glGetTrackMatrixivNV_DLL'⎕NA'opengl32|glGetTrackMatrixivNV U4 U4 U4 >I4[1]'
+      'glGetTrackMatrixivNV_DLL'⎕NA'',getdllname,'|glGetTrackMatrixivNV U4 U4 U4 >I4[1]'
   :EndIf
   r←glGetTrackMatrixivNV_DLL target address pname 1
 ∇
 
 ∇ r←glGetVertexAttribdvNV (index pname)
   :If 0=⎕NC'glGetVertexAttribdvNV_DLL'
-      'glGetVertexAttribdvNV_DLL'⎕NA'opengl32|glGetVertexAttribdvNV U4 U4 >F8[1]'
+      'glGetVertexAttribdvNV_DLL'⎕NA'',getdllname,'|glGetVertexAttribdvNV U4 U4 >F8[1]'
   :EndIf
   r←glGetVertexAttribdvNV_DLL index pname 1
 ∇
 
 ∇ r←glGetVertexAttribfvNV (index pname)
   :If 0=⎕NC'glGetVertexAttribfvNV_DLL'
-      'glGetVertexAttribfvNV_DLL'⎕NA'opengl32|glGetVertexAttribfvNV U4 U4 >F4[1]'
+      'glGetVertexAttribfvNV_DLL'⎕NA'',getdllname,'|glGetVertexAttribfvNV U4 U4 >F4[1]'
   :EndIf
   r←glGetVertexAttribfvNV_DLL index pname 1
 ∇
 
 ∇ r←glGetVertexAttribivNV (index pname)
   :If 0=⎕NC'glGetVertexAttribivNV_DLL'
-      'glGetVertexAttribivNV_DLL'⎕NA'opengl32|glGetVertexAttribivNV U4 U4 >I4[1]'
+      'glGetVertexAttribivNV_DLL'⎕NA'',getdllname,'|glGetVertexAttribivNV U4 U4 >I4[1]'
   :EndIf
   r←glGetVertexAttribivNV_DLL index pname 1
 ∇
@@ -17629,70 +17637,70 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glIsProgramNV id
   :If 0=⎕NC'glIsProgramNV_DLL'
-      'glIsProgramNV_DLL'⎕NA'U1 opengl32|glIsProgramNV U4'
+      'glIsProgramNV_DLL'⎕NA'U1 ',getdllname,'|glIsProgramNV U4'
   :EndIf
   r←glIsProgramNV_DLL id
 ∇
 
 ∇ glLoadProgramNV (target id len program)
   :If 0=⎕NC'glLoadProgramNV_DLL'
-      'glLoadProgramNV_DLL'⎕NA'opengl32|glLoadProgramNV U4 U4 I4 <U1[]'
+      'glLoadProgramNV_DLL'⎕NA'',getdllname,'|glLoadProgramNV U4 U4 I4 <U1[]'
   :EndIf
   {}glLoadProgramNV_DLL target id len program
 ∇
 
 ∇ glProgramParameter4dNV (target index x y z w)
   :If 0=⎕NC'glProgramParameter4dNV_DLL'
-      'glProgramParameter4dNV_DLL'⎕NA'opengl32|glProgramParameter4dNV U4 U4 F8 F8 F8 F8'
+      'glProgramParameter4dNV_DLL'⎕NA'',getdllname,'|glProgramParameter4dNV U4 U4 F8 F8 F8 F8'
   :EndIf
   {}glProgramParameter4dNV_DLL target index x y z w
 ∇
 
 ∇ glProgramParameter4dvNV (target index v)
   :If 0=⎕NC'glProgramParameter4dvNV_DLL'
-      'glProgramParameter4dvNV_DLL'⎕NA'opengl32|glProgramParameter4dvNV U4 U4 <F8[4]'
+      'glProgramParameter4dvNV_DLL'⎕NA'',getdllname,'|glProgramParameter4dvNV U4 U4 <F8[4]'
   :EndIf
   {}glProgramParameter4dvNV_DLL target index v
 ∇
 
 ∇ glProgramParameter4fNV (target index x y z w)
   :If 0=⎕NC'glProgramParameter4fNV_DLL'
-      'glProgramParameter4fNV_DLL'⎕NA'opengl32|glProgramParameter4fNV U4 U4 F4 F4 F4 F4'
+      'glProgramParameter4fNV_DLL'⎕NA'',getdllname,'|glProgramParameter4fNV U4 U4 F4 F4 F4 F4'
   :EndIf
   {}glProgramParameter4fNV_DLL target index x y z w
 ∇
 
 ∇ glProgramParameter4fvNV (target index v)
   :If 0=⎕NC'glProgramParameter4fvNV_DLL'
-      'glProgramParameter4fvNV_DLL'⎕NA'opengl32|glProgramParameter4fvNV U4 U4 <F4[4]'
+      'glProgramParameter4fvNV_DLL'⎕NA'',getdllname,'|glProgramParameter4fvNV U4 U4 <F4[4]'
   :EndIf
   {}glProgramParameter4fvNV_DLL target index v
 ∇
 
 ∇ glProgramParameters4dvNV (target index count v)
   :If 0=⎕NC'glProgramParameters4dvNV_DLL'
-      'glProgramParameters4dvNV_DLL'⎕NA'opengl32|glProgramParameters4dvNV U4 U4 I4 <F8[]'
+      'glProgramParameters4dvNV_DLL'⎕NA'',getdllname,'|glProgramParameters4dvNV U4 U4 I4 <F8[]'
   :EndIf
   {}glProgramParameters4dvNV_DLL target index count v
 ∇
 
 ∇ glProgramParameters4fvNV (target index count v)
   :If 0=⎕NC'glProgramParameters4fvNV_DLL'
-      'glProgramParameters4fvNV_DLL'⎕NA'opengl32|glProgramParameters4fvNV U4 U4 I4 <F4[]'
+      'glProgramParameters4fvNV_DLL'⎕NA'',getdllname,'|glProgramParameters4fvNV U4 U4 I4 <F4[]'
   :EndIf
   {}glProgramParameters4fvNV_DLL target index count v
 ∇
 
 ∇ glRequestResidentProgramsNV (n programs)
   :If 0=⎕NC'glRequestResidentProgramsNV_DLL'
-      'glRequestResidentProgramsNV_DLL'⎕NA'opengl32|glRequestResidentProgramsNV I4 <U4[]'
+      'glRequestResidentProgramsNV_DLL'⎕NA'',getdllname,'|glRequestResidentProgramsNV I4 <U4[]'
   :EndIf
   {}glRequestResidentProgramsNV_DLL n programs
 ∇
 
 ∇ glTrackMatrixNV (target address matrix transform)
   :If 0=⎕NC'glTrackMatrixNV_DLL'
-      'glTrackMatrixNV_DLL'⎕NA'opengl32|glTrackMatrixNV U4 U4 U4 U4'
+      'glTrackMatrixNV_DLL'⎕NA'',getdllname,'|glTrackMatrixNV U4 U4 U4 U4'
   :EndIf
   {}glTrackMatrixNV_DLL target address matrix transform
 ∇
@@ -17706,413 +17714,413 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexAttrib1dNV (index x)
   :If 0=⎕NC'glVertexAttrib1dNV_DLL'
-      'glVertexAttrib1dNV_DLL'⎕NA'opengl32|glVertexAttrib1dNV U4 F8'
+      'glVertexAttrib1dNV_DLL'⎕NA'',getdllname,'|glVertexAttrib1dNV U4 F8'
   :EndIf
   {}glVertexAttrib1dNV_DLL index x
 ∇
 
 ∇ glVertexAttrib1dvNV (index v)
   :If 0=⎕NC'glVertexAttrib1dvNV_DLL'
-      'glVertexAttrib1dvNV_DLL'⎕NA'opengl32|glVertexAttrib1dvNV U4 <F8[1]'
+      'glVertexAttrib1dvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib1dvNV U4 <F8[1]'
   :EndIf
   {}glVertexAttrib1dvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib1fNV (index x)
   :If 0=⎕NC'glVertexAttrib1fNV_DLL'
-      'glVertexAttrib1fNV_DLL'⎕NA'opengl32|glVertexAttrib1fNV U4 F4'
+      'glVertexAttrib1fNV_DLL'⎕NA'',getdllname,'|glVertexAttrib1fNV U4 F4'
   :EndIf
   {}glVertexAttrib1fNV_DLL index x
 ∇
 
 ∇ glVertexAttrib1fvNV (index v)
   :If 0=⎕NC'glVertexAttrib1fvNV_DLL'
-      'glVertexAttrib1fvNV_DLL'⎕NA'opengl32|glVertexAttrib1fvNV U4 <F4[1]'
+      'glVertexAttrib1fvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib1fvNV U4 <F4[1]'
   :EndIf
   {}glVertexAttrib1fvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib1sNV (index x)
   :If 0=⎕NC'glVertexAttrib1sNV_DLL'
-      'glVertexAttrib1sNV_DLL'⎕NA'opengl32|glVertexAttrib1sNV U4 I2'
+      'glVertexAttrib1sNV_DLL'⎕NA'',getdllname,'|glVertexAttrib1sNV U4 I2'
   :EndIf
   {}glVertexAttrib1sNV_DLL index x
 ∇
 
 ∇ glVertexAttrib1svNV (index v)
   :If 0=⎕NC'glVertexAttrib1svNV_DLL'
-      'glVertexAttrib1svNV_DLL'⎕NA'opengl32|glVertexAttrib1svNV U4 <I2[1]'
+      'glVertexAttrib1svNV_DLL'⎕NA'',getdllname,'|glVertexAttrib1svNV U4 <I2[1]'
   :EndIf
   {}glVertexAttrib1svNV_DLL index v
 ∇
 
 ∇ glVertexAttrib2dNV (index x y)
   :If 0=⎕NC'glVertexAttrib2dNV_DLL'
-      'glVertexAttrib2dNV_DLL'⎕NA'opengl32|glVertexAttrib2dNV U4 F8 F8'
+      'glVertexAttrib2dNV_DLL'⎕NA'',getdllname,'|glVertexAttrib2dNV U4 F8 F8'
   :EndIf
   {}glVertexAttrib2dNV_DLL index x y
 ∇
 
 ∇ glVertexAttrib2dvNV (index v)
   :If 0=⎕NC'glVertexAttrib2dvNV_DLL'
-      'glVertexAttrib2dvNV_DLL'⎕NA'opengl32|glVertexAttrib2dvNV U4 <F8[2]'
+      'glVertexAttrib2dvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib2dvNV U4 <F8[2]'
   :EndIf
   {}glVertexAttrib2dvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib2fNV (index x y)
   :If 0=⎕NC'glVertexAttrib2fNV_DLL'
-      'glVertexAttrib2fNV_DLL'⎕NA'opengl32|glVertexAttrib2fNV U4 F4 F4'
+      'glVertexAttrib2fNV_DLL'⎕NA'',getdllname,'|glVertexAttrib2fNV U4 F4 F4'
   :EndIf
   {}glVertexAttrib2fNV_DLL index x y
 ∇
 
 ∇ glVertexAttrib2fvNV (index v)
   :If 0=⎕NC'glVertexAttrib2fvNV_DLL'
-      'glVertexAttrib2fvNV_DLL'⎕NA'opengl32|glVertexAttrib2fvNV U4 <F4[2]'
+      'glVertexAttrib2fvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib2fvNV U4 <F4[2]'
   :EndIf
   {}glVertexAttrib2fvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib2sNV (index x y)
   :If 0=⎕NC'glVertexAttrib2sNV_DLL'
-      'glVertexAttrib2sNV_DLL'⎕NA'opengl32|glVertexAttrib2sNV U4 I2 I2'
+      'glVertexAttrib2sNV_DLL'⎕NA'',getdllname,'|glVertexAttrib2sNV U4 I2 I2'
   :EndIf
   {}glVertexAttrib2sNV_DLL index x y
 ∇
 
 ∇ glVertexAttrib2svNV (index v)
   :If 0=⎕NC'glVertexAttrib2svNV_DLL'
-      'glVertexAttrib2svNV_DLL'⎕NA'opengl32|glVertexAttrib2svNV U4 <I2[2]'
+      'glVertexAttrib2svNV_DLL'⎕NA'',getdllname,'|glVertexAttrib2svNV U4 <I2[2]'
   :EndIf
   {}glVertexAttrib2svNV_DLL index v
 ∇
 
 ∇ glVertexAttrib3dNV (index x y z)
   :If 0=⎕NC'glVertexAttrib3dNV_DLL'
-      'glVertexAttrib3dNV_DLL'⎕NA'opengl32|glVertexAttrib3dNV U4 F8 F8 F8'
+      'glVertexAttrib3dNV_DLL'⎕NA'',getdllname,'|glVertexAttrib3dNV U4 F8 F8 F8'
   :EndIf
   {}glVertexAttrib3dNV_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3dvNV (index v)
   :If 0=⎕NC'glVertexAttrib3dvNV_DLL'
-      'glVertexAttrib3dvNV_DLL'⎕NA'opengl32|glVertexAttrib3dvNV U4 <F8[3]'
+      'glVertexAttrib3dvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib3dvNV U4 <F8[3]'
   :EndIf
   {}glVertexAttrib3dvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib3fNV (index x y z)
   :If 0=⎕NC'glVertexAttrib3fNV_DLL'
-      'glVertexAttrib3fNV_DLL'⎕NA'opengl32|glVertexAttrib3fNV U4 F4 F4 F4'
+      'glVertexAttrib3fNV_DLL'⎕NA'',getdllname,'|glVertexAttrib3fNV U4 F4 F4 F4'
   :EndIf
   {}glVertexAttrib3fNV_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3fvNV (index v)
   :If 0=⎕NC'glVertexAttrib3fvNV_DLL'
-      'glVertexAttrib3fvNV_DLL'⎕NA'opengl32|glVertexAttrib3fvNV U4 <F4[3]'
+      'glVertexAttrib3fvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib3fvNV U4 <F4[3]'
   :EndIf
   {}glVertexAttrib3fvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib3sNV (index x y z)
   :If 0=⎕NC'glVertexAttrib3sNV_DLL'
-      'glVertexAttrib3sNV_DLL'⎕NA'opengl32|glVertexAttrib3sNV U4 I2 I2 I2'
+      'glVertexAttrib3sNV_DLL'⎕NA'',getdllname,'|glVertexAttrib3sNV U4 I2 I2 I2'
   :EndIf
   {}glVertexAttrib3sNV_DLL index x y z
 ∇
 
 ∇ glVertexAttrib3svNV (index v)
   :If 0=⎕NC'glVertexAttrib3svNV_DLL'
-      'glVertexAttrib3svNV_DLL'⎕NA'opengl32|glVertexAttrib3svNV U4 <I2[3]'
+      'glVertexAttrib3svNV_DLL'⎕NA'',getdllname,'|glVertexAttrib3svNV U4 <I2[3]'
   :EndIf
   {}glVertexAttrib3svNV_DLL index v
 ∇
 
 ∇ glVertexAttrib4dNV (index x y z w)
   :If 0=⎕NC'glVertexAttrib4dNV_DLL'
-      'glVertexAttrib4dNV_DLL'⎕NA'opengl32|glVertexAttrib4dNV U4 F8 F8 F8 F8'
+      'glVertexAttrib4dNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4dNV U4 F8 F8 F8 F8'
   :EndIf
   {}glVertexAttrib4dNV_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4dvNV (index v)
   :If 0=⎕NC'glVertexAttrib4dvNV_DLL'
-      'glVertexAttrib4dvNV_DLL'⎕NA'opengl32|glVertexAttrib4dvNV U4 <F8[4]'
+      'glVertexAttrib4dvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4dvNV U4 <F8[4]'
   :EndIf
   {}glVertexAttrib4dvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib4fNV (index x y z w)
   :If 0=⎕NC'glVertexAttrib4fNV_DLL'
-      'glVertexAttrib4fNV_DLL'⎕NA'opengl32|glVertexAttrib4fNV U4 F4 F4 F4 F4'
+      'glVertexAttrib4fNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4fNV U4 F4 F4 F4 F4'
   :EndIf
   {}glVertexAttrib4fNV_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4fvNV (index v)
   :If 0=⎕NC'glVertexAttrib4fvNV_DLL'
-      'glVertexAttrib4fvNV_DLL'⎕NA'opengl32|glVertexAttrib4fvNV U4 <F4[4]'
+      'glVertexAttrib4fvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4fvNV U4 <F4[4]'
   :EndIf
   {}glVertexAttrib4fvNV_DLL index v
 ∇
 
 ∇ glVertexAttrib4sNV (index x y z w)
   :If 0=⎕NC'glVertexAttrib4sNV_DLL'
-      'glVertexAttrib4sNV_DLL'⎕NA'opengl32|glVertexAttrib4sNV U4 I2 I2 I2 I2'
+      'glVertexAttrib4sNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4sNV U4 I2 I2 I2 I2'
   :EndIf
   {}glVertexAttrib4sNV_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4svNV (index v)
   :If 0=⎕NC'glVertexAttrib4svNV_DLL'
-      'glVertexAttrib4svNV_DLL'⎕NA'opengl32|glVertexAttrib4svNV U4 <I2[4]'
+      'glVertexAttrib4svNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4svNV U4 <I2[4]'
   :EndIf
   {}glVertexAttrib4svNV_DLL index v
 ∇
 
 ∇ glVertexAttrib4ubNV (index x y z w)
   :If 0=⎕NC'glVertexAttrib4ubNV_DLL'
-      'glVertexAttrib4ubNV_DLL'⎕NA'opengl32|glVertexAttrib4ubNV U4 U1 U1 U1 U1'
+      'glVertexAttrib4ubNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4ubNV U4 U1 U1 U1 U1'
   :EndIf
   {}glVertexAttrib4ubNV_DLL index x y z w
 ∇
 
 ∇ glVertexAttrib4ubvNV (index v)
   :If 0=⎕NC'glVertexAttrib4ubvNV_DLL'
-      'glVertexAttrib4ubvNV_DLL'⎕NA'opengl32|glVertexAttrib4ubvNV U4 <U1[4]'
+      'glVertexAttrib4ubvNV_DLL'⎕NA'',getdllname,'|glVertexAttrib4ubvNV U4 <U1[4]'
   :EndIf
   {}glVertexAttrib4ubvNV_DLL index v
 ∇
 
 ∇ glVertexAttribs1dvNV (index count v)
   :If 0=⎕NC'glVertexAttribs1dvNV_DLL'
-      'glVertexAttribs1dvNV_DLL'⎕NA'opengl32|glVertexAttribs1dvNV U4 I4 <F8[]'
+      'glVertexAttribs1dvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs1dvNV U4 I4 <F8[]'
   :EndIf
   {}glVertexAttribs1dvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs1fvNV (index count v)
   :If 0=⎕NC'glVertexAttribs1fvNV_DLL'
-      'glVertexAttribs1fvNV_DLL'⎕NA'opengl32|glVertexAttribs1fvNV U4 I4 <F4[]'
+      'glVertexAttribs1fvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs1fvNV U4 I4 <F4[]'
   :EndIf
   {}glVertexAttribs1fvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs1svNV (index count v)
   :If 0=⎕NC'glVertexAttribs1svNV_DLL'
-      'glVertexAttribs1svNV_DLL'⎕NA'opengl32|glVertexAttribs1svNV U4 I4 <I2[]'
+      'glVertexAttribs1svNV_DLL'⎕NA'',getdllname,'|glVertexAttribs1svNV U4 I4 <I2[]'
   :EndIf
   {}glVertexAttribs1svNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs2dvNV (index count v)
   :If 0=⎕NC'glVertexAttribs2dvNV_DLL'
-      'glVertexAttribs2dvNV_DLL'⎕NA'opengl32|glVertexAttribs2dvNV U4 I4 <F8[]'
+      'glVertexAttribs2dvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs2dvNV U4 I4 <F8[]'
   :EndIf
   {}glVertexAttribs2dvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs2fvNV (index count v)
   :If 0=⎕NC'glVertexAttribs2fvNV_DLL'
-      'glVertexAttribs2fvNV_DLL'⎕NA'opengl32|glVertexAttribs2fvNV U4 I4 <F4[]'
+      'glVertexAttribs2fvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs2fvNV U4 I4 <F4[]'
   :EndIf
   {}glVertexAttribs2fvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs2svNV (index count v)
   :If 0=⎕NC'glVertexAttribs2svNV_DLL'
-      'glVertexAttribs2svNV_DLL'⎕NA'opengl32|glVertexAttribs2svNV U4 I4 <I2[]'
+      'glVertexAttribs2svNV_DLL'⎕NA'',getdllname,'|glVertexAttribs2svNV U4 I4 <I2[]'
   :EndIf
   {}glVertexAttribs2svNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs3dvNV (index count v)
   :If 0=⎕NC'glVertexAttribs3dvNV_DLL'
-      'glVertexAttribs3dvNV_DLL'⎕NA'opengl32|glVertexAttribs3dvNV U4 I4 <F8[]'
+      'glVertexAttribs3dvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs3dvNV U4 I4 <F8[]'
   :EndIf
   {}glVertexAttribs3dvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs3fvNV (index count v)
   :If 0=⎕NC'glVertexAttribs3fvNV_DLL'
-      'glVertexAttribs3fvNV_DLL'⎕NA'opengl32|glVertexAttribs3fvNV U4 I4 <F4[]'
+      'glVertexAttribs3fvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs3fvNV U4 I4 <F4[]'
   :EndIf
   {}glVertexAttribs3fvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs3svNV (index count v)
   :If 0=⎕NC'glVertexAttribs3svNV_DLL'
-      'glVertexAttribs3svNV_DLL'⎕NA'opengl32|glVertexAttribs3svNV U4 I4 <I2[]'
+      'glVertexAttribs3svNV_DLL'⎕NA'',getdllname,'|glVertexAttribs3svNV U4 I4 <I2[]'
   :EndIf
   {}glVertexAttribs3svNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs4dvNV (index count v)
   :If 0=⎕NC'glVertexAttribs4dvNV_DLL'
-      'glVertexAttribs4dvNV_DLL'⎕NA'opengl32|glVertexAttribs4dvNV U4 I4 <F8[]'
+      'glVertexAttribs4dvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs4dvNV U4 I4 <F8[]'
   :EndIf
   {}glVertexAttribs4dvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs4fvNV (index count v)
   :If 0=⎕NC'glVertexAttribs4fvNV_DLL'
-      'glVertexAttribs4fvNV_DLL'⎕NA'opengl32|glVertexAttribs4fvNV U4 I4 <F4[]'
+      'glVertexAttribs4fvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs4fvNV U4 I4 <F4[]'
   :EndIf
   {}glVertexAttribs4fvNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs4svNV (index count v)
   :If 0=⎕NC'glVertexAttribs4svNV_DLL'
-      'glVertexAttribs4svNV_DLL'⎕NA'opengl32|glVertexAttribs4svNV U4 I4 <I2[]'
+      'glVertexAttribs4svNV_DLL'⎕NA'',getdllname,'|glVertexAttribs4svNV U4 I4 <I2[]'
   :EndIf
   {}glVertexAttribs4svNV_DLL index count v
 ∇
 
 ∇ glVertexAttribs4ubvNV (index count v)
   :If 0=⎕NC'glVertexAttribs4ubvNV_DLL'
-      'glVertexAttribs4ubvNV_DLL'⎕NA'opengl32|glVertexAttribs4ubvNV U4 I4 <U1[]'
+      'glVertexAttribs4ubvNV_DLL'⎕NA'',getdllname,'|glVertexAttribs4ubvNV U4 I4 <U1[]'
   :EndIf
   {}glVertexAttribs4ubvNV_DLL index count v
 ∇
 
 ∇ glTexBumpParameterivATI (pname param)
   :If 0=⎕NC'glTexBumpParameterivATI_DLL'
-      'glTexBumpParameterivATI_DLL'⎕NA'opengl32|glTexBumpParameterivATI U4 <I4[]'
+      'glTexBumpParameterivATI_DLL'⎕NA'',getdllname,'|glTexBumpParameterivATI U4 <I4[]'
   :EndIf
   {}glTexBumpParameterivATI_DLL pname param
 ∇
 
 ∇ glTexBumpParameterfvATI (pname param)
   :If 0=⎕NC'glTexBumpParameterfvATI_DLL'
-      'glTexBumpParameterfvATI_DLL'⎕NA'opengl32|glTexBumpParameterfvATI U4 <F4[]'
+      'glTexBumpParameterfvATI_DLL'⎕NA'',getdllname,'|glTexBumpParameterfvATI U4 <F4[]'
   :EndIf
   {}glTexBumpParameterfvATI_DLL pname param
 ∇
 
 ∇ r←glGetTexBumpParameterivATI (pname param)
   :If 0=⎕NC'glGetTexBumpParameterivATI_DLL'
-      'glGetTexBumpParameterivATI_DLL'⎕NA'opengl32|glGetTexBumpParameterivATI U4 >I4[]'
+      'glGetTexBumpParameterivATI_DLL'⎕NA'',getdllname,'|glGetTexBumpParameterivATI U4 >I4[]'
   :EndIf
   r←glGetTexBumpParameterivATI_DLL pname param
 ∇
 
 ∇ r←glGetTexBumpParameterfvATI (pname param)
   :If 0=⎕NC'glGetTexBumpParameterfvATI_DLL'
-      'glGetTexBumpParameterfvATI_DLL'⎕NA'opengl32|glGetTexBumpParameterfvATI U4 >F4[]'
+      'glGetTexBumpParameterfvATI_DLL'⎕NA'',getdllname,'|glGetTexBumpParameterfvATI U4 >F4[]'
   :EndIf
   r←glGetTexBumpParameterfvATI_DLL pname param
 ∇
 
 ∇ r←glGenFragmentShadersATI range
   :If 0=⎕NC'glGenFragmentShadersATI_DLL'
-      'glGenFragmentShadersATI_DLL'⎕NA'U4 opengl32|glGenFragmentShadersATI U4'
+      'glGenFragmentShadersATI_DLL'⎕NA'U4 ',getdllname,'|glGenFragmentShadersATI U4'
   :EndIf
   r←glGenFragmentShadersATI_DLL range
 ∇
 
 ∇ glBindFragmentShaderATI id
   :If 0=⎕NC'glBindFragmentShaderATI_DLL'
-      'glBindFragmentShaderATI_DLL'⎕NA'opengl32|glBindFragmentShaderATI U4'
+      'glBindFragmentShaderATI_DLL'⎕NA'',getdllname,'|glBindFragmentShaderATI U4'
   :EndIf
   {}glBindFragmentShaderATI_DLL id
 ∇
 
 ∇ glDeleteFragmentShaderATI id
   :If 0=⎕NC'glDeleteFragmentShaderATI_DLL'
-      'glDeleteFragmentShaderATI_DLL'⎕NA'opengl32|glDeleteFragmentShaderATI U4'
+      'glDeleteFragmentShaderATI_DLL'⎕NA'',getdllname,'|glDeleteFragmentShaderATI U4'
   :EndIf
   {}glDeleteFragmentShaderATI_DLL id
 ∇
 
 ∇ glBeginFragmentShaderATI
   :If 0=⎕NC'glBeginFragmentShaderATI_DLL'
-      'glBeginFragmentShaderATI_DLL'⎕NA'opengl32|glBeginFragmentShaderATI'
+      'glBeginFragmentShaderATI_DLL'⎕NA'',getdllname,'|glBeginFragmentShaderATI'
   :EndIf
   {}glBeginFragmentShaderATI_DLL
 ∇
 
 ∇ glEndFragmentShaderATI
   :If 0=⎕NC'glEndFragmentShaderATI_DLL'
-      'glEndFragmentShaderATI_DLL'⎕NA'opengl32|glEndFragmentShaderATI'
+      'glEndFragmentShaderATI_DLL'⎕NA'',getdllname,'|glEndFragmentShaderATI'
   :EndIf
   {}glEndFragmentShaderATI_DLL
 ∇
 
 ∇ glPassTexCoordATI (dst coord swizzle)
   :If 0=⎕NC'glPassTexCoordATI_DLL'
-      'glPassTexCoordATI_DLL'⎕NA'opengl32|glPassTexCoordATI U4 U4 U4'
+      'glPassTexCoordATI_DLL'⎕NA'',getdllname,'|glPassTexCoordATI U4 U4 U4'
   :EndIf
   {}glPassTexCoordATI_DLL dst coord swizzle
 ∇
 
 ∇ glSampleMapATI (dst interp swizzle)
   :If 0=⎕NC'glSampleMapATI_DLL'
-      'glSampleMapATI_DLL'⎕NA'opengl32|glSampleMapATI U4 U4 U4'
+      'glSampleMapATI_DLL'⎕NA'',getdllname,'|glSampleMapATI U4 U4 U4'
   :EndIf
   {}glSampleMapATI_DLL dst interp swizzle
 ∇
 
 ∇ glColorFragmentOp1ATI (op dst dstMask dstMod arg1 arg1Rep arg1Mod)
   :If 0=⎕NC'glColorFragmentOp1ATI_DLL'
-      'glColorFragmentOp1ATI_DLL'⎕NA'opengl32|glColorFragmentOp1ATI U4 U4 U4 U4 U4 U4 U4'
+      'glColorFragmentOp1ATI_DLL'⎕NA'',getdllname,'|glColorFragmentOp1ATI U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glColorFragmentOp1ATI_DLL op dst dstMask dstMod arg1 arg1Rep arg1Mod
 ∇
 
 ∇ glColorFragmentOp2ATI (op dst dstMask dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod)
   :If 0=⎕NC'glColorFragmentOp2ATI_DLL'
-      'glColorFragmentOp2ATI_DLL'⎕NA'opengl32|glColorFragmentOp2ATI U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
+      'glColorFragmentOp2ATI_DLL'⎕NA'',getdllname,'|glColorFragmentOp2ATI U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glColorFragmentOp2ATI_DLL op dst dstMask dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod
 ∇
 
 ∇ glColorFragmentOp3ATI (op dst dstMask dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod arg3 arg3Rep arg3Mod)
   :If 0=⎕NC'glColorFragmentOp3ATI_DLL'
-      'glColorFragmentOp3ATI_DLL'⎕NA'opengl32|glColorFragmentOp3ATI U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
+      'glColorFragmentOp3ATI_DLL'⎕NA'',getdllname,'|glColorFragmentOp3ATI U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glColorFragmentOp3ATI_DLL op dst dstMask dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod arg3 arg3Rep arg3Mod
 ∇
 
 ∇ glAlphaFragmentOp1ATI (op dst dstMod arg1 arg1Rep arg1Mod)
   :If 0=⎕NC'glAlphaFragmentOp1ATI_DLL'
-      'glAlphaFragmentOp1ATI_DLL'⎕NA'opengl32|glAlphaFragmentOp1ATI U4 U4 U4 U4 U4 U4'
+      'glAlphaFragmentOp1ATI_DLL'⎕NA'',getdllname,'|glAlphaFragmentOp1ATI U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glAlphaFragmentOp1ATI_DLL op dst dstMod arg1 arg1Rep arg1Mod
 ∇
 
 ∇ glAlphaFragmentOp2ATI (op dst dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod)
   :If 0=⎕NC'glAlphaFragmentOp2ATI_DLL'
-      'glAlphaFragmentOp2ATI_DLL'⎕NA'opengl32|glAlphaFragmentOp2ATI U4 U4 U4 U4 U4 U4 U4 U4 U4'
+      'glAlphaFragmentOp2ATI_DLL'⎕NA'',getdllname,'|glAlphaFragmentOp2ATI U4 U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glAlphaFragmentOp2ATI_DLL op dst dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod
 ∇
 
 ∇ glAlphaFragmentOp3ATI (op dst dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod arg3 arg3Rep arg3Mod)
   :If 0=⎕NC'glAlphaFragmentOp3ATI_DLL'
-      'glAlphaFragmentOp3ATI_DLL'⎕NA'opengl32|glAlphaFragmentOp3ATI U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
+      'glAlphaFragmentOp3ATI_DLL'⎕NA'',getdllname,'|glAlphaFragmentOp3ATI U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glAlphaFragmentOp3ATI_DLL op dst dstMod arg1 arg1Rep arg1Mod arg2 arg2Rep arg2Mod arg3 arg3Rep arg3Mod
 ∇
 
 ∇ glSetFragmentShaderConstantATI (dst value)
   :If 0=⎕NC'glSetFragmentShaderConstantATI_DLL'
-      'glSetFragmentShaderConstantATI_DLL'⎕NA'opengl32|glSetFragmentShaderConstantATI U4 <F4[4]'
+      'glSetFragmentShaderConstantATI_DLL'⎕NA'',getdllname,'|glSetFragmentShaderConstantATI U4 <F4[4]'
   :EndIf
   {}glSetFragmentShaderConstantATI_DLL dst value
 ∇
 
 ∇ glPNTrianglesiATI (pname param)
   :If 0=⎕NC'glPNTrianglesiATI_DLL'
-      'glPNTrianglesiATI_DLL'⎕NA'opengl32|glPNTrianglesiATI U4 I4'
+      'glPNTrianglesiATI_DLL'⎕NA'',getdllname,'|glPNTrianglesiATI U4 I4'
   :EndIf
   {}glPNTrianglesiATI_DLL pname param
 ∇
 
 ∇ glPNTrianglesfATI (pname param)
   :If 0=⎕NC'glPNTrianglesfATI_DLL'
-      'glPNTrianglesfATI_DLL'⎕NA'opengl32|glPNTrianglesfATI U4 F4'
+      'glPNTrianglesfATI_DLL'⎕NA'',getdllname,'|glPNTrianglesfATI U4 F4'
   :EndIf
   {}glPNTrianglesfATI_DLL pname param
 ∇
@@ -18126,7 +18134,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glIsObjectBufferATI buffer
   :If 0=⎕NC'glIsObjectBufferATI_DLL'
-      'glIsObjectBufferATI_DLL'⎕NA'U1 opengl32|glIsObjectBufferATI U4'
+      'glIsObjectBufferATI_DLL'⎕NA'U1 ',getdllname,'|glIsObjectBufferATI U4'
   :EndIf
   r←glIsObjectBufferATI_DLL buffer
 ∇
@@ -18140,154 +18148,154 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetObjectBufferfvATI (buffer pname)
   :If 0=⎕NC'glGetObjectBufferfvATI_DLL'
-      'glGetObjectBufferfvATI_DLL'⎕NA'opengl32|glGetObjectBufferfvATI U4 U4 >F4[1]'
+      'glGetObjectBufferfvATI_DLL'⎕NA'',getdllname,'|glGetObjectBufferfvATI U4 U4 >F4[1]'
   :EndIf
   r←glGetObjectBufferfvATI_DLL buffer pname 1
 ∇
 
 ∇ r←glGetObjectBufferivATI (buffer pname)
   :If 0=⎕NC'glGetObjectBufferivATI_DLL'
-      'glGetObjectBufferivATI_DLL'⎕NA'opengl32|glGetObjectBufferivATI U4 U4 >I4[1]'
+      'glGetObjectBufferivATI_DLL'⎕NA'',getdllname,'|glGetObjectBufferivATI U4 U4 >I4[1]'
   :EndIf
   r←glGetObjectBufferivATI_DLL buffer pname 1
 ∇
 
 ∇ glFreeObjectBufferATI buffer
   :If 0=⎕NC'glFreeObjectBufferATI_DLL'
-      'glFreeObjectBufferATI_DLL'⎕NA'opengl32|glFreeObjectBufferATI U4'
+      'glFreeObjectBufferATI_DLL'⎕NA'',getdllname,'|glFreeObjectBufferATI U4'
   :EndIf
   {}glFreeObjectBufferATI_DLL buffer
 ∇
 
 ∇ glArrayObjectATI (array size type stride buffer offset)
   :If 0=⎕NC'glArrayObjectATI_DLL'
-      'glArrayObjectATI_DLL'⎕NA'opengl32|glArrayObjectATI U4 I4 U4 I4 U4 U4'
+      'glArrayObjectATI_DLL'⎕NA'',getdllname,'|glArrayObjectATI U4 I4 U4 I4 U4 U4'
   :EndIf
   {}glArrayObjectATI_DLL array size type stride buffer offset
 ∇
 
 ∇ r←glGetArrayObjectfvATI (array pname)
   :If 0=⎕NC'glGetArrayObjectfvATI_DLL'
-      'glGetArrayObjectfvATI_DLL'⎕NA'opengl32|glGetArrayObjectfvATI U4 U4 >F4[1]'
+      'glGetArrayObjectfvATI_DLL'⎕NA'',getdllname,'|glGetArrayObjectfvATI U4 U4 >F4[1]'
   :EndIf
   r←glGetArrayObjectfvATI_DLL array pname 1
 ∇
 
 ∇ r←glGetArrayObjectivATI (array pname)
   :If 0=⎕NC'glGetArrayObjectivATI_DLL'
-      'glGetArrayObjectivATI_DLL'⎕NA'opengl32|glGetArrayObjectivATI U4 U4 >I4[1]'
+      'glGetArrayObjectivATI_DLL'⎕NA'',getdllname,'|glGetArrayObjectivATI U4 U4 >I4[1]'
   :EndIf
   r←glGetArrayObjectivATI_DLL array pname 1
 ∇
 
 ∇ glVariantArrayObjectATI (id type stride buffer offset)
   :If 0=⎕NC'glVariantArrayObjectATI_DLL'
-      'glVariantArrayObjectATI_DLL'⎕NA'opengl32|glVariantArrayObjectATI U4 U4 I4 U4 U4'
+      'glVariantArrayObjectATI_DLL'⎕NA'',getdllname,'|glVariantArrayObjectATI U4 U4 I4 U4 U4'
   :EndIf
   {}glVariantArrayObjectATI_DLL id type stride buffer offset
 ∇
 
 ∇ r←glGetVariantArrayObjectfvATI (id pname)
   :If 0=⎕NC'glGetVariantArrayObjectfvATI_DLL'
-      'glGetVariantArrayObjectfvATI_DLL'⎕NA'opengl32|glGetVariantArrayObjectfvATI U4 U4 >F4[1]'
+      'glGetVariantArrayObjectfvATI_DLL'⎕NA'',getdllname,'|glGetVariantArrayObjectfvATI U4 U4 >F4[1]'
   :EndIf
   r←glGetVariantArrayObjectfvATI_DLL id pname 1
 ∇
 
 ∇ r←glGetVariantArrayObjectivATI (id pname)
   :If 0=⎕NC'glGetVariantArrayObjectivATI_DLL'
-      'glGetVariantArrayObjectivATI_DLL'⎕NA'opengl32|glGetVariantArrayObjectivATI U4 U4 >I4[1]'
+      'glGetVariantArrayObjectivATI_DLL'⎕NA'',getdllname,'|glGetVariantArrayObjectivATI U4 U4 >I4[1]'
   :EndIf
   r←glGetVariantArrayObjectivATI_DLL id pname 1
 ∇
 
 ∇ glBeginVertexShaderEXT
   :If 0=⎕NC'glBeginVertexShaderEXT_DLL'
-      'glBeginVertexShaderEXT_DLL'⎕NA'opengl32|glBeginVertexShaderEXT'
+      'glBeginVertexShaderEXT_DLL'⎕NA'',getdllname,'|glBeginVertexShaderEXT'
   :EndIf
   {}glBeginVertexShaderEXT_DLL
 ∇
 
 ∇ glEndVertexShaderEXT
   :If 0=⎕NC'glEndVertexShaderEXT_DLL'
-      'glEndVertexShaderEXT_DLL'⎕NA'opengl32|glEndVertexShaderEXT'
+      'glEndVertexShaderEXT_DLL'⎕NA'',getdllname,'|glEndVertexShaderEXT'
   :EndIf
   {}glEndVertexShaderEXT_DLL
 ∇
 
 ∇ glBindVertexShaderEXT id
   :If 0=⎕NC'glBindVertexShaderEXT_DLL'
-      'glBindVertexShaderEXT_DLL'⎕NA'opengl32|glBindVertexShaderEXT U4'
+      'glBindVertexShaderEXT_DLL'⎕NA'',getdllname,'|glBindVertexShaderEXT U4'
   :EndIf
   {}glBindVertexShaderEXT_DLL id
 ∇
 
 ∇ r←glGenVertexShadersEXT range
   :If 0=⎕NC'glGenVertexShadersEXT_DLL'
-      'glGenVertexShadersEXT_DLL'⎕NA'U4 opengl32|glGenVertexShadersEXT U4'
+      'glGenVertexShadersEXT_DLL'⎕NA'U4 ',getdllname,'|glGenVertexShadersEXT U4'
   :EndIf
   r←glGenVertexShadersEXT_DLL range
 ∇
 
 ∇ glDeleteVertexShaderEXT id
   :If 0=⎕NC'glDeleteVertexShaderEXT_DLL'
-      'glDeleteVertexShaderEXT_DLL'⎕NA'opengl32|glDeleteVertexShaderEXT U4'
+      'glDeleteVertexShaderEXT_DLL'⎕NA'',getdllname,'|glDeleteVertexShaderEXT U4'
   :EndIf
   {}glDeleteVertexShaderEXT_DLL id
 ∇
 
 ∇ glShaderOp1EXT (op res arg1)
   :If 0=⎕NC'glShaderOp1EXT_DLL'
-      'glShaderOp1EXT_DLL'⎕NA'opengl32|glShaderOp1EXT U4 U4 U4'
+      'glShaderOp1EXT_DLL'⎕NA'',getdllname,'|glShaderOp1EXT U4 U4 U4'
   :EndIf
   {}glShaderOp1EXT_DLL op res arg1
 ∇
 
 ∇ glShaderOp2EXT (op res arg1 arg2)
   :If 0=⎕NC'glShaderOp2EXT_DLL'
-      'glShaderOp2EXT_DLL'⎕NA'opengl32|glShaderOp2EXT U4 U4 U4 U4'
+      'glShaderOp2EXT_DLL'⎕NA'',getdllname,'|glShaderOp2EXT U4 U4 U4 U4'
   :EndIf
   {}glShaderOp2EXT_DLL op res arg1 arg2
 ∇
 
 ∇ glShaderOp3EXT (op res arg1 arg2 arg3)
   :If 0=⎕NC'glShaderOp3EXT_DLL'
-      'glShaderOp3EXT_DLL'⎕NA'opengl32|glShaderOp3EXT U4 U4 U4 U4 U4'
+      'glShaderOp3EXT_DLL'⎕NA'',getdllname,'|glShaderOp3EXT U4 U4 U4 U4 U4'
   :EndIf
   {}glShaderOp3EXT_DLL op res arg1 arg2 arg3
 ∇
 
 ∇ glSwizzleEXT (res in outX outY outZ outW)
   :If 0=⎕NC'glSwizzleEXT_DLL'
-      'glSwizzleEXT_DLL'⎕NA'opengl32|glSwizzleEXT U4 U4 U4 U4 U4 U4'
+      'glSwizzleEXT_DLL'⎕NA'',getdllname,'|glSwizzleEXT U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glSwizzleEXT_DLL res in outX outY outZ outW
 ∇
 
 ∇ glWriteMaskEXT (res in outX outY outZ outW)
   :If 0=⎕NC'glWriteMaskEXT_DLL'
-      'glWriteMaskEXT_DLL'⎕NA'opengl32|glWriteMaskEXT U4 U4 U4 U4 U4 U4'
+      'glWriteMaskEXT_DLL'⎕NA'',getdllname,'|glWriteMaskEXT U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glWriteMaskEXT_DLL res in outX outY outZ outW
 ∇
 
 ∇ glInsertComponentEXT (res src num)
   :If 0=⎕NC'glInsertComponentEXT_DLL'
-      'glInsertComponentEXT_DLL'⎕NA'opengl32|glInsertComponentEXT U4 U4 U4'
+      'glInsertComponentEXT_DLL'⎕NA'',getdllname,'|glInsertComponentEXT U4 U4 U4'
   :EndIf
   {}glInsertComponentEXT_DLL res src num
 ∇
 
 ∇ glExtractComponentEXT (res src num)
   :If 0=⎕NC'glExtractComponentEXT_DLL'
-      'glExtractComponentEXT_DLL'⎕NA'opengl32|glExtractComponentEXT U4 U4 U4'
+      'glExtractComponentEXT_DLL'⎕NA'',getdllname,'|glExtractComponentEXT U4 U4 U4'
   :EndIf
   {}glExtractComponentEXT_DLL res src num
 ∇
 
 ∇ r←glGenSymbolsEXT (datatype storagetype range components)
   :If 0=⎕NC'glGenSymbolsEXT_DLL'
-      'glGenSymbolsEXT_DLL'⎕NA'U4 opengl32|glGenSymbolsEXT U4 U4 U4 U4'
+      'glGenSymbolsEXT_DLL'⎕NA'U4 ',getdllname,'|glGenSymbolsEXT U4 U4 U4 U4'
   :EndIf
   r←glGenSymbolsEXT_DLL datatype storagetype range components
 ∇
@@ -18308,56 +18316,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVariantbvEXT (id addr)
   :If 0=⎕NC'glVariantbvEXT_DLL'
-      'glVariantbvEXT_DLL'⎕NA'opengl32|glVariantbvEXT U4 <I1[]'
+      'glVariantbvEXT_DLL'⎕NA'',getdllname,'|glVariantbvEXT U4 <I1[]'
   :EndIf
   {}glVariantbvEXT_DLL id addr
 ∇
 
 ∇ glVariantsvEXT (id addr)
   :If 0=⎕NC'glVariantsvEXT_DLL'
-      'glVariantsvEXT_DLL'⎕NA'opengl32|glVariantsvEXT U4 <I2[]'
+      'glVariantsvEXT_DLL'⎕NA'',getdllname,'|glVariantsvEXT U4 <I2[]'
   :EndIf
   {}glVariantsvEXT_DLL id addr
 ∇
 
 ∇ glVariantivEXT (id addr)
   :If 0=⎕NC'glVariantivEXT_DLL'
-      'glVariantivEXT_DLL'⎕NA'opengl32|glVariantivEXT U4 <I4[]'
+      'glVariantivEXT_DLL'⎕NA'',getdllname,'|glVariantivEXT U4 <I4[]'
   :EndIf
   {}glVariantivEXT_DLL id addr
 ∇
 
 ∇ glVariantfvEXT (id addr)
   :If 0=⎕NC'glVariantfvEXT_DLL'
-      'glVariantfvEXT_DLL'⎕NA'opengl32|glVariantfvEXT U4 <F4[]'
+      'glVariantfvEXT_DLL'⎕NA'',getdllname,'|glVariantfvEXT U4 <F4[]'
   :EndIf
   {}glVariantfvEXT_DLL id addr
 ∇
 
 ∇ glVariantdvEXT (id addr)
   :If 0=⎕NC'glVariantdvEXT_DLL'
-      'glVariantdvEXT_DLL'⎕NA'opengl32|glVariantdvEXT U4 <F8[]'
+      'glVariantdvEXT_DLL'⎕NA'',getdllname,'|glVariantdvEXT U4 <F8[]'
   :EndIf
   {}glVariantdvEXT_DLL id addr
 ∇
 
 ∇ glVariantubvEXT (id addr)
   :If 0=⎕NC'glVariantubvEXT_DLL'
-      'glVariantubvEXT_DLL'⎕NA'opengl32|glVariantubvEXT U4 <U1[]'
+      'glVariantubvEXT_DLL'⎕NA'',getdllname,'|glVariantubvEXT U4 <U1[]'
   :EndIf
   {}glVariantubvEXT_DLL id addr
 ∇
 
 ∇ glVariantusvEXT (id addr)
   :If 0=⎕NC'glVariantusvEXT_DLL'
-      'glVariantusvEXT_DLL'⎕NA'opengl32|glVariantusvEXT U4 <U2[]'
+      'glVariantusvEXT_DLL'⎕NA'',getdllname,'|glVariantusvEXT U4 <U2[]'
   :EndIf
   {}glVariantusvEXT_DLL id addr
 ∇
 
 ∇ glVariantuivEXT (id addr)
   :If 0=⎕NC'glVariantuivEXT_DLL'
-      'glVariantuivEXT_DLL'⎕NA'opengl32|glVariantuivEXT U4 <U4[]'
+      'glVariantuivEXT_DLL'⎕NA'',getdllname,'|glVariantuivEXT U4 <U4[]'
   :EndIf
   {}glVariantuivEXT_DLL id addr
 ∇
@@ -18371,77 +18379,77 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glEnableVariantClientStateEXT id
   :If 0=⎕NC'glEnableVariantClientStateEXT_DLL'
-      'glEnableVariantClientStateEXT_DLL'⎕NA'opengl32|glEnableVariantClientStateEXT U4'
+      'glEnableVariantClientStateEXT_DLL'⎕NA'',getdllname,'|glEnableVariantClientStateEXT U4'
   :EndIf
   {}glEnableVariantClientStateEXT_DLL id
 ∇
 
 ∇ glDisableVariantClientStateEXT id
   :If 0=⎕NC'glDisableVariantClientStateEXT_DLL'
-      'glDisableVariantClientStateEXT_DLL'⎕NA'opengl32|glDisableVariantClientStateEXT U4'
+      'glDisableVariantClientStateEXT_DLL'⎕NA'',getdllname,'|glDisableVariantClientStateEXT U4'
   :EndIf
   {}glDisableVariantClientStateEXT_DLL id
 ∇
 
 ∇ r←glBindLightParameterEXT (light value)
   :If 0=⎕NC'glBindLightParameterEXT_DLL'
-      'glBindLightParameterEXT_DLL'⎕NA'U4 opengl32|glBindLightParameterEXT U4 U4'
+      'glBindLightParameterEXT_DLL'⎕NA'U4 ',getdllname,'|glBindLightParameterEXT U4 U4'
   :EndIf
   r←glBindLightParameterEXT_DLL light value
 ∇
 
 ∇ r←glBindMaterialParameterEXT (face value)
   :If 0=⎕NC'glBindMaterialParameterEXT_DLL'
-      'glBindMaterialParameterEXT_DLL'⎕NA'U4 opengl32|glBindMaterialParameterEXT U4 U4'
+      'glBindMaterialParameterEXT_DLL'⎕NA'U4 ',getdllname,'|glBindMaterialParameterEXT U4 U4'
   :EndIf
   r←glBindMaterialParameterEXT_DLL face value
 ∇
 
 ∇ r←glBindTexGenParameterEXT (unit coord value)
   :If 0=⎕NC'glBindTexGenParameterEXT_DLL'
-      'glBindTexGenParameterEXT_DLL'⎕NA'U4 opengl32|glBindTexGenParameterEXT U4 U4 U4'
+      'glBindTexGenParameterEXT_DLL'⎕NA'U4 ',getdllname,'|glBindTexGenParameterEXT U4 U4 U4'
   :EndIf
   r←glBindTexGenParameterEXT_DLL unit coord value
 ∇
 
 ∇ r←glBindTextureUnitParameterEXT (unit value)
   :If 0=⎕NC'glBindTextureUnitParameterEXT_DLL'
-      'glBindTextureUnitParameterEXT_DLL'⎕NA'U4 opengl32|glBindTextureUnitParameterEXT U4 U4'
+      'glBindTextureUnitParameterEXT_DLL'⎕NA'U4 ',getdllname,'|glBindTextureUnitParameterEXT U4 U4'
   :EndIf
   r←glBindTextureUnitParameterEXT_DLL unit value
 ∇
 
 ∇ r←glBindParameterEXT value
   :If 0=⎕NC'glBindParameterEXT_DLL'
-      'glBindParameterEXT_DLL'⎕NA'U4 opengl32|glBindParameterEXT U4'
+      'glBindParameterEXT_DLL'⎕NA'U4 ',getdllname,'|glBindParameterEXT U4'
   :EndIf
   r←glBindParameterEXT_DLL value
 ∇
 
 ∇ r←glIsVariantEnabledEXT (id cap)
   :If 0=⎕NC'glIsVariantEnabledEXT_DLL'
-      'glIsVariantEnabledEXT_DLL'⎕NA'U1 opengl32|glIsVariantEnabledEXT U4 U4'
+      'glIsVariantEnabledEXT_DLL'⎕NA'U1 ',getdllname,'|glIsVariantEnabledEXT U4 U4'
   :EndIf
   r←glIsVariantEnabledEXT_DLL id cap
 ∇
 
 ∇ r←glGetVariantBooleanvEXT (id value data)
   :If 0=⎕NC'glGetVariantBooleanvEXT_DLL'
-      'glGetVariantBooleanvEXT_DLL'⎕NA'opengl32|glGetVariantBooleanvEXT U4 U4 >U1[]'
+      'glGetVariantBooleanvEXT_DLL'⎕NA'',getdllname,'|glGetVariantBooleanvEXT U4 U4 >U1[]'
   :EndIf
   r←glGetVariantBooleanvEXT_DLL id value data
 ∇
 
 ∇ r←glGetVariantIntegervEXT (id value data)
   :If 0=⎕NC'glGetVariantIntegervEXT_DLL'
-      'glGetVariantIntegervEXT_DLL'⎕NA'opengl32|glGetVariantIntegervEXT U4 U4 >I4[]'
+      'glGetVariantIntegervEXT_DLL'⎕NA'',getdllname,'|glGetVariantIntegervEXT U4 U4 >I4[]'
   :EndIf
   r←glGetVariantIntegervEXT_DLL id value data
 ∇
 
 ∇ r←glGetVariantFloatvEXT (id value data)
   :If 0=⎕NC'glGetVariantFloatvEXT_DLL'
-      'glGetVariantFloatvEXT_DLL'⎕NA'opengl32|glGetVariantFloatvEXT U4 U4 >F4[]'
+      'glGetVariantFloatvEXT_DLL'⎕NA'',getdllname,'|glGetVariantFloatvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetVariantFloatvEXT_DLL id value data
 ∇
@@ -18455,357 +18463,357 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetInvariantBooleanvEXT (id value data)
   :If 0=⎕NC'glGetInvariantBooleanvEXT_DLL'
-      'glGetInvariantBooleanvEXT_DLL'⎕NA'opengl32|glGetInvariantBooleanvEXT U4 U4 >U1[]'
+      'glGetInvariantBooleanvEXT_DLL'⎕NA'',getdllname,'|glGetInvariantBooleanvEXT U4 U4 >U1[]'
   :EndIf
   r←glGetInvariantBooleanvEXT_DLL id value data
 ∇
 
 ∇ r←glGetInvariantIntegervEXT (id value data)
   :If 0=⎕NC'glGetInvariantIntegervEXT_DLL'
-      'glGetInvariantIntegervEXT_DLL'⎕NA'opengl32|glGetInvariantIntegervEXT U4 U4 >I4[]'
+      'glGetInvariantIntegervEXT_DLL'⎕NA'',getdllname,'|glGetInvariantIntegervEXT U4 U4 >I4[]'
   :EndIf
   r←glGetInvariantIntegervEXT_DLL id value data
 ∇
 
 ∇ r←glGetInvariantFloatvEXT (id value data)
   :If 0=⎕NC'glGetInvariantFloatvEXT_DLL'
-      'glGetInvariantFloatvEXT_DLL'⎕NA'opengl32|glGetInvariantFloatvEXT U4 U4 >F4[]'
+      'glGetInvariantFloatvEXT_DLL'⎕NA'',getdllname,'|glGetInvariantFloatvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetInvariantFloatvEXT_DLL id value data
 ∇
 
 ∇ r←glGetLocalConstantBooleanvEXT (id value data)
   :If 0=⎕NC'glGetLocalConstantBooleanvEXT_DLL'
-      'glGetLocalConstantBooleanvEXT_DLL'⎕NA'opengl32|glGetLocalConstantBooleanvEXT U4 U4 >U1[]'
+      'glGetLocalConstantBooleanvEXT_DLL'⎕NA'',getdllname,'|glGetLocalConstantBooleanvEXT U4 U4 >U1[]'
   :EndIf
   r←glGetLocalConstantBooleanvEXT_DLL id value data
 ∇
 
 ∇ r←glGetLocalConstantIntegervEXT (id value data)
   :If 0=⎕NC'glGetLocalConstantIntegervEXT_DLL'
-      'glGetLocalConstantIntegervEXT_DLL'⎕NA'opengl32|glGetLocalConstantIntegervEXT U4 U4 >I4[]'
+      'glGetLocalConstantIntegervEXT_DLL'⎕NA'',getdllname,'|glGetLocalConstantIntegervEXT U4 U4 >I4[]'
   :EndIf
   r←glGetLocalConstantIntegervEXT_DLL id value data
 ∇
 
 ∇ r←glGetLocalConstantFloatvEXT (id value data)
   :If 0=⎕NC'glGetLocalConstantFloatvEXT_DLL'
-      'glGetLocalConstantFloatvEXT_DLL'⎕NA'opengl32|glGetLocalConstantFloatvEXT U4 U4 >F4[]'
+      'glGetLocalConstantFloatvEXT_DLL'⎕NA'',getdllname,'|glGetLocalConstantFloatvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetLocalConstantFloatvEXT_DLL id value data
 ∇
 
 ∇ glVertexStream1sATI (stream x)
   :If 0=⎕NC'glVertexStream1sATI_DLL'
-      'glVertexStream1sATI_DLL'⎕NA'opengl32|glVertexStream1sATI U4 I2'
+      'glVertexStream1sATI_DLL'⎕NA'',getdllname,'|glVertexStream1sATI U4 I2'
   :EndIf
   {}glVertexStream1sATI_DLL stream x
 ∇
 
 ∇ glVertexStream1svATI (stream coords)
   :If 0=⎕NC'glVertexStream1svATI_DLL'
-      'glVertexStream1svATI_DLL'⎕NA'opengl32|glVertexStream1svATI U4 <I2[1]'
+      'glVertexStream1svATI_DLL'⎕NA'',getdllname,'|glVertexStream1svATI U4 <I2[1]'
   :EndIf
   {}glVertexStream1svATI_DLL stream coords
 ∇
 
 ∇ glVertexStream1iATI (stream x)
   :If 0=⎕NC'glVertexStream1iATI_DLL'
-      'glVertexStream1iATI_DLL'⎕NA'opengl32|glVertexStream1iATI U4 I4'
+      'glVertexStream1iATI_DLL'⎕NA'',getdllname,'|glVertexStream1iATI U4 I4'
   :EndIf
   {}glVertexStream1iATI_DLL stream x
 ∇
 
 ∇ glVertexStream1ivATI (stream coords)
   :If 0=⎕NC'glVertexStream1ivATI_DLL'
-      'glVertexStream1ivATI_DLL'⎕NA'opengl32|glVertexStream1ivATI U4 <I4[1]'
+      'glVertexStream1ivATI_DLL'⎕NA'',getdllname,'|glVertexStream1ivATI U4 <I4[1]'
   :EndIf
   {}glVertexStream1ivATI_DLL stream coords
 ∇
 
 ∇ glVertexStream1fATI (stream x)
   :If 0=⎕NC'glVertexStream1fATI_DLL'
-      'glVertexStream1fATI_DLL'⎕NA'opengl32|glVertexStream1fATI U4 F4'
+      'glVertexStream1fATI_DLL'⎕NA'',getdllname,'|glVertexStream1fATI U4 F4'
   :EndIf
   {}glVertexStream1fATI_DLL stream x
 ∇
 
 ∇ glVertexStream1fvATI (stream coords)
   :If 0=⎕NC'glVertexStream1fvATI_DLL'
-      'glVertexStream1fvATI_DLL'⎕NA'opengl32|glVertexStream1fvATI U4 <F4[1]'
+      'glVertexStream1fvATI_DLL'⎕NA'',getdllname,'|glVertexStream1fvATI U4 <F4[1]'
   :EndIf
   {}glVertexStream1fvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream1dATI (stream x)
   :If 0=⎕NC'glVertexStream1dATI_DLL'
-      'glVertexStream1dATI_DLL'⎕NA'opengl32|glVertexStream1dATI U4 F8'
+      'glVertexStream1dATI_DLL'⎕NA'',getdllname,'|glVertexStream1dATI U4 F8'
   :EndIf
   {}glVertexStream1dATI_DLL stream x
 ∇
 
 ∇ glVertexStream1dvATI (stream coords)
   :If 0=⎕NC'glVertexStream1dvATI_DLL'
-      'glVertexStream1dvATI_DLL'⎕NA'opengl32|glVertexStream1dvATI U4 <F8[1]'
+      'glVertexStream1dvATI_DLL'⎕NA'',getdllname,'|glVertexStream1dvATI U4 <F8[1]'
   :EndIf
   {}glVertexStream1dvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream2sATI (stream x y)
   :If 0=⎕NC'glVertexStream2sATI_DLL'
-      'glVertexStream2sATI_DLL'⎕NA'opengl32|glVertexStream2sATI U4 I2 I2'
+      'glVertexStream2sATI_DLL'⎕NA'',getdllname,'|glVertexStream2sATI U4 I2 I2'
   :EndIf
   {}glVertexStream2sATI_DLL stream x y
 ∇
 
 ∇ glVertexStream2svATI (stream coords)
   :If 0=⎕NC'glVertexStream2svATI_DLL'
-      'glVertexStream2svATI_DLL'⎕NA'opengl32|glVertexStream2svATI U4 <I2[2]'
+      'glVertexStream2svATI_DLL'⎕NA'',getdllname,'|glVertexStream2svATI U4 <I2[2]'
   :EndIf
   {}glVertexStream2svATI_DLL stream coords
 ∇
 
 ∇ glVertexStream2iATI (stream x y)
   :If 0=⎕NC'glVertexStream2iATI_DLL'
-      'glVertexStream2iATI_DLL'⎕NA'opengl32|glVertexStream2iATI U4 I4 I4'
+      'glVertexStream2iATI_DLL'⎕NA'',getdllname,'|glVertexStream2iATI U4 I4 I4'
   :EndIf
   {}glVertexStream2iATI_DLL stream x y
 ∇
 
 ∇ glVertexStream2ivATI (stream coords)
   :If 0=⎕NC'glVertexStream2ivATI_DLL'
-      'glVertexStream2ivATI_DLL'⎕NA'opengl32|glVertexStream2ivATI U4 <I4[2]'
+      'glVertexStream2ivATI_DLL'⎕NA'',getdllname,'|glVertexStream2ivATI U4 <I4[2]'
   :EndIf
   {}glVertexStream2ivATI_DLL stream coords
 ∇
 
 ∇ glVertexStream2fATI (stream x y)
   :If 0=⎕NC'glVertexStream2fATI_DLL'
-      'glVertexStream2fATI_DLL'⎕NA'opengl32|glVertexStream2fATI U4 F4 F4'
+      'glVertexStream2fATI_DLL'⎕NA'',getdllname,'|glVertexStream2fATI U4 F4 F4'
   :EndIf
   {}glVertexStream2fATI_DLL stream x y
 ∇
 
 ∇ glVertexStream2fvATI (stream coords)
   :If 0=⎕NC'glVertexStream2fvATI_DLL'
-      'glVertexStream2fvATI_DLL'⎕NA'opengl32|glVertexStream2fvATI U4 <F4[2]'
+      'glVertexStream2fvATI_DLL'⎕NA'',getdllname,'|glVertexStream2fvATI U4 <F4[2]'
   :EndIf
   {}glVertexStream2fvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream2dATI (stream x y)
   :If 0=⎕NC'glVertexStream2dATI_DLL'
-      'glVertexStream2dATI_DLL'⎕NA'opengl32|glVertexStream2dATI U4 F8 F8'
+      'glVertexStream2dATI_DLL'⎕NA'',getdllname,'|glVertexStream2dATI U4 F8 F8'
   :EndIf
   {}glVertexStream2dATI_DLL stream x y
 ∇
 
 ∇ glVertexStream2dvATI (stream coords)
   :If 0=⎕NC'glVertexStream2dvATI_DLL'
-      'glVertexStream2dvATI_DLL'⎕NA'opengl32|glVertexStream2dvATI U4 <F8[2]'
+      'glVertexStream2dvATI_DLL'⎕NA'',getdllname,'|glVertexStream2dvATI U4 <F8[2]'
   :EndIf
   {}glVertexStream2dvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream3sATI (stream x y z)
   :If 0=⎕NC'glVertexStream3sATI_DLL'
-      'glVertexStream3sATI_DLL'⎕NA'opengl32|glVertexStream3sATI U4 I2 I2 I2'
+      'glVertexStream3sATI_DLL'⎕NA'',getdllname,'|glVertexStream3sATI U4 I2 I2 I2'
   :EndIf
   {}glVertexStream3sATI_DLL stream x y z
 ∇
 
 ∇ glVertexStream3svATI (stream coords)
   :If 0=⎕NC'glVertexStream3svATI_DLL'
-      'glVertexStream3svATI_DLL'⎕NA'opengl32|glVertexStream3svATI U4 <I2[3]'
+      'glVertexStream3svATI_DLL'⎕NA'',getdllname,'|glVertexStream3svATI U4 <I2[3]'
   :EndIf
   {}glVertexStream3svATI_DLL stream coords
 ∇
 
 ∇ glVertexStream3iATI (stream x y z)
   :If 0=⎕NC'glVertexStream3iATI_DLL'
-      'glVertexStream3iATI_DLL'⎕NA'opengl32|glVertexStream3iATI U4 I4 I4 I4'
+      'glVertexStream3iATI_DLL'⎕NA'',getdllname,'|glVertexStream3iATI U4 I4 I4 I4'
   :EndIf
   {}glVertexStream3iATI_DLL stream x y z
 ∇
 
 ∇ glVertexStream3ivATI (stream coords)
   :If 0=⎕NC'glVertexStream3ivATI_DLL'
-      'glVertexStream3ivATI_DLL'⎕NA'opengl32|glVertexStream3ivATI U4 <I4[3]'
+      'glVertexStream3ivATI_DLL'⎕NA'',getdllname,'|glVertexStream3ivATI U4 <I4[3]'
   :EndIf
   {}glVertexStream3ivATI_DLL stream coords
 ∇
 
 ∇ glVertexStream3fATI (stream x y z)
   :If 0=⎕NC'glVertexStream3fATI_DLL'
-      'glVertexStream3fATI_DLL'⎕NA'opengl32|glVertexStream3fATI U4 F4 F4 F4'
+      'glVertexStream3fATI_DLL'⎕NA'',getdllname,'|glVertexStream3fATI U4 F4 F4 F4'
   :EndIf
   {}glVertexStream3fATI_DLL stream x y z
 ∇
 
 ∇ glVertexStream3fvATI (stream coords)
   :If 0=⎕NC'glVertexStream3fvATI_DLL'
-      'glVertexStream3fvATI_DLL'⎕NA'opengl32|glVertexStream3fvATI U4 <F4[3]'
+      'glVertexStream3fvATI_DLL'⎕NA'',getdllname,'|glVertexStream3fvATI U4 <F4[3]'
   :EndIf
   {}glVertexStream3fvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream3dATI (stream x y z)
   :If 0=⎕NC'glVertexStream3dATI_DLL'
-      'glVertexStream3dATI_DLL'⎕NA'opengl32|glVertexStream3dATI U4 F8 F8 F8'
+      'glVertexStream3dATI_DLL'⎕NA'',getdllname,'|glVertexStream3dATI U4 F8 F8 F8'
   :EndIf
   {}glVertexStream3dATI_DLL stream x y z
 ∇
 
 ∇ glVertexStream3dvATI (stream coords)
   :If 0=⎕NC'glVertexStream3dvATI_DLL'
-      'glVertexStream3dvATI_DLL'⎕NA'opengl32|glVertexStream3dvATI U4 <F8[3]'
+      'glVertexStream3dvATI_DLL'⎕NA'',getdllname,'|glVertexStream3dvATI U4 <F8[3]'
   :EndIf
   {}glVertexStream3dvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream4sATI (stream x y z w)
   :If 0=⎕NC'glVertexStream4sATI_DLL'
-      'glVertexStream4sATI_DLL'⎕NA'opengl32|glVertexStream4sATI U4 I2 I2 I2 I2'
+      'glVertexStream4sATI_DLL'⎕NA'',getdllname,'|glVertexStream4sATI U4 I2 I2 I2 I2'
   :EndIf
   {}glVertexStream4sATI_DLL stream x y z w
 ∇
 
 ∇ glVertexStream4svATI (stream coords)
   :If 0=⎕NC'glVertexStream4svATI_DLL'
-      'glVertexStream4svATI_DLL'⎕NA'opengl32|glVertexStream4svATI U4 <I2[4]'
+      'glVertexStream4svATI_DLL'⎕NA'',getdllname,'|glVertexStream4svATI U4 <I2[4]'
   :EndIf
   {}glVertexStream4svATI_DLL stream coords
 ∇
 
 ∇ glVertexStream4iATI (stream x y z w)
   :If 0=⎕NC'glVertexStream4iATI_DLL'
-      'glVertexStream4iATI_DLL'⎕NA'opengl32|glVertexStream4iATI U4 I4 I4 I4 I4'
+      'glVertexStream4iATI_DLL'⎕NA'',getdllname,'|glVertexStream4iATI U4 I4 I4 I4 I4'
   :EndIf
   {}glVertexStream4iATI_DLL stream x y z w
 ∇
 
 ∇ glVertexStream4ivATI (stream coords)
   :If 0=⎕NC'glVertexStream4ivATI_DLL'
-      'glVertexStream4ivATI_DLL'⎕NA'opengl32|glVertexStream4ivATI U4 <I4[4]'
+      'glVertexStream4ivATI_DLL'⎕NA'',getdllname,'|glVertexStream4ivATI U4 <I4[4]'
   :EndIf
   {}glVertexStream4ivATI_DLL stream coords
 ∇
 
 ∇ glVertexStream4fATI (stream x y z w)
   :If 0=⎕NC'glVertexStream4fATI_DLL'
-      'glVertexStream4fATI_DLL'⎕NA'opengl32|glVertexStream4fATI U4 F4 F4 F4 F4'
+      'glVertexStream4fATI_DLL'⎕NA'',getdllname,'|glVertexStream4fATI U4 F4 F4 F4 F4'
   :EndIf
   {}glVertexStream4fATI_DLL stream x y z w
 ∇
 
 ∇ glVertexStream4fvATI (stream coords)
   :If 0=⎕NC'glVertexStream4fvATI_DLL'
-      'glVertexStream4fvATI_DLL'⎕NA'opengl32|glVertexStream4fvATI U4 <F4[4]'
+      'glVertexStream4fvATI_DLL'⎕NA'',getdllname,'|glVertexStream4fvATI U4 <F4[4]'
   :EndIf
   {}glVertexStream4fvATI_DLL stream coords
 ∇
 
 ∇ glVertexStream4dATI (stream x y z w)
   :If 0=⎕NC'glVertexStream4dATI_DLL'
-      'glVertexStream4dATI_DLL'⎕NA'opengl32|glVertexStream4dATI U4 F8 F8 F8 F8'
+      'glVertexStream4dATI_DLL'⎕NA'',getdllname,'|glVertexStream4dATI U4 F8 F8 F8 F8'
   :EndIf
   {}glVertexStream4dATI_DLL stream x y z w
 ∇
 
 ∇ glVertexStream4dvATI (stream coords)
   :If 0=⎕NC'glVertexStream4dvATI_DLL'
-      'glVertexStream4dvATI_DLL'⎕NA'opengl32|glVertexStream4dvATI U4 <F8[4]'
+      'glVertexStream4dvATI_DLL'⎕NA'',getdllname,'|glVertexStream4dvATI U4 <F8[4]'
   :EndIf
   {}glVertexStream4dvATI_DLL stream coords
 ∇
 
 ∇ glNormalStream3bATI (stream nx ny nz)
   :If 0=⎕NC'glNormalStream3bATI_DLL'
-      'glNormalStream3bATI_DLL'⎕NA'opengl32|glNormalStream3bATI U4 I1 I1 I1'
+      'glNormalStream3bATI_DLL'⎕NA'',getdllname,'|glNormalStream3bATI U4 I1 I1 I1'
   :EndIf
   {}glNormalStream3bATI_DLL stream nx ny nz
 ∇
 
 ∇ glNormalStream3bvATI (stream coords)
   :If 0=⎕NC'glNormalStream3bvATI_DLL'
-      'glNormalStream3bvATI_DLL'⎕NA'opengl32|glNormalStream3bvATI U4 <I1[3]'
+      'glNormalStream3bvATI_DLL'⎕NA'',getdllname,'|glNormalStream3bvATI U4 <I1[3]'
   :EndIf
   {}glNormalStream3bvATI_DLL stream coords
 ∇
 
 ∇ glNormalStream3sATI (stream nx ny nz)
   :If 0=⎕NC'glNormalStream3sATI_DLL'
-      'glNormalStream3sATI_DLL'⎕NA'opengl32|glNormalStream3sATI U4 I2 I2 I2'
+      'glNormalStream3sATI_DLL'⎕NA'',getdllname,'|glNormalStream3sATI U4 I2 I2 I2'
   :EndIf
   {}glNormalStream3sATI_DLL stream nx ny nz
 ∇
 
 ∇ glNormalStream3svATI (stream coords)
   :If 0=⎕NC'glNormalStream3svATI_DLL'
-      'glNormalStream3svATI_DLL'⎕NA'opengl32|glNormalStream3svATI U4 <I2[3]'
+      'glNormalStream3svATI_DLL'⎕NA'',getdllname,'|glNormalStream3svATI U4 <I2[3]'
   :EndIf
   {}glNormalStream3svATI_DLL stream coords
 ∇
 
 ∇ glNormalStream3iATI (stream nx ny nz)
   :If 0=⎕NC'glNormalStream3iATI_DLL'
-      'glNormalStream3iATI_DLL'⎕NA'opengl32|glNormalStream3iATI U4 I4 I4 I4'
+      'glNormalStream3iATI_DLL'⎕NA'',getdllname,'|glNormalStream3iATI U4 I4 I4 I4'
   :EndIf
   {}glNormalStream3iATI_DLL stream nx ny nz
 ∇
 
 ∇ glNormalStream3ivATI (stream coords)
   :If 0=⎕NC'glNormalStream3ivATI_DLL'
-      'glNormalStream3ivATI_DLL'⎕NA'opengl32|glNormalStream3ivATI U4 <I4[3]'
+      'glNormalStream3ivATI_DLL'⎕NA'',getdllname,'|glNormalStream3ivATI U4 <I4[3]'
   :EndIf
   {}glNormalStream3ivATI_DLL stream coords
 ∇
 
 ∇ glNormalStream3fATI (stream nx ny nz)
   :If 0=⎕NC'glNormalStream3fATI_DLL'
-      'glNormalStream3fATI_DLL'⎕NA'opengl32|glNormalStream3fATI U4 F4 F4 F4'
+      'glNormalStream3fATI_DLL'⎕NA'',getdllname,'|glNormalStream3fATI U4 F4 F4 F4'
   :EndIf
   {}glNormalStream3fATI_DLL stream nx ny nz
 ∇
 
 ∇ glNormalStream3fvATI (stream coords)
   :If 0=⎕NC'glNormalStream3fvATI_DLL'
-      'glNormalStream3fvATI_DLL'⎕NA'opengl32|glNormalStream3fvATI U4 <F4[3]'
+      'glNormalStream3fvATI_DLL'⎕NA'',getdllname,'|glNormalStream3fvATI U4 <F4[3]'
   :EndIf
   {}glNormalStream3fvATI_DLL stream coords
 ∇
 
 ∇ glNormalStream3dATI (stream nx ny nz)
   :If 0=⎕NC'glNormalStream3dATI_DLL'
-      'glNormalStream3dATI_DLL'⎕NA'opengl32|glNormalStream3dATI U4 F8 F8 F8'
+      'glNormalStream3dATI_DLL'⎕NA'',getdllname,'|glNormalStream3dATI U4 F8 F8 F8'
   :EndIf
   {}glNormalStream3dATI_DLL stream nx ny nz
 ∇
 
 ∇ glNormalStream3dvATI (stream coords)
   :If 0=⎕NC'glNormalStream3dvATI_DLL'
-      'glNormalStream3dvATI_DLL'⎕NA'opengl32|glNormalStream3dvATI U4 <F8[3]'
+      'glNormalStream3dvATI_DLL'⎕NA'',getdllname,'|glNormalStream3dvATI U4 <F8[3]'
   :EndIf
   {}glNormalStream3dvATI_DLL stream coords
 ∇
 
 ∇ glClientActiveVertexStreamATI stream
   :If 0=⎕NC'glClientActiveVertexStreamATI_DLL'
-      'glClientActiveVertexStreamATI_DLL'⎕NA'opengl32|glClientActiveVertexStreamATI U4'
+      'glClientActiveVertexStreamATI_DLL'⎕NA'',getdllname,'|glClientActiveVertexStreamATI U4'
   :EndIf
   {}glClientActiveVertexStreamATI_DLL stream
 ∇
 
 ∇ glVertexBlendEnviATI (pname param)
   :If 0=⎕NC'glVertexBlendEnviATI_DLL'
-      'glVertexBlendEnviATI_DLL'⎕NA'opengl32|glVertexBlendEnviATI U4 I4'
+      'glVertexBlendEnviATI_DLL'⎕NA'',getdllname,'|glVertexBlendEnviATI U4 I4'
   :EndIf
   {}glVertexBlendEnviATI_DLL pname param
 ∇
 
 ∇ glVertexBlendEnvfATI (pname param)
   :If 0=⎕NC'glVertexBlendEnvfATI_DLL'
-      'glVertexBlendEnvfATI_DLL'⎕NA'opengl32|glVertexBlendEnvfATI U4 F4'
+      'glVertexBlendEnvfATI_DLL'⎕NA'',getdllname,'|glVertexBlendEnvfATI U4 F4'
   :EndIf
   {}glVertexBlendEnvfATI_DLL pname param
 ∇
@@ -18819,91 +18827,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDrawElementArrayATI (mode count)
   :If 0=⎕NC'glDrawElementArrayATI_DLL'
-      'glDrawElementArrayATI_DLL'⎕NA'opengl32|glDrawElementArrayATI U4 I4'
+      'glDrawElementArrayATI_DLL'⎕NA'',getdllname,'|glDrawElementArrayATI U4 I4'
   :EndIf
   {}glDrawElementArrayATI_DLL mode count
 ∇
 
 ∇ glDrawRangeElementArrayATI (mode start end count)
   :If 0=⎕NC'glDrawRangeElementArrayATI_DLL'
-      'glDrawRangeElementArrayATI_DLL'⎕NA'opengl32|glDrawRangeElementArrayATI U4 U4 U4 I4'
+      'glDrawRangeElementArrayATI_DLL'⎕NA'',getdllname,'|glDrawRangeElementArrayATI U4 U4 U4 I4'
   :EndIf
   {}glDrawRangeElementArrayATI_DLL mode start end count
 ∇
 
 ∇ glDrawMeshArraysSUN (mode first count width)
   :If 0=⎕NC'glDrawMeshArraysSUN_DLL'
-      'glDrawMeshArraysSUN_DLL'⎕NA'opengl32|glDrawMeshArraysSUN U4 I4 I4 I4'
+      'glDrawMeshArraysSUN_DLL'⎕NA'',getdllname,'|glDrawMeshArraysSUN U4 I4 I4 I4'
   :EndIf
   {}glDrawMeshArraysSUN_DLL mode first count width
 ∇
 
 ∇ r←glGenOcclusionQueriesNV (n ids)
   :If 0=⎕NC'glGenOcclusionQueriesNV_DLL'
-      'glGenOcclusionQueriesNV_DLL'⎕NA'opengl32|glGenOcclusionQueriesNV I4 >U4[]'
+      'glGenOcclusionQueriesNV_DLL'⎕NA'',getdllname,'|glGenOcclusionQueriesNV I4 >U4[]'
   :EndIf
   r←glGenOcclusionQueriesNV_DLL n ids
 ∇
 
 ∇ glDeleteOcclusionQueriesNV (n ids)
   :If 0=⎕NC'glDeleteOcclusionQueriesNV_DLL'
-      'glDeleteOcclusionQueriesNV_DLL'⎕NA'opengl32|glDeleteOcclusionQueriesNV I4 <U4[]'
+      'glDeleteOcclusionQueriesNV_DLL'⎕NA'',getdllname,'|glDeleteOcclusionQueriesNV I4 <U4[]'
   :EndIf
   {}glDeleteOcclusionQueriesNV_DLL n ids
 ∇
 
 ∇ r←glIsOcclusionQueryNV id
   :If 0=⎕NC'glIsOcclusionQueryNV_DLL'
-      'glIsOcclusionQueryNV_DLL'⎕NA'U1 opengl32|glIsOcclusionQueryNV U4'
+      'glIsOcclusionQueryNV_DLL'⎕NA'U1 ',getdllname,'|glIsOcclusionQueryNV U4'
   :EndIf
   r←glIsOcclusionQueryNV_DLL id
 ∇
 
 ∇ glBeginOcclusionQueryNV id
   :If 0=⎕NC'glBeginOcclusionQueryNV_DLL'
-      'glBeginOcclusionQueryNV_DLL'⎕NA'opengl32|glBeginOcclusionQueryNV U4'
+      'glBeginOcclusionQueryNV_DLL'⎕NA'',getdllname,'|glBeginOcclusionQueryNV U4'
   :EndIf
   {}glBeginOcclusionQueryNV_DLL id
 ∇
 
 ∇ glEndOcclusionQueryNV
   :If 0=⎕NC'glEndOcclusionQueryNV_DLL'
-      'glEndOcclusionQueryNV_DLL'⎕NA'opengl32|glEndOcclusionQueryNV'
+      'glEndOcclusionQueryNV_DLL'⎕NA'',getdllname,'|glEndOcclusionQueryNV'
   :EndIf
   {}glEndOcclusionQueryNV_DLL
 ∇
 
 ∇ r←glGetOcclusionQueryivNV (id pname params)
   :If 0=⎕NC'glGetOcclusionQueryivNV_DLL'
-      'glGetOcclusionQueryivNV_DLL'⎕NA'opengl32|glGetOcclusionQueryivNV U4 U4 >I4[]'
+      'glGetOcclusionQueryivNV_DLL'⎕NA'',getdllname,'|glGetOcclusionQueryivNV U4 U4 >I4[]'
   :EndIf
   r←glGetOcclusionQueryivNV_DLL id pname params
 ∇
 
 ∇ r←glGetOcclusionQueryuivNV (id pname params)
   :If 0=⎕NC'glGetOcclusionQueryuivNV_DLL'
-      'glGetOcclusionQueryuivNV_DLL'⎕NA'opengl32|glGetOcclusionQueryuivNV U4 U4 >U4[]'
+      'glGetOcclusionQueryuivNV_DLL'⎕NA'',getdllname,'|glGetOcclusionQueryuivNV U4 U4 >U4[]'
   :EndIf
   r←glGetOcclusionQueryuivNV_DLL id pname params
 ∇
 
 ∇ glPointParameteriNV (pname param)
   :If 0=⎕NC'glPointParameteriNV_DLL'
-      'glPointParameteriNV_DLL'⎕NA'opengl32|glPointParameteriNV U4 I4'
+      'glPointParameteriNV_DLL'⎕NA'',getdllname,'|glPointParameteriNV U4 I4'
   :EndIf
   {}glPointParameteriNV_DLL pname param
 ∇
 
 ∇ glPointParameterivNV (pname params)
   :If 0=⎕NC'glPointParameterivNV_DLL'
-      'glPointParameterivNV_DLL'⎕NA'opengl32|glPointParameterivNV U4 <I4[]'
+      'glPointParameterivNV_DLL'⎕NA'',getdllname,'|glPointParameterivNV U4 <I4[]'
   :EndIf
   {}glPointParameterivNV_DLL pname params
 ∇
 
 ∇ glActiveStencilFaceEXT face
   :If 0=⎕NC'glActiveStencilFaceEXT_DLL'
-      'glActiveStencilFaceEXT_DLL'⎕NA'opengl32|glActiveStencilFaceEXT U4'
+      'glActiveStencilFaceEXT_DLL'⎕NA'',getdllname,'|glActiveStencilFaceEXT U4'
   :EndIf
   {}glActiveStencilFaceEXT_DLL face
 ∇
@@ -18917,112 +18925,112 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glDrawElementArrayAPPLE (mode first count)
   :If 0=⎕NC'glDrawElementArrayAPPLE_DLL'
-      'glDrawElementArrayAPPLE_DLL'⎕NA'opengl32|glDrawElementArrayAPPLE U4 I4 I4'
+      'glDrawElementArrayAPPLE_DLL'⎕NA'',getdllname,'|glDrawElementArrayAPPLE U4 I4 I4'
   :EndIf
   {}glDrawElementArrayAPPLE_DLL mode first count
 ∇
 
 ∇ glDrawRangeElementArrayAPPLE (mode start end first count)
   :If 0=⎕NC'glDrawRangeElementArrayAPPLE_DLL'
-      'glDrawRangeElementArrayAPPLE_DLL'⎕NA'opengl32|glDrawRangeElementArrayAPPLE U4 U4 U4 I4 I4'
+      'glDrawRangeElementArrayAPPLE_DLL'⎕NA'',getdllname,'|glDrawRangeElementArrayAPPLE U4 U4 U4 I4 I4'
   :EndIf
   {}glDrawRangeElementArrayAPPLE_DLL mode start end first count
 ∇
 
 ∇ glMultiDrawElementArrayAPPLE (mode first count primcount)
   :If 0=⎕NC'glMultiDrawElementArrayAPPLE_DLL'
-      'glMultiDrawElementArrayAPPLE_DLL'⎕NA'opengl32|glMultiDrawElementArrayAPPLE U4 <I4[] <I4[] I4'
+      'glMultiDrawElementArrayAPPLE_DLL'⎕NA'',getdllname,'|glMultiDrawElementArrayAPPLE U4 <I4[] <I4[] I4'
   :EndIf
   {}glMultiDrawElementArrayAPPLE_DLL mode first count primcount
 ∇
 
 ∇ glMultiDrawRangeElementArrayAPPLE (mode start end first count primcount)
   :If 0=⎕NC'glMultiDrawRangeElementArrayAPPLE_DLL'
-      'glMultiDrawRangeElementArrayAPPLE_DLL'⎕NA'opengl32|glMultiDrawRangeElementArrayAPPLE U4 U4 U4 <I4[] <I4[] I4'
+      'glMultiDrawRangeElementArrayAPPLE_DLL'⎕NA'',getdllname,'|glMultiDrawRangeElementArrayAPPLE U4 U4 U4 <I4[] <I4[] I4'
   :EndIf
   {}glMultiDrawRangeElementArrayAPPLE_DLL mode start end first count primcount
 ∇
 
 ∇ r←glGenFencesAPPLE (n fences)
   :If 0=⎕NC'glGenFencesAPPLE_DLL'
-      'glGenFencesAPPLE_DLL'⎕NA'opengl32|glGenFencesAPPLE I4 >U4[]'
+      'glGenFencesAPPLE_DLL'⎕NA'',getdllname,'|glGenFencesAPPLE I4 >U4[]'
   :EndIf
   r←glGenFencesAPPLE_DLL n fences
 ∇
 
 ∇ glDeleteFencesAPPLE (n fences)
   :If 0=⎕NC'glDeleteFencesAPPLE_DLL'
-      'glDeleteFencesAPPLE_DLL'⎕NA'opengl32|glDeleteFencesAPPLE I4 <U4[]'
+      'glDeleteFencesAPPLE_DLL'⎕NA'',getdllname,'|glDeleteFencesAPPLE I4 <U4[]'
   :EndIf
   {}glDeleteFencesAPPLE_DLL n fences
 ∇
 
 ∇ glSetFenceAPPLE fence
   :If 0=⎕NC'glSetFenceAPPLE_DLL'
-      'glSetFenceAPPLE_DLL'⎕NA'opengl32|glSetFenceAPPLE U4'
+      'glSetFenceAPPLE_DLL'⎕NA'',getdllname,'|glSetFenceAPPLE U4'
   :EndIf
   {}glSetFenceAPPLE_DLL fence
 ∇
 
 ∇ r←glIsFenceAPPLE fence
   :If 0=⎕NC'glIsFenceAPPLE_DLL'
-      'glIsFenceAPPLE_DLL'⎕NA'U1 opengl32|glIsFenceAPPLE U4'
+      'glIsFenceAPPLE_DLL'⎕NA'U1 ',getdllname,'|glIsFenceAPPLE U4'
   :EndIf
   r←glIsFenceAPPLE_DLL fence
 ∇
 
 ∇ r←glTestFenceAPPLE fence
   :If 0=⎕NC'glTestFenceAPPLE_DLL'
-      'glTestFenceAPPLE_DLL'⎕NA'U1 opengl32|glTestFenceAPPLE U4'
+      'glTestFenceAPPLE_DLL'⎕NA'U1 ',getdllname,'|glTestFenceAPPLE U4'
   :EndIf
   r←glTestFenceAPPLE_DLL fence
 ∇
 
 ∇ glFinishFenceAPPLE fence
   :If 0=⎕NC'glFinishFenceAPPLE_DLL'
-      'glFinishFenceAPPLE_DLL'⎕NA'opengl32|glFinishFenceAPPLE U4'
+      'glFinishFenceAPPLE_DLL'⎕NA'',getdllname,'|glFinishFenceAPPLE U4'
   :EndIf
   {}glFinishFenceAPPLE_DLL fence
 ∇
 
 ∇ r←glTestObjectAPPLE (object name)
   :If 0=⎕NC'glTestObjectAPPLE_DLL'
-      'glTestObjectAPPLE_DLL'⎕NA'U1 opengl32|glTestObjectAPPLE U4 U4'
+      'glTestObjectAPPLE_DLL'⎕NA'U1 ',getdllname,'|glTestObjectAPPLE U4 U4'
   :EndIf
   r←glTestObjectAPPLE_DLL object name
 ∇
 
 ∇ glFinishObjectAPPLE (object name)
   :If 0=⎕NC'glFinishObjectAPPLE_DLL'
-      'glFinishObjectAPPLE_DLL'⎕NA'opengl32|glFinishObjectAPPLE U4 I4'
+      'glFinishObjectAPPLE_DLL'⎕NA'',getdllname,'|glFinishObjectAPPLE U4 I4'
   :EndIf
   {}glFinishObjectAPPLE_DLL object name
 ∇
 
 ∇ glBindVertexArrayAPPLE array
   :If 0=⎕NC'glBindVertexArrayAPPLE_DLL'
-      'glBindVertexArrayAPPLE_DLL'⎕NA'opengl32|glBindVertexArrayAPPLE U4'
+      'glBindVertexArrayAPPLE_DLL'⎕NA'',getdllname,'|glBindVertexArrayAPPLE U4'
   :EndIf
   {}glBindVertexArrayAPPLE_DLL array
 ∇
 
 ∇ glDeleteVertexArraysAPPLE (n arrays)
   :If 0=⎕NC'glDeleteVertexArraysAPPLE_DLL'
-      'glDeleteVertexArraysAPPLE_DLL'⎕NA'opengl32|glDeleteVertexArraysAPPLE I4 <U4[]'
+      'glDeleteVertexArraysAPPLE_DLL'⎕NA'',getdllname,'|glDeleteVertexArraysAPPLE I4 <U4[]'
   :EndIf
   {}glDeleteVertexArraysAPPLE_DLL n arrays
 ∇
 
 ∇ r←glGenVertexArraysAPPLE (n arrays)
   :If 0=⎕NC'glGenVertexArraysAPPLE_DLL'
-      'glGenVertexArraysAPPLE_DLL'⎕NA'opengl32|glGenVertexArraysAPPLE I4 >U4[]'
+      'glGenVertexArraysAPPLE_DLL'⎕NA'',getdllname,'|glGenVertexArraysAPPLE I4 >U4[]'
   :EndIf
   r←glGenVertexArraysAPPLE_DLL n arrays
 ∇
 
 ∇ r←glIsVertexArrayAPPLE array
   :If 0=⎕NC'glIsVertexArrayAPPLE_DLL'
-      'glIsVertexArrayAPPLE_DLL'⎕NA'U1 opengl32|glIsVertexArrayAPPLE U4'
+      'glIsVertexArrayAPPLE_DLL'⎕NA'U1 ',getdllname,'|glIsVertexArrayAPPLE U4'
   :EndIf
   r←glIsVertexArrayAPPLE_DLL array
 ∇
@@ -19043,56 +19051,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexArrayParameteriAPPLE (pname param)
   :If 0=⎕NC'glVertexArrayParameteriAPPLE_DLL'
-      'glVertexArrayParameteriAPPLE_DLL'⎕NA'opengl32|glVertexArrayParameteriAPPLE U4 I4'
+      'glVertexArrayParameteriAPPLE_DLL'⎕NA'',getdllname,'|glVertexArrayParameteriAPPLE U4 I4'
   :EndIf
   {}glVertexArrayParameteriAPPLE_DLL pname param
 ∇
 
 ∇ glDrawBuffersATI (n bufs)
   :If 0=⎕NC'glDrawBuffersATI_DLL'
-      'glDrawBuffersATI_DLL'⎕NA'opengl32|glDrawBuffersATI I4 <U4[]'
+      'glDrawBuffersATI_DLL'⎕NA'',getdllname,'|glDrawBuffersATI I4 <U4[]'
   :EndIf
   {}glDrawBuffersATI_DLL n bufs
 ∇
 
 ∇ glProgramNamedParameter4fNV (id len name x y z w)
   :If 0=⎕NC'glProgramNamedParameter4fNV_DLL'
-      'glProgramNamedParameter4fNV_DLL'⎕NA'opengl32|glProgramNamedParameter4fNV U4 I4 <U1[1] F4 F4 F4 F4'
+      'glProgramNamedParameter4fNV_DLL'⎕NA'',getdllname,'|glProgramNamedParameter4fNV U4 I4 <U1[1] F4 F4 F4 F4'
   :EndIf
   {}glProgramNamedParameter4fNV_DLL id len name x y z w
 ∇
 
 ∇ glProgramNamedParameter4dNV (id len name x y z w)
   :If 0=⎕NC'glProgramNamedParameter4dNV_DLL'
-      'glProgramNamedParameter4dNV_DLL'⎕NA'opengl32|glProgramNamedParameter4dNV U4 I4 <U1[1] F8 F8 F8 F8'
+      'glProgramNamedParameter4dNV_DLL'⎕NA'',getdllname,'|glProgramNamedParameter4dNV U4 I4 <U1[1] F8 F8 F8 F8'
   :EndIf
   {}glProgramNamedParameter4dNV_DLL id len name x y z w
 ∇
 
 ∇ glProgramNamedParameter4fvNV (id len name v)
   :If 0=⎕NC'glProgramNamedParameter4fvNV_DLL'
-      'glProgramNamedParameter4fvNV_DLL'⎕NA'opengl32|glProgramNamedParameter4fvNV U4 I4 <U1[1] <F4[4]'
+      'glProgramNamedParameter4fvNV_DLL'⎕NA'',getdllname,'|glProgramNamedParameter4fvNV U4 I4 <U1[1] <F4[4]'
   :EndIf
   {}glProgramNamedParameter4fvNV_DLL id len name v
 ∇
 
 ∇ glProgramNamedParameter4dvNV (id len name v)
   :If 0=⎕NC'glProgramNamedParameter4dvNV_DLL'
-      'glProgramNamedParameter4dvNV_DLL'⎕NA'opengl32|glProgramNamedParameter4dvNV U4 I4 <U1[1] <F8[4]'
+      'glProgramNamedParameter4dvNV_DLL'⎕NA'',getdllname,'|glProgramNamedParameter4dvNV U4 I4 <U1[1] <F8[4]'
   :EndIf
   {}glProgramNamedParameter4dvNV_DLL id len name v
 ∇
 
 ∇ r←glGetProgramNamedParameterfvNV (id len name)
   :If 0=⎕NC'glGetProgramNamedParameterfvNV_DLL'
-      'glGetProgramNamedParameterfvNV_DLL'⎕NA'opengl32|glGetProgramNamedParameterfvNV U4 I4 <U1[1] >F4[4]'
+      'glGetProgramNamedParameterfvNV_DLL'⎕NA'',getdllname,'|glGetProgramNamedParameterfvNV U4 I4 <U1[1] >F4[4]'
   :EndIf
   r←glGetProgramNamedParameterfvNV_DLL id len name 4
 ∇
 
 ∇ r←glGetProgramNamedParameterdvNV (id len name)
   :If 0=⎕NC'glGetProgramNamedParameterdvNV_DLL'
-      'glGetProgramNamedParameterdvNV_DLL'⎕NA'opengl32|glGetProgramNamedParameterdvNV U4 I4 <U1[1] >F8[4]'
+      'glGetProgramNamedParameterdvNV_DLL'⎕NA'',getdllname,'|glGetProgramNamedParameterdvNV U4 I4 <U1[1] >F8[4]'
   :EndIf
   r←glGetProgramNamedParameterdvNV_DLL id len name 4
 ∇
@@ -19428,21 +19436,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glFlushPixelDataRangeNV target
   :If 0=⎕NC'glFlushPixelDataRangeNV_DLL'
-      'glFlushPixelDataRangeNV_DLL'⎕NA'opengl32|glFlushPixelDataRangeNV U4'
+      'glFlushPixelDataRangeNV_DLL'⎕NA'',getdllname,'|glFlushPixelDataRangeNV U4'
   :EndIf
   {}glFlushPixelDataRangeNV_DLL target
 ∇
 
 ∇ glPrimitiveRestartNV
   :If 0=⎕NC'glPrimitiveRestartNV_DLL'
-      'glPrimitiveRestartNV_DLL'⎕NA'opengl32|glPrimitiveRestartNV'
+      'glPrimitiveRestartNV_DLL'⎕NA'',getdllname,'|glPrimitiveRestartNV'
   :EndIf
   {}glPrimitiveRestartNV_DLL
 ∇
 
 ∇ glPrimitiveRestartIndexNV index
   :If 0=⎕NC'glPrimitiveRestartIndexNV_DLL'
-      'glPrimitiveRestartIndexNV_DLL'⎕NA'opengl32|glPrimitiveRestartIndexNV U4'
+      'glPrimitiveRestartIndexNV_DLL'⎕NA'',getdllname,'|glPrimitiveRestartIndexNV U4'
   :EndIf
   {}glPrimitiveRestartIndexNV_DLL index
 ∇
@@ -19456,175 +19464,175 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUnmapObjectBufferATI buffer
   :If 0=⎕NC'glUnmapObjectBufferATI_DLL'
-      'glUnmapObjectBufferATI_DLL'⎕NA'opengl32|glUnmapObjectBufferATI U4'
+      'glUnmapObjectBufferATI_DLL'⎕NA'',getdllname,'|glUnmapObjectBufferATI U4'
   :EndIf
   {}glUnmapObjectBufferATI_DLL buffer
 ∇
 
 ∇ glStencilOpSeparateATI (face sfail dpfail dppass)
   :If 0=⎕NC'glStencilOpSeparateATI_DLL'
-      'glStencilOpSeparateATI_DLL'⎕NA'opengl32|glStencilOpSeparateATI U4 U4 U4 U4'
+      'glStencilOpSeparateATI_DLL'⎕NA'',getdllname,'|glStencilOpSeparateATI U4 U4 U4 U4'
   :EndIf
   {}glStencilOpSeparateATI_DLL face sfail dpfail dppass
 ∇
 
 ∇ glStencilFuncSeparateATI (frontfunc backfunc ref mask)
   :If 0=⎕NC'glStencilFuncSeparateATI_DLL'
-      'glStencilFuncSeparateATI_DLL'⎕NA'opengl32|glStencilFuncSeparateATI U4 U4 I4 U4'
+      'glStencilFuncSeparateATI_DLL'⎕NA'',getdllname,'|glStencilFuncSeparateATI U4 U4 I4 U4'
   :EndIf
   {}glStencilFuncSeparateATI_DLL frontfunc backfunc ref mask
 ∇
 
 ∇ glVertexAttribArrayObjectATI (index size type normalized stride buffer offset)
   :If 0=⎕NC'glVertexAttribArrayObjectATI_DLL'
-      'glVertexAttribArrayObjectATI_DLL'⎕NA'opengl32|glVertexAttribArrayObjectATI U4 I4 U4 U1 I4 U4 U4'
+      'glVertexAttribArrayObjectATI_DLL'⎕NA'',getdllname,'|glVertexAttribArrayObjectATI U4 I4 U4 U1 I4 U4 U4'
   :EndIf
   {}glVertexAttribArrayObjectATI_DLL index size type normalized stride buffer offset
 ∇
 
 ∇ r←glGetVertexAttribArrayObjectfvATI (index pname params)
   :If 0=⎕NC'glGetVertexAttribArrayObjectfvATI_DLL'
-      'glGetVertexAttribArrayObjectfvATI_DLL'⎕NA'opengl32|glGetVertexAttribArrayObjectfvATI U4 U4 >F4[]'
+      'glGetVertexAttribArrayObjectfvATI_DLL'⎕NA'',getdllname,'|glGetVertexAttribArrayObjectfvATI U4 U4 >F4[]'
   :EndIf
   r←glGetVertexAttribArrayObjectfvATI_DLL index pname params
 ∇
 
 ∇ r←glGetVertexAttribArrayObjectivATI (index pname params)
   :If 0=⎕NC'glGetVertexAttribArrayObjectivATI_DLL'
-      'glGetVertexAttribArrayObjectivATI_DLL'⎕NA'opengl32|glGetVertexAttribArrayObjectivATI U4 U4 >I4[]'
+      'glGetVertexAttribArrayObjectivATI_DLL'⎕NA'',getdllname,'|glGetVertexAttribArrayObjectivATI U4 U4 >I4[]'
   :EndIf
   r←glGetVertexAttribArrayObjectivATI_DLL index pname params
 ∇
 
 ∇ glDepthBoundsEXT (zmin zmax)
   :If 0=⎕NC'glDepthBoundsEXT_DLL'
-      'glDepthBoundsEXT_DLL'⎕NA'opengl32|glDepthBoundsEXT F8 F8'
+      'glDepthBoundsEXT_DLL'⎕NA'',getdllname,'|glDepthBoundsEXT F8 F8'
   :EndIf
   {}glDepthBoundsEXT_DLL zmin zmax
 ∇
 
 ∇ glBlendEquationSeparateEXT (modeRGB modeAlpha)
   :If 0=⎕NC'glBlendEquationSeparateEXT_DLL'
-      'glBlendEquationSeparateEXT_DLL'⎕NA'opengl32|glBlendEquationSeparateEXT U4 U4'
+      'glBlendEquationSeparateEXT_DLL'⎕NA'',getdllname,'|glBlendEquationSeparateEXT U4 U4'
   :EndIf
   {}glBlendEquationSeparateEXT_DLL modeRGB modeAlpha
 ∇
 
 ∇ r←glIsRenderbufferEXT renderbuffer
   :If 0=⎕NC'glIsRenderbufferEXT_DLL'
-      'glIsRenderbufferEXT_DLL'⎕NA'U1 opengl32|glIsRenderbufferEXT U4'
+      'glIsRenderbufferEXT_DLL'⎕NA'U1 ',getdllname,'|glIsRenderbufferEXT U4'
   :EndIf
   r←glIsRenderbufferEXT_DLL renderbuffer
 ∇
 
 ∇ glBindRenderbufferEXT (target renderbuffer)
   :If 0=⎕NC'glBindRenderbufferEXT_DLL'
-      'glBindRenderbufferEXT_DLL'⎕NA'opengl32|glBindRenderbufferEXT U4 U4'
+      'glBindRenderbufferEXT_DLL'⎕NA'',getdllname,'|glBindRenderbufferEXT U4 U4'
   :EndIf
   {}glBindRenderbufferEXT_DLL target renderbuffer
 ∇
 
 ∇ glDeleteRenderbuffersEXT (n renderbuffers)
   :If 0=⎕NC'glDeleteRenderbuffersEXT_DLL'
-      'glDeleteRenderbuffersEXT_DLL'⎕NA'opengl32|glDeleteRenderbuffersEXT I4 <U4[]'
+      'glDeleteRenderbuffersEXT_DLL'⎕NA'',getdllname,'|glDeleteRenderbuffersEXT I4 <U4[]'
   :EndIf
   {}glDeleteRenderbuffersEXT_DLL n renderbuffers
 ∇
 
 ∇ r←glGenRenderbuffersEXT (n renderbuffers)
   :If 0=⎕NC'glGenRenderbuffersEXT_DLL'
-      'glGenRenderbuffersEXT_DLL'⎕NA'opengl32|glGenRenderbuffersEXT I4 >U4[]'
+      'glGenRenderbuffersEXT_DLL'⎕NA'',getdllname,'|glGenRenderbuffersEXT I4 >U4[]'
   :EndIf
   r←glGenRenderbuffersEXT_DLL n renderbuffers
 ∇
 
 ∇ glRenderbufferStorageEXT (target internalformat width height)
   :If 0=⎕NC'glRenderbufferStorageEXT_DLL'
-      'glRenderbufferStorageEXT_DLL'⎕NA'opengl32|glRenderbufferStorageEXT U4 U4 I4 I4'
+      'glRenderbufferStorageEXT_DLL'⎕NA'',getdllname,'|glRenderbufferStorageEXT U4 U4 I4 I4'
   :EndIf
   {}glRenderbufferStorageEXT_DLL target internalformat width height
 ∇
 
 ∇ r←glGetRenderbufferParameterivEXT (target pname params)
   :If 0=⎕NC'glGetRenderbufferParameterivEXT_DLL'
-      'glGetRenderbufferParameterivEXT_DLL'⎕NA'opengl32|glGetRenderbufferParameterivEXT U4 U4 >I4[]'
+      'glGetRenderbufferParameterivEXT_DLL'⎕NA'',getdllname,'|glGetRenderbufferParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetRenderbufferParameterivEXT_DLL target pname params
 ∇
 
 ∇ r←glIsFramebufferEXT framebuffer
   :If 0=⎕NC'glIsFramebufferEXT_DLL'
-      'glIsFramebufferEXT_DLL'⎕NA'U1 opengl32|glIsFramebufferEXT U4'
+      'glIsFramebufferEXT_DLL'⎕NA'U1 ',getdllname,'|glIsFramebufferEXT U4'
   :EndIf
   r←glIsFramebufferEXT_DLL framebuffer
 ∇
 
 ∇ glBindFramebufferEXT (target framebuffer)
   :If 0=⎕NC'glBindFramebufferEXT_DLL'
-      'glBindFramebufferEXT_DLL'⎕NA'opengl32|glBindFramebufferEXT U4 U4'
+      'glBindFramebufferEXT_DLL'⎕NA'',getdllname,'|glBindFramebufferEXT U4 U4'
   :EndIf
   {}glBindFramebufferEXT_DLL target framebuffer
 ∇
 
 ∇ glDeleteFramebuffersEXT (n framebuffers)
   :If 0=⎕NC'glDeleteFramebuffersEXT_DLL'
-      'glDeleteFramebuffersEXT_DLL'⎕NA'opengl32|glDeleteFramebuffersEXT I4 <U4[]'
+      'glDeleteFramebuffersEXT_DLL'⎕NA'',getdllname,'|glDeleteFramebuffersEXT I4 <U4[]'
   :EndIf
   {}glDeleteFramebuffersEXT_DLL n framebuffers
 ∇
 
 ∇ r←glGenFramebuffersEXT (n framebuffers)
   :If 0=⎕NC'glGenFramebuffersEXT_DLL'
-      'glGenFramebuffersEXT_DLL'⎕NA'opengl32|glGenFramebuffersEXT I4 >U4[]'
+      'glGenFramebuffersEXT_DLL'⎕NA'',getdllname,'|glGenFramebuffersEXT I4 >U4[]'
   :EndIf
   r←glGenFramebuffersEXT_DLL n framebuffers
 ∇
 
 ∇ r←glCheckFramebufferStatusEXT target
   :If 0=⎕NC'glCheckFramebufferStatusEXT_DLL'
-      'glCheckFramebufferStatusEXT_DLL'⎕NA'U4 opengl32|glCheckFramebufferStatusEXT U4'
+      'glCheckFramebufferStatusEXT_DLL'⎕NA'U4 ',getdllname,'|glCheckFramebufferStatusEXT U4'
   :EndIf
   r←glCheckFramebufferStatusEXT_DLL target
 ∇
 
 ∇ glFramebufferTexture1DEXT (target attachment textarget texture level)
   :If 0=⎕NC'glFramebufferTexture1DEXT_DLL'
-      'glFramebufferTexture1DEXT_DLL'⎕NA'opengl32|glFramebufferTexture1DEXT U4 U4 U4 U4 I4'
+      'glFramebufferTexture1DEXT_DLL'⎕NA'',getdllname,'|glFramebufferTexture1DEXT U4 U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTexture1DEXT_DLL target attachment textarget texture level
 ∇
 
 ∇ glFramebufferTexture2DEXT (target attachment textarget texture level)
   :If 0=⎕NC'glFramebufferTexture2DEXT_DLL'
-      'glFramebufferTexture2DEXT_DLL'⎕NA'opengl32|glFramebufferTexture2DEXT U4 U4 U4 U4 I4'
+      'glFramebufferTexture2DEXT_DLL'⎕NA'',getdllname,'|glFramebufferTexture2DEXT U4 U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTexture2DEXT_DLL target attachment textarget texture level
 ∇
 
 ∇ glFramebufferTexture3DEXT (target attachment textarget texture level zoffset)
   :If 0=⎕NC'glFramebufferTexture3DEXT_DLL'
-      'glFramebufferTexture3DEXT_DLL'⎕NA'opengl32|glFramebufferTexture3DEXT U4 U4 U4 U4 I4 I4'
+      'glFramebufferTexture3DEXT_DLL'⎕NA'',getdllname,'|glFramebufferTexture3DEXT U4 U4 U4 U4 I4 I4'
   :EndIf
   {}glFramebufferTexture3DEXT_DLL target attachment textarget texture level zoffset
 ∇
 
 ∇ glFramebufferRenderbufferEXT (target attachment renderbuffertarget renderbuffer)
   :If 0=⎕NC'glFramebufferRenderbufferEXT_DLL'
-      'glFramebufferRenderbufferEXT_DLL'⎕NA'opengl32|glFramebufferRenderbufferEXT U4 U4 U4 U4'
+      'glFramebufferRenderbufferEXT_DLL'⎕NA'',getdllname,'|glFramebufferRenderbufferEXT U4 U4 U4 U4'
   :EndIf
   {}glFramebufferRenderbufferEXT_DLL target attachment renderbuffertarget renderbuffer
 ∇
 
 ∇ r←glGetFramebufferAttachmentParameterivEXT (target attachment pname params)
   :If 0=⎕NC'glGetFramebufferAttachmentParameterivEXT_DLL'
-      'glGetFramebufferAttachmentParameterivEXT_DLL'⎕NA'opengl32|glGetFramebufferAttachmentParameterivEXT U4 U4 U4 >I4[]'
+      'glGetFramebufferAttachmentParameterivEXT_DLL'⎕NA'',getdllname,'|glGetFramebufferAttachmentParameterivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetFramebufferAttachmentParameterivEXT_DLL target attachment pname params
 ∇
 
 ∇ glGenerateMipmapEXT target
   :If 0=⎕NC'glGenerateMipmapEXT_DLL'
-      'glGenerateMipmapEXT_DLL'⎕NA'opengl32|glGenerateMipmapEXT U4'
+      'glGenerateMipmapEXT_DLL'⎕NA'',getdllname,'|glGenerateMipmapEXT U4'
   :EndIf
   {}glGenerateMipmapEXT_DLL target
 ∇
@@ -19638,56 +19646,56 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glStencilClearTagEXT (stencilTagBits stencilClearTag)
   :If 0=⎕NC'glStencilClearTagEXT_DLL'
-      'glStencilClearTagEXT_DLL'⎕NA'opengl32|glStencilClearTagEXT I4 U4'
+      'glStencilClearTagEXT_DLL'⎕NA'',getdllname,'|glStencilClearTagEXT I4 U4'
   :EndIf
   {}glStencilClearTagEXT_DLL stencilTagBits stencilClearTag
 ∇
 
 ∇ glBlitFramebufferEXT (srcX0 srcY0 srcX1 srcY1 dstX0 dstY0 dstX1 dstY1 mask filter)
   :If 0=⎕NC'glBlitFramebufferEXT_DLL'
-      'glBlitFramebufferEXT_DLL'⎕NA'opengl32|glBlitFramebufferEXT I4 I4 I4 I4 I4 I4 I4 I4 U4 U4'
+      'glBlitFramebufferEXT_DLL'⎕NA'',getdllname,'|glBlitFramebufferEXT I4 I4 I4 I4 I4 I4 I4 I4 U4 U4'
   :EndIf
   {}glBlitFramebufferEXT_DLL srcX0 srcY0 srcX1 srcY1 dstX0 dstY0 dstX1 dstY1 mask filter
 ∇
 
 ∇ glRenderbufferStorageMultisampleEXT (target samples internalformat width height)
   :If 0=⎕NC'glRenderbufferStorageMultisampleEXT_DLL'
-      'glRenderbufferStorageMultisampleEXT_DLL'⎕NA'opengl32|glRenderbufferStorageMultisampleEXT U4 I4 U4 I4 I4'
+      'glRenderbufferStorageMultisampleEXT_DLL'⎕NA'',getdllname,'|glRenderbufferStorageMultisampleEXT U4 I4 U4 I4 I4'
   :EndIf
   {}glRenderbufferStorageMultisampleEXT_DLL target samples internalformat width height
 ∇
 
 ∇ r←glGetQueryObjecti64vEXT (id pname params)
   :If 0=⎕NC'glGetQueryObjecti64vEXT_DLL'
-      'glGetQueryObjecti64vEXT_DLL'⎕NA'opengl32|glGetQueryObjecti64vEXT U4 U4 >I8[]'
+      'glGetQueryObjecti64vEXT_DLL'⎕NA'',getdllname,'|glGetQueryObjecti64vEXT U4 U4 >I8[]'
   :EndIf
   r←glGetQueryObjecti64vEXT_DLL id pname params
 ∇
 
 ∇ r←glGetQueryObjectui64vEXT (id pname params)
   :If 0=⎕NC'glGetQueryObjectui64vEXT_DLL'
-      'glGetQueryObjectui64vEXT_DLL'⎕NA'opengl32|glGetQueryObjectui64vEXT U4 U4 >U8[]'
+      'glGetQueryObjectui64vEXT_DLL'⎕NA'',getdllname,'|glGetQueryObjectui64vEXT U4 U4 >U8[]'
   :EndIf
   r←glGetQueryObjectui64vEXT_DLL id pname params
 ∇
 
 ∇ glProgramEnvParameters4fvEXT (target index count params)
   :If 0=⎕NC'glProgramEnvParameters4fvEXT_DLL'
-      'glProgramEnvParameters4fvEXT_DLL'⎕NA'opengl32|glProgramEnvParameters4fvEXT U4 U4 I4 <F4[]'
+      'glProgramEnvParameters4fvEXT_DLL'⎕NA'',getdllname,'|glProgramEnvParameters4fvEXT U4 U4 I4 <F4[]'
   :EndIf
   {}glProgramEnvParameters4fvEXT_DLL target index count params
 ∇
 
 ∇ glProgramLocalParameters4fvEXT (target index count params)
   :If 0=⎕NC'glProgramLocalParameters4fvEXT_DLL'
-      'glProgramLocalParameters4fvEXT_DLL'⎕NA'opengl32|glProgramLocalParameters4fvEXT U4 U4 I4 <F4[]'
+      'glProgramLocalParameters4fvEXT_DLL'⎕NA'',getdllname,'|glProgramLocalParameters4fvEXT U4 U4 I4 <F4[]'
   :EndIf
   {}glProgramLocalParameters4fvEXT_DLL target index count params
 ∇
 
 ∇ glBufferParameteriAPPLE (target pname param)
   :If 0=⎕NC'glBufferParameteriAPPLE_DLL'
-      'glBufferParameteriAPPLE_DLL'⎕NA'opengl32|glBufferParameteriAPPLE U4 U4 I4'
+      'glBufferParameteriAPPLE_DLL'⎕NA'',getdllname,'|glBufferParameteriAPPLE U4 U4 I4'
   :EndIf
   {}glBufferParameteriAPPLE_DLL target pname param
 ∇
@@ -19701,287 +19709,287 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glProgramLocalParameterI4iNV (target index x y z w)
   :If 0=⎕NC'glProgramLocalParameterI4iNV_DLL'
-      'glProgramLocalParameterI4iNV_DLL'⎕NA'opengl32|glProgramLocalParameterI4iNV U4 U4 I4 I4 I4 I4'
+      'glProgramLocalParameterI4iNV_DLL'⎕NA'',getdllname,'|glProgramLocalParameterI4iNV U4 U4 I4 I4 I4 I4'
   :EndIf
   {}glProgramLocalParameterI4iNV_DLL target index x y z w
 ∇
 
 ∇ glProgramLocalParameterI4ivNV (target index params)
   :If 0=⎕NC'glProgramLocalParameterI4ivNV_DLL'
-      'glProgramLocalParameterI4ivNV_DLL'⎕NA'opengl32|glProgramLocalParameterI4ivNV U4 U4 <I4[4]'
+      'glProgramLocalParameterI4ivNV_DLL'⎕NA'',getdllname,'|glProgramLocalParameterI4ivNV U4 U4 <I4[4]'
   :EndIf
   {}glProgramLocalParameterI4ivNV_DLL target index params
 ∇
 
 ∇ glProgramLocalParametersI4ivNV (target index count params)
   :If 0=⎕NC'glProgramLocalParametersI4ivNV_DLL'
-      'glProgramLocalParametersI4ivNV_DLL'⎕NA'opengl32|glProgramLocalParametersI4ivNV U4 U4 I4 <I4[]'
+      'glProgramLocalParametersI4ivNV_DLL'⎕NA'',getdllname,'|glProgramLocalParametersI4ivNV U4 U4 I4 <I4[]'
   :EndIf
   {}glProgramLocalParametersI4ivNV_DLL target index count params
 ∇
 
 ∇ glProgramLocalParameterI4uiNV (target index x y z w)
   :If 0=⎕NC'glProgramLocalParameterI4uiNV_DLL'
-      'glProgramLocalParameterI4uiNV_DLL'⎕NA'opengl32|glProgramLocalParameterI4uiNV U4 U4 U4 U4 U4 U4'
+      'glProgramLocalParameterI4uiNV_DLL'⎕NA'',getdllname,'|glProgramLocalParameterI4uiNV U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glProgramLocalParameterI4uiNV_DLL target index x y z w
 ∇
 
 ∇ glProgramLocalParameterI4uivNV (target index params)
   :If 0=⎕NC'glProgramLocalParameterI4uivNV_DLL'
-      'glProgramLocalParameterI4uivNV_DLL'⎕NA'opengl32|glProgramLocalParameterI4uivNV U4 U4 <U4[4]'
+      'glProgramLocalParameterI4uivNV_DLL'⎕NA'',getdllname,'|glProgramLocalParameterI4uivNV U4 U4 <U4[4]'
   :EndIf
   {}glProgramLocalParameterI4uivNV_DLL target index params
 ∇
 
 ∇ glProgramLocalParametersI4uivNV (target index count params)
   :If 0=⎕NC'glProgramLocalParametersI4uivNV_DLL'
-      'glProgramLocalParametersI4uivNV_DLL'⎕NA'opengl32|glProgramLocalParametersI4uivNV U4 U4 I4 <U4[]'
+      'glProgramLocalParametersI4uivNV_DLL'⎕NA'',getdllname,'|glProgramLocalParametersI4uivNV U4 U4 I4 <U4[]'
   :EndIf
   {}glProgramLocalParametersI4uivNV_DLL target index count params
 ∇
 
 ∇ glProgramEnvParameterI4iNV (target index x y z w)
   :If 0=⎕NC'glProgramEnvParameterI4iNV_DLL'
-      'glProgramEnvParameterI4iNV_DLL'⎕NA'opengl32|glProgramEnvParameterI4iNV U4 U4 I4 I4 I4 I4'
+      'glProgramEnvParameterI4iNV_DLL'⎕NA'',getdllname,'|glProgramEnvParameterI4iNV U4 U4 I4 I4 I4 I4'
   :EndIf
   {}glProgramEnvParameterI4iNV_DLL target index x y z w
 ∇
 
 ∇ glProgramEnvParameterI4ivNV (target index params)
   :If 0=⎕NC'glProgramEnvParameterI4ivNV_DLL'
-      'glProgramEnvParameterI4ivNV_DLL'⎕NA'opengl32|glProgramEnvParameterI4ivNV U4 U4 <I4[4]'
+      'glProgramEnvParameterI4ivNV_DLL'⎕NA'',getdllname,'|glProgramEnvParameterI4ivNV U4 U4 <I4[4]'
   :EndIf
   {}glProgramEnvParameterI4ivNV_DLL target index params
 ∇
 
 ∇ glProgramEnvParametersI4ivNV (target index count params)
   :If 0=⎕NC'glProgramEnvParametersI4ivNV_DLL'
-      'glProgramEnvParametersI4ivNV_DLL'⎕NA'opengl32|glProgramEnvParametersI4ivNV U4 U4 I4 <I4[]'
+      'glProgramEnvParametersI4ivNV_DLL'⎕NA'',getdllname,'|glProgramEnvParametersI4ivNV U4 U4 I4 <I4[]'
   :EndIf
   {}glProgramEnvParametersI4ivNV_DLL target index count params
 ∇
 
 ∇ glProgramEnvParameterI4uiNV (target index x y z w)
   :If 0=⎕NC'glProgramEnvParameterI4uiNV_DLL'
-      'glProgramEnvParameterI4uiNV_DLL'⎕NA'opengl32|glProgramEnvParameterI4uiNV U4 U4 U4 U4 U4 U4'
+      'glProgramEnvParameterI4uiNV_DLL'⎕NA'',getdllname,'|glProgramEnvParameterI4uiNV U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glProgramEnvParameterI4uiNV_DLL target index x y z w
 ∇
 
 ∇ glProgramEnvParameterI4uivNV (target index params)
   :If 0=⎕NC'glProgramEnvParameterI4uivNV_DLL'
-      'glProgramEnvParameterI4uivNV_DLL'⎕NA'opengl32|glProgramEnvParameterI4uivNV U4 U4 <U4[4]'
+      'glProgramEnvParameterI4uivNV_DLL'⎕NA'',getdllname,'|glProgramEnvParameterI4uivNV U4 U4 <U4[4]'
   :EndIf
   {}glProgramEnvParameterI4uivNV_DLL target index params
 ∇
 
 ∇ glProgramEnvParametersI4uivNV (target index count params)
   :If 0=⎕NC'glProgramEnvParametersI4uivNV_DLL'
-      'glProgramEnvParametersI4uivNV_DLL'⎕NA'opengl32|glProgramEnvParametersI4uivNV U4 U4 I4 <U4[]'
+      'glProgramEnvParametersI4uivNV_DLL'⎕NA'',getdllname,'|glProgramEnvParametersI4uivNV U4 U4 I4 <U4[]'
   :EndIf
   {}glProgramEnvParametersI4uivNV_DLL target index count params
 ∇
 
 ∇ r←glGetProgramLocalParameterIivNV (target index)
   :If 0=⎕NC'glGetProgramLocalParameterIivNV_DLL'
-      'glGetProgramLocalParameterIivNV_DLL'⎕NA'opengl32|glGetProgramLocalParameterIivNV U4 U4 >I4[4]'
+      'glGetProgramLocalParameterIivNV_DLL'⎕NA'',getdllname,'|glGetProgramLocalParameterIivNV U4 U4 >I4[4]'
   :EndIf
   r←glGetProgramLocalParameterIivNV_DLL target index 4
 ∇
 
 ∇ r←glGetProgramLocalParameterIuivNV (target index)
   :If 0=⎕NC'glGetProgramLocalParameterIuivNV_DLL'
-      'glGetProgramLocalParameterIuivNV_DLL'⎕NA'opengl32|glGetProgramLocalParameterIuivNV U4 U4 >U4[4]'
+      'glGetProgramLocalParameterIuivNV_DLL'⎕NA'',getdllname,'|glGetProgramLocalParameterIuivNV U4 U4 >U4[4]'
   :EndIf
   r←glGetProgramLocalParameterIuivNV_DLL target index 4
 ∇
 
 ∇ r←glGetProgramEnvParameterIivNV (target index)
   :If 0=⎕NC'glGetProgramEnvParameterIivNV_DLL'
-      'glGetProgramEnvParameterIivNV_DLL'⎕NA'opengl32|glGetProgramEnvParameterIivNV U4 U4 >I4[4]'
+      'glGetProgramEnvParameterIivNV_DLL'⎕NA'',getdllname,'|glGetProgramEnvParameterIivNV U4 U4 >I4[4]'
   :EndIf
   r←glGetProgramEnvParameterIivNV_DLL target index 4
 ∇
 
 ∇ r←glGetProgramEnvParameterIuivNV (target index)
   :If 0=⎕NC'glGetProgramEnvParameterIuivNV_DLL'
-      'glGetProgramEnvParameterIuivNV_DLL'⎕NA'opengl32|glGetProgramEnvParameterIuivNV U4 U4 >U4[4]'
+      'glGetProgramEnvParameterIuivNV_DLL'⎕NA'',getdllname,'|glGetProgramEnvParameterIuivNV U4 U4 >U4[4]'
   :EndIf
   r←glGetProgramEnvParameterIuivNV_DLL target index 4
 ∇
 
 ∇ glProgramVertexLimitNV (target limit)
   :If 0=⎕NC'glProgramVertexLimitNV_DLL'
-      'glProgramVertexLimitNV_DLL'⎕NA'opengl32|glProgramVertexLimitNV U4 I4'
+      'glProgramVertexLimitNV_DLL'⎕NA'',getdllname,'|glProgramVertexLimitNV U4 I4'
   :EndIf
   {}glProgramVertexLimitNV_DLL target limit
 ∇
 
 ∇ glFramebufferTextureEXT (target attachment texture level)
   :If 0=⎕NC'glFramebufferTextureEXT_DLL'
-      'glFramebufferTextureEXT_DLL'⎕NA'opengl32|glFramebufferTextureEXT U4 U4 U4 I4'
+      'glFramebufferTextureEXT_DLL'⎕NA'',getdllname,'|glFramebufferTextureEXT U4 U4 U4 I4'
   :EndIf
   {}glFramebufferTextureEXT_DLL target attachment texture level
 ∇
 
 ∇ glFramebufferTextureLayerEXT (target attachment texture level layer)
   :If 0=⎕NC'glFramebufferTextureLayerEXT_DLL'
-      'glFramebufferTextureLayerEXT_DLL'⎕NA'opengl32|glFramebufferTextureLayerEXT U4 U4 U4 I4 I4'
+      'glFramebufferTextureLayerEXT_DLL'⎕NA'',getdllname,'|glFramebufferTextureLayerEXT U4 U4 U4 I4 I4'
   :EndIf
   {}glFramebufferTextureLayerEXT_DLL target attachment texture level layer
 ∇
 
 ∇ glFramebufferTextureFaceEXT (target attachment texture level face)
   :If 0=⎕NC'glFramebufferTextureFaceEXT_DLL'
-      'glFramebufferTextureFaceEXT_DLL'⎕NA'opengl32|glFramebufferTextureFaceEXT U4 U4 U4 I4 U4'
+      'glFramebufferTextureFaceEXT_DLL'⎕NA'',getdllname,'|glFramebufferTextureFaceEXT U4 U4 U4 I4 U4'
   :EndIf
   {}glFramebufferTextureFaceEXT_DLL target attachment texture level face
 ∇
 
 ∇ glProgramParameteriEXT (program pname value)
   :If 0=⎕NC'glProgramParameteriEXT_DLL'
-      'glProgramParameteriEXT_DLL'⎕NA'opengl32|glProgramParameteriEXT U4 U4 I4'
+      'glProgramParameteriEXT_DLL'⎕NA'',getdllname,'|glProgramParameteriEXT U4 U4 I4'
   :EndIf
   {}glProgramParameteriEXT_DLL program pname value
 ∇
 
 ∇ glVertexAttribI1iEXT (index x)
   :If 0=⎕NC'glVertexAttribI1iEXT_DLL'
-      'glVertexAttribI1iEXT_DLL'⎕NA'opengl32|glVertexAttribI1iEXT U4 I4'
+      'glVertexAttribI1iEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI1iEXT U4 I4'
   :EndIf
   {}glVertexAttribI1iEXT_DLL index x
 ∇
 
 ∇ glVertexAttribI2iEXT (index x y)
   :If 0=⎕NC'glVertexAttribI2iEXT_DLL'
-      'glVertexAttribI2iEXT_DLL'⎕NA'opengl32|glVertexAttribI2iEXT U4 I4 I4'
+      'glVertexAttribI2iEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI2iEXT U4 I4 I4'
   :EndIf
   {}glVertexAttribI2iEXT_DLL index x y
 ∇
 
 ∇ glVertexAttribI3iEXT (index x y z)
   :If 0=⎕NC'glVertexAttribI3iEXT_DLL'
-      'glVertexAttribI3iEXT_DLL'⎕NA'opengl32|glVertexAttribI3iEXT U4 I4 I4 I4'
+      'glVertexAttribI3iEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI3iEXT U4 I4 I4 I4'
   :EndIf
   {}glVertexAttribI3iEXT_DLL index x y z
 ∇
 
 ∇ glVertexAttribI4iEXT (index x y z w)
   :If 0=⎕NC'glVertexAttribI4iEXT_DLL'
-      'glVertexAttribI4iEXT_DLL'⎕NA'opengl32|glVertexAttribI4iEXT U4 I4 I4 I4 I4'
+      'glVertexAttribI4iEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4iEXT U4 I4 I4 I4 I4'
   :EndIf
   {}glVertexAttribI4iEXT_DLL index x y z w
 ∇
 
 ∇ glVertexAttribI1uiEXT (index x)
   :If 0=⎕NC'glVertexAttribI1uiEXT_DLL'
-      'glVertexAttribI1uiEXT_DLL'⎕NA'opengl32|glVertexAttribI1uiEXT U4 U4'
+      'glVertexAttribI1uiEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI1uiEXT U4 U4'
   :EndIf
   {}glVertexAttribI1uiEXT_DLL index x
 ∇
 
 ∇ glVertexAttribI2uiEXT (index x y)
   :If 0=⎕NC'glVertexAttribI2uiEXT_DLL'
-      'glVertexAttribI2uiEXT_DLL'⎕NA'opengl32|glVertexAttribI2uiEXT U4 U4 U4'
+      'glVertexAttribI2uiEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI2uiEXT U4 U4 U4'
   :EndIf
   {}glVertexAttribI2uiEXT_DLL index x y
 ∇
 
 ∇ glVertexAttribI3uiEXT (index x y z)
   :If 0=⎕NC'glVertexAttribI3uiEXT_DLL'
-      'glVertexAttribI3uiEXT_DLL'⎕NA'opengl32|glVertexAttribI3uiEXT U4 U4 U4 U4'
+      'glVertexAttribI3uiEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI3uiEXT U4 U4 U4 U4'
   :EndIf
   {}glVertexAttribI3uiEXT_DLL index x y z
 ∇
 
 ∇ glVertexAttribI4uiEXT (index x y z w)
   :If 0=⎕NC'glVertexAttribI4uiEXT_DLL'
-      'glVertexAttribI4uiEXT_DLL'⎕NA'opengl32|glVertexAttribI4uiEXT U4 U4 U4 U4 U4'
+      'glVertexAttribI4uiEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4uiEXT U4 U4 U4 U4 U4'
   :EndIf
   {}glVertexAttribI4uiEXT_DLL index x y z w
 ∇
 
 ∇ glVertexAttribI1ivEXT (index v)
   :If 0=⎕NC'glVertexAttribI1ivEXT_DLL'
-      'glVertexAttribI1ivEXT_DLL'⎕NA'opengl32|glVertexAttribI1ivEXT U4 <I4[1]'
+      'glVertexAttribI1ivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI1ivEXT U4 <I4[1]'
   :EndIf
   {}glVertexAttribI1ivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI2ivEXT (index v)
   :If 0=⎕NC'glVertexAttribI2ivEXT_DLL'
-      'glVertexAttribI2ivEXT_DLL'⎕NA'opengl32|glVertexAttribI2ivEXT U4 <I4[2]'
+      'glVertexAttribI2ivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI2ivEXT U4 <I4[2]'
   :EndIf
   {}glVertexAttribI2ivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI3ivEXT (index v)
   :If 0=⎕NC'glVertexAttribI3ivEXT_DLL'
-      'glVertexAttribI3ivEXT_DLL'⎕NA'opengl32|glVertexAttribI3ivEXT U4 <I4[3]'
+      'glVertexAttribI3ivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI3ivEXT U4 <I4[3]'
   :EndIf
   {}glVertexAttribI3ivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI4ivEXT (index v)
   :If 0=⎕NC'glVertexAttribI4ivEXT_DLL'
-      'glVertexAttribI4ivEXT_DLL'⎕NA'opengl32|glVertexAttribI4ivEXT U4 <I4[4]'
+      'glVertexAttribI4ivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4ivEXT U4 <I4[4]'
   :EndIf
   {}glVertexAttribI4ivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI1uivEXT (index v)
   :If 0=⎕NC'glVertexAttribI1uivEXT_DLL'
-      'glVertexAttribI1uivEXT_DLL'⎕NA'opengl32|glVertexAttribI1uivEXT U4 <U4[1]'
+      'glVertexAttribI1uivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI1uivEXT U4 <U4[1]'
   :EndIf
   {}glVertexAttribI1uivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI2uivEXT (index v)
   :If 0=⎕NC'glVertexAttribI2uivEXT_DLL'
-      'glVertexAttribI2uivEXT_DLL'⎕NA'opengl32|glVertexAttribI2uivEXT U4 <U4[2]'
+      'glVertexAttribI2uivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI2uivEXT U4 <U4[2]'
   :EndIf
   {}glVertexAttribI2uivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI3uivEXT (index v)
   :If 0=⎕NC'glVertexAttribI3uivEXT_DLL'
-      'glVertexAttribI3uivEXT_DLL'⎕NA'opengl32|glVertexAttribI3uivEXT U4 <U4[3]'
+      'glVertexAttribI3uivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI3uivEXT U4 <U4[3]'
   :EndIf
   {}glVertexAttribI3uivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI4uivEXT (index v)
   :If 0=⎕NC'glVertexAttribI4uivEXT_DLL'
-      'glVertexAttribI4uivEXT_DLL'⎕NA'opengl32|glVertexAttribI4uivEXT U4 <U4[4]'
+      'glVertexAttribI4uivEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4uivEXT U4 <U4[4]'
   :EndIf
   {}glVertexAttribI4uivEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI4bvEXT (index v)
   :If 0=⎕NC'glVertexAttribI4bvEXT_DLL'
-      'glVertexAttribI4bvEXT_DLL'⎕NA'opengl32|glVertexAttribI4bvEXT U4 <I1[4]'
+      'glVertexAttribI4bvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4bvEXT U4 <I1[4]'
   :EndIf
   {}glVertexAttribI4bvEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI4svEXT (index v)
   :If 0=⎕NC'glVertexAttribI4svEXT_DLL'
-      'glVertexAttribI4svEXT_DLL'⎕NA'opengl32|glVertexAttribI4svEXT U4 <I2[4]'
+      'glVertexAttribI4svEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4svEXT U4 <I2[4]'
   :EndIf
   {}glVertexAttribI4svEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI4ubvEXT (index v)
   :If 0=⎕NC'glVertexAttribI4ubvEXT_DLL'
-      'glVertexAttribI4ubvEXT_DLL'⎕NA'opengl32|glVertexAttribI4ubvEXT U4 <U1[4]'
+      'glVertexAttribI4ubvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4ubvEXT U4 <U1[4]'
   :EndIf
   {}glVertexAttribI4ubvEXT_DLL index v
 ∇
 
 ∇ glVertexAttribI4usvEXT (index v)
   :If 0=⎕NC'glVertexAttribI4usvEXT_DLL'
-      'glVertexAttribI4usvEXT_DLL'⎕NA'opengl32|glVertexAttribI4usvEXT U4 <U2[4]'
+      'glVertexAttribI4usvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribI4usvEXT U4 <U2[4]'
   :EndIf
   {}glVertexAttribI4usvEXT_DLL index v
 ∇
@@ -19995,21 +20003,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetVertexAttribIivEXT (index pname)
   :If 0=⎕NC'glGetVertexAttribIivEXT_DLL'
-      'glGetVertexAttribIivEXT_DLL'⎕NA'opengl32|glGetVertexAttribIivEXT U4 U4 >I4[1]'
+      'glGetVertexAttribIivEXT_DLL'⎕NA'',getdllname,'|glGetVertexAttribIivEXT U4 U4 >I4[1]'
   :EndIf
   r←glGetVertexAttribIivEXT_DLL index pname 1
 ∇
 
 ∇ r←glGetVertexAttribIuivEXT (index pname)
   :If 0=⎕NC'glGetVertexAttribIuivEXT_DLL'
-      'glGetVertexAttribIuivEXT_DLL'⎕NA'opengl32|glGetVertexAttribIuivEXT U4 U4 >U4[1]'
+      'glGetVertexAttribIuivEXT_DLL'⎕NA'',getdllname,'|glGetVertexAttribIuivEXT U4 U4 >U4[1]'
   :EndIf
   r←glGetVertexAttribIuivEXT_DLL index pname 1
 ∇
 
 ∇ r←glGetUniformuivEXT (program location params)
   :If 0=⎕NC'glGetUniformuivEXT_DLL'
-      'glGetUniformuivEXT_DLL'⎕NA'opengl32|glGetUniformuivEXT U4 I4 >U4[]'
+      'glGetUniformuivEXT_DLL'⎕NA'',getdllname,'|glGetUniformuivEXT U4 I4 >U4[]'
   :EndIf
   r←glGetUniformuivEXT_DLL program location params
 ∇
@@ -20030,63 +20038,63 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glUniform1uiEXT (location v0)
   :If 0=⎕NC'glUniform1uiEXT_DLL'
-      'glUniform1uiEXT_DLL'⎕NA'opengl32|glUniform1uiEXT I4 U4'
+      'glUniform1uiEXT_DLL'⎕NA'',getdllname,'|glUniform1uiEXT I4 U4'
   :EndIf
   {}glUniform1uiEXT_DLL location v0
 ∇
 
 ∇ glUniform2uiEXT (location v0 v1)
   :If 0=⎕NC'glUniform2uiEXT_DLL'
-      'glUniform2uiEXT_DLL'⎕NA'opengl32|glUniform2uiEXT I4 U4 U4'
+      'glUniform2uiEXT_DLL'⎕NA'',getdllname,'|glUniform2uiEXT I4 U4 U4'
   :EndIf
   {}glUniform2uiEXT_DLL location v0 v1
 ∇
 
 ∇ glUniform3uiEXT (location v0 v1 v2)
   :If 0=⎕NC'glUniform3uiEXT_DLL'
-      'glUniform3uiEXT_DLL'⎕NA'opengl32|glUniform3uiEXT I4 U4 U4 U4'
+      'glUniform3uiEXT_DLL'⎕NA'',getdllname,'|glUniform3uiEXT I4 U4 U4 U4'
   :EndIf
   {}glUniform3uiEXT_DLL location v0 v1 v2
 ∇
 
 ∇ glUniform4uiEXT (location v0 v1 v2 v3)
   :If 0=⎕NC'glUniform4uiEXT_DLL'
-      'glUniform4uiEXT_DLL'⎕NA'opengl32|glUniform4uiEXT I4 U4 U4 U4 U4'
+      'glUniform4uiEXT_DLL'⎕NA'',getdllname,'|glUniform4uiEXT I4 U4 U4 U4 U4'
   :EndIf
   {}glUniform4uiEXT_DLL location v0 v1 v2 v3
 ∇
 
 ∇ glUniform1uivEXT (location count value)
   :If 0=⎕NC'glUniform1uivEXT_DLL'
-      'glUniform1uivEXT_DLL'⎕NA'opengl32|glUniform1uivEXT I4 I4 <U4[]'
+      'glUniform1uivEXT_DLL'⎕NA'',getdllname,'|glUniform1uivEXT I4 I4 <U4[]'
   :EndIf
   {}glUniform1uivEXT_DLL location count value
 ∇
 
 ∇ glUniform2uivEXT (location count value)
   :If 0=⎕NC'glUniform2uivEXT_DLL'
-      'glUniform2uivEXT_DLL'⎕NA'opengl32|glUniform2uivEXT I4 I4 <U4[]'
+      'glUniform2uivEXT_DLL'⎕NA'',getdllname,'|glUniform2uivEXT I4 I4 <U4[]'
   :EndIf
   {}glUniform2uivEXT_DLL location count value
 ∇
 
 ∇ glUniform3uivEXT (location count value)
   :If 0=⎕NC'glUniform3uivEXT_DLL'
-      'glUniform3uivEXT_DLL'⎕NA'opengl32|glUniform3uivEXT I4 I4 <U4[]'
+      'glUniform3uivEXT_DLL'⎕NA'',getdllname,'|glUniform3uivEXT I4 I4 <U4[]'
   :EndIf
   {}glUniform3uivEXT_DLL location count value
 ∇
 
 ∇ glUniform4uivEXT (location count value)
   :If 0=⎕NC'glUniform4uivEXT_DLL'
-      'glUniform4uivEXT_DLL'⎕NA'opengl32|glUniform4uivEXT I4 I4 <U4[]'
+      'glUniform4uivEXT_DLL'⎕NA'',getdllname,'|glUniform4uivEXT I4 I4 <U4[]'
   :EndIf
   {}glUniform4uivEXT_DLL location count value
 ∇
 
 ∇ glDrawArraysInstancedEXT (mode start count primcount)
   :If 0=⎕NC'glDrawArraysInstancedEXT_DLL'
-      'glDrawArraysInstancedEXT_DLL'⎕NA'opengl32|glDrawArraysInstancedEXT U4 I4 I4 I4'
+      'glDrawArraysInstancedEXT_DLL'⎕NA'',getdllname,'|glDrawArraysInstancedEXT U4 I4 I4 I4'
   :EndIf
   {}glDrawArraysInstancedEXT_DLL mode start count primcount
 ∇
@@ -20100,119 +20108,119 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexBufferEXT (target internalformat buffer)
   :If 0=⎕NC'glTexBufferEXT_DLL'
-      'glTexBufferEXT_DLL'⎕NA'opengl32|glTexBufferEXT U4 U4 U4'
+      'glTexBufferEXT_DLL'⎕NA'',getdllname,'|glTexBufferEXT U4 U4 U4'
   :EndIf
   {}glTexBufferEXT_DLL target internalformat buffer
 ∇
 
 ∇ glDepthRangedNV (zNear zFar)
   :If 0=⎕NC'glDepthRangedNV_DLL'
-      'glDepthRangedNV_DLL'⎕NA'opengl32|glDepthRangedNV F8 F8'
+      'glDepthRangedNV_DLL'⎕NA'',getdllname,'|glDepthRangedNV F8 F8'
   :EndIf
   {}glDepthRangedNV_DLL zNear zFar
 ∇
 
 ∇ glClearDepthdNV depth
   :If 0=⎕NC'glClearDepthdNV_DLL'
-      'glClearDepthdNV_DLL'⎕NA'opengl32|glClearDepthdNV F8'
+      'glClearDepthdNV_DLL'⎕NA'',getdllname,'|glClearDepthdNV F8'
   :EndIf
   {}glClearDepthdNV_DLL depth
 ∇
 
 ∇ glDepthBoundsdNV (zmin zmax)
   :If 0=⎕NC'glDepthBoundsdNV_DLL'
-      'glDepthBoundsdNV_DLL'⎕NA'opengl32|glDepthBoundsdNV F8 F8'
+      'glDepthBoundsdNV_DLL'⎕NA'',getdllname,'|glDepthBoundsdNV F8 F8'
   :EndIf
   {}glDepthBoundsdNV_DLL zmin zmax
 ∇
 
 ∇ glRenderbufferStorageMultisampleCoverageNV (target coverageSamples colorSamples internalformat width height)
   :If 0=⎕NC'glRenderbufferStorageMultisampleCoverageNV_DLL'
-      'glRenderbufferStorageMultisampleCoverageNV_DLL'⎕NA'opengl32|glRenderbufferStorageMultisampleCoverageNV U4 I4 I4 U4 I4 I4'
+      'glRenderbufferStorageMultisampleCoverageNV_DLL'⎕NA'',getdllname,'|glRenderbufferStorageMultisampleCoverageNV U4 I4 I4 U4 I4 I4'
   :EndIf
   {}glRenderbufferStorageMultisampleCoverageNV_DLL target coverageSamples colorSamples internalformat width height
 ∇
 
 ∇ glProgramBufferParametersfvNV (target buffer index count params)
   :If 0=⎕NC'glProgramBufferParametersfvNV_DLL'
-      'glProgramBufferParametersfvNV_DLL'⎕NA'opengl32|glProgramBufferParametersfvNV U4 U4 U4 I4 <F4[]'
+      'glProgramBufferParametersfvNV_DLL'⎕NA'',getdllname,'|glProgramBufferParametersfvNV U4 U4 U4 I4 <F4[]'
   :EndIf
   {}glProgramBufferParametersfvNV_DLL target buffer index count params
 ∇
 
 ∇ glProgramBufferParametersIivNV (target buffer index count params)
   :If 0=⎕NC'glProgramBufferParametersIivNV_DLL'
-      'glProgramBufferParametersIivNV_DLL'⎕NA'opengl32|glProgramBufferParametersIivNV U4 U4 U4 I4 <I4[]'
+      'glProgramBufferParametersIivNV_DLL'⎕NA'',getdllname,'|glProgramBufferParametersIivNV U4 U4 U4 I4 <I4[]'
   :EndIf
   {}glProgramBufferParametersIivNV_DLL target buffer index count params
 ∇
 
 ∇ glProgramBufferParametersIuivNV (target buffer index count params)
   :If 0=⎕NC'glProgramBufferParametersIuivNV_DLL'
-      'glProgramBufferParametersIuivNV_DLL'⎕NA'opengl32|glProgramBufferParametersIuivNV U4 U4 U4 I4 <U4[]'
+      'glProgramBufferParametersIuivNV_DLL'⎕NA'',getdllname,'|glProgramBufferParametersIuivNV U4 U4 U4 I4 <U4[]'
   :EndIf
   {}glProgramBufferParametersIuivNV_DLL target buffer index count params
 ∇
 
 ∇ glColorMaskIndexedEXT (index r g b a)
   :If 0=⎕NC'glColorMaskIndexedEXT_DLL'
-      'glColorMaskIndexedEXT_DLL'⎕NA'opengl32|glColorMaskIndexedEXT U4 U1 U1 U1 U1'
+      'glColorMaskIndexedEXT_DLL'⎕NA'',getdllname,'|glColorMaskIndexedEXT U4 U1 U1 U1 U1'
   :EndIf
   {}glColorMaskIndexedEXT_DLL index r g b a
 ∇
 
 ∇ r←glGetBooleanIndexedvEXT (target index data)
   :If 0=⎕NC'glGetBooleanIndexedvEXT_DLL'
-      'glGetBooleanIndexedvEXT_DLL'⎕NA'opengl32|glGetBooleanIndexedvEXT U4 U4 >U1[]'
+      'glGetBooleanIndexedvEXT_DLL'⎕NA'',getdllname,'|glGetBooleanIndexedvEXT U4 U4 >U1[]'
   :EndIf
   r←glGetBooleanIndexedvEXT_DLL target index data
 ∇
 
 ∇ r←glGetIntegerIndexedvEXT (target index data)
   :If 0=⎕NC'glGetIntegerIndexedvEXT_DLL'
-      'glGetIntegerIndexedvEXT_DLL'⎕NA'opengl32|glGetIntegerIndexedvEXT U4 U4 >I4[]'
+      'glGetIntegerIndexedvEXT_DLL'⎕NA'',getdllname,'|glGetIntegerIndexedvEXT U4 U4 >I4[]'
   :EndIf
   r←glGetIntegerIndexedvEXT_DLL target index data
 ∇
 
 ∇ glEnableIndexedEXT (target index)
   :If 0=⎕NC'glEnableIndexedEXT_DLL'
-      'glEnableIndexedEXT_DLL'⎕NA'opengl32|glEnableIndexedEXT U4 U4'
+      'glEnableIndexedEXT_DLL'⎕NA'',getdllname,'|glEnableIndexedEXT U4 U4'
   :EndIf
   {}glEnableIndexedEXT_DLL target index
 ∇
 
 ∇ glDisableIndexedEXT (target index)
   :If 0=⎕NC'glDisableIndexedEXT_DLL'
-      'glDisableIndexedEXT_DLL'⎕NA'opengl32|glDisableIndexedEXT U4 U4'
+      'glDisableIndexedEXT_DLL'⎕NA'',getdllname,'|glDisableIndexedEXT U4 U4'
   :EndIf
   {}glDisableIndexedEXT_DLL target index
 ∇
 
 ∇ r←glIsEnabledIndexedEXT (target index)
   :If 0=⎕NC'glIsEnabledIndexedEXT_DLL'
-      'glIsEnabledIndexedEXT_DLL'⎕NA'U1 opengl32|glIsEnabledIndexedEXT U4 U4'
+      'glIsEnabledIndexedEXT_DLL'⎕NA'U1 ',getdllname,'|glIsEnabledIndexedEXT U4 U4'
   :EndIf
   r←glIsEnabledIndexedEXT_DLL target index
 ∇
 
 ∇ glBeginTransformFeedbackNV primitiveMode
   :If 0=⎕NC'glBeginTransformFeedbackNV_DLL'
-      'glBeginTransformFeedbackNV_DLL'⎕NA'opengl32|glBeginTransformFeedbackNV U4'
+      'glBeginTransformFeedbackNV_DLL'⎕NA'',getdllname,'|glBeginTransformFeedbackNV U4'
   :EndIf
   {}glBeginTransformFeedbackNV_DLL primitiveMode
 ∇
 
 ∇ glEndTransformFeedbackNV
   :If 0=⎕NC'glEndTransformFeedbackNV_DLL'
-      'glEndTransformFeedbackNV_DLL'⎕NA'opengl32|glEndTransformFeedbackNV'
+      'glEndTransformFeedbackNV_DLL'⎕NA'',getdllname,'|glEndTransformFeedbackNV'
   :EndIf
   {}glEndTransformFeedbackNV_DLL
 ∇
 
 ∇ glTransformFeedbackAttribsNV (count attribs bufferMode)
   :If 0=⎕NC'glTransformFeedbackAttribsNV_DLL'
-      'glTransformFeedbackAttribsNV_DLL'⎕NA'opengl32|glTransformFeedbackAttribsNV U4 <I4[] U4'
+      'glTransformFeedbackAttribsNV_DLL'⎕NA'',getdllname,'|glTransformFeedbackAttribsNV U4 <I4[] U4'
   :EndIf
   {}glTransformFeedbackAttribsNV_DLL count attribs bufferMode
 ∇
@@ -20233,14 +20241,14 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindBufferBaseNV (target index buffer)
   :If 0=⎕NC'glBindBufferBaseNV_DLL'
-      'glBindBufferBaseNV_DLL'⎕NA'opengl32|glBindBufferBaseNV U4 U4 U4'
+      'glBindBufferBaseNV_DLL'⎕NA'',getdllname,'|glBindBufferBaseNV U4 U4 U4'
   :EndIf
   {}glBindBufferBaseNV_DLL target index buffer
 ∇
 
 ∇ glTransformFeedbackVaryingsNV (program count locations bufferMode)
   :If 0=⎕NC'glTransformFeedbackVaryingsNV_DLL'
-      'glTransformFeedbackVaryingsNV_DLL'⎕NA'opengl32|glTransformFeedbackVaryingsNV U4 I4 <I4[] U4'
+      'glTransformFeedbackVaryingsNV_DLL'⎕NA'',getdllname,'|glTransformFeedbackVaryingsNV U4 I4 <I4[] U4'
   :EndIf
   {}glTransformFeedbackVaryingsNV_DLL program count locations bufferMode
 ∇
@@ -20268,28 +20276,28 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetTransformFeedbackVaryingNV (program index)
   :If 0=⎕NC'glGetTransformFeedbackVaryingNV_DLL'
-      'glGetTransformFeedbackVaryingNV_DLL'⎕NA'opengl32|glGetTransformFeedbackVaryingNV U4 U4 >I4[1]'
+      'glGetTransformFeedbackVaryingNV_DLL'⎕NA'',getdllname,'|glGetTransformFeedbackVaryingNV U4 U4 >I4[1]'
   :EndIf
   r←glGetTransformFeedbackVaryingNV_DLL program index 1
 ∇
 
 ∇ glTransformFeedbackStreamAttribsNV (count attribs nbuffers bufstreams bufferMode)
   :If 0=⎕NC'glTransformFeedbackStreamAttribsNV_DLL'
-      'glTransformFeedbackStreamAttribsNV_DLL'⎕NA'opengl32|glTransformFeedbackStreamAttribsNV I4 <I4[] I4 <I4[] U4'
+      'glTransformFeedbackStreamAttribsNV_DLL'⎕NA'',getdllname,'|glTransformFeedbackStreamAttribsNV I4 <I4[] I4 <I4[] U4'
   :EndIf
   {}glTransformFeedbackStreamAttribsNV_DLL count attribs nbuffers bufstreams bufferMode
 ∇
 
 ∇ glUniformBufferEXT (program location buffer)
   :If 0=⎕NC'glUniformBufferEXT_DLL'
-      'glUniformBufferEXT_DLL'⎕NA'opengl32|glUniformBufferEXT U4 I4 U4'
+      'glUniformBufferEXT_DLL'⎕NA'',getdllname,'|glUniformBufferEXT U4 I4 U4'
   :EndIf
   {}glUniformBufferEXT_DLL program location buffer
 ∇
 
 ∇ r←glGetUniformBufferSizeEXT (program location)
   :If 0=⎕NC'glGetUniformBufferSizeEXT_DLL'
-      'glGetUniformBufferSizeEXT_DLL'⎕NA'I4 opengl32|glGetUniformBufferSizeEXT U4 I4'
+      'glGetUniformBufferSizeEXT_DLL'⎕NA'I4 ',getdllname,'|glGetUniformBufferSizeEXT U4 I4'
   :EndIf
   r←glGetUniformBufferSizeEXT_DLL program location
 ∇
@@ -20303,119 +20311,119 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexParameterIivEXT (target pname params)
   :If 0=⎕NC'glTexParameterIivEXT_DLL'
-      'glTexParameterIivEXT_DLL'⎕NA'opengl32|glTexParameterIivEXT U4 U4 <I4[]'
+      'glTexParameterIivEXT_DLL'⎕NA'',getdllname,'|glTexParameterIivEXT U4 U4 <I4[]'
   :EndIf
   {}glTexParameterIivEXT_DLL target pname params
 ∇
 
 ∇ glTexParameterIuivEXT (target pname params)
   :If 0=⎕NC'glTexParameterIuivEXT_DLL'
-      'glTexParameterIuivEXT_DLL'⎕NA'opengl32|glTexParameterIuivEXT U4 U4 <U4[]'
+      'glTexParameterIuivEXT_DLL'⎕NA'',getdllname,'|glTexParameterIuivEXT U4 U4 <U4[]'
   :EndIf
   {}glTexParameterIuivEXT_DLL target pname params
 ∇
 
 ∇ r←glGetTexParameterIivEXT (target pname params)
   :If 0=⎕NC'glGetTexParameterIivEXT_DLL'
-      'glGetTexParameterIivEXT_DLL'⎕NA'opengl32|glGetTexParameterIivEXT U4 U4 >I4[]'
+      'glGetTexParameterIivEXT_DLL'⎕NA'',getdllname,'|glGetTexParameterIivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetTexParameterIivEXT_DLL target pname params
 ∇
 
 ∇ r←glGetTexParameterIuivEXT (target pname params)
   :If 0=⎕NC'glGetTexParameterIuivEXT_DLL'
-      'glGetTexParameterIuivEXT_DLL'⎕NA'opengl32|glGetTexParameterIuivEXT U4 U4 >U4[]'
+      'glGetTexParameterIuivEXT_DLL'⎕NA'',getdllname,'|glGetTexParameterIuivEXT U4 U4 >U4[]'
   :EndIf
   r←glGetTexParameterIuivEXT_DLL target pname params
 ∇
 
 ∇ glClearColorIiEXT (red green blue alpha)
   :If 0=⎕NC'glClearColorIiEXT_DLL'
-      'glClearColorIiEXT_DLL'⎕NA'opengl32|glClearColorIiEXT I4 I4 I4 I4'
+      'glClearColorIiEXT_DLL'⎕NA'',getdllname,'|glClearColorIiEXT I4 I4 I4 I4'
   :EndIf
   {}glClearColorIiEXT_DLL red green blue alpha
 ∇
 
 ∇ glClearColorIuiEXT (red green blue alpha)
   :If 0=⎕NC'glClearColorIuiEXT_DLL'
-      'glClearColorIuiEXT_DLL'⎕NA'opengl32|glClearColorIuiEXT U4 U4 U4 U4'
+      'glClearColorIuiEXT_DLL'⎕NA'',getdllname,'|glClearColorIuiEXT U4 U4 U4 U4'
   :EndIf
   {}glClearColorIuiEXT_DLL red green blue alpha
 ∇
 
 ∇ glFrameTerminatorGREMEDY
   :If 0=⎕NC'glFrameTerminatorGREMEDY_DLL'
-      'glFrameTerminatorGREMEDY_DLL'⎕NA'opengl32|glFrameTerminatorGREMEDY'
+      'glFrameTerminatorGREMEDY_DLL'⎕NA'',getdllname,'|glFrameTerminatorGREMEDY'
   :EndIf
   {}glFrameTerminatorGREMEDY_DLL
 ∇
 
 ∇ glBeginConditionalRenderNV (id mode)
   :If 0=⎕NC'glBeginConditionalRenderNV_DLL'
-      'glBeginConditionalRenderNV_DLL'⎕NA'opengl32|glBeginConditionalRenderNV U4 U4'
+      'glBeginConditionalRenderNV_DLL'⎕NA'',getdllname,'|glBeginConditionalRenderNV U4 U4'
   :EndIf
   {}glBeginConditionalRenderNV_DLL id mode
 ∇
 
 ∇ glEndConditionalRenderNV
   :If 0=⎕NC'glEndConditionalRenderNV_DLL'
-      'glEndConditionalRenderNV_DLL'⎕NA'opengl32|glEndConditionalRenderNV'
+      'glEndConditionalRenderNV_DLL'⎕NA'',getdllname,'|glEndConditionalRenderNV'
   :EndIf
   {}glEndConditionalRenderNV_DLL
 ∇
 
 ∇ glPresentFrameKeyedNV (video_slot minPresentTime beginPresentTimeId presentDurationId type target0 fill0 key0 target1 fill1 key1)
   :If 0=⎕NC'glPresentFrameKeyedNV_DLL'
-      'glPresentFrameKeyedNV_DLL'⎕NA'opengl32|glPresentFrameKeyedNV U4 U8 U4 U4 U4 U4 U4 U4 U4 U4 U4'
+      'glPresentFrameKeyedNV_DLL'⎕NA'',getdllname,'|glPresentFrameKeyedNV U4 U8 U4 U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glPresentFrameKeyedNV_DLL video_slot minPresentTime beginPresentTimeId presentDurationId type target0 fill0 key0 target1 fill1 key1
 ∇
 
 ∇ glPresentFrameDualFillNV (video_slot minPresentTime beginPresentTimeId presentDurationId type target0 fill0 target1 fill1 target2 fill2 target3 fill3)
   :If 0=⎕NC'glPresentFrameDualFillNV_DLL'
-      'glPresentFrameDualFillNV_DLL'⎕NA'opengl32|glPresentFrameDualFillNV U4 U8 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
+      'glPresentFrameDualFillNV_DLL'⎕NA'',getdllname,'|glPresentFrameDualFillNV U4 U8 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glPresentFrameDualFillNV_DLL video_slot minPresentTime beginPresentTimeId presentDurationId type target0 fill0 target1 fill1 target2 fill2 target3 fill3
 ∇
 
 ∇ r←glGetVideoivNV (video_slot pname params)
   :If 0=⎕NC'glGetVideoivNV_DLL'
-      'glGetVideoivNV_DLL'⎕NA'opengl32|glGetVideoivNV U4 U4 >I4[]'
+      'glGetVideoivNV_DLL'⎕NA'',getdllname,'|glGetVideoivNV U4 U4 >I4[]'
   :EndIf
   r←glGetVideoivNV_DLL video_slot pname params
 ∇
 
 ∇ r←glGetVideouivNV (video_slot pname params)
   :If 0=⎕NC'glGetVideouivNV_DLL'
-      'glGetVideouivNV_DLL'⎕NA'opengl32|glGetVideouivNV U4 U4 >U4[]'
+      'glGetVideouivNV_DLL'⎕NA'',getdllname,'|glGetVideouivNV U4 U4 >U4[]'
   :EndIf
   r←glGetVideouivNV_DLL video_slot pname params
 ∇
 
 ∇ r←glGetVideoi64vNV (video_slot pname params)
   :If 0=⎕NC'glGetVideoi64vNV_DLL'
-      'glGetVideoi64vNV_DLL'⎕NA'opengl32|glGetVideoi64vNV U4 U4 >I8[]'
+      'glGetVideoi64vNV_DLL'⎕NA'',getdllname,'|glGetVideoi64vNV U4 U4 >I8[]'
   :EndIf
   r←glGetVideoi64vNV_DLL video_slot pname params
 ∇
 
 ∇ r←glGetVideoui64vNV (video_slot pname params)
   :If 0=⎕NC'glGetVideoui64vNV_DLL'
-      'glGetVideoui64vNV_DLL'⎕NA'opengl32|glGetVideoui64vNV U4 U4 >U8[]'
+      'glGetVideoui64vNV_DLL'⎕NA'',getdllname,'|glGetVideoui64vNV U4 U4 >U8[]'
   :EndIf
   r←glGetVideoui64vNV_DLL video_slot pname params
 ∇
 
 ∇ glBeginTransformFeedbackEXT primitiveMode
   :If 0=⎕NC'glBeginTransformFeedbackEXT_DLL'
-      'glBeginTransformFeedbackEXT_DLL'⎕NA'opengl32|glBeginTransformFeedbackEXT U4'
+      'glBeginTransformFeedbackEXT_DLL'⎕NA'',getdllname,'|glBeginTransformFeedbackEXT U4'
   :EndIf
   {}glBeginTransformFeedbackEXT_DLL primitiveMode
 ∇
 
 ∇ glEndTransformFeedbackEXT
   :If 0=⎕NC'glEndTransformFeedbackEXT_DLL'
-      'glEndTransformFeedbackEXT_DLL'⎕NA'opengl32|glEndTransformFeedbackEXT'
+      'glEndTransformFeedbackEXT_DLL'⎕NA'',getdllname,'|glEndTransformFeedbackEXT'
   :EndIf
   {}glEndTransformFeedbackEXT_DLL
 ∇
@@ -20436,7 +20444,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindBufferBaseEXT (target index buffer)
   :If 0=⎕NC'glBindBufferBaseEXT_DLL'
-      'glBindBufferBaseEXT_DLL'⎕NA'opengl32|glBindBufferBaseEXT U4 U4 U4'
+      'glBindBufferBaseEXT_DLL'⎕NA'',getdllname,'|glBindBufferBaseEXT U4 U4 U4'
   :EndIf
   {}glBindBufferBaseEXT_DLL target index buffer
 ∇
@@ -20457,224 +20465,224 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glClientAttribDefaultEXT mask
   :If 0=⎕NC'glClientAttribDefaultEXT_DLL'
-      'glClientAttribDefaultEXT_DLL'⎕NA'opengl32|glClientAttribDefaultEXT U4'
+      'glClientAttribDefaultEXT_DLL'⎕NA'',getdllname,'|glClientAttribDefaultEXT U4'
   :EndIf
   {}glClientAttribDefaultEXT_DLL mask
 ∇
 
 ∇ glPushClientAttribDefaultEXT mask
   :If 0=⎕NC'glPushClientAttribDefaultEXT_DLL'
-      'glPushClientAttribDefaultEXT_DLL'⎕NA'opengl32|glPushClientAttribDefaultEXT U4'
+      'glPushClientAttribDefaultEXT_DLL'⎕NA'',getdllname,'|glPushClientAttribDefaultEXT U4'
   :EndIf
   {}glPushClientAttribDefaultEXT_DLL mask
 ∇
 
 ∇ glMatrixLoadfEXT (mode m)
   :If 0=⎕NC'glMatrixLoadfEXT_DLL'
-      'glMatrixLoadfEXT_DLL'⎕NA'opengl32|glMatrixLoadfEXT U4 <F4[16]'
+      'glMatrixLoadfEXT_DLL'⎕NA'',getdllname,'|glMatrixLoadfEXT U4 <F4[16]'
   :EndIf
   {}glMatrixLoadfEXT_DLL mode m
 ∇
 
 ∇ glMatrixLoaddEXT (mode m)
   :If 0=⎕NC'glMatrixLoaddEXT_DLL'
-      'glMatrixLoaddEXT_DLL'⎕NA'opengl32|glMatrixLoaddEXT U4 <F8[16]'
+      'glMatrixLoaddEXT_DLL'⎕NA'',getdllname,'|glMatrixLoaddEXT U4 <F8[16]'
   :EndIf
   {}glMatrixLoaddEXT_DLL mode m
 ∇
 
 ∇ glMatrixMultfEXT (mode m)
   :If 0=⎕NC'glMatrixMultfEXT_DLL'
-      'glMatrixMultfEXT_DLL'⎕NA'opengl32|glMatrixMultfEXT U4 <F4[16]'
+      'glMatrixMultfEXT_DLL'⎕NA'',getdllname,'|glMatrixMultfEXT U4 <F4[16]'
   :EndIf
   {}glMatrixMultfEXT_DLL mode m
 ∇
 
 ∇ glMatrixMultdEXT (mode m)
   :If 0=⎕NC'glMatrixMultdEXT_DLL'
-      'glMatrixMultdEXT_DLL'⎕NA'opengl32|glMatrixMultdEXT U4 <F8[16]'
+      'glMatrixMultdEXT_DLL'⎕NA'',getdllname,'|glMatrixMultdEXT U4 <F8[16]'
   :EndIf
   {}glMatrixMultdEXT_DLL mode m
 ∇
 
 ∇ glMatrixLoadIdentityEXT mode
   :If 0=⎕NC'glMatrixLoadIdentityEXT_DLL'
-      'glMatrixLoadIdentityEXT_DLL'⎕NA'opengl32|glMatrixLoadIdentityEXT U4'
+      'glMatrixLoadIdentityEXT_DLL'⎕NA'',getdllname,'|glMatrixLoadIdentityEXT U4'
   :EndIf
   {}glMatrixLoadIdentityEXT_DLL mode
 ∇
 
 ∇ glMatrixRotatefEXT (mode angle x y z)
   :If 0=⎕NC'glMatrixRotatefEXT_DLL'
-      'glMatrixRotatefEXT_DLL'⎕NA'opengl32|glMatrixRotatefEXT U4 F4 F4 F4 F4'
+      'glMatrixRotatefEXT_DLL'⎕NA'',getdllname,'|glMatrixRotatefEXT U4 F4 F4 F4 F4'
   :EndIf
   {}glMatrixRotatefEXT_DLL mode angle x y z
 ∇
 
 ∇ glMatrixRotatedEXT (mode angle x y z)
   :If 0=⎕NC'glMatrixRotatedEXT_DLL'
-      'glMatrixRotatedEXT_DLL'⎕NA'opengl32|glMatrixRotatedEXT U4 F8 F8 F8 F8'
+      'glMatrixRotatedEXT_DLL'⎕NA'',getdllname,'|glMatrixRotatedEXT U4 F8 F8 F8 F8'
   :EndIf
   {}glMatrixRotatedEXT_DLL mode angle x y z
 ∇
 
 ∇ glMatrixScalefEXT (mode x y z)
   :If 0=⎕NC'glMatrixScalefEXT_DLL'
-      'glMatrixScalefEXT_DLL'⎕NA'opengl32|glMatrixScalefEXT U4 F4 F4 F4'
+      'glMatrixScalefEXT_DLL'⎕NA'',getdllname,'|glMatrixScalefEXT U4 F4 F4 F4'
   :EndIf
   {}glMatrixScalefEXT_DLL mode x y z
 ∇
 
 ∇ glMatrixScaledEXT (mode x y z)
   :If 0=⎕NC'glMatrixScaledEXT_DLL'
-      'glMatrixScaledEXT_DLL'⎕NA'opengl32|glMatrixScaledEXT U4 F8 F8 F8'
+      'glMatrixScaledEXT_DLL'⎕NA'',getdllname,'|glMatrixScaledEXT U4 F8 F8 F8'
   :EndIf
   {}glMatrixScaledEXT_DLL mode x y z
 ∇
 
 ∇ glMatrixTranslatefEXT (mode x y z)
   :If 0=⎕NC'glMatrixTranslatefEXT_DLL'
-      'glMatrixTranslatefEXT_DLL'⎕NA'opengl32|glMatrixTranslatefEXT U4 F4 F4 F4'
+      'glMatrixTranslatefEXT_DLL'⎕NA'',getdllname,'|glMatrixTranslatefEXT U4 F4 F4 F4'
   :EndIf
   {}glMatrixTranslatefEXT_DLL mode x y z
 ∇
 
 ∇ glMatrixTranslatedEXT (mode x y z)
   :If 0=⎕NC'glMatrixTranslatedEXT_DLL'
-      'glMatrixTranslatedEXT_DLL'⎕NA'opengl32|glMatrixTranslatedEXT U4 F8 F8 F8'
+      'glMatrixTranslatedEXT_DLL'⎕NA'',getdllname,'|glMatrixTranslatedEXT U4 F8 F8 F8'
   :EndIf
   {}glMatrixTranslatedEXT_DLL mode x y z
 ∇
 
 ∇ glMatrixFrustumEXT (mode left right bottom top zNear zFar)
   :If 0=⎕NC'glMatrixFrustumEXT_DLL'
-      'glMatrixFrustumEXT_DLL'⎕NA'opengl32|glMatrixFrustumEXT U4 F8 F8 F8 F8 F8 F8'
+      'glMatrixFrustumEXT_DLL'⎕NA'',getdllname,'|glMatrixFrustumEXT U4 F8 F8 F8 F8 F8 F8'
   :EndIf
   {}glMatrixFrustumEXT_DLL mode left right bottom top zNear zFar
 ∇
 
 ∇ glMatrixOrthoEXT (mode left right bottom top zNear zFar)
   :If 0=⎕NC'glMatrixOrthoEXT_DLL'
-      'glMatrixOrthoEXT_DLL'⎕NA'opengl32|glMatrixOrthoEXT U4 F8 F8 F8 F8 F8 F8'
+      'glMatrixOrthoEXT_DLL'⎕NA'',getdllname,'|glMatrixOrthoEXT U4 F8 F8 F8 F8 F8 F8'
   :EndIf
   {}glMatrixOrthoEXT_DLL mode left right bottom top zNear zFar
 ∇
 
 ∇ glMatrixPopEXT mode
   :If 0=⎕NC'glMatrixPopEXT_DLL'
-      'glMatrixPopEXT_DLL'⎕NA'opengl32|glMatrixPopEXT U4'
+      'glMatrixPopEXT_DLL'⎕NA'',getdllname,'|glMatrixPopEXT U4'
   :EndIf
   {}glMatrixPopEXT_DLL mode
 ∇
 
 ∇ glMatrixPushEXT mode
   :If 0=⎕NC'glMatrixPushEXT_DLL'
-      'glMatrixPushEXT_DLL'⎕NA'opengl32|glMatrixPushEXT U4'
+      'glMatrixPushEXT_DLL'⎕NA'',getdllname,'|glMatrixPushEXT U4'
   :EndIf
   {}glMatrixPushEXT_DLL mode
 ∇
 
 ∇ glMatrixLoadTransposefEXT (mode m)
   :If 0=⎕NC'glMatrixLoadTransposefEXT_DLL'
-      'glMatrixLoadTransposefEXT_DLL'⎕NA'opengl32|glMatrixLoadTransposefEXT U4 <F4[16]'
+      'glMatrixLoadTransposefEXT_DLL'⎕NA'',getdllname,'|glMatrixLoadTransposefEXT U4 <F4[16]'
   :EndIf
   {}glMatrixLoadTransposefEXT_DLL mode m
 ∇
 
 ∇ glMatrixLoadTransposedEXT (mode m)
   :If 0=⎕NC'glMatrixLoadTransposedEXT_DLL'
-      'glMatrixLoadTransposedEXT_DLL'⎕NA'opengl32|glMatrixLoadTransposedEXT U4 <F8[16]'
+      'glMatrixLoadTransposedEXT_DLL'⎕NA'',getdllname,'|glMatrixLoadTransposedEXT U4 <F8[16]'
   :EndIf
   {}glMatrixLoadTransposedEXT_DLL mode m
 ∇
 
 ∇ glMatrixMultTransposefEXT (mode m)
   :If 0=⎕NC'glMatrixMultTransposefEXT_DLL'
-      'glMatrixMultTransposefEXT_DLL'⎕NA'opengl32|glMatrixMultTransposefEXT U4 <F4[16]'
+      'glMatrixMultTransposefEXT_DLL'⎕NA'',getdllname,'|glMatrixMultTransposefEXT U4 <F4[16]'
   :EndIf
   {}glMatrixMultTransposefEXT_DLL mode m
 ∇
 
 ∇ glMatrixMultTransposedEXT (mode m)
   :If 0=⎕NC'glMatrixMultTransposedEXT_DLL'
-      'glMatrixMultTransposedEXT_DLL'⎕NA'opengl32|glMatrixMultTransposedEXT U4 <F8[16]'
+      'glMatrixMultTransposedEXT_DLL'⎕NA'',getdllname,'|glMatrixMultTransposedEXT U4 <F8[16]'
   :EndIf
   {}glMatrixMultTransposedEXT_DLL mode m
 ∇
 
 ∇ glTextureParameterfEXT (texture target pname param)
   :If 0=⎕NC'glTextureParameterfEXT_DLL'
-      'glTextureParameterfEXT_DLL'⎕NA'opengl32|glTextureParameterfEXT U4 U4 U4 F4'
+      'glTextureParameterfEXT_DLL'⎕NA'',getdllname,'|glTextureParameterfEXT U4 U4 U4 F4'
   :EndIf
   {}glTextureParameterfEXT_DLL texture target pname param
 ∇
 
 ∇ glTextureParameterfvEXT (texture target pname params)
   :If 0=⎕NC'glTextureParameterfvEXT_DLL'
-      'glTextureParameterfvEXT_DLL'⎕NA'opengl32|glTextureParameterfvEXT U4 U4 U4 <F4[]'
+      'glTextureParameterfvEXT_DLL'⎕NA'',getdllname,'|glTextureParameterfvEXT U4 U4 U4 <F4[]'
   :EndIf
   {}glTextureParameterfvEXT_DLL texture target pname params
 ∇
 
 ∇ glTextureParameteriEXT (texture target pname param)
   :If 0=⎕NC'glTextureParameteriEXT_DLL'
-      'glTextureParameteriEXT_DLL'⎕NA'opengl32|glTextureParameteriEXT U4 U4 U4 I4'
+      'glTextureParameteriEXT_DLL'⎕NA'',getdllname,'|glTextureParameteriEXT U4 U4 U4 I4'
   :EndIf
   {}glTextureParameteriEXT_DLL texture target pname param
 ∇
 
 ∇ glTextureParameterivEXT (texture target pname params)
   :If 0=⎕NC'glTextureParameterivEXT_DLL'
-      'glTextureParameterivEXT_DLL'⎕NA'opengl32|glTextureParameterivEXT U4 U4 U4 <I4[]'
+      'glTextureParameterivEXT_DLL'⎕NA'',getdllname,'|glTextureParameterivEXT U4 U4 U4 <I4[]'
   :EndIf
   {}glTextureParameterivEXT_DLL texture target pname params
 ∇
 
 ∇ TextureImage1DEXT_U1 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_U1_DLL'
-      'TextureImage1DEXT_U1_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U1[]'
+      'TextureImage1DEXT_U1_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TextureImage1DEXT_U1_DLL texture target level internalformat width border format type pixels
 ∇
 
 ∇ TextureImage1DEXT_I1 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_I1_DLL'
-      'TextureImage1DEXT_I1_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I1[]'
+      'TextureImage1DEXT_I1_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TextureImage1DEXT_I1_DLL texture target level internalformat width border format type pixels
 ∇
 
 ∇ TextureImage1DEXT_U2 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_U2_DLL'
-      'TextureImage1DEXT_U2_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U2[]'
+      'TextureImage1DEXT_U2_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TextureImage1DEXT_U2_DLL texture target level internalformat width border format type pixels
 ∇
 
 ∇ TextureImage1DEXT_I2 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_I2_DLL'
-      'TextureImage1DEXT_I2_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I2[]'
+      'TextureImage1DEXT_I2_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TextureImage1DEXT_I2_DLL texture target level internalformat width border format type pixels
 ∇
 
 ∇ TextureImage1DEXT_U4 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_U4_DLL'
-      'TextureImage1DEXT_U4_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U4[]'
+      'TextureImage1DEXT_U4_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TextureImage1DEXT_U4_DLL texture target level internalformat width border format type pixels
 ∇
 
 ∇ TextureImage1DEXT_I4 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_I4_DLL'
-      'TextureImage1DEXT_I4_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I4[]'
+      'TextureImage1DEXT_I4_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TextureImage1DEXT_I4_DLL texture target level internalformat width border format type pixels
 ∇
 
 ∇ TextureImage1DEXT_F4 (texture target level internalformat width border format type pixels)
   :If 0=⎕NC'TextureImage1DEXT_F4_DLL'
-      'TextureImage1DEXT_F4_DLL'⎕NA'opengl32|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <F4[]'
+      'TextureImage1DEXT_F4_DLL'⎕NA'',getdllname,'|glTextureImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TextureImage1DEXT_F4_DLL texture target level internalformat width border format type pixels
 ∇
@@ -20732,49 +20740,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TextureImage2DEXT_U1 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_U1_DLL'
-      'TextureImage2DEXT_U1_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U1[]'
+      'TextureImage2DEXT_U1_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TextureImage2DEXT_U1_DLL texture target level internalformat width height border format type pixels
 ∇
 
 ∇ TextureImage2DEXT_I1 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_I1_DLL'
-      'TextureImage2DEXT_I1_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I1[]'
+      'TextureImage2DEXT_I1_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TextureImage2DEXT_I1_DLL texture target level internalformat width height border format type pixels
 ∇
 
 ∇ TextureImage2DEXT_U2 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_U2_DLL'
-      'TextureImage2DEXT_U2_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U2[]'
+      'TextureImage2DEXT_U2_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TextureImage2DEXT_U2_DLL texture target level internalformat width height border format type pixels
 ∇
 
 ∇ TextureImage2DEXT_I2 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_I2_DLL'
-      'TextureImage2DEXT_I2_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I2[]'
+      'TextureImage2DEXT_I2_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TextureImage2DEXT_I2_DLL texture target level internalformat width height border format type pixels
 ∇
 
 ∇ TextureImage2DEXT_U4 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_U4_DLL'
-      'TextureImage2DEXT_U4_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U4[]'
+      'TextureImage2DEXT_U4_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TextureImage2DEXT_U4_DLL texture target level internalformat width height border format type pixels
 ∇
 
 ∇ TextureImage2DEXT_I4 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_I4_DLL'
-      'TextureImage2DEXT_I4_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I4[]'
+      'TextureImage2DEXT_I4_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TextureImage2DEXT_I4_DLL texture target level internalformat width height border format type pixels
 ∇
 
 ∇ TextureImage2DEXT_F4 (texture target level internalformat width height border format type pixels)
   :If 0=⎕NC'TextureImage2DEXT_F4_DLL'
-      'TextureImage2DEXT_F4_DLL'⎕NA'opengl32|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <F4[]'
+      'TextureImage2DEXT_F4_DLL'⎕NA'',getdllname,'|glTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TextureImage2DEXT_F4_DLL texture target level internalformat width height border format type pixels
 ∇
@@ -20832,49 +20840,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TextureSubImage1DEXT_U1 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_U1_DLL'
-      'TextureSubImage1DEXT_U1_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U1[]'
+      'TextureSubImage1DEXT_U1_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TextureSubImage1DEXT_U1_DLL texture target level xoffset width format type pixels
 ∇
 
 ∇ TextureSubImage1DEXT_I1 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_I1_DLL'
-      'TextureSubImage1DEXT_I1_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I1[]'
+      'TextureSubImage1DEXT_I1_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TextureSubImage1DEXT_I1_DLL texture target level xoffset width format type pixels
 ∇
 
 ∇ TextureSubImage1DEXT_U2 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_U2_DLL'
-      'TextureSubImage1DEXT_U2_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U2[]'
+      'TextureSubImage1DEXT_U2_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TextureSubImage1DEXT_U2_DLL texture target level xoffset width format type pixels
 ∇
 
 ∇ TextureSubImage1DEXT_I2 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_I2_DLL'
-      'TextureSubImage1DEXT_I2_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I2[]'
+      'TextureSubImage1DEXT_I2_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TextureSubImage1DEXT_I2_DLL texture target level xoffset width format type pixels
 ∇
 
 ∇ TextureSubImage1DEXT_U4 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_U4_DLL'
-      'TextureSubImage1DEXT_U4_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U4[]'
+      'TextureSubImage1DEXT_U4_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TextureSubImage1DEXT_U4_DLL texture target level xoffset width format type pixels
 ∇
 
 ∇ TextureSubImage1DEXT_I4 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_I4_DLL'
-      'TextureSubImage1DEXT_I4_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I4[]'
+      'TextureSubImage1DEXT_I4_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TextureSubImage1DEXT_I4_DLL texture target level xoffset width format type pixels
 ∇
 
 ∇ TextureSubImage1DEXT_F4 (texture target level xoffset width format type pixels)
   :If 0=⎕NC'TextureSubImage1DEXT_F4_DLL'
-      'TextureSubImage1DEXT_F4_DLL'⎕NA'opengl32|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <F4[]'
+      'TextureSubImage1DEXT_F4_DLL'⎕NA'',getdllname,'|glTextureSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TextureSubImage1DEXT_F4_DLL texture target level xoffset width format type pixels
 ∇
@@ -20932,49 +20940,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TextureSubImage2DEXT_U1 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_U1_DLL'
-      'TextureSubImage2DEXT_U1_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TextureSubImage2DEXT_U1_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TextureSubImage2DEXT_U1_DLL texture target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TextureSubImage2DEXT_I1 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_I1_DLL'
-      'TextureSubImage2DEXT_I1_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TextureSubImage2DEXT_I1_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TextureSubImage2DEXT_I1_DLL texture target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TextureSubImage2DEXT_U2 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_U2_DLL'
-      'TextureSubImage2DEXT_U2_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TextureSubImage2DEXT_U2_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TextureSubImage2DEXT_U2_DLL texture target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TextureSubImage2DEXT_I2 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_I2_DLL'
-      'TextureSubImage2DEXT_I2_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TextureSubImage2DEXT_I2_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TextureSubImage2DEXT_I2_DLL texture target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TextureSubImage2DEXT_U4 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_U4_DLL'
-      'TextureSubImage2DEXT_U4_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TextureSubImage2DEXT_U4_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TextureSubImage2DEXT_U4_DLL texture target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TextureSubImage2DEXT_I4 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_I4_DLL'
-      'TextureSubImage2DEXT_I4_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TextureSubImage2DEXT_I4_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TextureSubImage2DEXT_I4_DLL texture target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ TextureSubImage2DEXT_F4 (texture target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'TextureSubImage2DEXT_F4_DLL'
-      'TextureSubImage2DEXT_F4_DLL'⎕NA'opengl32|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TextureSubImage2DEXT_F4_DLL'⎕NA'',getdllname,'|glTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TextureSubImage2DEXT_F4_DLL texture target level xoffset yoffset width height format type pixels
 ∇
@@ -21032,28 +21040,28 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyTextureImage1DEXT (texture target level internalformat x y width border)
   :If 0=⎕NC'glCopyTextureImage1DEXT_DLL'
-      'glCopyTextureImage1DEXT_DLL'⎕NA'opengl32|glCopyTextureImage1DEXT U4 U4 I4 U4 I4 I4 I4 I4'
+      'glCopyTextureImage1DEXT_DLL'⎕NA'',getdllname,'|glCopyTextureImage1DEXT U4 U4 I4 U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTextureImage1DEXT_DLL texture target level internalformat x y width border
 ∇
 
 ∇ glCopyTextureImage2DEXT (texture target level internalformat x y width height border)
   :If 0=⎕NC'glCopyTextureImage2DEXT_DLL'
-      'glCopyTextureImage2DEXT_DLL'⎕NA'opengl32|glCopyTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 I4 I4'
+      'glCopyTextureImage2DEXT_DLL'⎕NA'',getdllname,'|glCopyTextureImage2DEXT U4 U4 I4 U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTextureImage2DEXT_DLL texture target level internalformat x y width height border
 ∇
 
 ∇ glCopyTextureSubImage1DEXT (texture target level xoffset x y width)
   :If 0=⎕NC'glCopyTextureSubImage1DEXT_DLL'
-      'glCopyTextureSubImage1DEXT_DLL'⎕NA'opengl32|glCopyTextureSubImage1DEXT U4 U4 I4 I4 I4 I4 I4'
+      'glCopyTextureSubImage1DEXT_DLL'⎕NA'',getdllname,'|glCopyTextureSubImage1DEXT U4 U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTextureSubImage1DEXT_DLL texture target level xoffset x y width
 ∇
 
 ∇ glCopyTextureSubImage2DEXT (texture target level xoffset yoffset x y width height)
   :If 0=⎕NC'glCopyTextureSubImage2DEXT_DLL'
-      'glCopyTextureSubImage2DEXT_DLL'⎕NA'opengl32|glCopyTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyTextureSubImage2DEXT_DLL'⎕NA'',getdllname,'|glCopyTextureSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTextureSubImage2DEXT_DLL texture target level xoffset yoffset x y width height
 ∇
@@ -21067,77 +21075,77 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetTextureParameterfvEXT (texture target pname params)
   :If 0=⎕NC'glGetTextureParameterfvEXT_DLL'
-      'glGetTextureParameterfvEXT_DLL'⎕NA'opengl32|glGetTextureParameterfvEXT U4 U4 U4 >F4[]'
+      'glGetTextureParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetTextureParameterfvEXT U4 U4 U4 >F4[]'
   :EndIf
   r←glGetTextureParameterfvEXT_DLL texture target pname params
 ∇
 
 ∇ r←glGetTextureParameterivEXT (texture target pname params)
   :If 0=⎕NC'glGetTextureParameterivEXT_DLL'
-      'glGetTextureParameterivEXT_DLL'⎕NA'opengl32|glGetTextureParameterivEXT U4 U4 U4 >I4[]'
+      'glGetTextureParameterivEXT_DLL'⎕NA'',getdllname,'|glGetTextureParameterivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetTextureParameterivEXT_DLL texture target pname params
 ∇
 
 ∇ r←glGetTextureLevelParameterfvEXT (texture target level pname params)
   :If 0=⎕NC'glGetTextureLevelParameterfvEXT_DLL'
-      'glGetTextureLevelParameterfvEXT_DLL'⎕NA'opengl32|glGetTextureLevelParameterfvEXT U4 U4 I4 U4 >F4[]'
+      'glGetTextureLevelParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetTextureLevelParameterfvEXT U4 U4 I4 U4 >F4[]'
   :EndIf
   r←glGetTextureLevelParameterfvEXT_DLL texture target level pname params
 ∇
 
 ∇ r←glGetTextureLevelParameterivEXT (texture target level pname params)
   :If 0=⎕NC'glGetTextureLevelParameterivEXT_DLL'
-      'glGetTextureLevelParameterivEXT_DLL'⎕NA'opengl32|glGetTextureLevelParameterivEXT U4 U4 I4 U4 >I4[]'
+      'glGetTextureLevelParameterivEXT_DLL'⎕NA'',getdllname,'|glGetTextureLevelParameterivEXT U4 U4 I4 U4 >I4[]'
   :EndIf
   r←glGetTextureLevelParameterivEXT_DLL texture target level pname params
 ∇
 
 ∇ TextureImage3DEXT_U1 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_U1_DLL'
-      'TextureImage3DEXT_U1_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TextureImage3DEXT_U1_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TextureImage3DEXT_U1_DLL texture target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TextureImage3DEXT_I1 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_I1_DLL'
-      'TextureImage3DEXT_I1_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TextureImage3DEXT_I1_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TextureImage3DEXT_I1_DLL texture target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TextureImage3DEXT_U2 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_U2_DLL'
-      'TextureImage3DEXT_U2_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TextureImage3DEXT_U2_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TextureImage3DEXT_U2_DLL texture target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TextureImage3DEXT_I2 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_I2_DLL'
-      'TextureImage3DEXT_I2_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TextureImage3DEXT_I2_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TextureImage3DEXT_I2_DLL texture target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TextureImage3DEXT_U4 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_U4_DLL'
-      'TextureImage3DEXT_U4_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TextureImage3DEXT_U4_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TextureImage3DEXT_U4_DLL texture target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TextureImage3DEXT_I4 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_I4_DLL'
-      'TextureImage3DEXT_I4_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TextureImage3DEXT_I4_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TextureImage3DEXT_I4_DLL texture target level internalformat width height depth border format type pixels
 ∇
 
 ∇ TextureImage3DEXT_F4 (texture target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'TextureImage3DEXT_F4_DLL'
-      'TextureImage3DEXT_F4_DLL'⎕NA'opengl32|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TextureImage3DEXT_F4_DLL'⎕NA'',getdllname,'|glTextureImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TextureImage3DEXT_F4_DLL texture target level internalformat width height depth border format type pixels
 ∇
@@ -21195,49 +21203,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ TextureSubImage3DEXT_U1 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_U1_DLL'
-      'TextureSubImage3DEXT_U1_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'TextureSubImage3DEXT_U1_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}TextureSubImage3DEXT_U1_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TextureSubImage3DEXT_I1 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_I1_DLL'
-      'TextureSubImage3DEXT_I1_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'TextureSubImage3DEXT_I1_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}TextureSubImage3DEXT_I1_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TextureSubImage3DEXT_U2 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_U2_DLL'
-      'TextureSubImage3DEXT_U2_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'TextureSubImage3DEXT_U2_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}TextureSubImage3DEXT_U2_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TextureSubImage3DEXT_I2 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_I2_DLL'
-      'TextureSubImage3DEXT_I2_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'TextureSubImage3DEXT_I2_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}TextureSubImage3DEXT_I2_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TextureSubImage3DEXT_U4 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_U4_DLL'
-      'TextureSubImage3DEXT_U4_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'TextureSubImage3DEXT_U4_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}TextureSubImage3DEXT_U4_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TextureSubImage3DEXT_I4 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_I4_DLL'
-      'TextureSubImage3DEXT_I4_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'TextureSubImage3DEXT_I4_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}TextureSubImage3DEXT_I4_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ TextureSubImage3DEXT_F4 (texture target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'TextureSubImage3DEXT_F4_DLL'
-      'TextureSubImage3DEXT_F4_DLL'⎕NA'opengl32|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'TextureSubImage3DEXT_F4_DLL'⎕NA'',getdllname,'|glTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}TextureSubImage3DEXT_F4_DLL texture target level xoffset yoffset zoffset width height depth format type pixels
 ∇
@@ -21295,84 +21303,84 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyTextureSubImage3DEXT (texture target level xoffset yoffset zoffset x y width height)
   :If 0=⎕NC'glCopyTextureSubImage3DEXT_DLL'
-      'glCopyTextureSubImage3DEXT_DLL'⎕NA'opengl32|glCopyTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyTextureSubImage3DEXT_DLL'⎕NA'',getdllname,'|glCopyTextureSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyTextureSubImage3DEXT_DLL texture target level xoffset yoffset zoffset x y width height
 ∇
 
 ∇ glMultiTexParameterfEXT (texunit target pname param)
   :If 0=⎕NC'glMultiTexParameterfEXT_DLL'
-      'glMultiTexParameterfEXT_DLL'⎕NA'opengl32|glMultiTexParameterfEXT U4 U4 U4 F4'
+      'glMultiTexParameterfEXT_DLL'⎕NA'',getdllname,'|glMultiTexParameterfEXT U4 U4 U4 F4'
   :EndIf
   {}glMultiTexParameterfEXT_DLL texunit target pname param
 ∇
 
 ∇ glMultiTexParameterfvEXT (texunit target pname params)
   :If 0=⎕NC'glMultiTexParameterfvEXT_DLL'
-      'glMultiTexParameterfvEXT_DLL'⎕NA'opengl32|glMultiTexParameterfvEXT U4 U4 U4 <F4[]'
+      'glMultiTexParameterfvEXT_DLL'⎕NA'',getdllname,'|glMultiTexParameterfvEXT U4 U4 U4 <F4[]'
   :EndIf
   {}glMultiTexParameterfvEXT_DLL texunit target pname params
 ∇
 
 ∇ glMultiTexParameteriEXT (texunit target pname param)
   :If 0=⎕NC'glMultiTexParameteriEXT_DLL'
-      'glMultiTexParameteriEXT_DLL'⎕NA'opengl32|glMultiTexParameteriEXT U4 U4 U4 I4'
+      'glMultiTexParameteriEXT_DLL'⎕NA'',getdllname,'|glMultiTexParameteriEXT U4 U4 U4 I4'
   :EndIf
   {}glMultiTexParameteriEXT_DLL texunit target pname param
 ∇
 
 ∇ glMultiTexParameterivEXT (texunit target pname params)
   :If 0=⎕NC'glMultiTexParameterivEXT_DLL'
-      'glMultiTexParameterivEXT_DLL'⎕NA'opengl32|glMultiTexParameterivEXT U4 U4 U4 <I4[]'
+      'glMultiTexParameterivEXT_DLL'⎕NA'',getdllname,'|glMultiTexParameterivEXT U4 U4 U4 <I4[]'
   :EndIf
   {}glMultiTexParameterivEXT_DLL texunit target pname params
 ∇
 
 ∇ MultiTexImage1DEXT_U1 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_U1_DLL'
-      'MultiTexImage1DEXT_U1_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U1[]'
+      'MultiTexImage1DEXT_U1_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}MultiTexImage1DEXT_U1_DLL texunit target level internalformat width border format type pixels
 ∇
 
 ∇ MultiTexImage1DEXT_I1 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_I1_DLL'
-      'MultiTexImage1DEXT_I1_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I1[]'
+      'MultiTexImage1DEXT_I1_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}MultiTexImage1DEXT_I1_DLL texunit target level internalformat width border format type pixels
 ∇
 
 ∇ MultiTexImage1DEXT_U2 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_U2_DLL'
-      'MultiTexImage1DEXT_U2_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U2[]'
+      'MultiTexImage1DEXT_U2_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}MultiTexImage1DEXT_U2_DLL texunit target level internalformat width border format type pixels
 ∇
 
 ∇ MultiTexImage1DEXT_I2 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_I2_DLL'
-      'MultiTexImage1DEXT_I2_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I2[]'
+      'MultiTexImage1DEXT_I2_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}MultiTexImage1DEXT_I2_DLL texunit target level internalformat width border format type pixels
 ∇
 
 ∇ MultiTexImage1DEXT_U4 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_U4_DLL'
-      'MultiTexImage1DEXT_U4_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U4[]'
+      'MultiTexImage1DEXT_U4_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}MultiTexImage1DEXT_U4_DLL texunit target level internalformat width border format type pixels
 ∇
 
 ∇ MultiTexImage1DEXT_I4 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_I4_DLL'
-      'MultiTexImage1DEXT_I4_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I4[]'
+      'MultiTexImage1DEXT_I4_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}MultiTexImage1DEXT_I4_DLL texunit target level internalformat width border format type pixels
 ∇
 
 ∇ MultiTexImage1DEXT_F4 (texunit target level internalformat width border format type pixels)
   :If 0=⎕NC'MultiTexImage1DEXT_F4_DLL'
-      'MultiTexImage1DEXT_F4_DLL'⎕NA'opengl32|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <F4[]'
+      'MultiTexImage1DEXT_F4_DLL'⎕NA'',getdllname,'|glMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}MultiTexImage1DEXT_F4_DLL texunit target level internalformat width border format type pixels
 ∇
@@ -21430,49 +21438,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ MultiTexImage2DEXT_U1 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_U1_DLL'
-      'MultiTexImage2DEXT_U1_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U1[]'
+      'MultiTexImage2DEXT_U1_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}MultiTexImage2DEXT_U1_DLL texunit target level internalformat width height border format type pixels
 ∇
 
 ∇ MultiTexImage2DEXT_I1 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_I1_DLL'
-      'MultiTexImage2DEXT_I1_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I1[]'
+      'MultiTexImage2DEXT_I1_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}MultiTexImage2DEXT_I1_DLL texunit target level internalformat width height border format type pixels
 ∇
 
 ∇ MultiTexImage2DEXT_U2 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_U2_DLL'
-      'MultiTexImage2DEXT_U2_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U2[]'
+      'MultiTexImage2DEXT_U2_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}MultiTexImage2DEXT_U2_DLL texunit target level internalformat width height border format type pixels
 ∇
 
 ∇ MultiTexImage2DEXT_I2 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_I2_DLL'
-      'MultiTexImage2DEXT_I2_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I2[]'
+      'MultiTexImage2DEXT_I2_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}MultiTexImage2DEXT_I2_DLL texunit target level internalformat width height border format type pixels
 ∇
 
 ∇ MultiTexImage2DEXT_U4 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_U4_DLL'
-      'MultiTexImage2DEXT_U4_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U4[]'
+      'MultiTexImage2DEXT_U4_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}MultiTexImage2DEXT_U4_DLL texunit target level internalformat width height border format type pixels
 ∇
 
 ∇ MultiTexImage2DEXT_I4 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_I4_DLL'
-      'MultiTexImage2DEXT_I4_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I4[]'
+      'MultiTexImage2DEXT_I4_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}MultiTexImage2DEXT_I4_DLL texunit target level internalformat width height border format type pixels
 ∇
 
 ∇ MultiTexImage2DEXT_F4 (texunit target level internalformat width height border format type pixels)
   :If 0=⎕NC'MultiTexImage2DEXT_F4_DLL'
-      'MultiTexImage2DEXT_F4_DLL'⎕NA'opengl32|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <F4[]'
+      'MultiTexImage2DEXT_F4_DLL'⎕NA'',getdllname,'|glMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}MultiTexImage2DEXT_F4_DLL texunit target level internalformat width height border format type pixels
 ∇
@@ -21530,49 +21538,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ MultiTexSubImage1DEXT_U1 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_U1_DLL'
-      'MultiTexSubImage1DEXT_U1_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U1[]'
+      'MultiTexSubImage1DEXT_U1_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}MultiTexSubImage1DEXT_U1_DLL texunit target level xoffset width format type pixels
 ∇
 
 ∇ MultiTexSubImage1DEXT_I1 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_I1_DLL'
-      'MultiTexSubImage1DEXT_I1_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I1[]'
+      'MultiTexSubImage1DEXT_I1_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}MultiTexSubImage1DEXT_I1_DLL texunit target level xoffset width format type pixels
 ∇
 
 ∇ MultiTexSubImage1DEXT_U2 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_U2_DLL'
-      'MultiTexSubImage1DEXT_U2_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U2[]'
+      'MultiTexSubImage1DEXT_U2_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}MultiTexSubImage1DEXT_U2_DLL texunit target level xoffset width format type pixels
 ∇
 
 ∇ MultiTexSubImage1DEXT_I2 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_I2_DLL'
-      'MultiTexSubImage1DEXT_I2_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I2[]'
+      'MultiTexSubImage1DEXT_I2_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}MultiTexSubImage1DEXT_I2_DLL texunit target level xoffset width format type pixels
 ∇
 
 ∇ MultiTexSubImage1DEXT_U4 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_U4_DLL'
-      'MultiTexSubImage1DEXT_U4_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U4[]'
+      'MultiTexSubImage1DEXT_U4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}MultiTexSubImage1DEXT_U4_DLL texunit target level xoffset width format type pixels
 ∇
 
 ∇ MultiTexSubImage1DEXT_I4 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_I4_DLL'
-      'MultiTexSubImage1DEXT_I4_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I4[]'
+      'MultiTexSubImage1DEXT_I4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}MultiTexSubImage1DEXT_I4_DLL texunit target level xoffset width format type pixels
 ∇
 
 ∇ MultiTexSubImage1DEXT_F4 (texunit target level xoffset width format type pixels)
   :If 0=⎕NC'MultiTexSubImage1DEXT_F4_DLL'
-      'MultiTexSubImage1DEXT_F4_DLL'⎕NA'opengl32|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <F4[]'
+      'MultiTexSubImage1DEXT_F4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage1DEXT U4 U4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}MultiTexSubImage1DEXT_F4_DLL texunit target level xoffset width format type pixels
 ∇
@@ -21630,49 +21638,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ MultiTexSubImage2DEXT_U1 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_U1_DLL'
-      'MultiTexSubImage2DEXT_U1_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'MultiTexSubImage2DEXT_U1_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}MultiTexSubImage2DEXT_U1_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ MultiTexSubImage2DEXT_I1 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_I1_DLL'
-      'MultiTexSubImage2DEXT_I1_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'MultiTexSubImage2DEXT_I1_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}MultiTexSubImage2DEXT_I1_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ MultiTexSubImage2DEXT_U2 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_U2_DLL'
-      'MultiTexSubImage2DEXT_U2_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'MultiTexSubImage2DEXT_U2_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}MultiTexSubImage2DEXT_U2_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ MultiTexSubImage2DEXT_I2 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_I2_DLL'
-      'MultiTexSubImage2DEXT_I2_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'MultiTexSubImage2DEXT_I2_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}MultiTexSubImage2DEXT_I2_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ MultiTexSubImage2DEXT_U4 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_U4_DLL'
-      'MultiTexSubImage2DEXT_U4_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'MultiTexSubImage2DEXT_U4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}MultiTexSubImage2DEXT_U4_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ MultiTexSubImage2DEXT_I4 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_I4_DLL'
-      'MultiTexSubImage2DEXT_I4_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'MultiTexSubImage2DEXT_I4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}MultiTexSubImage2DEXT_I4_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
 
 ∇ MultiTexSubImage2DEXT_F4 (texunit target level xoffset yoffset width height format type pixels)
   :If 0=⎕NC'MultiTexSubImage2DEXT_F4_DLL'
-      'MultiTexSubImage2DEXT_F4_DLL'⎕NA'opengl32|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'MultiTexSubImage2DEXT_F4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}MultiTexSubImage2DEXT_F4_DLL texunit target level xoffset yoffset width height format type pixels
 ∇
@@ -21730,28 +21738,28 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyMultiTexImage1DEXT (texunit target level internalformat x y width border)
   :If 0=⎕NC'glCopyMultiTexImage1DEXT_DLL'
-      'glCopyMultiTexImage1DEXT_DLL'⎕NA'opengl32|glCopyMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 I4 I4'
+      'glCopyMultiTexImage1DEXT_DLL'⎕NA'',getdllname,'|glCopyMultiTexImage1DEXT U4 U4 I4 U4 I4 I4 I4 I4'
   :EndIf
   {}glCopyMultiTexImage1DEXT_DLL texunit target level internalformat x y width border
 ∇
 
 ∇ glCopyMultiTexImage2DEXT (texunit target level internalformat x y width height border)
   :If 0=⎕NC'glCopyMultiTexImage2DEXT_DLL'
-      'glCopyMultiTexImage2DEXT_DLL'⎕NA'opengl32|glCopyMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 I4 I4'
+      'glCopyMultiTexImage2DEXT_DLL'⎕NA'',getdllname,'|glCopyMultiTexImage2DEXT U4 U4 I4 U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyMultiTexImage2DEXT_DLL texunit target level internalformat x y width height border
 ∇
 
 ∇ glCopyMultiTexSubImage1DEXT (texunit target level xoffset x y width)
   :If 0=⎕NC'glCopyMultiTexSubImage1DEXT_DLL'
-      'glCopyMultiTexSubImage1DEXT_DLL'⎕NA'opengl32|glCopyMultiTexSubImage1DEXT U4 U4 I4 I4 I4 I4 I4'
+      'glCopyMultiTexSubImage1DEXT_DLL'⎕NA'',getdllname,'|glCopyMultiTexSubImage1DEXT U4 U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyMultiTexSubImage1DEXT_DLL texunit target level xoffset x y width
 ∇
 
 ∇ glCopyMultiTexSubImage2DEXT (texunit target level xoffset yoffset x y width height)
   :If 0=⎕NC'glCopyMultiTexSubImage2DEXT_DLL'
-      'glCopyMultiTexSubImage2DEXT_DLL'⎕NA'opengl32|glCopyMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyMultiTexSubImage2DEXT_DLL'⎕NA'',getdllname,'|glCopyMultiTexSubImage2DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyMultiTexSubImage2DEXT_DLL texunit target level xoffset yoffset x y width height
 ∇
@@ -21765,77 +21773,77 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetMultiTexParameterfvEXT (texunit target pname params)
   :If 0=⎕NC'glGetMultiTexParameterfvEXT_DLL'
-      'glGetMultiTexParameterfvEXT_DLL'⎕NA'opengl32|glGetMultiTexParameterfvEXT U4 U4 U4 >F4[]'
+      'glGetMultiTexParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexParameterfvEXT U4 U4 U4 >F4[]'
   :EndIf
   r←glGetMultiTexParameterfvEXT_DLL texunit target pname params
 ∇
 
 ∇ r←glGetMultiTexParameterivEXT (texunit target pname params)
   :If 0=⎕NC'glGetMultiTexParameterivEXT_DLL'
-      'glGetMultiTexParameterivEXT_DLL'⎕NA'opengl32|glGetMultiTexParameterivEXT U4 U4 U4 >I4[]'
+      'glGetMultiTexParameterivEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexParameterivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetMultiTexParameterivEXT_DLL texunit target pname params
 ∇
 
 ∇ r←glGetMultiTexLevelParameterfvEXT (texunit target level pname params)
   :If 0=⎕NC'glGetMultiTexLevelParameterfvEXT_DLL'
-      'glGetMultiTexLevelParameterfvEXT_DLL'⎕NA'opengl32|glGetMultiTexLevelParameterfvEXT U4 U4 I4 U4 >F4[]'
+      'glGetMultiTexLevelParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexLevelParameterfvEXT U4 U4 I4 U4 >F4[]'
   :EndIf
   r←glGetMultiTexLevelParameterfvEXT_DLL texunit target level pname params
 ∇
 
 ∇ r←glGetMultiTexLevelParameterivEXT (texunit target level pname params)
   :If 0=⎕NC'glGetMultiTexLevelParameterivEXT_DLL'
-      'glGetMultiTexLevelParameterivEXT_DLL'⎕NA'opengl32|glGetMultiTexLevelParameterivEXT U4 U4 I4 U4 >I4[]'
+      'glGetMultiTexLevelParameterivEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexLevelParameterivEXT U4 U4 I4 U4 >I4[]'
   :EndIf
   r←glGetMultiTexLevelParameterivEXT_DLL texunit target level pname params
 ∇
 
 ∇ MultiTexImage3DEXT_U1 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_U1_DLL'
-      'MultiTexImage3DEXT_U1_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'MultiTexImage3DEXT_U1_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}MultiTexImage3DEXT_U1_DLL texunit target level internalformat width height depth border format type pixels
 ∇
 
 ∇ MultiTexImage3DEXT_I1 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_I1_DLL'
-      'MultiTexImage3DEXT_I1_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'MultiTexImage3DEXT_I1_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}MultiTexImage3DEXT_I1_DLL texunit target level internalformat width height depth border format type pixels
 ∇
 
 ∇ MultiTexImage3DEXT_U2 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_U2_DLL'
-      'MultiTexImage3DEXT_U2_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'MultiTexImage3DEXT_U2_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}MultiTexImage3DEXT_U2_DLL texunit target level internalformat width height depth border format type pixels
 ∇
 
 ∇ MultiTexImage3DEXT_I2 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_I2_DLL'
-      'MultiTexImage3DEXT_I2_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'MultiTexImage3DEXT_I2_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}MultiTexImage3DEXT_I2_DLL texunit target level internalformat width height depth border format type pixels
 ∇
 
 ∇ MultiTexImage3DEXT_U4 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_U4_DLL'
-      'MultiTexImage3DEXT_U4_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'MultiTexImage3DEXT_U4_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}MultiTexImage3DEXT_U4_DLL texunit target level internalformat width height depth border format type pixels
 ∇
 
 ∇ MultiTexImage3DEXT_I4 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_I4_DLL'
-      'MultiTexImage3DEXT_I4_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'MultiTexImage3DEXT_I4_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}MultiTexImage3DEXT_I4_DLL texunit target level internalformat width height depth border format type pixels
 ∇
 
 ∇ MultiTexImage3DEXT_F4 (texunit target level internalformat width height depth border format type pixels)
   :If 0=⎕NC'MultiTexImage3DEXT_F4_DLL'
-      'MultiTexImage3DEXT_F4_DLL'⎕NA'opengl32|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'MultiTexImage3DEXT_F4_DLL'⎕NA'',getdllname,'|glMultiTexImage3DEXT U4 U4 I4 U4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}MultiTexImage3DEXT_F4_DLL texunit target level internalformat width height depth border format type pixels
 ∇
@@ -21893,49 +21901,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ MultiTexSubImage3DEXT_U1 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_U1_DLL'
-      'MultiTexSubImage3DEXT_U1_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
+      'MultiTexSubImage3DEXT_U1_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U1[]'
   :EndIf
   {}MultiTexSubImage3DEXT_U1_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ MultiTexSubImage3DEXT_I1 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_I1_DLL'
-      'MultiTexSubImage3DEXT_I1_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
+      'MultiTexSubImage3DEXT_I1_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I1[]'
   :EndIf
   {}MultiTexSubImage3DEXT_I1_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ MultiTexSubImage3DEXT_U2 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_U2_DLL'
-      'MultiTexSubImage3DEXT_U2_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
+      'MultiTexSubImage3DEXT_U2_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U2[]'
   :EndIf
   {}MultiTexSubImage3DEXT_U2_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ MultiTexSubImage3DEXT_I2 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_I2_DLL'
-      'MultiTexSubImage3DEXT_I2_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
+      'MultiTexSubImage3DEXT_I2_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I2[]'
   :EndIf
   {}MultiTexSubImage3DEXT_I2_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ MultiTexSubImage3DEXT_U4 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_U4_DLL'
-      'MultiTexSubImage3DEXT_U4_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
+      'MultiTexSubImage3DEXT_U4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <U4[]'
   :EndIf
   {}MultiTexSubImage3DEXT_U4_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ MultiTexSubImage3DEXT_I4 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_I4_DLL'
-      'MultiTexSubImage3DEXT_I4_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
+      'MultiTexSubImage3DEXT_I4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <I4[]'
   :EndIf
   {}MultiTexSubImage3DEXT_I4_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
 
 ∇ MultiTexSubImage3DEXT_F4 (texunit target level xoffset yoffset zoffset width height depth format type pixels)
   :If 0=⎕NC'MultiTexSubImage3DEXT_F4_DLL'
-      'MultiTexSubImage3DEXT_F4_DLL'⎕NA'opengl32|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
+      'MultiTexSubImage3DEXT_F4_DLL'⎕NA'',getdllname,'|glMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 U4 U4 <F4[]'
   :EndIf
   {}MultiTexSubImage3DEXT_F4_DLL texunit target level xoffset yoffset zoffset width height depth format type pixels
 ∇
@@ -21993,28 +22001,28 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glCopyMultiTexSubImage3DEXT (texunit target level xoffset yoffset zoffset x y width height)
   :If 0=⎕NC'glCopyMultiTexSubImage3DEXT_DLL'
-      'glCopyMultiTexSubImage3DEXT_DLL'⎕NA'opengl32|glCopyMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyMultiTexSubImage3DEXT_DLL'⎕NA'',getdllname,'|glCopyMultiTexSubImage3DEXT U4 U4 I4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyMultiTexSubImage3DEXT_DLL texunit target level xoffset yoffset zoffset x y width height
 ∇
 
 ∇ glBindMultiTextureEXT (texunit target texture)
   :If 0=⎕NC'glBindMultiTextureEXT_DLL'
-      'glBindMultiTextureEXT_DLL'⎕NA'opengl32|glBindMultiTextureEXT U4 U4 U4'
+      'glBindMultiTextureEXT_DLL'⎕NA'',getdllname,'|glBindMultiTextureEXT U4 U4 U4'
   :EndIf
   {}glBindMultiTextureEXT_DLL texunit target texture
 ∇
 
 ∇ glEnableClientStateIndexedEXT (array index)
   :If 0=⎕NC'glEnableClientStateIndexedEXT_DLL'
-      'glEnableClientStateIndexedEXT_DLL'⎕NA'opengl32|glEnableClientStateIndexedEXT U4 U4'
+      'glEnableClientStateIndexedEXT_DLL'⎕NA'',getdllname,'|glEnableClientStateIndexedEXT U4 U4'
   :EndIf
   {}glEnableClientStateIndexedEXT_DLL array index
 ∇
 
 ∇ glDisableClientStateIndexedEXT (array index)
   :If 0=⎕NC'glDisableClientStateIndexedEXT_DLL'
-      'glDisableClientStateIndexedEXT_DLL'⎕NA'opengl32|glDisableClientStateIndexedEXT U4 U4'
+      'glDisableClientStateIndexedEXT_DLL'⎕NA'',getdllname,'|glDisableClientStateIndexedEXT U4 U4'
   :EndIf
   {}glDisableClientStateIndexedEXT_DLL array index
 ∇
@@ -22028,119 +22036,119 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glMultiTexEnvfEXT (texunit target pname param)
   :If 0=⎕NC'glMultiTexEnvfEXT_DLL'
-      'glMultiTexEnvfEXT_DLL'⎕NA'opengl32|glMultiTexEnvfEXT U4 U4 U4 F4'
+      'glMultiTexEnvfEXT_DLL'⎕NA'',getdllname,'|glMultiTexEnvfEXT U4 U4 U4 F4'
   :EndIf
   {}glMultiTexEnvfEXT_DLL texunit target pname param
 ∇
 
 ∇ glMultiTexEnvfvEXT (texunit target pname params)
   :If 0=⎕NC'glMultiTexEnvfvEXT_DLL'
-      'glMultiTexEnvfvEXT_DLL'⎕NA'opengl32|glMultiTexEnvfvEXT U4 U4 U4 <F4[]'
+      'glMultiTexEnvfvEXT_DLL'⎕NA'',getdllname,'|glMultiTexEnvfvEXT U4 U4 U4 <F4[]'
   :EndIf
   {}glMultiTexEnvfvEXT_DLL texunit target pname params
 ∇
 
 ∇ glMultiTexEnviEXT (texunit target pname param)
   :If 0=⎕NC'glMultiTexEnviEXT_DLL'
-      'glMultiTexEnviEXT_DLL'⎕NA'opengl32|glMultiTexEnviEXT U4 U4 U4 I4'
+      'glMultiTexEnviEXT_DLL'⎕NA'',getdllname,'|glMultiTexEnviEXT U4 U4 U4 I4'
   :EndIf
   {}glMultiTexEnviEXT_DLL texunit target pname param
 ∇
 
 ∇ glMultiTexEnvivEXT (texunit target pname params)
   :If 0=⎕NC'glMultiTexEnvivEXT_DLL'
-      'glMultiTexEnvivEXT_DLL'⎕NA'opengl32|glMultiTexEnvivEXT U4 U4 U4 <I4[]'
+      'glMultiTexEnvivEXT_DLL'⎕NA'',getdllname,'|glMultiTexEnvivEXT U4 U4 U4 <I4[]'
   :EndIf
   {}glMultiTexEnvivEXT_DLL texunit target pname params
 ∇
 
 ∇ glMultiTexGendEXT (texunit coord pname param)
   :If 0=⎕NC'glMultiTexGendEXT_DLL'
-      'glMultiTexGendEXT_DLL'⎕NA'opengl32|glMultiTexGendEXT U4 U4 U4 F8'
+      'glMultiTexGendEXT_DLL'⎕NA'',getdllname,'|glMultiTexGendEXT U4 U4 U4 F8'
   :EndIf
   {}glMultiTexGendEXT_DLL texunit coord pname param
 ∇
 
 ∇ glMultiTexGendvEXT (texunit coord pname params)
   :If 0=⎕NC'glMultiTexGendvEXT_DLL'
-      'glMultiTexGendvEXT_DLL'⎕NA'opengl32|glMultiTexGendvEXT U4 U4 U4 <F8[]'
+      'glMultiTexGendvEXT_DLL'⎕NA'',getdllname,'|glMultiTexGendvEXT U4 U4 U4 <F8[]'
   :EndIf
   {}glMultiTexGendvEXT_DLL texunit coord pname params
 ∇
 
 ∇ glMultiTexGenfEXT (texunit coord pname param)
   :If 0=⎕NC'glMultiTexGenfEXT_DLL'
-      'glMultiTexGenfEXT_DLL'⎕NA'opengl32|glMultiTexGenfEXT U4 U4 U4 F4'
+      'glMultiTexGenfEXT_DLL'⎕NA'',getdllname,'|glMultiTexGenfEXT U4 U4 U4 F4'
   :EndIf
   {}glMultiTexGenfEXT_DLL texunit coord pname param
 ∇
 
 ∇ glMultiTexGenfvEXT (texunit coord pname params)
   :If 0=⎕NC'glMultiTexGenfvEXT_DLL'
-      'glMultiTexGenfvEXT_DLL'⎕NA'opengl32|glMultiTexGenfvEXT U4 U4 U4 <F4[]'
+      'glMultiTexGenfvEXT_DLL'⎕NA'',getdllname,'|glMultiTexGenfvEXT U4 U4 U4 <F4[]'
   :EndIf
   {}glMultiTexGenfvEXT_DLL texunit coord pname params
 ∇
 
 ∇ glMultiTexGeniEXT (texunit coord pname param)
   :If 0=⎕NC'glMultiTexGeniEXT_DLL'
-      'glMultiTexGeniEXT_DLL'⎕NA'opengl32|glMultiTexGeniEXT U4 U4 U4 I4'
+      'glMultiTexGeniEXT_DLL'⎕NA'',getdllname,'|glMultiTexGeniEXT U4 U4 U4 I4'
   :EndIf
   {}glMultiTexGeniEXT_DLL texunit coord pname param
 ∇
 
 ∇ glMultiTexGenivEXT (texunit coord pname params)
   :If 0=⎕NC'glMultiTexGenivEXT_DLL'
-      'glMultiTexGenivEXT_DLL'⎕NA'opengl32|glMultiTexGenivEXT U4 U4 U4 <I4[]'
+      'glMultiTexGenivEXT_DLL'⎕NA'',getdllname,'|glMultiTexGenivEXT U4 U4 U4 <I4[]'
   :EndIf
   {}glMultiTexGenivEXT_DLL texunit coord pname params
 ∇
 
 ∇ r←glGetMultiTexEnvfvEXT (texunit target pname params)
   :If 0=⎕NC'glGetMultiTexEnvfvEXT_DLL'
-      'glGetMultiTexEnvfvEXT_DLL'⎕NA'opengl32|glGetMultiTexEnvfvEXT U4 U4 U4 >F4[]'
+      'glGetMultiTexEnvfvEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexEnvfvEXT U4 U4 U4 >F4[]'
   :EndIf
   r←glGetMultiTexEnvfvEXT_DLL texunit target pname params
 ∇
 
 ∇ r←glGetMultiTexEnvivEXT (texunit target pname params)
   :If 0=⎕NC'glGetMultiTexEnvivEXT_DLL'
-      'glGetMultiTexEnvivEXT_DLL'⎕NA'opengl32|glGetMultiTexEnvivEXT U4 U4 U4 >I4[]'
+      'glGetMultiTexEnvivEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexEnvivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetMultiTexEnvivEXT_DLL texunit target pname params
 ∇
 
 ∇ r←glGetMultiTexGendvEXT (texunit coord pname params)
   :If 0=⎕NC'glGetMultiTexGendvEXT_DLL'
-      'glGetMultiTexGendvEXT_DLL'⎕NA'opengl32|glGetMultiTexGendvEXT U4 U4 U4 >F8[]'
+      'glGetMultiTexGendvEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexGendvEXT U4 U4 U4 >F8[]'
   :EndIf
   r←glGetMultiTexGendvEXT_DLL texunit coord pname params
 ∇
 
 ∇ r←glGetMultiTexGenfvEXT (texunit coord pname params)
   :If 0=⎕NC'glGetMultiTexGenfvEXT_DLL'
-      'glGetMultiTexGenfvEXT_DLL'⎕NA'opengl32|glGetMultiTexGenfvEXT U4 U4 U4 >F4[]'
+      'glGetMultiTexGenfvEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexGenfvEXT U4 U4 U4 >F4[]'
   :EndIf
   r←glGetMultiTexGenfvEXT_DLL texunit coord pname params
 ∇
 
 ∇ r←glGetMultiTexGenivEXT (texunit coord pname params)
   :If 0=⎕NC'glGetMultiTexGenivEXT_DLL'
-      'glGetMultiTexGenivEXT_DLL'⎕NA'opengl32|glGetMultiTexGenivEXT U4 U4 U4 >I4[]'
+      'glGetMultiTexGenivEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexGenivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetMultiTexGenivEXT_DLL texunit coord pname params
 ∇
 
 ∇ r←glGetFloatIndexedvEXT (target index data)
   :If 0=⎕NC'glGetFloatIndexedvEXT_DLL'
-      'glGetFloatIndexedvEXT_DLL'⎕NA'opengl32|glGetFloatIndexedvEXT U4 U4 >F4[]'
+      'glGetFloatIndexedvEXT_DLL'⎕NA'',getdllname,'|glGetFloatIndexedvEXT U4 U4 >F4[]'
   :EndIf
   r←glGetFloatIndexedvEXT_DLL target index data
 ∇
 
 ∇ r←glGetDoubleIndexedvEXT (target index data)
   :If 0=⎕NC'glGetDoubleIndexedvEXT_DLL'
-      'glGetDoubleIndexedvEXT_DLL'⎕NA'opengl32|glGetDoubleIndexedvEXT U4 U4 >F8[]'
+      'glGetDoubleIndexedvEXT_DLL'⎕NA'',getdllname,'|glGetDoubleIndexedvEXT U4 U4 >F8[]'
   :EndIf
   r←glGetDoubleIndexedvEXT_DLL target index data
 ∇
@@ -22259,49 +22267,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glNamedProgramLocalParameter4dEXT (program target index x y z w)
   :If 0=⎕NC'glNamedProgramLocalParameter4dEXT_DLL'
-      'glNamedProgramLocalParameter4dEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameter4dEXT U4 U4 U4 F8 F8 F8 F8'
+      'glNamedProgramLocalParameter4dEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameter4dEXT U4 U4 U4 F8 F8 F8 F8'
   :EndIf
   {}glNamedProgramLocalParameter4dEXT_DLL program target index x y z w
 ∇
 
 ∇ glNamedProgramLocalParameter4dvEXT (program target index params)
   :If 0=⎕NC'glNamedProgramLocalParameter4dvEXT_DLL'
-      'glNamedProgramLocalParameter4dvEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameter4dvEXT U4 U4 U4 <F8[4]'
+      'glNamedProgramLocalParameter4dvEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameter4dvEXT U4 U4 U4 <F8[4]'
   :EndIf
   {}glNamedProgramLocalParameter4dvEXT_DLL program target index params
 ∇
 
 ∇ glNamedProgramLocalParameter4fEXT (program target index x y z w)
   :If 0=⎕NC'glNamedProgramLocalParameter4fEXT_DLL'
-      'glNamedProgramLocalParameter4fEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameter4fEXT U4 U4 U4 F4 F4 F4 F4'
+      'glNamedProgramLocalParameter4fEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameter4fEXT U4 U4 U4 F4 F4 F4 F4'
   :EndIf
   {}glNamedProgramLocalParameter4fEXT_DLL program target index x y z w
 ∇
 
 ∇ glNamedProgramLocalParameter4fvEXT (program target index params)
   :If 0=⎕NC'glNamedProgramLocalParameter4fvEXT_DLL'
-      'glNamedProgramLocalParameter4fvEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameter4fvEXT U4 U4 U4 <F4[4]'
+      'glNamedProgramLocalParameter4fvEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameter4fvEXT U4 U4 U4 <F4[4]'
   :EndIf
   {}glNamedProgramLocalParameter4fvEXT_DLL program target index params
 ∇
 
 ∇ r←glGetNamedProgramLocalParameterdvEXT (program target index)
   :If 0=⎕NC'glGetNamedProgramLocalParameterdvEXT_DLL'
-      'glGetNamedProgramLocalParameterdvEXT_DLL'⎕NA'opengl32|glGetNamedProgramLocalParameterdvEXT U4 U4 U4 >F8[4]'
+      'glGetNamedProgramLocalParameterdvEXT_DLL'⎕NA'',getdllname,'|glGetNamedProgramLocalParameterdvEXT U4 U4 U4 >F8[4]'
   :EndIf
   r←glGetNamedProgramLocalParameterdvEXT_DLL program target index 4
 ∇
 
 ∇ r←glGetNamedProgramLocalParameterfvEXT (program target index)
   :If 0=⎕NC'glGetNamedProgramLocalParameterfvEXT_DLL'
-      'glGetNamedProgramLocalParameterfvEXT_DLL'⎕NA'opengl32|glGetNamedProgramLocalParameterfvEXT U4 U4 U4 >F4[4]'
+      'glGetNamedProgramLocalParameterfvEXT_DLL'⎕NA'',getdllname,'|glGetNamedProgramLocalParameterfvEXT U4 U4 U4 >F4[4]'
   :EndIf
   r←glGetNamedProgramLocalParameterfvEXT_DLL program target index 4
 ∇
 
 ∇ r←glGetNamedProgramivEXT (program target pname)
   :If 0=⎕NC'glGetNamedProgramivEXT_DLL'
-      'glGetNamedProgramivEXT_DLL'⎕NA'opengl32|glGetNamedProgramivEXT U4 U4 U4 >I4[1]'
+      'glGetNamedProgramivEXT_DLL'⎕NA'',getdllname,'|glGetNamedProgramivEXT U4 U4 U4 >I4[1]'
   :EndIf
   r←glGetNamedProgramivEXT_DLL program target pname 1
 ∇
@@ -22315,350 +22323,350 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glNamedProgramLocalParameters4fvEXT (program target index count params)
   :If 0=⎕NC'glNamedProgramLocalParameters4fvEXT_DLL'
-      'glNamedProgramLocalParameters4fvEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameters4fvEXT U4 U4 U4 I4 <F4[]'
+      'glNamedProgramLocalParameters4fvEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameters4fvEXT U4 U4 U4 I4 <F4[]'
   :EndIf
   {}glNamedProgramLocalParameters4fvEXT_DLL program target index count params
 ∇
 
 ∇ glNamedProgramLocalParameterI4iEXT (program target index x y z w)
   :If 0=⎕NC'glNamedProgramLocalParameterI4iEXT_DLL'
-      'glNamedProgramLocalParameterI4iEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameterI4iEXT U4 U4 U4 I4 I4 I4 I4'
+      'glNamedProgramLocalParameterI4iEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameterI4iEXT U4 U4 U4 I4 I4 I4 I4'
   :EndIf
   {}glNamedProgramLocalParameterI4iEXT_DLL program target index x y z w
 ∇
 
 ∇ glNamedProgramLocalParameterI4ivEXT (program target index params)
   :If 0=⎕NC'glNamedProgramLocalParameterI4ivEXT_DLL'
-      'glNamedProgramLocalParameterI4ivEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameterI4ivEXT U4 U4 U4 <I4[4]'
+      'glNamedProgramLocalParameterI4ivEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameterI4ivEXT U4 U4 U4 <I4[4]'
   :EndIf
   {}glNamedProgramLocalParameterI4ivEXT_DLL program target index params
 ∇
 
 ∇ glNamedProgramLocalParametersI4ivEXT (program target index count params)
   :If 0=⎕NC'glNamedProgramLocalParametersI4ivEXT_DLL'
-      'glNamedProgramLocalParametersI4ivEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParametersI4ivEXT U4 U4 U4 I4 <I4[]'
+      'glNamedProgramLocalParametersI4ivEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParametersI4ivEXT U4 U4 U4 I4 <I4[]'
   :EndIf
   {}glNamedProgramLocalParametersI4ivEXT_DLL program target index count params
 ∇
 
 ∇ glNamedProgramLocalParameterI4uiEXT (program target index x y z w)
   :If 0=⎕NC'glNamedProgramLocalParameterI4uiEXT_DLL'
-      'glNamedProgramLocalParameterI4uiEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameterI4uiEXT U4 U4 U4 U4 U4 U4 U4'
+      'glNamedProgramLocalParameterI4uiEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameterI4uiEXT U4 U4 U4 U4 U4 U4 U4'
   :EndIf
   {}glNamedProgramLocalParameterI4uiEXT_DLL program target index x y z w
 ∇
 
 ∇ glNamedProgramLocalParameterI4uivEXT (program target index params)
   :If 0=⎕NC'glNamedProgramLocalParameterI4uivEXT_DLL'
-      'glNamedProgramLocalParameterI4uivEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParameterI4uivEXT U4 U4 U4 <U4[4]'
+      'glNamedProgramLocalParameterI4uivEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParameterI4uivEXT U4 U4 U4 <U4[4]'
   :EndIf
   {}glNamedProgramLocalParameterI4uivEXT_DLL program target index params
 ∇
 
 ∇ glNamedProgramLocalParametersI4uivEXT (program target index count params)
   :If 0=⎕NC'glNamedProgramLocalParametersI4uivEXT_DLL'
-      'glNamedProgramLocalParametersI4uivEXT_DLL'⎕NA'opengl32|glNamedProgramLocalParametersI4uivEXT U4 U4 U4 I4 <U4[]'
+      'glNamedProgramLocalParametersI4uivEXT_DLL'⎕NA'',getdllname,'|glNamedProgramLocalParametersI4uivEXT U4 U4 U4 I4 <U4[]'
   :EndIf
   {}glNamedProgramLocalParametersI4uivEXT_DLL program target index count params
 ∇
 
 ∇ r←glGetNamedProgramLocalParameterIivEXT (program target index)
   :If 0=⎕NC'glGetNamedProgramLocalParameterIivEXT_DLL'
-      'glGetNamedProgramLocalParameterIivEXT_DLL'⎕NA'opengl32|glGetNamedProgramLocalParameterIivEXT U4 U4 U4 >I4[4]'
+      'glGetNamedProgramLocalParameterIivEXT_DLL'⎕NA'',getdllname,'|glGetNamedProgramLocalParameterIivEXT U4 U4 U4 >I4[4]'
   :EndIf
   r←glGetNamedProgramLocalParameterIivEXT_DLL program target index 4
 ∇
 
 ∇ r←glGetNamedProgramLocalParameterIuivEXT (program target index)
   :If 0=⎕NC'glGetNamedProgramLocalParameterIuivEXT_DLL'
-      'glGetNamedProgramLocalParameterIuivEXT_DLL'⎕NA'opengl32|glGetNamedProgramLocalParameterIuivEXT U4 U4 U4 >U4[4]'
+      'glGetNamedProgramLocalParameterIuivEXT_DLL'⎕NA'',getdllname,'|glGetNamedProgramLocalParameterIuivEXT U4 U4 U4 >U4[4]'
   :EndIf
   r←glGetNamedProgramLocalParameterIuivEXT_DLL program target index 4
 ∇
 
 ∇ glTextureParameterIivEXT (texture target pname params)
   :If 0=⎕NC'glTextureParameterIivEXT_DLL'
-      'glTextureParameterIivEXT_DLL'⎕NA'opengl32|glTextureParameterIivEXT U4 U4 U4 <I4[]'
+      'glTextureParameterIivEXT_DLL'⎕NA'',getdllname,'|glTextureParameterIivEXT U4 U4 U4 <I4[]'
   :EndIf
   {}glTextureParameterIivEXT_DLL texture target pname params
 ∇
 
 ∇ glTextureParameterIuivEXT (texture target pname params)
   :If 0=⎕NC'glTextureParameterIuivEXT_DLL'
-      'glTextureParameterIuivEXT_DLL'⎕NA'opengl32|glTextureParameterIuivEXT U4 U4 U4 <U4[]'
+      'glTextureParameterIuivEXT_DLL'⎕NA'',getdllname,'|glTextureParameterIuivEXT U4 U4 U4 <U4[]'
   :EndIf
   {}glTextureParameterIuivEXT_DLL texture target pname params
 ∇
 
 ∇ r←glGetTextureParameterIivEXT (texture target pname params)
   :If 0=⎕NC'glGetTextureParameterIivEXT_DLL'
-      'glGetTextureParameterIivEXT_DLL'⎕NA'opengl32|glGetTextureParameterIivEXT U4 U4 U4 >I4[]'
+      'glGetTextureParameterIivEXT_DLL'⎕NA'',getdllname,'|glGetTextureParameterIivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetTextureParameterIivEXT_DLL texture target pname params
 ∇
 
 ∇ r←glGetTextureParameterIuivEXT (texture target pname params)
   :If 0=⎕NC'glGetTextureParameterIuivEXT_DLL'
-      'glGetTextureParameterIuivEXT_DLL'⎕NA'opengl32|glGetTextureParameterIuivEXT U4 U4 U4 >U4[]'
+      'glGetTextureParameterIuivEXT_DLL'⎕NA'',getdllname,'|glGetTextureParameterIuivEXT U4 U4 U4 >U4[]'
   :EndIf
   r←glGetTextureParameterIuivEXT_DLL texture target pname params
 ∇
 
 ∇ glMultiTexParameterIivEXT (texunit target pname params)
   :If 0=⎕NC'glMultiTexParameterIivEXT_DLL'
-      'glMultiTexParameterIivEXT_DLL'⎕NA'opengl32|glMultiTexParameterIivEXT U4 U4 U4 <I4[]'
+      'glMultiTexParameterIivEXT_DLL'⎕NA'',getdllname,'|glMultiTexParameterIivEXT U4 U4 U4 <I4[]'
   :EndIf
   {}glMultiTexParameterIivEXT_DLL texunit target pname params
 ∇
 
 ∇ glMultiTexParameterIuivEXT (texunit target pname params)
   :If 0=⎕NC'glMultiTexParameterIuivEXT_DLL'
-      'glMultiTexParameterIuivEXT_DLL'⎕NA'opengl32|glMultiTexParameterIuivEXT U4 U4 U4 <U4[]'
+      'glMultiTexParameterIuivEXT_DLL'⎕NA'',getdllname,'|glMultiTexParameterIuivEXT U4 U4 U4 <U4[]'
   :EndIf
   {}glMultiTexParameterIuivEXT_DLL texunit target pname params
 ∇
 
 ∇ r←glGetMultiTexParameterIivEXT (texunit target pname params)
   :If 0=⎕NC'glGetMultiTexParameterIivEXT_DLL'
-      'glGetMultiTexParameterIivEXT_DLL'⎕NA'opengl32|glGetMultiTexParameterIivEXT U4 U4 U4 >I4[]'
+      'glGetMultiTexParameterIivEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexParameterIivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetMultiTexParameterIivEXT_DLL texunit target pname params
 ∇
 
 ∇ r←glGetMultiTexParameterIuivEXT (texunit target pname params)
   :If 0=⎕NC'glGetMultiTexParameterIuivEXT_DLL'
-      'glGetMultiTexParameterIuivEXT_DLL'⎕NA'opengl32|glGetMultiTexParameterIuivEXT U4 U4 U4 >U4[]'
+      'glGetMultiTexParameterIuivEXT_DLL'⎕NA'',getdllname,'|glGetMultiTexParameterIuivEXT U4 U4 U4 >U4[]'
   :EndIf
   r←glGetMultiTexParameterIuivEXT_DLL texunit target pname params
 ∇
 
 ∇ glProgramUniform1fEXT (program location v0)
   :If 0=⎕NC'glProgramUniform1fEXT_DLL'
-      'glProgramUniform1fEXT_DLL'⎕NA'opengl32|glProgramUniform1fEXT U4 I4 F4'
+      'glProgramUniform1fEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1fEXT U4 I4 F4'
   :EndIf
   {}glProgramUniform1fEXT_DLL program location v0
 ∇
 
 ∇ glProgramUniform2fEXT (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2fEXT_DLL'
-      'glProgramUniform2fEXT_DLL'⎕NA'opengl32|glProgramUniform2fEXT U4 I4 F4 F4'
+      'glProgramUniform2fEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2fEXT U4 I4 F4 F4'
   :EndIf
   {}glProgramUniform2fEXT_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform3fEXT (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3fEXT_DLL'
-      'glProgramUniform3fEXT_DLL'⎕NA'opengl32|glProgramUniform3fEXT U4 I4 F4 F4 F4'
+      'glProgramUniform3fEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3fEXT U4 I4 F4 F4 F4'
   :EndIf
   {}glProgramUniform3fEXT_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform4fEXT (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4fEXT_DLL'
-      'glProgramUniform4fEXT_DLL'⎕NA'opengl32|glProgramUniform4fEXT U4 I4 F4 F4 F4 F4'
+      'glProgramUniform4fEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4fEXT U4 I4 F4 F4 F4 F4'
   :EndIf
   {}glProgramUniform4fEXT_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform1iEXT (program location v0)
   :If 0=⎕NC'glProgramUniform1iEXT_DLL'
-      'glProgramUniform1iEXT_DLL'⎕NA'opengl32|glProgramUniform1iEXT U4 I4 I4'
+      'glProgramUniform1iEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1iEXT U4 I4 I4'
   :EndIf
   {}glProgramUniform1iEXT_DLL program location v0
 ∇
 
 ∇ glProgramUniform2iEXT (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2iEXT_DLL'
-      'glProgramUniform2iEXT_DLL'⎕NA'opengl32|glProgramUniform2iEXT U4 I4 I4 I4'
+      'glProgramUniform2iEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2iEXT U4 I4 I4 I4'
   :EndIf
   {}glProgramUniform2iEXT_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform3iEXT (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3iEXT_DLL'
-      'glProgramUniform3iEXT_DLL'⎕NA'opengl32|glProgramUniform3iEXT U4 I4 I4 I4 I4'
+      'glProgramUniform3iEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3iEXT U4 I4 I4 I4 I4'
   :EndIf
   {}glProgramUniform3iEXT_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform4iEXT (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4iEXT_DLL'
-      'glProgramUniform4iEXT_DLL'⎕NA'opengl32|glProgramUniform4iEXT U4 I4 I4 I4 I4 I4'
+      'glProgramUniform4iEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4iEXT U4 I4 I4 I4 I4 I4'
   :EndIf
   {}glProgramUniform4iEXT_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform1fvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform1fvEXT_DLL'
-      'glProgramUniform1fvEXT_DLL'⎕NA'opengl32|glProgramUniform1fvEXT U4 I4 I4 <F4[]'
+      'glProgramUniform1fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1fvEXT U4 I4 I4 <F4[]'
   :EndIf
   {}glProgramUniform1fvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform2fvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform2fvEXT_DLL'
-      'glProgramUniform2fvEXT_DLL'⎕NA'opengl32|glProgramUniform2fvEXT U4 I4 I4 <F4[]'
+      'glProgramUniform2fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2fvEXT U4 I4 I4 <F4[]'
   :EndIf
   {}glProgramUniform2fvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform3fvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform3fvEXT_DLL'
-      'glProgramUniform3fvEXT_DLL'⎕NA'opengl32|glProgramUniform3fvEXT U4 I4 I4 <F4[]'
+      'glProgramUniform3fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3fvEXT U4 I4 I4 <F4[]'
   :EndIf
   {}glProgramUniform3fvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform4fvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform4fvEXT_DLL'
-      'glProgramUniform4fvEXT_DLL'⎕NA'opengl32|glProgramUniform4fvEXT U4 I4 I4 <F4[]'
+      'glProgramUniform4fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4fvEXT U4 I4 I4 <F4[]'
   :EndIf
   {}glProgramUniform4fvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform1ivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform1ivEXT_DLL'
-      'glProgramUniform1ivEXT_DLL'⎕NA'opengl32|glProgramUniform1ivEXT U4 I4 I4 <I4[]'
+      'glProgramUniform1ivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1ivEXT U4 I4 I4 <I4[]'
   :EndIf
   {}glProgramUniform1ivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform2ivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform2ivEXT_DLL'
-      'glProgramUniform2ivEXT_DLL'⎕NA'opengl32|glProgramUniform2ivEXT U4 I4 I4 <I4[]'
+      'glProgramUniform2ivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2ivEXT U4 I4 I4 <I4[]'
   :EndIf
   {}glProgramUniform2ivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform3ivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform3ivEXT_DLL'
-      'glProgramUniform3ivEXT_DLL'⎕NA'opengl32|glProgramUniform3ivEXT U4 I4 I4 <I4[]'
+      'glProgramUniform3ivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3ivEXT U4 I4 I4 <I4[]'
   :EndIf
   {}glProgramUniform3ivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform4ivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform4ivEXT_DLL'
-      'glProgramUniform4ivEXT_DLL'⎕NA'opengl32|glProgramUniform4ivEXT U4 I4 I4 <I4[]'
+      'glProgramUniform4ivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4ivEXT U4 I4 I4 <I4[]'
   :EndIf
   {}glProgramUniform4ivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniformMatrix2fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2fvEXT_DLL'
-      'glProgramUniformMatrix2fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix2fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix2fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix2fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3fvEXT_DLL'
-      'glProgramUniformMatrix3fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix3fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix3fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix3fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4fvEXT_DLL'
-      'glProgramUniformMatrix4fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix4fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix4fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix4fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x3fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x3fvEXT_DLL'
-      'glProgramUniformMatrix2x3fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix2x3fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix2x3fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x3fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix2x3fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x2fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x2fvEXT_DLL'
-      'glProgramUniformMatrix3x2fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix3x2fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix3x2fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x2fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix3x2fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x4fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x4fvEXT_DLL'
-      'glProgramUniformMatrix2x4fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix2x4fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix2x4fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x4fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix2x4fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x2fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x2fvEXT_DLL'
-      'glProgramUniformMatrix4x2fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix4x2fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix4x2fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x2fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix4x2fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x4fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x4fvEXT_DLL'
-      'glProgramUniformMatrix3x4fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix3x4fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix3x4fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x4fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix3x4fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x3fvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x3fvEXT_DLL'
-      'glProgramUniformMatrix4x3fvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix4x3fvEXT U4 I4 I4 U1 <F4[]'
+      'glProgramUniformMatrix4x3fvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x3fvEXT U4 I4 I4 U1 <F4[]'
   :EndIf
   {}glProgramUniformMatrix4x3fvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniform1uiEXT (program location v0)
   :If 0=⎕NC'glProgramUniform1uiEXT_DLL'
-      'glProgramUniform1uiEXT_DLL'⎕NA'opengl32|glProgramUniform1uiEXT U4 I4 U4'
+      'glProgramUniform1uiEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1uiEXT U4 I4 U4'
   :EndIf
   {}glProgramUniform1uiEXT_DLL program location v0
 ∇
 
 ∇ glProgramUniform2uiEXT (program location v0 v1)
   :If 0=⎕NC'glProgramUniform2uiEXT_DLL'
-      'glProgramUniform2uiEXT_DLL'⎕NA'opengl32|glProgramUniform2uiEXT U4 I4 U4 U4'
+      'glProgramUniform2uiEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2uiEXT U4 I4 U4 U4'
   :EndIf
   {}glProgramUniform2uiEXT_DLL program location v0 v1
 ∇
 
 ∇ glProgramUniform3uiEXT (program location v0 v1 v2)
   :If 0=⎕NC'glProgramUniform3uiEXT_DLL'
-      'glProgramUniform3uiEXT_DLL'⎕NA'opengl32|glProgramUniform3uiEXT U4 I4 U4 U4 U4'
+      'glProgramUniform3uiEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3uiEXT U4 I4 U4 U4 U4'
   :EndIf
   {}glProgramUniform3uiEXT_DLL program location v0 v1 v2
 ∇
 
 ∇ glProgramUniform4uiEXT (program location v0 v1 v2 v3)
   :If 0=⎕NC'glProgramUniform4uiEXT_DLL'
-      'glProgramUniform4uiEXT_DLL'⎕NA'opengl32|glProgramUniform4uiEXT U4 I4 U4 U4 U4 U4'
+      'glProgramUniform4uiEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4uiEXT U4 I4 U4 U4 U4 U4'
   :EndIf
   {}glProgramUniform4uiEXT_DLL program location v0 v1 v2 v3
 ∇
 
 ∇ glProgramUniform1uivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform1uivEXT_DLL'
-      'glProgramUniform1uivEXT_DLL'⎕NA'opengl32|glProgramUniform1uivEXT U4 I4 I4 <U4[]'
+      'glProgramUniform1uivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1uivEXT U4 I4 I4 <U4[]'
   :EndIf
   {}glProgramUniform1uivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform2uivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform2uivEXT_DLL'
-      'glProgramUniform2uivEXT_DLL'⎕NA'opengl32|glProgramUniform2uivEXT U4 I4 I4 <U4[]'
+      'glProgramUniform2uivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2uivEXT U4 I4 I4 <U4[]'
   :EndIf
   {}glProgramUniform2uivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform3uivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform3uivEXT_DLL'
-      'glProgramUniform3uivEXT_DLL'⎕NA'opengl32|glProgramUniform3uivEXT U4 I4 I4 <U4[]'
+      'glProgramUniform3uivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3uivEXT U4 I4 I4 <U4[]'
   :EndIf
   {}glProgramUniform3uivEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform4uivEXT (program location count value)
   :If 0=⎕NC'glProgramUniform4uivEXT_DLL'
-      'glProgramUniform4uivEXT_DLL'⎕NA'opengl32|glProgramUniform4uivEXT U4 I4 I4 <U4[]'
+      'glProgramUniform4uivEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4uivEXT U4 I4 I4 <U4[]'
   :EndIf
   {}glProgramUniform4uivEXT_DLL program location count value
 ∇
@@ -22686,7 +22694,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glUnmapNamedBufferEXT buffer
   :If 0=⎕NC'glUnmapNamedBufferEXT_DLL'
-      'glUnmapNamedBufferEXT_DLL'⎕NA'U1 opengl32|glUnmapNamedBufferEXT U4'
+      'glUnmapNamedBufferEXT_DLL'⎕NA'U1 ',getdllname,'|glUnmapNamedBufferEXT U4'
   :EndIf
   r←glUnmapNamedBufferEXT_DLL buffer
 ∇
@@ -22714,7 +22722,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetNamedBufferParameterivEXT (buffer pname params)
   :If 0=⎕NC'glGetNamedBufferParameterivEXT_DLL'
-      'glGetNamedBufferParameterivEXT_DLL'⎕NA'opengl32|glGetNamedBufferParameterivEXT U4 U4 >I4[]'
+      'glGetNamedBufferParameterivEXT_DLL'⎕NA'',getdllname,'|glGetNamedBufferParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetNamedBufferParameterivEXT_DLL buffer pname params
 ∇
@@ -22735,364 +22743,364 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTextureBufferEXT (texture target internalformat buffer)
   :If 0=⎕NC'glTextureBufferEXT_DLL'
-      'glTextureBufferEXT_DLL'⎕NA'opengl32|glTextureBufferEXT U4 U4 U4 U4'
+      'glTextureBufferEXT_DLL'⎕NA'',getdllname,'|glTextureBufferEXT U4 U4 U4 U4'
   :EndIf
   {}glTextureBufferEXT_DLL texture target internalformat buffer
 ∇
 
 ∇ glMultiTexBufferEXT (texunit target internalformat buffer)
   :If 0=⎕NC'glMultiTexBufferEXT_DLL'
-      'glMultiTexBufferEXT_DLL'⎕NA'opengl32|glMultiTexBufferEXT U4 U4 U4 U4'
+      'glMultiTexBufferEXT_DLL'⎕NA'',getdllname,'|glMultiTexBufferEXT U4 U4 U4 U4'
   :EndIf
   {}glMultiTexBufferEXT_DLL texunit target internalformat buffer
 ∇
 
 ∇ glNamedRenderbufferStorageEXT (renderbuffer internalformat width height)
   :If 0=⎕NC'glNamedRenderbufferStorageEXT_DLL'
-      'glNamedRenderbufferStorageEXT_DLL'⎕NA'opengl32|glNamedRenderbufferStorageEXT U4 U4 I4 I4'
+      'glNamedRenderbufferStorageEXT_DLL'⎕NA'',getdllname,'|glNamedRenderbufferStorageEXT U4 U4 I4 I4'
   :EndIf
   {}glNamedRenderbufferStorageEXT_DLL renderbuffer internalformat width height
 ∇
 
 ∇ r←glGetNamedRenderbufferParameterivEXT (renderbuffer pname params)
   :If 0=⎕NC'glGetNamedRenderbufferParameterivEXT_DLL'
-      'glGetNamedRenderbufferParameterivEXT_DLL'⎕NA'opengl32|glGetNamedRenderbufferParameterivEXT U4 U4 >I4[]'
+      'glGetNamedRenderbufferParameterivEXT_DLL'⎕NA'',getdllname,'|glGetNamedRenderbufferParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetNamedRenderbufferParameterivEXT_DLL renderbuffer pname params
 ∇
 
 ∇ r←glCheckNamedFramebufferStatusEXT (framebuffer target)
   :If 0=⎕NC'glCheckNamedFramebufferStatusEXT_DLL'
-      'glCheckNamedFramebufferStatusEXT_DLL'⎕NA'U4 opengl32|glCheckNamedFramebufferStatusEXT U4 U4'
+      'glCheckNamedFramebufferStatusEXT_DLL'⎕NA'U4 ',getdllname,'|glCheckNamedFramebufferStatusEXT U4 U4'
   :EndIf
   r←glCheckNamedFramebufferStatusEXT_DLL framebuffer target
 ∇
 
 ∇ glNamedFramebufferTexture1DEXT (framebuffer attachment textarget texture level)
   :If 0=⎕NC'glNamedFramebufferTexture1DEXT_DLL'
-      'glNamedFramebufferTexture1DEXT_DLL'⎕NA'opengl32|glNamedFramebufferTexture1DEXT U4 U4 U4 U4 I4'
+      'glNamedFramebufferTexture1DEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferTexture1DEXT U4 U4 U4 U4 I4'
   :EndIf
   {}glNamedFramebufferTexture1DEXT_DLL framebuffer attachment textarget texture level
 ∇
 
 ∇ glNamedFramebufferTexture2DEXT (framebuffer attachment textarget texture level)
   :If 0=⎕NC'glNamedFramebufferTexture2DEXT_DLL'
-      'glNamedFramebufferTexture2DEXT_DLL'⎕NA'opengl32|glNamedFramebufferTexture2DEXT U4 U4 U4 U4 I4'
+      'glNamedFramebufferTexture2DEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferTexture2DEXT U4 U4 U4 U4 I4'
   :EndIf
   {}glNamedFramebufferTexture2DEXT_DLL framebuffer attachment textarget texture level
 ∇
 
 ∇ glNamedFramebufferTexture3DEXT (framebuffer attachment textarget texture level zoffset)
   :If 0=⎕NC'glNamedFramebufferTexture3DEXT_DLL'
-      'glNamedFramebufferTexture3DEXT_DLL'⎕NA'opengl32|glNamedFramebufferTexture3DEXT U4 U4 U4 U4 I4 I4'
+      'glNamedFramebufferTexture3DEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferTexture3DEXT U4 U4 U4 U4 I4 I4'
   :EndIf
   {}glNamedFramebufferTexture3DEXT_DLL framebuffer attachment textarget texture level zoffset
 ∇
 
 ∇ glNamedFramebufferRenderbufferEXT (framebuffer attachment renderbuffertarget renderbuffer)
   :If 0=⎕NC'glNamedFramebufferRenderbufferEXT_DLL'
-      'glNamedFramebufferRenderbufferEXT_DLL'⎕NA'opengl32|glNamedFramebufferRenderbufferEXT U4 U4 U4 U4'
+      'glNamedFramebufferRenderbufferEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferRenderbufferEXT U4 U4 U4 U4'
   :EndIf
   {}glNamedFramebufferRenderbufferEXT_DLL framebuffer attachment renderbuffertarget renderbuffer
 ∇
 
 ∇ r←glGetNamedFramebufferAttachmentParameterivEXT (framebuffer attachment pname params)
   :If 0=⎕NC'glGetNamedFramebufferAttachmentParameterivEXT_DLL'
-      'glGetNamedFramebufferAttachmentParameterivEXT_DLL'⎕NA'opengl32|glGetNamedFramebufferAttachmentParameterivEXT U4 U4 U4 >I4[]'
+      'glGetNamedFramebufferAttachmentParameterivEXT_DLL'⎕NA'',getdllname,'|glGetNamedFramebufferAttachmentParameterivEXT U4 U4 U4 >I4[]'
   :EndIf
   r←glGetNamedFramebufferAttachmentParameterivEXT_DLL framebuffer attachment pname params
 ∇
 
 ∇ glGenerateTextureMipmapEXT (texture target)
   :If 0=⎕NC'glGenerateTextureMipmapEXT_DLL'
-      'glGenerateTextureMipmapEXT_DLL'⎕NA'opengl32|glGenerateTextureMipmapEXT U4 U4'
+      'glGenerateTextureMipmapEXT_DLL'⎕NA'',getdllname,'|glGenerateTextureMipmapEXT U4 U4'
   :EndIf
   {}glGenerateTextureMipmapEXT_DLL texture target
 ∇
 
 ∇ glGenerateMultiTexMipmapEXT (texunit target)
   :If 0=⎕NC'glGenerateMultiTexMipmapEXT_DLL'
-      'glGenerateMultiTexMipmapEXT_DLL'⎕NA'opengl32|glGenerateMultiTexMipmapEXT U4 U4'
+      'glGenerateMultiTexMipmapEXT_DLL'⎕NA'',getdllname,'|glGenerateMultiTexMipmapEXT U4 U4'
   :EndIf
   {}glGenerateMultiTexMipmapEXT_DLL texunit target
 ∇
 
 ∇ glFramebufferDrawBufferEXT (framebuffer mode)
   :If 0=⎕NC'glFramebufferDrawBufferEXT_DLL'
-      'glFramebufferDrawBufferEXT_DLL'⎕NA'opengl32|glFramebufferDrawBufferEXT U4 U4'
+      'glFramebufferDrawBufferEXT_DLL'⎕NA'',getdllname,'|glFramebufferDrawBufferEXT U4 U4'
   :EndIf
   {}glFramebufferDrawBufferEXT_DLL framebuffer mode
 ∇
 
 ∇ glFramebufferDrawBuffersEXT (framebuffer n bufs)
   :If 0=⎕NC'glFramebufferDrawBuffersEXT_DLL'
-      'glFramebufferDrawBuffersEXT_DLL'⎕NA'opengl32|glFramebufferDrawBuffersEXT U4 I4 <U4[]'
+      'glFramebufferDrawBuffersEXT_DLL'⎕NA'',getdllname,'|glFramebufferDrawBuffersEXT U4 I4 <U4[]'
   :EndIf
   {}glFramebufferDrawBuffersEXT_DLL framebuffer n bufs
 ∇
 
 ∇ glFramebufferReadBufferEXT (framebuffer mode)
   :If 0=⎕NC'glFramebufferReadBufferEXT_DLL'
-      'glFramebufferReadBufferEXT_DLL'⎕NA'opengl32|glFramebufferReadBufferEXT U4 U4'
+      'glFramebufferReadBufferEXT_DLL'⎕NA'',getdllname,'|glFramebufferReadBufferEXT U4 U4'
   :EndIf
   {}glFramebufferReadBufferEXT_DLL framebuffer mode
 ∇
 
 ∇ r←glGetFramebufferParameterivEXT (framebuffer pname params)
   :If 0=⎕NC'glGetFramebufferParameterivEXT_DLL'
-      'glGetFramebufferParameterivEXT_DLL'⎕NA'opengl32|glGetFramebufferParameterivEXT U4 U4 >I4[]'
+      'glGetFramebufferParameterivEXT_DLL'⎕NA'',getdllname,'|glGetFramebufferParameterivEXT U4 U4 >I4[]'
   :EndIf
   r←glGetFramebufferParameterivEXT_DLL framebuffer pname params
 ∇
 
 ∇ glNamedRenderbufferStorageMultisampleEXT (renderbuffer samples internalformat width height)
   :If 0=⎕NC'glNamedRenderbufferStorageMultisampleEXT_DLL'
-      'glNamedRenderbufferStorageMultisampleEXT_DLL'⎕NA'opengl32|glNamedRenderbufferStorageMultisampleEXT U4 I4 U4 I4 I4'
+      'glNamedRenderbufferStorageMultisampleEXT_DLL'⎕NA'',getdllname,'|glNamedRenderbufferStorageMultisampleEXT U4 I4 U4 I4 I4'
   :EndIf
   {}glNamedRenderbufferStorageMultisampleEXT_DLL renderbuffer samples internalformat width height
 ∇
 
 ∇ glNamedRenderbufferStorageMultisampleCoverageEXT (renderbuffer coverageSamples colorSamples internalformat width height)
   :If 0=⎕NC'glNamedRenderbufferStorageMultisampleCoverageEXT_DLL'
-      'glNamedRenderbufferStorageMultisampleCoverageEXT_DLL'⎕NA'opengl32|glNamedRenderbufferStorageMultisampleCoverageEXT U4 I4 I4 U4 I4 I4'
+      'glNamedRenderbufferStorageMultisampleCoverageEXT_DLL'⎕NA'',getdllname,'|glNamedRenderbufferStorageMultisampleCoverageEXT U4 I4 I4 U4 I4 I4'
   :EndIf
   {}glNamedRenderbufferStorageMultisampleCoverageEXT_DLL renderbuffer coverageSamples colorSamples internalformat width height
 ∇
 
 ∇ glNamedFramebufferTextureEXT (framebuffer attachment texture level)
   :If 0=⎕NC'glNamedFramebufferTextureEXT_DLL'
-      'glNamedFramebufferTextureEXT_DLL'⎕NA'opengl32|glNamedFramebufferTextureEXT U4 U4 U4 I4'
+      'glNamedFramebufferTextureEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferTextureEXT U4 U4 U4 I4'
   :EndIf
   {}glNamedFramebufferTextureEXT_DLL framebuffer attachment texture level
 ∇
 
 ∇ glNamedFramebufferTextureLayerEXT (framebuffer attachment texture level layer)
   :If 0=⎕NC'glNamedFramebufferTextureLayerEXT_DLL'
-      'glNamedFramebufferTextureLayerEXT_DLL'⎕NA'opengl32|glNamedFramebufferTextureLayerEXT U4 U4 U4 I4 I4'
+      'glNamedFramebufferTextureLayerEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferTextureLayerEXT U4 U4 U4 I4 I4'
   :EndIf
   {}glNamedFramebufferTextureLayerEXT_DLL framebuffer attachment texture level layer
 ∇
 
 ∇ glNamedFramebufferTextureFaceEXT (framebuffer attachment texture level face)
   :If 0=⎕NC'glNamedFramebufferTextureFaceEXT_DLL'
-      'glNamedFramebufferTextureFaceEXT_DLL'⎕NA'opengl32|glNamedFramebufferTextureFaceEXT U4 U4 U4 I4 U4'
+      'glNamedFramebufferTextureFaceEXT_DLL'⎕NA'',getdllname,'|glNamedFramebufferTextureFaceEXT U4 U4 U4 I4 U4'
   :EndIf
   {}glNamedFramebufferTextureFaceEXT_DLL framebuffer attachment texture level face
 ∇
 
 ∇ glTextureRenderbufferEXT (texture target renderbuffer)
   :If 0=⎕NC'glTextureRenderbufferEXT_DLL'
-      'glTextureRenderbufferEXT_DLL'⎕NA'opengl32|glTextureRenderbufferEXT U4 U4 U4'
+      'glTextureRenderbufferEXT_DLL'⎕NA'',getdllname,'|glTextureRenderbufferEXT U4 U4 U4'
   :EndIf
   {}glTextureRenderbufferEXT_DLL texture target renderbuffer
 ∇
 
 ∇ glMultiTexRenderbufferEXT (texunit target renderbuffer)
   :If 0=⎕NC'glMultiTexRenderbufferEXT_DLL'
-      'glMultiTexRenderbufferEXT_DLL'⎕NA'opengl32|glMultiTexRenderbufferEXT U4 U4 U4'
+      'glMultiTexRenderbufferEXT_DLL'⎕NA'',getdllname,'|glMultiTexRenderbufferEXT U4 U4 U4'
   :EndIf
   {}glMultiTexRenderbufferEXT_DLL texunit target renderbuffer
 ∇
 
 ∇ glProgramUniform1dEXT (program location x)
   :If 0=⎕NC'glProgramUniform1dEXT_DLL'
-      'glProgramUniform1dEXT_DLL'⎕NA'opengl32|glProgramUniform1dEXT U4 I4 F8'
+      'glProgramUniform1dEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1dEXT U4 I4 F8'
   :EndIf
   {}glProgramUniform1dEXT_DLL program location x
 ∇
 
 ∇ glProgramUniform2dEXT (program location x y)
   :If 0=⎕NC'glProgramUniform2dEXT_DLL'
-      'glProgramUniform2dEXT_DLL'⎕NA'opengl32|glProgramUniform2dEXT U4 I4 F8 F8'
+      'glProgramUniform2dEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2dEXT U4 I4 F8 F8'
   :EndIf
   {}glProgramUniform2dEXT_DLL program location x y
 ∇
 
 ∇ glProgramUniform3dEXT (program location x y z)
   :If 0=⎕NC'glProgramUniform3dEXT_DLL'
-      'glProgramUniform3dEXT_DLL'⎕NA'opengl32|glProgramUniform3dEXT U4 I4 F8 F8 F8'
+      'glProgramUniform3dEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3dEXT U4 I4 F8 F8 F8'
   :EndIf
   {}glProgramUniform3dEXT_DLL program location x y z
 ∇
 
 ∇ glProgramUniform4dEXT (program location x y z w)
   :If 0=⎕NC'glProgramUniform4dEXT_DLL'
-      'glProgramUniform4dEXT_DLL'⎕NA'opengl32|glProgramUniform4dEXT U4 I4 F8 F8 F8 F8'
+      'glProgramUniform4dEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4dEXT U4 I4 F8 F8 F8 F8'
   :EndIf
   {}glProgramUniform4dEXT_DLL program location x y z w
 ∇
 
 ∇ glProgramUniform1dvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform1dvEXT_DLL'
-      'glProgramUniform1dvEXT_DLL'⎕NA'opengl32|glProgramUniform1dvEXT U4 I4 I4 <F8[]'
+      'glProgramUniform1dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform1dvEXT U4 I4 I4 <F8[]'
   :EndIf
   {}glProgramUniform1dvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform2dvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform2dvEXT_DLL'
-      'glProgramUniform2dvEXT_DLL'⎕NA'opengl32|glProgramUniform2dvEXT U4 I4 I4 <F8[]'
+      'glProgramUniform2dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform2dvEXT U4 I4 I4 <F8[]'
   :EndIf
   {}glProgramUniform2dvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform3dvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform3dvEXT_DLL'
-      'glProgramUniform3dvEXT_DLL'⎕NA'opengl32|glProgramUniform3dvEXT U4 I4 I4 <F8[]'
+      'glProgramUniform3dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform3dvEXT U4 I4 I4 <F8[]'
   :EndIf
   {}glProgramUniform3dvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniform4dvEXT (program location count value)
   :If 0=⎕NC'glProgramUniform4dvEXT_DLL'
-      'glProgramUniform4dvEXT_DLL'⎕NA'opengl32|glProgramUniform4dvEXT U4 I4 I4 <F8[]'
+      'glProgramUniform4dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniform4dvEXT U4 I4 I4 <F8[]'
   :EndIf
   {}glProgramUniform4dvEXT_DLL program location count value
 ∇
 
 ∇ glProgramUniformMatrix2dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2dvEXT_DLL'
-      'glProgramUniformMatrix2dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix2dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix2dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix2dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3dvEXT_DLL'
-      'glProgramUniformMatrix3dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix3dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix3dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix3dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4dvEXT_DLL'
-      'glProgramUniformMatrix4dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix4dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix4dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix4dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x3dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x3dvEXT_DLL'
-      'glProgramUniformMatrix2x3dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix2x3dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix2x3dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x3dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix2x3dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix2x4dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix2x4dvEXT_DLL'
-      'glProgramUniformMatrix2x4dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix2x4dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix2x4dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix2x4dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix2x4dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x2dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x2dvEXT_DLL'
-      'glProgramUniformMatrix3x2dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix3x2dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix3x2dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x2dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix3x2dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix3x4dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix3x4dvEXT_DLL'
-      'glProgramUniformMatrix3x4dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix3x4dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix3x4dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix3x4dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix3x4dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x2dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x2dvEXT_DLL'
-      'glProgramUniformMatrix4x2dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix4x2dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix4x2dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x2dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix4x2dvEXT_DLL program location count transpose value
 ∇
 
 ∇ glProgramUniformMatrix4x3dvEXT (program location count transpose value)
   :If 0=⎕NC'glProgramUniformMatrix4x3dvEXT_DLL'
-      'glProgramUniformMatrix4x3dvEXT_DLL'⎕NA'opengl32|glProgramUniformMatrix4x3dvEXT U4 I4 I4 U1 <F8[]'
+      'glProgramUniformMatrix4x3dvEXT_DLL'⎕NA'',getdllname,'|glProgramUniformMatrix4x3dvEXT U4 I4 I4 U1 <F8[]'
   :EndIf
   {}glProgramUniformMatrix4x3dvEXT_DLL program location count transpose value
 ∇
 
 ∇ r←glGetMultisamplefvNV (pname index)
   :If 0=⎕NC'glGetMultisamplefvNV_DLL'
-      'glGetMultisamplefvNV_DLL'⎕NA'opengl32|glGetMultisamplefvNV U4 U4 >F4[2]'
+      'glGetMultisamplefvNV_DLL'⎕NA'',getdllname,'|glGetMultisamplefvNV U4 U4 >F4[2]'
   :EndIf
   r←glGetMultisamplefvNV_DLL pname index 2
 ∇
 
 ∇ glSampleMaskIndexedNV (index mask)
   :If 0=⎕NC'glSampleMaskIndexedNV_DLL'
-      'glSampleMaskIndexedNV_DLL'⎕NA'opengl32|glSampleMaskIndexedNV U4 U4'
+      'glSampleMaskIndexedNV_DLL'⎕NA'',getdllname,'|glSampleMaskIndexedNV U4 U4'
   :EndIf
   {}glSampleMaskIndexedNV_DLL index mask
 ∇
 
 ∇ glTexRenderbufferNV (target renderbuffer)
   :If 0=⎕NC'glTexRenderbufferNV_DLL'
-      'glTexRenderbufferNV_DLL'⎕NA'opengl32|glTexRenderbufferNV U4 U4'
+      'glTexRenderbufferNV_DLL'⎕NA'',getdllname,'|glTexRenderbufferNV U4 U4'
   :EndIf
   {}glTexRenderbufferNV_DLL target renderbuffer
 ∇
 
 ∇ glBindTransformFeedbackNV (target id)
   :If 0=⎕NC'glBindTransformFeedbackNV_DLL'
-      'glBindTransformFeedbackNV_DLL'⎕NA'opengl32|glBindTransformFeedbackNV U4 U4'
+      'glBindTransformFeedbackNV_DLL'⎕NA'',getdllname,'|glBindTransformFeedbackNV U4 U4'
   :EndIf
   {}glBindTransformFeedbackNV_DLL target id
 ∇
 
 ∇ glDeleteTransformFeedbacksNV (n ids)
   :If 0=⎕NC'glDeleteTransformFeedbacksNV_DLL'
-      'glDeleteTransformFeedbacksNV_DLL'⎕NA'opengl32|glDeleteTransformFeedbacksNV I4 <U4[]'
+      'glDeleteTransformFeedbacksNV_DLL'⎕NA'',getdllname,'|glDeleteTransformFeedbacksNV I4 <U4[]'
   :EndIf
   {}glDeleteTransformFeedbacksNV_DLL n ids
 ∇
 
 ∇ r←glGenTransformFeedbacksNV (n ids)
   :If 0=⎕NC'glGenTransformFeedbacksNV_DLL'
-      'glGenTransformFeedbacksNV_DLL'⎕NA'opengl32|glGenTransformFeedbacksNV I4 >U4[]'
+      'glGenTransformFeedbacksNV_DLL'⎕NA'',getdllname,'|glGenTransformFeedbacksNV I4 >U4[]'
   :EndIf
   r←glGenTransformFeedbacksNV_DLL n ids
 ∇
 
 ∇ r←glIsTransformFeedbackNV id
   :If 0=⎕NC'glIsTransformFeedbackNV_DLL'
-      'glIsTransformFeedbackNV_DLL'⎕NA'U1 opengl32|glIsTransformFeedbackNV U4'
+      'glIsTransformFeedbackNV_DLL'⎕NA'U1 ',getdllname,'|glIsTransformFeedbackNV U4'
   :EndIf
   r←glIsTransformFeedbackNV_DLL id
 ∇
 
 ∇ glPauseTransformFeedbackNV
   :If 0=⎕NC'glPauseTransformFeedbackNV_DLL'
-      'glPauseTransformFeedbackNV_DLL'⎕NA'opengl32|glPauseTransformFeedbackNV'
+      'glPauseTransformFeedbackNV_DLL'⎕NA'',getdllname,'|glPauseTransformFeedbackNV'
   :EndIf
   {}glPauseTransformFeedbackNV_DLL
 ∇
 
 ∇ glResumeTransformFeedbackNV
   :If 0=⎕NC'glResumeTransformFeedbackNV_DLL'
-      'glResumeTransformFeedbackNV_DLL'⎕NA'opengl32|glResumeTransformFeedbackNV'
+      'glResumeTransformFeedbackNV_DLL'⎕NA'',getdllname,'|glResumeTransformFeedbackNV'
   :EndIf
   {}glResumeTransformFeedbackNV_DLL
 ∇
 
 ∇ glDrawTransformFeedbackNV (mode id)
   :If 0=⎕NC'glDrawTransformFeedbackNV_DLL'
-      'glDrawTransformFeedbackNV_DLL'⎕NA'opengl32|glDrawTransformFeedbackNV U4 U4'
+      'glDrawTransformFeedbackNV_DLL'⎕NA'',getdllname,'|glDrawTransformFeedbackNV U4 U4'
   :EndIf
   {}glDrawTransformFeedbackNV_DLL mode id
 ∇
 
 ∇ r←glGetPerfMonitorGroupsAMD (groupsSize groups)
   :If 0=⎕NC'glGetPerfMonitorGroupsAMD_DLL'
-      'glGetPerfMonitorGroupsAMD_DLL'⎕NA'opengl32|glGetPerfMonitorGroupsAMD >I4[1] I4 >U4[]'
+      'glGetPerfMonitorGroupsAMD_DLL'⎕NA'',getdllname,'|glGetPerfMonitorGroupsAMD >I4[1] I4 >U4[]'
   :EndIf
   r←glGetPerfMonitorGroupsAMD_DLL 1 groupsSize groups
 ∇
 
 ∇ r←glGetPerfMonitorCountersAMD (group counterSize counters)
   :If 0=⎕NC'glGetPerfMonitorCountersAMD_DLL'
-      'glGetPerfMonitorCountersAMD_DLL'⎕NA'opengl32|glGetPerfMonitorCountersAMD U4 >I4[1] >I4[1] I4 >U4[]'
+      'glGetPerfMonitorCountersAMD_DLL'⎕NA'',getdllname,'|glGetPerfMonitorCountersAMD U4 >I4[1] >I4[1] I4 >U4[]'
   :EndIf
   r←glGetPerfMonitorCountersAMD_DLL group 1 1 counterSize counters
 ∇
@@ -23120,91 +23128,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGenPerfMonitorsAMD (n monitors)
   :If 0=⎕NC'glGenPerfMonitorsAMD_DLL'
-      'glGenPerfMonitorsAMD_DLL'⎕NA'opengl32|glGenPerfMonitorsAMD I4 >U4[]'
+      'glGenPerfMonitorsAMD_DLL'⎕NA'',getdllname,'|glGenPerfMonitorsAMD I4 >U4[]'
   :EndIf
   r←glGenPerfMonitorsAMD_DLL n monitors
 ∇
 
 ∇ r←glDeletePerfMonitorsAMD (n monitors)
   :If 0=⎕NC'glDeletePerfMonitorsAMD_DLL'
-      'glDeletePerfMonitorsAMD_DLL'⎕NA'opengl32|glDeletePerfMonitorsAMD I4 >U4[]'
+      'glDeletePerfMonitorsAMD_DLL'⎕NA'',getdllname,'|glDeletePerfMonitorsAMD I4 >U4[]'
   :EndIf
   r←glDeletePerfMonitorsAMD_DLL n monitors
 ∇
 
 ∇ r←glSelectPerfMonitorCountersAMD (monitor enable group numCounters counterList)
   :If 0=⎕NC'glSelectPerfMonitorCountersAMD_DLL'
-      'glSelectPerfMonitorCountersAMD_DLL'⎕NA'opengl32|glSelectPerfMonitorCountersAMD U4 U1 U4 I4 >U4[]'
+      'glSelectPerfMonitorCountersAMD_DLL'⎕NA'',getdllname,'|glSelectPerfMonitorCountersAMD U4 U1 U4 I4 >U4[]'
   :EndIf
   r←glSelectPerfMonitorCountersAMD_DLL monitor enable group numCounters counterList
 ∇
 
 ∇ glBeginPerfMonitorAMD monitor
   :If 0=⎕NC'glBeginPerfMonitorAMD_DLL'
-      'glBeginPerfMonitorAMD_DLL'⎕NA'opengl32|glBeginPerfMonitorAMD U4'
+      'glBeginPerfMonitorAMD_DLL'⎕NA'',getdllname,'|glBeginPerfMonitorAMD U4'
   :EndIf
   {}glBeginPerfMonitorAMD_DLL monitor
 ∇
 
 ∇ glEndPerfMonitorAMD monitor
   :If 0=⎕NC'glEndPerfMonitorAMD_DLL'
-      'glEndPerfMonitorAMD_DLL'⎕NA'opengl32|glEndPerfMonitorAMD U4'
+      'glEndPerfMonitorAMD_DLL'⎕NA'',getdllname,'|glEndPerfMonitorAMD U4'
   :EndIf
   {}glEndPerfMonitorAMD_DLL monitor
 ∇
 
 ∇ r←glGetPerfMonitorCounterDataAMD (monitor pname dataSize data)
   :If 0=⎕NC'glGetPerfMonitorCounterDataAMD_DLL'
-      'glGetPerfMonitorCounterDataAMD_DLL'⎕NA'opengl32|glGetPerfMonitorCounterDataAMD U4 U4 I4 >U4[] >I4[1]'
+      'glGetPerfMonitorCounterDataAMD_DLL'⎕NA'',getdllname,'|glGetPerfMonitorCounterDataAMD U4 U4 I4 >U4[] >I4[1]'
   :EndIf
   r←glGetPerfMonitorCounterDataAMD_DLL monitor pname dataSize data 1
 ∇
 
 ∇ glTessellationFactorAMD factor
   :If 0=⎕NC'glTessellationFactorAMD_DLL'
-      'glTessellationFactorAMD_DLL'⎕NA'opengl32|glTessellationFactorAMD F4'
+      'glTessellationFactorAMD_DLL'⎕NA'',getdllname,'|glTessellationFactorAMD F4'
   :EndIf
   {}glTessellationFactorAMD_DLL factor
 ∇
 
 ∇ glTessellationModeAMD mode
   :If 0=⎕NC'glTessellationModeAMD_DLL'
-      'glTessellationModeAMD_DLL'⎕NA'opengl32|glTessellationModeAMD U4'
+      'glTessellationModeAMD_DLL'⎕NA'',getdllname,'|glTessellationModeAMD U4'
   :EndIf
   {}glTessellationModeAMD_DLL mode
 ∇
 
 ∇ glProvokingVertexEXT mode
   :If 0=⎕NC'glProvokingVertexEXT_DLL'
-      'glProvokingVertexEXT_DLL'⎕NA'opengl32|glProvokingVertexEXT U4'
+      'glProvokingVertexEXT_DLL'⎕NA'',getdllname,'|glProvokingVertexEXT U4'
   :EndIf
   {}glProvokingVertexEXT_DLL mode
 ∇
 
 ∇ glBlendFuncIndexedAMD (buf src dst)
   :If 0=⎕NC'glBlendFuncIndexedAMD_DLL'
-      'glBlendFuncIndexedAMD_DLL'⎕NA'opengl32|glBlendFuncIndexedAMD U4 U4 U4'
+      'glBlendFuncIndexedAMD_DLL'⎕NA'',getdllname,'|glBlendFuncIndexedAMD U4 U4 U4'
   :EndIf
   {}glBlendFuncIndexedAMD_DLL buf src dst
 ∇
 
 ∇ glBlendFuncSeparateIndexedAMD (buf srcRGB dstRGB srcAlpha dstAlpha)
   :If 0=⎕NC'glBlendFuncSeparateIndexedAMD_DLL'
-      'glBlendFuncSeparateIndexedAMD_DLL'⎕NA'opengl32|glBlendFuncSeparateIndexedAMD U4 U4 U4 U4 U4'
+      'glBlendFuncSeparateIndexedAMD_DLL'⎕NA'',getdllname,'|glBlendFuncSeparateIndexedAMD U4 U4 U4 U4 U4'
   :EndIf
   {}glBlendFuncSeparateIndexedAMD_DLL buf srcRGB dstRGB srcAlpha dstAlpha
 ∇
 
 ∇ glBlendEquationIndexedAMD (buf mode)
   :If 0=⎕NC'glBlendEquationIndexedAMD_DLL'
-      'glBlendEquationIndexedAMD_DLL'⎕NA'opengl32|glBlendEquationIndexedAMD U4 U4'
+      'glBlendEquationIndexedAMD_DLL'⎕NA'',getdllname,'|glBlendEquationIndexedAMD U4 U4'
   :EndIf
   {}glBlendEquationIndexedAMD_DLL buf mode
 ∇
 
 ∇ glBlendEquationSeparateIndexedAMD (buf modeRGB modeAlpha)
   :If 0=⎕NC'glBlendEquationSeparateIndexedAMD_DLL'
-      'glBlendEquationSeparateIndexedAMD_DLL'⎕NA'opengl32|glBlendEquationSeparateIndexedAMD U4 U4 U4'
+      'glBlendEquationSeparateIndexedAMD_DLL'⎕NA'',getdllname,'|glBlendEquationSeparateIndexedAMD U4 U4 U4'
   :EndIf
   {}glBlendEquationSeparateIndexedAMD_DLL buf modeRGB modeAlpha
 ∇
@@ -23225,77 +23233,77 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glEnableVertexAttribAPPLE (index pname)
   :If 0=⎕NC'glEnableVertexAttribAPPLE_DLL'
-      'glEnableVertexAttribAPPLE_DLL'⎕NA'opengl32|glEnableVertexAttribAPPLE U4 U4'
+      'glEnableVertexAttribAPPLE_DLL'⎕NA'',getdllname,'|glEnableVertexAttribAPPLE U4 U4'
   :EndIf
   {}glEnableVertexAttribAPPLE_DLL index pname
 ∇
 
 ∇ glDisableVertexAttribAPPLE (index pname)
   :If 0=⎕NC'glDisableVertexAttribAPPLE_DLL'
-      'glDisableVertexAttribAPPLE_DLL'⎕NA'opengl32|glDisableVertexAttribAPPLE U4 U4'
+      'glDisableVertexAttribAPPLE_DLL'⎕NA'',getdllname,'|glDisableVertexAttribAPPLE U4 U4'
   :EndIf
   {}glDisableVertexAttribAPPLE_DLL index pname
 ∇
 
 ∇ r←glIsVertexAttribEnabledAPPLE (index pname)
   :If 0=⎕NC'glIsVertexAttribEnabledAPPLE_DLL'
-      'glIsVertexAttribEnabledAPPLE_DLL'⎕NA'U1 opengl32|glIsVertexAttribEnabledAPPLE U4 U4'
+      'glIsVertexAttribEnabledAPPLE_DLL'⎕NA'U1 ',getdllname,'|glIsVertexAttribEnabledAPPLE U4 U4'
   :EndIf
   r←glIsVertexAttribEnabledAPPLE_DLL index pname
 ∇
 
 ∇ glMapVertexAttrib1dAPPLE (index size u1 u2 stride order points)
   :If 0=⎕NC'glMapVertexAttrib1dAPPLE_DLL'
-      'glMapVertexAttrib1dAPPLE_DLL'⎕NA'opengl32|glMapVertexAttrib1dAPPLE U4 U4 F8 F8 I4 I4 <F8[]'
+      'glMapVertexAttrib1dAPPLE_DLL'⎕NA'',getdllname,'|glMapVertexAttrib1dAPPLE U4 U4 F8 F8 I4 I4 <F8[]'
   :EndIf
   {}glMapVertexAttrib1dAPPLE_DLL index size u1 u2 stride order points
 ∇
 
 ∇ glMapVertexAttrib1fAPPLE (index size u1 u2 stride order points)
   :If 0=⎕NC'glMapVertexAttrib1fAPPLE_DLL'
-      'glMapVertexAttrib1fAPPLE_DLL'⎕NA'opengl32|glMapVertexAttrib1fAPPLE U4 U4 F4 F4 I4 I4 <F4[]'
+      'glMapVertexAttrib1fAPPLE_DLL'⎕NA'',getdllname,'|glMapVertexAttrib1fAPPLE U4 U4 F4 F4 I4 I4 <F4[]'
   :EndIf
   {}glMapVertexAttrib1fAPPLE_DLL index size u1 u2 stride order points
 ∇
 
 ∇ glMapVertexAttrib2dAPPLE (index size u1 u2 ustride uorder v1 v2 vstride vorder points)
   :If 0=⎕NC'glMapVertexAttrib2dAPPLE_DLL'
-      'glMapVertexAttrib2dAPPLE_DLL'⎕NA'opengl32|glMapVertexAttrib2dAPPLE U4 U4 F8 F8 I4 I4 F8 F8 I4 I4 <F8[]'
+      'glMapVertexAttrib2dAPPLE_DLL'⎕NA'',getdllname,'|glMapVertexAttrib2dAPPLE U4 U4 F8 F8 I4 I4 F8 F8 I4 I4 <F8[]'
   :EndIf
   {}glMapVertexAttrib2dAPPLE_DLL index size u1 u2 ustride uorder v1 v2 vstride vorder points
 ∇
 
 ∇ glMapVertexAttrib2fAPPLE (index size u1 u2 ustride uorder v1 v2 vstride vorder points)
   :If 0=⎕NC'glMapVertexAttrib2fAPPLE_DLL'
-      'glMapVertexAttrib2fAPPLE_DLL'⎕NA'opengl32|glMapVertexAttrib2fAPPLE U4 U4 F4 F4 I4 I4 F4 F4 I4 I4 <F4[]'
+      'glMapVertexAttrib2fAPPLE_DLL'⎕NA'',getdllname,'|glMapVertexAttrib2fAPPLE U4 U4 F4 F4 I4 I4 F4 F4 I4 I4 <F4[]'
   :EndIf
   {}glMapVertexAttrib2fAPPLE_DLL index size u1 u2 ustride uorder v1 v2 vstride vorder points
 ∇
 
 ∇ r←glObjectPurgeableAPPLE (objectType name option)
   :If 0=⎕NC'glObjectPurgeableAPPLE_DLL'
-      'glObjectPurgeableAPPLE_DLL'⎕NA'U4 opengl32|glObjectPurgeableAPPLE U4 U4 U4'
+      'glObjectPurgeableAPPLE_DLL'⎕NA'U4 ',getdllname,'|glObjectPurgeableAPPLE U4 U4 U4'
   :EndIf
   r←glObjectPurgeableAPPLE_DLL objectType name option
 ∇
 
 ∇ r←glObjectUnpurgeableAPPLE (objectType name option)
   :If 0=⎕NC'glObjectUnpurgeableAPPLE_DLL'
-      'glObjectUnpurgeableAPPLE_DLL'⎕NA'U4 opengl32|glObjectUnpurgeableAPPLE U4 U4 U4'
+      'glObjectUnpurgeableAPPLE_DLL'⎕NA'U4 ',getdllname,'|glObjectUnpurgeableAPPLE U4 U4 U4'
   :EndIf
   r←glObjectUnpurgeableAPPLE_DLL objectType name option
 ∇
 
 ∇ r←glGetObjectParameterivAPPLE (objectType name pname params)
   :If 0=⎕NC'glGetObjectParameterivAPPLE_DLL'
-      'glGetObjectParameterivAPPLE_DLL'⎕NA'opengl32|glGetObjectParameterivAPPLE U4 U4 U4 >I4[]'
+      'glGetObjectParameterivAPPLE_DLL'⎕NA'',getdllname,'|glGetObjectParameterivAPPLE U4 U4 U4 >I4[]'
   :EndIf
   r←glGetObjectParameterivAPPLE_DLL objectType name pname params
 ∇
 
 ∇ glBeginVideoCaptureNV video_capture_slot
   :If 0=⎕NC'glBeginVideoCaptureNV_DLL'
-      'glBeginVideoCaptureNV_DLL'⎕NA'opengl32|glBeginVideoCaptureNV U4'
+      'glBeginVideoCaptureNV_DLL'⎕NA'',getdllname,'|glBeginVideoCaptureNV U4'
   :EndIf
   {}glBeginVideoCaptureNV_DLL video_capture_slot
 ∇
@@ -23309,42 +23317,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glBindVideoCaptureStreamTextureNV (video_capture_slot stream frame_region target texture)
   :If 0=⎕NC'glBindVideoCaptureStreamTextureNV_DLL'
-      'glBindVideoCaptureStreamTextureNV_DLL'⎕NA'opengl32|glBindVideoCaptureStreamTextureNV U4 U4 U4 U4 U4'
+      'glBindVideoCaptureStreamTextureNV_DLL'⎕NA'',getdllname,'|glBindVideoCaptureStreamTextureNV U4 U4 U4 U4 U4'
   :EndIf
   {}glBindVideoCaptureStreamTextureNV_DLL video_capture_slot stream frame_region target texture
 ∇
 
 ∇ glEndVideoCaptureNV video_capture_slot
   :If 0=⎕NC'glEndVideoCaptureNV_DLL'
-      'glEndVideoCaptureNV_DLL'⎕NA'opengl32|glEndVideoCaptureNV U4'
+      'glEndVideoCaptureNV_DLL'⎕NA'',getdllname,'|glEndVideoCaptureNV U4'
   :EndIf
   {}glEndVideoCaptureNV_DLL video_capture_slot
 ∇
 
 ∇ r←glGetVideoCaptureivNV (video_capture_slot pname params)
   :If 0=⎕NC'glGetVideoCaptureivNV_DLL'
-      'glGetVideoCaptureivNV_DLL'⎕NA'opengl32|glGetVideoCaptureivNV U4 U4 >I4[]'
+      'glGetVideoCaptureivNV_DLL'⎕NA'',getdllname,'|glGetVideoCaptureivNV U4 U4 >I4[]'
   :EndIf
   r←glGetVideoCaptureivNV_DLL video_capture_slot pname params
 ∇
 
 ∇ r←glGetVideoCaptureStreamivNV (video_capture_slot stream pname params)
   :If 0=⎕NC'glGetVideoCaptureStreamivNV_DLL'
-      'glGetVideoCaptureStreamivNV_DLL'⎕NA'opengl32|glGetVideoCaptureStreamivNV U4 U4 U4 >I4[]'
+      'glGetVideoCaptureStreamivNV_DLL'⎕NA'',getdllname,'|glGetVideoCaptureStreamivNV U4 U4 U4 >I4[]'
   :EndIf
   r←glGetVideoCaptureStreamivNV_DLL video_capture_slot stream pname params
 ∇
 
 ∇ r←glGetVideoCaptureStreamfvNV (video_capture_slot stream pname params)
   :If 0=⎕NC'glGetVideoCaptureStreamfvNV_DLL'
-      'glGetVideoCaptureStreamfvNV_DLL'⎕NA'opengl32|glGetVideoCaptureStreamfvNV U4 U4 U4 >F4[]'
+      'glGetVideoCaptureStreamfvNV_DLL'⎕NA'',getdllname,'|glGetVideoCaptureStreamfvNV U4 U4 U4 >F4[]'
   :EndIf
   r←glGetVideoCaptureStreamfvNV_DLL video_capture_slot stream pname params
 ∇
 
 ∇ r←glGetVideoCaptureStreamdvNV (video_capture_slot stream pname params)
   :If 0=⎕NC'glGetVideoCaptureStreamdvNV_DLL'
-      'glGetVideoCaptureStreamdvNV_DLL'⎕NA'opengl32|glGetVideoCaptureStreamdvNV U4 U4 U4 >F8[]'
+      'glGetVideoCaptureStreamdvNV_DLL'⎕NA'',getdllname,'|glGetVideoCaptureStreamdvNV U4 U4 U4 >F8[]'
   :EndIf
   r←glGetVideoCaptureStreamdvNV_DLL video_capture_slot stream pname params
 ∇
@@ -23358,42 +23366,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVideoCaptureStreamParameterivNV (video_capture_slot stream pname params)
   :If 0=⎕NC'glVideoCaptureStreamParameterivNV_DLL'
-      'glVideoCaptureStreamParameterivNV_DLL'⎕NA'opengl32|glVideoCaptureStreamParameterivNV U4 U4 U4 <I4[]'
+      'glVideoCaptureStreamParameterivNV_DLL'⎕NA'',getdllname,'|glVideoCaptureStreamParameterivNV U4 U4 U4 <I4[]'
   :EndIf
   {}glVideoCaptureStreamParameterivNV_DLL video_capture_slot stream pname params
 ∇
 
 ∇ glVideoCaptureStreamParameterfvNV (video_capture_slot stream pname params)
   :If 0=⎕NC'glVideoCaptureStreamParameterfvNV_DLL'
-      'glVideoCaptureStreamParameterfvNV_DLL'⎕NA'opengl32|glVideoCaptureStreamParameterfvNV U4 U4 U4 <F4[]'
+      'glVideoCaptureStreamParameterfvNV_DLL'⎕NA'',getdllname,'|glVideoCaptureStreamParameterfvNV U4 U4 U4 <F4[]'
   :EndIf
   {}glVideoCaptureStreamParameterfvNV_DLL video_capture_slot stream pname params
 ∇
 
 ∇ glVideoCaptureStreamParameterdvNV (video_capture_slot stream pname params)
   :If 0=⎕NC'glVideoCaptureStreamParameterdvNV_DLL'
-      'glVideoCaptureStreamParameterdvNV_DLL'⎕NA'opengl32|glVideoCaptureStreamParameterdvNV U4 U4 U4 <F8[]'
+      'glVideoCaptureStreamParameterdvNV_DLL'⎕NA'',getdllname,'|glVideoCaptureStreamParameterdvNV U4 U4 U4 <F8[]'
   :EndIf
   {}glVideoCaptureStreamParameterdvNV_DLL video_capture_slot stream pname params
 ∇
 
 ∇ glCopyImageSubDataNV (srcName srcTarget srcLevel srcX srcY srcZ dstName dstTarget dstLevel dstX dstY dstZ width height depth)
   :If 0=⎕NC'glCopyImageSubDataNV_DLL'
-      'glCopyImageSubDataNV_DLL'⎕NA'opengl32|glCopyImageSubDataNV U4 U4 I4 I4 I4 I4 U4 U4 I4 I4 I4 I4 I4 I4 I4'
+      'glCopyImageSubDataNV_DLL'⎕NA'',getdllname,'|glCopyImageSubDataNV U4 U4 I4 I4 I4 I4 U4 U4 I4 I4 I4 I4 I4 I4 I4'
   :EndIf
   {}glCopyImageSubDataNV_DLL srcName srcTarget srcLevel srcX srcY srcZ dstName dstTarget dstLevel dstX dstY dstZ width height depth
 ∇
 
 ∇ glUseShaderProgramEXT (type program)
   :If 0=⎕NC'glUseShaderProgramEXT_DLL'
-      'glUseShaderProgramEXT_DLL'⎕NA'opengl32|glUseShaderProgramEXT U4 U4'
+      'glUseShaderProgramEXT_DLL'⎕NA'',getdllname,'|glUseShaderProgramEXT U4 U4'
   :EndIf
   {}glUseShaderProgramEXT_DLL type program
 ∇
 
 ∇ glActiveProgramEXT program
   :If 0=⎕NC'glActiveProgramEXT_DLL'
-      'glActiveProgramEXT_DLL'⎕NA'opengl32|glActiveProgramEXT U4'
+      'glActiveProgramEXT_DLL'⎕NA'',getdllname,'|glActiveProgramEXT U4'
   :EndIf
   {}glActiveProgramEXT_DLL program
 ∇
@@ -23407,98 +23415,98 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glMakeBufferResidentNV (target access)
   :If 0=⎕NC'glMakeBufferResidentNV_DLL'
-      'glMakeBufferResidentNV_DLL'⎕NA'opengl32|glMakeBufferResidentNV U4 U4'
+      'glMakeBufferResidentNV_DLL'⎕NA'',getdllname,'|glMakeBufferResidentNV U4 U4'
   :EndIf
   {}glMakeBufferResidentNV_DLL target access
 ∇
 
 ∇ glMakeBufferNonResidentNV target
   :If 0=⎕NC'glMakeBufferNonResidentNV_DLL'
-      'glMakeBufferNonResidentNV_DLL'⎕NA'opengl32|glMakeBufferNonResidentNV U4'
+      'glMakeBufferNonResidentNV_DLL'⎕NA'',getdllname,'|glMakeBufferNonResidentNV U4'
   :EndIf
   {}glMakeBufferNonResidentNV_DLL target
 ∇
 
 ∇ r←glIsBufferResidentNV target
   :If 0=⎕NC'glIsBufferResidentNV_DLL'
-      'glIsBufferResidentNV_DLL'⎕NA'U1 opengl32|glIsBufferResidentNV U4'
+      'glIsBufferResidentNV_DLL'⎕NA'U1 ',getdllname,'|glIsBufferResidentNV U4'
   :EndIf
   r←glIsBufferResidentNV_DLL target
 ∇
 
 ∇ glMakeNamedBufferResidentNV (buffer access)
   :If 0=⎕NC'glMakeNamedBufferResidentNV_DLL'
-      'glMakeNamedBufferResidentNV_DLL'⎕NA'opengl32|glMakeNamedBufferResidentNV U4 U4'
+      'glMakeNamedBufferResidentNV_DLL'⎕NA'',getdllname,'|glMakeNamedBufferResidentNV U4 U4'
   :EndIf
   {}glMakeNamedBufferResidentNV_DLL buffer access
 ∇
 
 ∇ glMakeNamedBufferNonResidentNV buffer
   :If 0=⎕NC'glMakeNamedBufferNonResidentNV_DLL'
-      'glMakeNamedBufferNonResidentNV_DLL'⎕NA'opengl32|glMakeNamedBufferNonResidentNV U4'
+      'glMakeNamedBufferNonResidentNV_DLL'⎕NA'',getdllname,'|glMakeNamedBufferNonResidentNV U4'
   :EndIf
   {}glMakeNamedBufferNonResidentNV_DLL buffer
 ∇
 
 ∇ r←glIsNamedBufferResidentNV buffer
   :If 0=⎕NC'glIsNamedBufferResidentNV_DLL'
-      'glIsNamedBufferResidentNV_DLL'⎕NA'U1 opengl32|glIsNamedBufferResidentNV U4'
+      'glIsNamedBufferResidentNV_DLL'⎕NA'U1 ',getdllname,'|glIsNamedBufferResidentNV U4'
   :EndIf
   r←glIsNamedBufferResidentNV_DLL buffer
 ∇
 
 ∇ r←glGetBufferParameterui64vNV (target pname params)
   :If 0=⎕NC'glGetBufferParameterui64vNV_DLL'
-      'glGetBufferParameterui64vNV_DLL'⎕NA'opengl32|glGetBufferParameterui64vNV U4 U4 >U8[]'
+      'glGetBufferParameterui64vNV_DLL'⎕NA'',getdllname,'|glGetBufferParameterui64vNV U4 U4 >U8[]'
   :EndIf
   r←glGetBufferParameterui64vNV_DLL target pname params
 ∇
 
 ∇ r←glGetNamedBufferParameterui64vNV (buffer pname params)
   :If 0=⎕NC'glGetNamedBufferParameterui64vNV_DLL'
-      'glGetNamedBufferParameterui64vNV_DLL'⎕NA'opengl32|glGetNamedBufferParameterui64vNV U4 U4 >U8[]'
+      'glGetNamedBufferParameterui64vNV_DLL'⎕NA'',getdllname,'|glGetNamedBufferParameterui64vNV U4 U4 >U8[]'
   :EndIf
   r←glGetNamedBufferParameterui64vNV_DLL buffer pname params
 ∇
 
 ∇ r←glGetIntegerui64vNV (value result)
   :If 0=⎕NC'glGetIntegerui64vNV_DLL'
-      'glGetIntegerui64vNV_DLL'⎕NA'opengl32|glGetIntegerui64vNV U4 >U8[]'
+      'glGetIntegerui64vNV_DLL'⎕NA'',getdllname,'|glGetIntegerui64vNV U4 >U8[]'
   :EndIf
   r←glGetIntegerui64vNV_DLL value result
 ∇
 
 ∇ glUniformui64NV (location value)
   :If 0=⎕NC'glUniformui64NV_DLL'
-      'glUniformui64NV_DLL'⎕NA'opengl32|glUniformui64NV I4 U8'
+      'glUniformui64NV_DLL'⎕NA'',getdllname,'|glUniformui64NV I4 U8'
   :EndIf
   {}glUniformui64NV_DLL location value
 ∇
 
 ∇ glUniformui64vNV (location count value)
   :If 0=⎕NC'glUniformui64vNV_DLL'
-      'glUniformui64vNV_DLL'⎕NA'opengl32|glUniformui64vNV I4 I4 <U8[]'
+      'glUniformui64vNV_DLL'⎕NA'',getdllname,'|glUniformui64vNV I4 I4 <U8[]'
   :EndIf
   {}glUniformui64vNV_DLL location count value
 ∇
 
 ∇ r←glGetUniformui64vNV (program location params)
   :If 0=⎕NC'glGetUniformui64vNV_DLL'
-      'glGetUniformui64vNV_DLL'⎕NA'opengl32|glGetUniformui64vNV U4 I4 >U8[]'
+      'glGetUniformui64vNV_DLL'⎕NA'',getdllname,'|glGetUniformui64vNV U4 I4 >U8[]'
   :EndIf
   r←glGetUniformui64vNV_DLL program location params
 ∇
 
 ∇ glProgramUniformui64NV (program location value)
   :If 0=⎕NC'glProgramUniformui64NV_DLL'
-      'glProgramUniformui64NV_DLL'⎕NA'opengl32|glProgramUniformui64NV U4 I4 U8'
+      'glProgramUniformui64NV_DLL'⎕NA'',getdllname,'|glProgramUniformui64NV U4 I4 U8'
   :EndIf
   {}glProgramUniformui64NV_DLL program location value
 ∇
 
 ∇ glProgramUniformui64vNV (program location count value)
   :If 0=⎕NC'glProgramUniformui64vNV_DLL'
-      'glProgramUniformui64vNV_DLL'⎕NA'opengl32|glProgramUniformui64vNV U4 I4 I4 <U8[]'
+      'glProgramUniformui64vNV_DLL'⎕NA'',getdllname,'|glProgramUniformui64vNV U4 I4 I4 <U8[]'
   :EndIf
   {}glProgramUniformui64vNV_DLL program location count value
 ∇
@@ -23512,154 +23520,154 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVertexFormatNV (size type stride)
   :If 0=⎕NC'glVertexFormatNV_DLL'
-      'glVertexFormatNV_DLL'⎕NA'opengl32|glVertexFormatNV I4 U4 I4'
+      'glVertexFormatNV_DLL'⎕NA'',getdllname,'|glVertexFormatNV I4 U4 I4'
   :EndIf
   {}glVertexFormatNV_DLL size type stride
 ∇
 
 ∇ glNormalFormatNV (type stride)
   :If 0=⎕NC'glNormalFormatNV_DLL'
-      'glNormalFormatNV_DLL'⎕NA'opengl32|glNormalFormatNV U4 I4'
+      'glNormalFormatNV_DLL'⎕NA'',getdllname,'|glNormalFormatNV U4 I4'
   :EndIf
   {}glNormalFormatNV_DLL type stride
 ∇
 
 ∇ glColorFormatNV (size type stride)
   :If 0=⎕NC'glColorFormatNV_DLL'
-      'glColorFormatNV_DLL'⎕NA'opengl32|glColorFormatNV I4 U4 I4'
+      'glColorFormatNV_DLL'⎕NA'',getdllname,'|glColorFormatNV I4 U4 I4'
   :EndIf
   {}glColorFormatNV_DLL size type stride
 ∇
 
 ∇ glIndexFormatNV (type stride)
   :If 0=⎕NC'glIndexFormatNV_DLL'
-      'glIndexFormatNV_DLL'⎕NA'opengl32|glIndexFormatNV U4 I4'
+      'glIndexFormatNV_DLL'⎕NA'',getdllname,'|glIndexFormatNV U4 I4'
   :EndIf
   {}glIndexFormatNV_DLL type stride
 ∇
 
 ∇ glTexCoordFormatNV (size type stride)
   :If 0=⎕NC'glTexCoordFormatNV_DLL'
-      'glTexCoordFormatNV_DLL'⎕NA'opengl32|glTexCoordFormatNV I4 U4 I4'
+      'glTexCoordFormatNV_DLL'⎕NA'',getdllname,'|glTexCoordFormatNV I4 U4 I4'
   :EndIf
   {}glTexCoordFormatNV_DLL size type stride
 ∇
 
 ∇ glEdgeFlagFormatNV stride
   :If 0=⎕NC'glEdgeFlagFormatNV_DLL'
-      'glEdgeFlagFormatNV_DLL'⎕NA'opengl32|glEdgeFlagFormatNV I4'
+      'glEdgeFlagFormatNV_DLL'⎕NA'',getdllname,'|glEdgeFlagFormatNV I4'
   :EndIf
   {}glEdgeFlagFormatNV_DLL stride
 ∇
 
 ∇ glSecondaryColorFormatNV (size type stride)
   :If 0=⎕NC'glSecondaryColorFormatNV_DLL'
-      'glSecondaryColorFormatNV_DLL'⎕NA'opengl32|glSecondaryColorFormatNV I4 U4 I4'
+      'glSecondaryColorFormatNV_DLL'⎕NA'',getdllname,'|glSecondaryColorFormatNV I4 U4 I4'
   :EndIf
   {}glSecondaryColorFormatNV_DLL size type stride
 ∇
 
 ∇ glFogCoordFormatNV (type stride)
   :If 0=⎕NC'glFogCoordFormatNV_DLL'
-      'glFogCoordFormatNV_DLL'⎕NA'opengl32|glFogCoordFormatNV U4 I4'
+      'glFogCoordFormatNV_DLL'⎕NA'',getdllname,'|glFogCoordFormatNV U4 I4'
   :EndIf
   {}glFogCoordFormatNV_DLL type stride
 ∇
 
 ∇ glVertexAttribFormatNV (index size type normalized stride)
   :If 0=⎕NC'glVertexAttribFormatNV_DLL'
-      'glVertexAttribFormatNV_DLL'⎕NA'opengl32|glVertexAttribFormatNV U4 I4 U4 U1 I4'
+      'glVertexAttribFormatNV_DLL'⎕NA'',getdllname,'|glVertexAttribFormatNV U4 I4 U4 U1 I4'
   :EndIf
   {}glVertexAttribFormatNV_DLL index size type normalized stride
 ∇
 
 ∇ glVertexAttribIFormatNV (index size type stride)
   :If 0=⎕NC'glVertexAttribIFormatNV_DLL'
-      'glVertexAttribIFormatNV_DLL'⎕NA'opengl32|glVertexAttribIFormatNV U4 I4 U4 I4'
+      'glVertexAttribIFormatNV_DLL'⎕NA'',getdllname,'|glVertexAttribIFormatNV U4 I4 U4 I4'
   :EndIf
   {}glVertexAttribIFormatNV_DLL index size type stride
 ∇
 
 ∇ r←glGetIntegerui64i_vNV (value index result)
   :If 0=⎕NC'glGetIntegerui64i_vNV_DLL'
-      'glGetIntegerui64i_vNV_DLL'⎕NA'opengl32|glGetIntegerui64i_vNV U4 U4 >U8[]'
+      'glGetIntegerui64i_vNV_DLL'⎕NA'',getdllname,'|glGetIntegerui64i_vNV U4 U4 >U8[]'
   :EndIf
   r←glGetIntegerui64i_vNV_DLL value index result
 ∇
 
 ∇ glTextureBarrierNV
   :If 0=⎕NC'glTextureBarrierNV_DLL'
-      'glTextureBarrierNV_DLL'⎕NA'opengl32|glTextureBarrierNV'
+      'glTextureBarrierNV_DLL'⎕NA'',getdllname,'|glTextureBarrierNV'
   :EndIf
   {}glTextureBarrierNV_DLL
 ∇
 
 ∇ glBindImageTextureEXT (index texture level layered layer access format)
   :If 0=⎕NC'glBindImageTextureEXT_DLL'
-      'glBindImageTextureEXT_DLL'⎕NA'opengl32|glBindImageTextureEXT U4 U4 I4 U1 I4 U4 I4'
+      'glBindImageTextureEXT_DLL'⎕NA'',getdllname,'|glBindImageTextureEXT U4 U4 I4 U1 I4 U4 I4'
   :EndIf
   {}glBindImageTextureEXT_DLL index texture level layered layer access format
 ∇
 
 ∇ glMemoryBarrierEXT barriers
   :If 0=⎕NC'glMemoryBarrierEXT_DLL'
-      'glMemoryBarrierEXT_DLL'⎕NA'opengl32|glMemoryBarrierEXT U4'
+      'glMemoryBarrierEXT_DLL'⎕NA'',getdllname,'|glMemoryBarrierEXT U4'
   :EndIf
   {}glMemoryBarrierEXT_DLL barriers
 ∇
 
 ∇ glVertexAttribL1dEXT (index x)
   :If 0=⎕NC'glVertexAttribL1dEXT_DLL'
-      'glVertexAttribL1dEXT_DLL'⎕NA'opengl32|glVertexAttribL1dEXT U4 F8'
+      'glVertexAttribL1dEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL1dEXT U4 F8'
   :EndIf
   {}glVertexAttribL1dEXT_DLL index x
 ∇
 
 ∇ glVertexAttribL2dEXT (index x y)
   :If 0=⎕NC'glVertexAttribL2dEXT_DLL'
-      'glVertexAttribL2dEXT_DLL'⎕NA'opengl32|glVertexAttribL2dEXT U4 F8 F8'
+      'glVertexAttribL2dEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL2dEXT U4 F8 F8'
   :EndIf
   {}glVertexAttribL2dEXT_DLL index x y
 ∇
 
 ∇ glVertexAttribL3dEXT (index x y z)
   :If 0=⎕NC'glVertexAttribL3dEXT_DLL'
-      'glVertexAttribL3dEXT_DLL'⎕NA'opengl32|glVertexAttribL3dEXT U4 F8 F8 F8'
+      'glVertexAttribL3dEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL3dEXT U4 F8 F8 F8'
   :EndIf
   {}glVertexAttribL3dEXT_DLL index x y z
 ∇
 
 ∇ glVertexAttribL4dEXT (index x y z w)
   :If 0=⎕NC'glVertexAttribL4dEXT_DLL'
-      'glVertexAttribL4dEXT_DLL'⎕NA'opengl32|glVertexAttribL4dEXT U4 F8 F8 F8 F8'
+      'glVertexAttribL4dEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL4dEXT U4 F8 F8 F8 F8'
   :EndIf
   {}glVertexAttribL4dEXT_DLL index x y z w
 ∇
 
 ∇ glVertexAttribL1dvEXT (index v)
   :If 0=⎕NC'glVertexAttribL1dvEXT_DLL'
-      'glVertexAttribL1dvEXT_DLL'⎕NA'opengl32|glVertexAttribL1dvEXT U4 <F8[1]'
+      'glVertexAttribL1dvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL1dvEXT U4 <F8[1]'
   :EndIf
   {}glVertexAttribL1dvEXT_DLL index v
 ∇
 
 ∇ glVertexAttribL2dvEXT (index v)
   :If 0=⎕NC'glVertexAttribL2dvEXT_DLL'
-      'glVertexAttribL2dvEXT_DLL'⎕NA'opengl32|glVertexAttribL2dvEXT U4 <F8[2]'
+      'glVertexAttribL2dvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL2dvEXT U4 <F8[2]'
   :EndIf
   {}glVertexAttribL2dvEXT_DLL index v
 ∇
 
 ∇ glVertexAttribL3dvEXT (index v)
   :If 0=⎕NC'glVertexAttribL3dvEXT_DLL'
-      'glVertexAttribL3dvEXT_DLL'⎕NA'opengl32|glVertexAttribL3dvEXT U4 <F8[3]'
+      'glVertexAttribL3dvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL3dvEXT U4 <F8[3]'
   :EndIf
   {}glVertexAttribL3dvEXT_DLL index v
 ∇
 
 ∇ glVertexAttribL4dvEXT (index v)
   :If 0=⎕NC'glVertexAttribL4dvEXT_DLL'
-      'glVertexAttribL4dvEXT_DLL'⎕NA'opengl32|glVertexAttribL4dvEXT U4 <F8[4]'
+      'glVertexAttribL4dvEXT_DLL'⎕NA'',getdllname,'|glVertexAttribL4dvEXT U4 <F8[4]'
   :EndIf
   {}glVertexAttribL4dvEXT_DLL index v
 ∇
@@ -23673,7 +23681,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetVertexAttribLdvEXT (index pname params)
   :If 0=⎕NC'glGetVertexAttribLdvEXT_DLL'
-      'glGetVertexAttribLdvEXT_DLL'⎕NA'opengl32|glGetVertexAttribLdvEXT U4 U4 >F8[]'
+      'glGetVertexAttribLdvEXT_DLL'⎕NA'',getdllname,'|glGetVertexAttribLdvEXT U4 U4 >F8[]'
   :EndIf
   r←glGetVertexAttribLdvEXT_DLL index pname params
 ∇
@@ -23687,406 +23695,406 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glProgramSubroutineParametersuivNV (target count params)
   :If 0=⎕NC'glProgramSubroutineParametersuivNV_DLL'
-      'glProgramSubroutineParametersuivNV_DLL'⎕NA'opengl32|glProgramSubroutineParametersuivNV U4 I4 <U4[]'
+      'glProgramSubroutineParametersuivNV_DLL'⎕NA'',getdllname,'|glProgramSubroutineParametersuivNV U4 I4 <U4[]'
   :EndIf
   {}glProgramSubroutineParametersuivNV_DLL target count params
 ∇
 
 ∇ r←glGetProgramSubroutineParameteruivNV (target index param)
   :If 0=⎕NC'glGetProgramSubroutineParameteruivNV_DLL'
-      'glGetProgramSubroutineParameteruivNV_DLL'⎕NA'opengl32|glGetProgramSubroutineParameteruivNV U4 U4 >U4[]'
+      'glGetProgramSubroutineParameteruivNV_DLL'⎕NA'',getdllname,'|glGetProgramSubroutineParameteruivNV U4 U4 >U4[]'
   :EndIf
   r←glGetProgramSubroutineParameteruivNV_DLL target index param
 ∇
 
 ∇ glUniform1i64NV (location x)
   :If 0=⎕NC'glUniform1i64NV_DLL'
-      'glUniform1i64NV_DLL'⎕NA'opengl32|glUniform1i64NV I4 I8'
+      'glUniform1i64NV_DLL'⎕NA'',getdllname,'|glUniform1i64NV I4 I8'
   :EndIf
   {}glUniform1i64NV_DLL location x
 ∇
 
 ∇ glUniform2i64NV (location x y)
   :If 0=⎕NC'glUniform2i64NV_DLL'
-      'glUniform2i64NV_DLL'⎕NA'opengl32|glUniform2i64NV I4 I8 I8'
+      'glUniform2i64NV_DLL'⎕NA'',getdllname,'|glUniform2i64NV I4 I8 I8'
   :EndIf
   {}glUniform2i64NV_DLL location x y
 ∇
 
 ∇ glUniform3i64NV (location x y z)
   :If 0=⎕NC'glUniform3i64NV_DLL'
-      'glUniform3i64NV_DLL'⎕NA'opengl32|glUniform3i64NV I4 I8 I8 I8'
+      'glUniform3i64NV_DLL'⎕NA'',getdllname,'|glUniform3i64NV I4 I8 I8 I8'
   :EndIf
   {}glUniform3i64NV_DLL location x y z
 ∇
 
 ∇ glUniform4i64NV (location x y z w)
   :If 0=⎕NC'glUniform4i64NV_DLL'
-      'glUniform4i64NV_DLL'⎕NA'opengl32|glUniform4i64NV I4 I8 I8 I8 I8'
+      'glUniform4i64NV_DLL'⎕NA'',getdllname,'|glUniform4i64NV I4 I8 I8 I8 I8'
   :EndIf
   {}glUniform4i64NV_DLL location x y z w
 ∇
 
 ∇ glUniform1i64vNV (location count value)
   :If 0=⎕NC'glUniform1i64vNV_DLL'
-      'glUniform1i64vNV_DLL'⎕NA'opengl32|glUniform1i64vNV I4 I4 <I8[]'
+      'glUniform1i64vNV_DLL'⎕NA'',getdllname,'|glUniform1i64vNV I4 I4 <I8[]'
   :EndIf
   {}glUniform1i64vNV_DLL location count value
 ∇
 
 ∇ glUniform2i64vNV (location count value)
   :If 0=⎕NC'glUniform2i64vNV_DLL'
-      'glUniform2i64vNV_DLL'⎕NA'opengl32|glUniform2i64vNV I4 I4 <I8[]'
+      'glUniform2i64vNV_DLL'⎕NA'',getdllname,'|glUniform2i64vNV I4 I4 <I8[]'
   :EndIf
   {}glUniform2i64vNV_DLL location count value
 ∇
 
 ∇ glUniform3i64vNV (location count value)
   :If 0=⎕NC'glUniform3i64vNV_DLL'
-      'glUniform3i64vNV_DLL'⎕NA'opengl32|glUniform3i64vNV I4 I4 <I8[]'
+      'glUniform3i64vNV_DLL'⎕NA'',getdllname,'|glUniform3i64vNV I4 I4 <I8[]'
   :EndIf
   {}glUniform3i64vNV_DLL location count value
 ∇
 
 ∇ glUniform4i64vNV (location count value)
   :If 0=⎕NC'glUniform4i64vNV_DLL'
-      'glUniform4i64vNV_DLL'⎕NA'opengl32|glUniform4i64vNV I4 I4 <I8[]'
+      'glUniform4i64vNV_DLL'⎕NA'',getdllname,'|glUniform4i64vNV I4 I4 <I8[]'
   :EndIf
   {}glUniform4i64vNV_DLL location count value
 ∇
 
 ∇ glUniform1ui64NV (location x)
   :If 0=⎕NC'glUniform1ui64NV_DLL'
-      'glUniform1ui64NV_DLL'⎕NA'opengl32|glUniform1ui64NV I4 U8'
+      'glUniform1ui64NV_DLL'⎕NA'',getdllname,'|glUniform1ui64NV I4 U8'
   :EndIf
   {}glUniform1ui64NV_DLL location x
 ∇
 
 ∇ glUniform2ui64NV (location x y)
   :If 0=⎕NC'glUniform2ui64NV_DLL'
-      'glUniform2ui64NV_DLL'⎕NA'opengl32|glUniform2ui64NV I4 U8 U8'
+      'glUniform2ui64NV_DLL'⎕NA'',getdllname,'|glUniform2ui64NV I4 U8 U8'
   :EndIf
   {}glUniform2ui64NV_DLL location x y
 ∇
 
 ∇ glUniform3ui64NV (location x y z)
   :If 0=⎕NC'glUniform3ui64NV_DLL'
-      'glUniform3ui64NV_DLL'⎕NA'opengl32|glUniform3ui64NV I4 U8 U8 U8'
+      'glUniform3ui64NV_DLL'⎕NA'',getdllname,'|glUniform3ui64NV I4 U8 U8 U8'
   :EndIf
   {}glUniform3ui64NV_DLL location x y z
 ∇
 
 ∇ glUniform4ui64NV (location x y z w)
   :If 0=⎕NC'glUniform4ui64NV_DLL'
-      'glUniform4ui64NV_DLL'⎕NA'opengl32|glUniform4ui64NV I4 U8 U8 U8 U8'
+      'glUniform4ui64NV_DLL'⎕NA'',getdllname,'|glUniform4ui64NV I4 U8 U8 U8 U8'
   :EndIf
   {}glUniform4ui64NV_DLL location x y z w
 ∇
 
 ∇ glUniform1ui64vNV (location count value)
   :If 0=⎕NC'glUniform1ui64vNV_DLL'
-      'glUniform1ui64vNV_DLL'⎕NA'opengl32|glUniform1ui64vNV I4 I4 <U8[]'
+      'glUniform1ui64vNV_DLL'⎕NA'',getdllname,'|glUniform1ui64vNV I4 I4 <U8[]'
   :EndIf
   {}glUniform1ui64vNV_DLL location count value
 ∇
 
 ∇ glUniform2ui64vNV (location count value)
   :If 0=⎕NC'glUniform2ui64vNV_DLL'
-      'glUniform2ui64vNV_DLL'⎕NA'opengl32|glUniform2ui64vNV I4 I4 <U8[]'
+      'glUniform2ui64vNV_DLL'⎕NA'',getdllname,'|glUniform2ui64vNV I4 I4 <U8[]'
   :EndIf
   {}glUniform2ui64vNV_DLL location count value
 ∇
 
 ∇ glUniform3ui64vNV (location count value)
   :If 0=⎕NC'glUniform3ui64vNV_DLL'
-      'glUniform3ui64vNV_DLL'⎕NA'opengl32|glUniform3ui64vNV I4 I4 <U8[]'
+      'glUniform3ui64vNV_DLL'⎕NA'',getdllname,'|glUniform3ui64vNV I4 I4 <U8[]'
   :EndIf
   {}glUniform3ui64vNV_DLL location count value
 ∇
 
 ∇ glUniform4ui64vNV (location count value)
   :If 0=⎕NC'glUniform4ui64vNV_DLL'
-      'glUniform4ui64vNV_DLL'⎕NA'opengl32|glUniform4ui64vNV I4 I4 <U8[]'
+      'glUniform4ui64vNV_DLL'⎕NA'',getdllname,'|glUniform4ui64vNV I4 I4 <U8[]'
   :EndIf
   {}glUniform4ui64vNV_DLL location count value
 ∇
 
 ∇ r←glGetUniformi64vNV (program location params)
   :If 0=⎕NC'glGetUniformi64vNV_DLL'
-      'glGetUniformi64vNV_DLL'⎕NA'opengl32|glGetUniformi64vNV U4 I4 >I8[]'
+      'glGetUniformi64vNV_DLL'⎕NA'',getdllname,'|glGetUniformi64vNV U4 I4 >I8[]'
   :EndIf
   r←glGetUniformi64vNV_DLL program location params
 ∇
 
 ∇ glProgramUniform1i64NV (program location x)
   :If 0=⎕NC'glProgramUniform1i64NV_DLL'
-      'glProgramUniform1i64NV_DLL'⎕NA'opengl32|glProgramUniform1i64NV U4 I4 I8'
+      'glProgramUniform1i64NV_DLL'⎕NA'',getdllname,'|glProgramUniform1i64NV U4 I4 I8'
   :EndIf
   {}glProgramUniform1i64NV_DLL program location x
 ∇
 
 ∇ glProgramUniform2i64NV (program location x y)
   :If 0=⎕NC'glProgramUniform2i64NV_DLL'
-      'glProgramUniform2i64NV_DLL'⎕NA'opengl32|glProgramUniform2i64NV U4 I4 I8 I8'
+      'glProgramUniform2i64NV_DLL'⎕NA'',getdllname,'|glProgramUniform2i64NV U4 I4 I8 I8'
   :EndIf
   {}glProgramUniform2i64NV_DLL program location x y
 ∇
 
 ∇ glProgramUniform3i64NV (program location x y z)
   :If 0=⎕NC'glProgramUniform3i64NV_DLL'
-      'glProgramUniform3i64NV_DLL'⎕NA'opengl32|glProgramUniform3i64NV U4 I4 I8 I8 I8'
+      'glProgramUniform3i64NV_DLL'⎕NA'',getdllname,'|glProgramUniform3i64NV U4 I4 I8 I8 I8'
   :EndIf
   {}glProgramUniform3i64NV_DLL program location x y z
 ∇
 
 ∇ glProgramUniform4i64NV (program location x y z w)
   :If 0=⎕NC'glProgramUniform4i64NV_DLL'
-      'glProgramUniform4i64NV_DLL'⎕NA'opengl32|glProgramUniform4i64NV U4 I4 I8 I8 I8 I8'
+      'glProgramUniform4i64NV_DLL'⎕NA'',getdllname,'|glProgramUniform4i64NV U4 I4 I8 I8 I8 I8'
   :EndIf
   {}glProgramUniform4i64NV_DLL program location x y z w
 ∇
 
 ∇ glProgramUniform1i64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform1i64vNV_DLL'
-      'glProgramUniform1i64vNV_DLL'⎕NA'opengl32|glProgramUniform1i64vNV U4 I4 I4 <I8[]'
+      'glProgramUniform1i64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform1i64vNV U4 I4 I4 <I8[]'
   :EndIf
   {}glProgramUniform1i64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform2i64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform2i64vNV_DLL'
-      'glProgramUniform2i64vNV_DLL'⎕NA'opengl32|glProgramUniform2i64vNV U4 I4 I4 <I8[]'
+      'glProgramUniform2i64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform2i64vNV U4 I4 I4 <I8[]'
   :EndIf
   {}glProgramUniform2i64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform3i64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform3i64vNV_DLL'
-      'glProgramUniform3i64vNV_DLL'⎕NA'opengl32|glProgramUniform3i64vNV U4 I4 I4 <I8[]'
+      'glProgramUniform3i64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform3i64vNV U4 I4 I4 <I8[]'
   :EndIf
   {}glProgramUniform3i64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform4i64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform4i64vNV_DLL'
-      'glProgramUniform4i64vNV_DLL'⎕NA'opengl32|glProgramUniform4i64vNV U4 I4 I4 <I8[]'
+      'glProgramUniform4i64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform4i64vNV U4 I4 I4 <I8[]'
   :EndIf
   {}glProgramUniform4i64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform1ui64NV (program location x)
   :If 0=⎕NC'glProgramUniform1ui64NV_DLL'
-      'glProgramUniform1ui64NV_DLL'⎕NA'opengl32|glProgramUniform1ui64NV U4 I4 U8'
+      'glProgramUniform1ui64NV_DLL'⎕NA'',getdllname,'|glProgramUniform1ui64NV U4 I4 U8'
   :EndIf
   {}glProgramUniform1ui64NV_DLL program location x
 ∇
 
 ∇ glProgramUniform2ui64NV (program location x y)
   :If 0=⎕NC'glProgramUniform2ui64NV_DLL'
-      'glProgramUniform2ui64NV_DLL'⎕NA'opengl32|glProgramUniform2ui64NV U4 I4 U8 U8'
+      'glProgramUniform2ui64NV_DLL'⎕NA'',getdllname,'|glProgramUniform2ui64NV U4 I4 U8 U8'
   :EndIf
   {}glProgramUniform2ui64NV_DLL program location x y
 ∇
 
 ∇ glProgramUniform3ui64NV (program location x y z)
   :If 0=⎕NC'glProgramUniform3ui64NV_DLL'
-      'glProgramUniform3ui64NV_DLL'⎕NA'opengl32|glProgramUniform3ui64NV U4 I4 U8 U8 U8'
+      'glProgramUniform3ui64NV_DLL'⎕NA'',getdllname,'|glProgramUniform3ui64NV U4 I4 U8 U8 U8'
   :EndIf
   {}glProgramUniform3ui64NV_DLL program location x y z
 ∇
 
 ∇ glProgramUniform4ui64NV (program location x y z w)
   :If 0=⎕NC'glProgramUniform4ui64NV_DLL'
-      'glProgramUniform4ui64NV_DLL'⎕NA'opengl32|glProgramUniform4ui64NV U4 I4 U8 U8 U8 U8'
+      'glProgramUniform4ui64NV_DLL'⎕NA'',getdllname,'|glProgramUniform4ui64NV U4 I4 U8 U8 U8 U8'
   :EndIf
   {}glProgramUniform4ui64NV_DLL program location x y z w
 ∇
 
 ∇ glProgramUniform1ui64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform1ui64vNV_DLL'
-      'glProgramUniform1ui64vNV_DLL'⎕NA'opengl32|glProgramUniform1ui64vNV U4 I4 I4 <U8[]'
+      'glProgramUniform1ui64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform1ui64vNV U4 I4 I4 <U8[]'
   :EndIf
   {}glProgramUniform1ui64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform2ui64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform2ui64vNV_DLL'
-      'glProgramUniform2ui64vNV_DLL'⎕NA'opengl32|glProgramUniform2ui64vNV U4 I4 I4 <U8[]'
+      'glProgramUniform2ui64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform2ui64vNV U4 I4 I4 <U8[]'
   :EndIf
   {}glProgramUniform2ui64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform3ui64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform3ui64vNV_DLL'
-      'glProgramUniform3ui64vNV_DLL'⎕NA'opengl32|glProgramUniform3ui64vNV U4 I4 I4 <U8[]'
+      'glProgramUniform3ui64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform3ui64vNV U4 I4 I4 <U8[]'
   :EndIf
   {}glProgramUniform3ui64vNV_DLL program location count value
 ∇
 
 ∇ glProgramUniform4ui64vNV (program location count value)
   :If 0=⎕NC'glProgramUniform4ui64vNV_DLL'
-      'glProgramUniform4ui64vNV_DLL'⎕NA'opengl32|glProgramUniform4ui64vNV U4 I4 I4 <U8[]'
+      'glProgramUniform4ui64vNV_DLL'⎕NA'',getdllname,'|glProgramUniform4ui64vNV U4 I4 I4 <U8[]'
   :EndIf
   {}glProgramUniform4ui64vNV_DLL program location count value
 ∇
 
 ∇ glVertexAttribL1i64NV (index x)
   :If 0=⎕NC'glVertexAttribL1i64NV_DLL'
-      'glVertexAttribL1i64NV_DLL'⎕NA'opengl32|glVertexAttribL1i64NV U4 I8'
+      'glVertexAttribL1i64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL1i64NV U4 I8'
   :EndIf
   {}glVertexAttribL1i64NV_DLL index x
 ∇
 
 ∇ glVertexAttribL2i64NV (index x y)
   :If 0=⎕NC'glVertexAttribL2i64NV_DLL'
-      'glVertexAttribL2i64NV_DLL'⎕NA'opengl32|glVertexAttribL2i64NV U4 I8 I8'
+      'glVertexAttribL2i64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL2i64NV U4 I8 I8'
   :EndIf
   {}glVertexAttribL2i64NV_DLL index x y
 ∇
 
 ∇ glVertexAttribL3i64NV (index x y z)
   :If 0=⎕NC'glVertexAttribL3i64NV_DLL'
-      'glVertexAttribL3i64NV_DLL'⎕NA'opengl32|glVertexAttribL3i64NV U4 I8 I8 I8'
+      'glVertexAttribL3i64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL3i64NV U4 I8 I8 I8'
   :EndIf
   {}glVertexAttribL3i64NV_DLL index x y z
 ∇
 
 ∇ glVertexAttribL4i64NV (index x y z w)
   :If 0=⎕NC'glVertexAttribL4i64NV_DLL'
-      'glVertexAttribL4i64NV_DLL'⎕NA'opengl32|glVertexAttribL4i64NV U4 I8 I8 I8 I8'
+      'glVertexAttribL4i64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL4i64NV U4 I8 I8 I8 I8'
   :EndIf
   {}glVertexAttribL4i64NV_DLL index x y z w
 ∇
 
 ∇ glVertexAttribL1i64vNV (index v)
   :If 0=⎕NC'glVertexAttribL1i64vNV_DLL'
-      'glVertexAttribL1i64vNV_DLL'⎕NA'opengl32|glVertexAttribL1i64vNV U4 <I8[1]'
+      'glVertexAttribL1i64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL1i64vNV U4 <I8[1]'
   :EndIf
   {}glVertexAttribL1i64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL2i64vNV (index v)
   :If 0=⎕NC'glVertexAttribL2i64vNV_DLL'
-      'glVertexAttribL2i64vNV_DLL'⎕NA'opengl32|glVertexAttribL2i64vNV U4 <I8[2]'
+      'glVertexAttribL2i64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL2i64vNV U4 <I8[2]'
   :EndIf
   {}glVertexAttribL2i64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL3i64vNV (index v)
   :If 0=⎕NC'glVertexAttribL3i64vNV_DLL'
-      'glVertexAttribL3i64vNV_DLL'⎕NA'opengl32|glVertexAttribL3i64vNV U4 <I8[3]'
+      'glVertexAttribL3i64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL3i64vNV U4 <I8[3]'
   :EndIf
   {}glVertexAttribL3i64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL4i64vNV (index v)
   :If 0=⎕NC'glVertexAttribL4i64vNV_DLL'
-      'glVertexAttribL4i64vNV_DLL'⎕NA'opengl32|glVertexAttribL4i64vNV U4 <I8[4]'
+      'glVertexAttribL4i64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL4i64vNV U4 <I8[4]'
   :EndIf
   {}glVertexAttribL4i64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL1ui64NV (index x)
   :If 0=⎕NC'glVertexAttribL1ui64NV_DLL'
-      'glVertexAttribL1ui64NV_DLL'⎕NA'opengl32|glVertexAttribL1ui64NV U4 U8'
+      'glVertexAttribL1ui64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL1ui64NV U4 U8'
   :EndIf
   {}glVertexAttribL1ui64NV_DLL index x
 ∇
 
 ∇ glVertexAttribL2ui64NV (index x y)
   :If 0=⎕NC'glVertexAttribL2ui64NV_DLL'
-      'glVertexAttribL2ui64NV_DLL'⎕NA'opengl32|glVertexAttribL2ui64NV U4 U8 U8'
+      'glVertexAttribL2ui64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL2ui64NV U4 U8 U8'
   :EndIf
   {}glVertexAttribL2ui64NV_DLL index x y
 ∇
 
 ∇ glVertexAttribL3ui64NV (index x y z)
   :If 0=⎕NC'glVertexAttribL3ui64NV_DLL'
-      'glVertexAttribL3ui64NV_DLL'⎕NA'opengl32|glVertexAttribL3ui64NV U4 U8 U8 U8'
+      'glVertexAttribL3ui64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL3ui64NV U4 U8 U8 U8'
   :EndIf
   {}glVertexAttribL3ui64NV_DLL index x y z
 ∇
 
 ∇ glVertexAttribL4ui64NV (index x y z w)
   :If 0=⎕NC'glVertexAttribL4ui64NV_DLL'
-      'glVertexAttribL4ui64NV_DLL'⎕NA'opengl32|glVertexAttribL4ui64NV U4 U8 U8 U8 U8'
+      'glVertexAttribL4ui64NV_DLL'⎕NA'',getdllname,'|glVertexAttribL4ui64NV U4 U8 U8 U8 U8'
   :EndIf
   {}glVertexAttribL4ui64NV_DLL index x y z w
 ∇
 
 ∇ glVertexAttribL1ui64vNV (index v)
   :If 0=⎕NC'glVertexAttribL1ui64vNV_DLL'
-      'glVertexAttribL1ui64vNV_DLL'⎕NA'opengl32|glVertexAttribL1ui64vNV U4 <U8[1]'
+      'glVertexAttribL1ui64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL1ui64vNV U4 <U8[1]'
   :EndIf
   {}glVertexAttribL1ui64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL2ui64vNV (index v)
   :If 0=⎕NC'glVertexAttribL2ui64vNV_DLL'
-      'glVertexAttribL2ui64vNV_DLL'⎕NA'opengl32|glVertexAttribL2ui64vNV U4 <U8[2]'
+      'glVertexAttribL2ui64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL2ui64vNV U4 <U8[2]'
   :EndIf
   {}glVertexAttribL2ui64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL3ui64vNV (index v)
   :If 0=⎕NC'glVertexAttribL3ui64vNV_DLL'
-      'glVertexAttribL3ui64vNV_DLL'⎕NA'opengl32|glVertexAttribL3ui64vNV U4 <U8[3]'
+      'glVertexAttribL3ui64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL3ui64vNV U4 <U8[3]'
   :EndIf
   {}glVertexAttribL3ui64vNV_DLL index v
 ∇
 
 ∇ glVertexAttribL4ui64vNV (index v)
   :If 0=⎕NC'glVertexAttribL4ui64vNV_DLL'
-      'glVertexAttribL4ui64vNV_DLL'⎕NA'opengl32|glVertexAttribL4ui64vNV U4 <U8[4]'
+      'glVertexAttribL4ui64vNV_DLL'⎕NA'',getdllname,'|glVertexAttribL4ui64vNV U4 <U8[4]'
   :EndIf
   {}glVertexAttribL4ui64vNV_DLL index v
 ∇
 
 ∇ r←glGetVertexAttribLi64vNV (index pname params)
   :If 0=⎕NC'glGetVertexAttribLi64vNV_DLL'
-      'glGetVertexAttribLi64vNV_DLL'⎕NA'opengl32|glGetVertexAttribLi64vNV U4 U4 >I8[]'
+      'glGetVertexAttribLi64vNV_DLL'⎕NA'',getdllname,'|glGetVertexAttribLi64vNV U4 U4 >I8[]'
   :EndIf
   r←glGetVertexAttribLi64vNV_DLL index pname params
 ∇
 
 ∇ r←glGetVertexAttribLui64vNV (index pname params)
   :If 0=⎕NC'glGetVertexAttribLui64vNV_DLL'
-      'glGetVertexAttribLui64vNV_DLL'⎕NA'opengl32|glGetVertexAttribLui64vNV U4 U4 >U8[]'
+      'glGetVertexAttribLui64vNV_DLL'⎕NA'',getdllname,'|glGetVertexAttribLui64vNV U4 U4 >U8[]'
   :EndIf
   r←glGetVertexAttribLui64vNV_DLL index pname params
 ∇
 
 ∇ glVertexAttribLFormatNV (index size type stride)
   :If 0=⎕NC'glVertexAttribLFormatNV_DLL'
-      'glVertexAttribLFormatNV_DLL'⎕NA'opengl32|glVertexAttribLFormatNV U4 I4 U4 I4'
+      'glVertexAttribLFormatNV_DLL'⎕NA'',getdllname,'|glVertexAttribLFormatNV U4 I4 U4 I4'
   :EndIf
   {}glVertexAttribLFormatNV_DLL index size type stride
 ∇
 
 ∇ r←glGenNamesAMD (identifier num names)
   :If 0=⎕NC'glGenNamesAMD_DLL'
-      'glGenNamesAMD_DLL'⎕NA'opengl32|glGenNamesAMD U4 U4 >U4[]'
+      'glGenNamesAMD_DLL'⎕NA'',getdllname,'|glGenNamesAMD U4 U4 >U4[]'
   :EndIf
   r←glGenNamesAMD_DLL identifier num names
 ∇
 
 ∇ glDeleteNamesAMD (identifier num names)
   :If 0=⎕NC'glDeleteNamesAMD_DLL'
-      'glDeleteNamesAMD_DLL'⎕NA'opengl32|glDeleteNamesAMD U4 U4 <U4[]'
+      'glDeleteNamesAMD_DLL'⎕NA'',getdllname,'|glDeleteNamesAMD U4 U4 <U4[]'
   :EndIf
   {}glDeleteNamesAMD_DLL identifier num names
 ∇
 
 ∇ r←glIsNameAMD (identifier name)
   :If 0=⎕NC'glIsNameAMD_DLL'
-      'glIsNameAMD_DLL'⎕NA'U1 opengl32|glIsNameAMD U4 U4'
+      'glIsNameAMD_DLL'⎕NA'U1 ',getdllname,'|glIsNameAMD U4 U4'
   :EndIf
   r←glIsNameAMD_DLL identifier name
 ∇
 
 ∇ glDebugMessageEnableAMD (category severity count ids enabled)
   :If 0=⎕NC'glDebugMessageEnableAMD_DLL'
-      'glDebugMessageEnableAMD_DLL'⎕NA'opengl32|glDebugMessageEnableAMD U4 U4 I4 <U4[] U1'
+      'glDebugMessageEnableAMD_DLL'⎕NA'',getdllname,'|glDebugMessageEnableAMD U4 U4 I4 <U4[] U1'
   :EndIf
   {}glDebugMessageEnableAMD_DLL category severity count ids enabled
 ∇
@@ -24121,7 +24129,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glVDPAUFiniNV
   :If 0=⎕NC'glVDPAUFiniNV_DLL'
-      'glVDPAUFiniNV_DLL'⎕NA'opengl32|glVDPAUFiniNV'
+      'glVDPAUFiniNV_DLL'⎕NA'',getdllname,'|glVDPAUFiniNV'
   :EndIf
   {}glVDPAUFiniNV_DLL
 ∇
@@ -24184,49 +24192,49 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glTexImage2DMultisampleCoverageNV (target coverageSamples colorSamples internalFormat width height fixedSampleLocations)
   :If 0=⎕NC'glTexImage2DMultisampleCoverageNV_DLL'
-      'glTexImage2DMultisampleCoverageNV_DLL'⎕NA'opengl32|glTexImage2DMultisampleCoverageNV U4 I4 I4 I4 I4 I4 U1'
+      'glTexImage2DMultisampleCoverageNV_DLL'⎕NA'',getdllname,'|glTexImage2DMultisampleCoverageNV U4 I4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTexImage2DMultisampleCoverageNV_DLL target coverageSamples colorSamples internalFormat width height fixedSampleLocations
 ∇
 
 ∇ glTexImage3DMultisampleCoverageNV (target coverageSamples colorSamples internalFormat width height depth fixedSampleLocations)
   :If 0=⎕NC'glTexImage3DMultisampleCoverageNV_DLL'
-      'glTexImage3DMultisampleCoverageNV_DLL'⎕NA'opengl32|glTexImage3DMultisampleCoverageNV U4 I4 I4 I4 I4 I4 I4 U1'
+      'glTexImage3DMultisampleCoverageNV_DLL'⎕NA'',getdllname,'|glTexImage3DMultisampleCoverageNV U4 I4 I4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTexImage3DMultisampleCoverageNV_DLL target coverageSamples colorSamples internalFormat width height depth fixedSampleLocations
 ∇
 
 ∇ glTextureImage2DMultisampleNV (texture target samples internalFormat width height fixedSampleLocations)
   :If 0=⎕NC'glTextureImage2DMultisampleNV_DLL'
-      'glTextureImage2DMultisampleNV_DLL'⎕NA'opengl32|glTextureImage2DMultisampleNV U4 U4 I4 I4 I4 I4 U1'
+      'glTextureImage2DMultisampleNV_DLL'⎕NA'',getdllname,'|glTextureImage2DMultisampleNV U4 U4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTextureImage2DMultisampleNV_DLL texture target samples internalFormat width height fixedSampleLocations
 ∇
 
 ∇ glTextureImage3DMultisampleNV (texture target samples internalFormat width height depth fixedSampleLocations)
   :If 0=⎕NC'glTextureImage3DMultisampleNV_DLL'
-      'glTextureImage3DMultisampleNV_DLL'⎕NA'opengl32|glTextureImage3DMultisampleNV U4 U4 I4 I4 I4 I4 I4 U1'
+      'glTextureImage3DMultisampleNV_DLL'⎕NA'',getdllname,'|glTextureImage3DMultisampleNV U4 U4 I4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTextureImage3DMultisampleNV_DLL texture target samples internalFormat width height depth fixedSampleLocations
 ∇
 
 ∇ glTextureImage2DMultisampleCoverageNV (texture target coverageSamples colorSamples internalFormat width height fixedSampleLocations)
   :If 0=⎕NC'glTextureImage2DMultisampleCoverageNV_DLL'
-      'glTextureImage2DMultisampleCoverageNV_DLL'⎕NA'opengl32|glTextureImage2DMultisampleCoverageNV U4 U4 I4 I4 I4 I4 I4 U1'
+      'glTextureImage2DMultisampleCoverageNV_DLL'⎕NA'',getdllname,'|glTextureImage2DMultisampleCoverageNV U4 U4 I4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTextureImage2DMultisampleCoverageNV_DLL texture target coverageSamples colorSamples internalFormat width height fixedSampleLocations
 ∇
 
 ∇ glTextureImage3DMultisampleCoverageNV (texture target coverageSamples colorSamples internalFormat width height depth fixedSampleLocations)
   :If 0=⎕NC'glTextureImage3DMultisampleCoverageNV_DLL'
-      'glTextureImage3DMultisampleCoverageNV_DLL'⎕NA'opengl32|glTextureImage3DMultisampleCoverageNV U4 U4 I4 I4 I4 I4 I4 I4 U1'
+      'glTextureImage3DMultisampleCoverageNV_DLL'⎕NA'',getdllname,'|glTextureImage3DMultisampleCoverageNV U4 U4 I4 I4 I4 I4 I4 I4 U1'
   :EndIf
   {}glTextureImage3DMultisampleCoverageNV_DLL texture target coverageSamples colorSamples internalFormat width height depth fixedSampleLocations
 ∇
 
 ∇ glSetMultisamplefvAMD (pname index val)
   :If 0=⎕NC'glSetMultisamplefvAMD_DLL'
-      'glSetMultisamplefvAMD_DLL'⎕NA'opengl32|glSetMultisamplefvAMD U4 U4 <F4[2]'
+      'glSetMultisamplefvAMD_DLL'⎕NA'',getdllname,'|glSetMultisamplefvAMD U4 U4 <F4[2]'
   :EndIf
   {}glSetMultisamplefvAMD_DLL pname index val
 ∇
@@ -24254,21 +24262,21 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGenPathsNV range
   :If 0=⎕NC'glGenPathsNV_DLL'
-      'glGenPathsNV_DLL'⎕NA'U4 opengl32|glGenPathsNV I4'
+      'glGenPathsNV_DLL'⎕NA'U4 ',getdllname,'|glGenPathsNV I4'
   :EndIf
   r←glGenPathsNV_DLL range
 ∇
 
 ∇ glDeletePathsNV (path range)
   :If 0=⎕NC'glDeletePathsNV_DLL'
-      'glDeletePathsNV_DLL'⎕NA'opengl32|glDeletePathsNV U4 I4'
+      'glDeletePathsNV_DLL'⎕NA'',getdllname,'|glDeletePathsNV U4 I4'
   :EndIf
   {}glDeletePathsNV_DLL path range
 ∇
 
 ∇ r←glIsPathNV path
   :If 0=⎕NC'glIsPathNV_DLL'
-      'glIsPathNV_DLL'⎕NA'U1 opengl32|glIsPathNV U4'
+      'glIsPathNV_DLL'⎕NA'U1 ',getdllname,'|glIsPathNV U4'
   :EndIf
   r←glIsPathNV_DLL path
 ∇
@@ -24324,91 +24332,91 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glWeightPathsNV (resultPath numPaths paths weights)
   :If 0=⎕NC'glWeightPathsNV_DLL'
-      'glWeightPathsNV_DLL'⎕NA'opengl32|glWeightPathsNV U4 I4 <U4[] <F4[]'
+      'glWeightPathsNV_DLL'⎕NA'',getdllname,'|glWeightPathsNV U4 I4 <U4[] <F4[]'
   :EndIf
   {}glWeightPathsNV_DLL resultPath numPaths paths weights
 ∇
 
 ∇ glCopyPathNV (resultPath srcPath)
   :If 0=⎕NC'glCopyPathNV_DLL'
-      'glCopyPathNV_DLL'⎕NA'opengl32|glCopyPathNV U4 U4'
+      'glCopyPathNV_DLL'⎕NA'',getdllname,'|glCopyPathNV U4 U4'
   :EndIf
   {}glCopyPathNV_DLL resultPath srcPath
 ∇
 
 ∇ glInterpolatePathsNV (resultPath pathA pathB weight)
   :If 0=⎕NC'glInterpolatePathsNV_DLL'
-      'glInterpolatePathsNV_DLL'⎕NA'opengl32|glInterpolatePathsNV U4 U4 U4 F4'
+      'glInterpolatePathsNV_DLL'⎕NA'',getdllname,'|glInterpolatePathsNV U4 U4 U4 F4'
   :EndIf
   {}glInterpolatePathsNV_DLL resultPath pathA pathB weight
 ∇
 
 ∇ glTransformPathNV (resultPath srcPath transformType transformValues)
   :If 0=⎕NC'glTransformPathNV_DLL'
-      'glTransformPathNV_DLL'⎕NA'opengl32|glTransformPathNV U4 U4 U4 <F4[]'
+      'glTransformPathNV_DLL'⎕NA'',getdllname,'|glTransformPathNV U4 U4 U4 <F4[]'
   :EndIf
   {}glTransformPathNV_DLL resultPath srcPath transformType transformValues
 ∇
 
 ∇ glPathParameterivNV (path pname value)
   :If 0=⎕NC'glPathParameterivNV_DLL'
-      'glPathParameterivNV_DLL'⎕NA'opengl32|glPathParameterivNV U4 U4 <I4[]'
+      'glPathParameterivNV_DLL'⎕NA'',getdllname,'|glPathParameterivNV U4 U4 <I4[]'
   :EndIf
   {}glPathParameterivNV_DLL path pname value
 ∇
 
 ∇ glPathParameteriNV (path pname value)
   :If 0=⎕NC'glPathParameteriNV_DLL'
-      'glPathParameteriNV_DLL'⎕NA'opengl32|glPathParameteriNV U4 U4 I4'
+      'glPathParameteriNV_DLL'⎕NA'',getdllname,'|glPathParameteriNV U4 U4 I4'
   :EndIf
   {}glPathParameteriNV_DLL path pname value
 ∇
 
 ∇ glPathParameterfvNV (path pname value)
   :If 0=⎕NC'glPathParameterfvNV_DLL'
-      'glPathParameterfvNV_DLL'⎕NA'opengl32|glPathParameterfvNV U4 U4 <F4[]'
+      'glPathParameterfvNV_DLL'⎕NA'',getdllname,'|glPathParameterfvNV U4 U4 <F4[]'
   :EndIf
   {}glPathParameterfvNV_DLL path pname value
 ∇
 
 ∇ glPathParameterfNV (path pname value)
   :If 0=⎕NC'glPathParameterfNV_DLL'
-      'glPathParameterfNV_DLL'⎕NA'opengl32|glPathParameterfNV U4 U4 F4'
+      'glPathParameterfNV_DLL'⎕NA'',getdllname,'|glPathParameterfNV U4 U4 F4'
   :EndIf
   {}glPathParameterfNV_DLL path pname value
 ∇
 
 ∇ glPathDashArrayNV (path dashCount dashArray)
   :If 0=⎕NC'glPathDashArrayNV_DLL'
-      'glPathDashArrayNV_DLL'⎕NA'opengl32|glPathDashArrayNV U4 I4 <F4[]'
+      'glPathDashArrayNV_DLL'⎕NA'',getdllname,'|glPathDashArrayNV U4 I4 <F4[]'
   :EndIf
   {}glPathDashArrayNV_DLL path dashCount dashArray
 ∇
 
 ∇ glPathStencilFuncNV (func ref mask)
   :If 0=⎕NC'glPathStencilFuncNV_DLL'
-      'glPathStencilFuncNV_DLL'⎕NA'opengl32|glPathStencilFuncNV U4 I4 U4'
+      'glPathStencilFuncNV_DLL'⎕NA'',getdllname,'|glPathStencilFuncNV U4 I4 U4'
   :EndIf
   {}glPathStencilFuncNV_DLL func ref mask
 ∇
 
 ∇ glPathStencilDepthOffsetNV (factor units)
   :If 0=⎕NC'glPathStencilDepthOffsetNV_DLL'
-      'glPathStencilDepthOffsetNV_DLL'⎕NA'opengl32|glPathStencilDepthOffsetNV F4 F4'
+      'glPathStencilDepthOffsetNV_DLL'⎕NA'',getdllname,'|glPathStencilDepthOffsetNV F4 F4'
   :EndIf
   {}glPathStencilDepthOffsetNV_DLL factor units
 ∇
 
 ∇ glStencilFillPathNV (path fillMode mask)
   :If 0=⎕NC'glStencilFillPathNV_DLL'
-      'glStencilFillPathNV_DLL'⎕NA'opengl32|glStencilFillPathNV U4 U4 U4'
+      'glStencilFillPathNV_DLL'⎕NA'',getdllname,'|glStencilFillPathNV U4 U4 U4'
   :EndIf
   {}glStencilFillPathNV_DLL path fillMode mask
 ∇
 
 ∇ glStencilStrokePathNV (path reference mask)
   :If 0=⎕NC'glStencilStrokePathNV_DLL'
-      'glStencilStrokePathNV_DLL'⎕NA'opengl32|glStencilStrokePathNV U4 I4 U4'
+      'glStencilStrokePathNV_DLL'⎕NA'',getdllname,'|glStencilStrokePathNV U4 I4 U4'
   :EndIf
   {}glStencilStrokePathNV_DLL path reference mask
 ∇
@@ -24429,42 +24437,42 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ glPathCoverDepthFuncNV func
   :If 0=⎕NC'glPathCoverDepthFuncNV_DLL'
-      'glPathCoverDepthFuncNV_DLL'⎕NA'opengl32|glPathCoverDepthFuncNV U4'
+      'glPathCoverDepthFuncNV_DLL'⎕NA'',getdllname,'|glPathCoverDepthFuncNV U4'
   :EndIf
   {}glPathCoverDepthFuncNV_DLL func
 ∇
 
 ∇ glPathColorGenNV (color genMode colorFormat coeffs)
   :If 0=⎕NC'glPathColorGenNV_DLL'
-      'glPathColorGenNV_DLL'⎕NA'opengl32|glPathColorGenNV U4 U4 U4 <F4[]'
+      'glPathColorGenNV_DLL'⎕NA'',getdllname,'|glPathColorGenNV U4 U4 U4 <F4[]'
   :EndIf
   {}glPathColorGenNV_DLL color genMode colorFormat coeffs
 ∇
 
 ∇ glPathTexGenNV (texCoordSet genMode components coeffs)
   :If 0=⎕NC'glPathTexGenNV_DLL'
-      'glPathTexGenNV_DLL'⎕NA'opengl32|glPathTexGenNV U4 U4 I4 <F4[]'
+      'glPathTexGenNV_DLL'⎕NA'',getdllname,'|glPathTexGenNV U4 U4 I4 <F4[]'
   :EndIf
   {}glPathTexGenNV_DLL texCoordSet genMode components coeffs
 ∇
 
 ∇ glPathFogGenNV genMode
   :If 0=⎕NC'glPathFogGenNV_DLL'
-      'glPathFogGenNV_DLL'⎕NA'opengl32|glPathFogGenNV U4'
+      'glPathFogGenNV_DLL'⎕NA'',getdllname,'|glPathFogGenNV U4'
   :EndIf
   {}glPathFogGenNV_DLL genMode
 ∇
 
 ∇ glCoverFillPathNV (path coverMode)
   :If 0=⎕NC'glCoverFillPathNV_DLL'
-      'glCoverFillPathNV_DLL'⎕NA'opengl32|glCoverFillPathNV U4 U4'
+      'glCoverFillPathNV_DLL'⎕NA'',getdllname,'|glCoverFillPathNV U4 U4'
   :EndIf
   {}glCoverFillPathNV_DLL path coverMode
 ∇
 
 ∇ glCoverStrokePathNV (path coverMode)
   :If 0=⎕NC'glCoverStrokePathNV_DLL'
-      'glCoverStrokePathNV_DLL'⎕NA'opengl32|glCoverStrokePathNV U4 U4'
+      'glCoverStrokePathNV_DLL'⎕NA'',getdllname,'|glCoverStrokePathNV U4 U4'
   :EndIf
   {}glCoverStrokePathNV_DLL path coverMode
 ∇
@@ -24485,35 +24493,35 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetPathParameterivNV (path pname)
   :If 0=⎕NC'glGetPathParameterivNV_DLL'
-      'glGetPathParameterivNV_DLL'⎕NA'opengl32|glGetPathParameterivNV U4 U4 >I4[4]'
+      'glGetPathParameterivNV_DLL'⎕NA'',getdllname,'|glGetPathParameterivNV U4 U4 >I4[4]'
   :EndIf
   r←glGetPathParameterivNV_DLL path pname 4
 ∇
 
 ∇ r←glGetPathParameterfvNV (path pname)
   :If 0=⎕NC'glGetPathParameterfvNV_DLL'
-      'glGetPathParameterfvNV_DLL'⎕NA'opengl32|glGetPathParameterfvNV U4 U4 >F4[4]'
+      'glGetPathParameterfvNV_DLL'⎕NA'',getdllname,'|glGetPathParameterfvNV U4 U4 >F4[4]'
   :EndIf
   r←glGetPathParameterfvNV_DLL path pname 4
 ∇
 
 ∇ r←glGetPathCommandsNV (path commands)
   :If 0=⎕NC'glGetPathCommandsNV_DLL'
-      'glGetPathCommandsNV_DLL'⎕NA'opengl32|glGetPathCommandsNV U4 >U1[]'
+      'glGetPathCommandsNV_DLL'⎕NA'',getdllname,'|glGetPathCommandsNV U4 >U1[]'
   :EndIf
   r←glGetPathCommandsNV_DLL path commands
 ∇
 
 ∇ r←glGetPathCoordsNV (path coords)
   :If 0=⎕NC'glGetPathCoordsNV_DLL'
-      'glGetPathCoordsNV_DLL'⎕NA'opengl32|glGetPathCoordsNV U4 >F4[]'
+      'glGetPathCoordsNV_DLL'⎕NA'',getdllname,'|glGetPathCoordsNV U4 >F4[]'
   :EndIf
   r←glGetPathCoordsNV_DLL path coords
 ∇
 
 ∇ r←glGetPathDashArrayNV (path dashArray)
   :If 0=⎕NC'glGetPathDashArrayNV_DLL'
-      'glGetPathDashArrayNV_DLL'⎕NA'opengl32|glGetPathDashArrayNV U4 >F4[]'
+      'glGetPathDashArrayNV_DLL'⎕NA'',getdllname,'|glGetPathDashArrayNV U4 >F4[]'
   :EndIf
   r←glGetPathDashArrayNV_DLL path dashArray
 ∇
@@ -24527,7 +24535,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetPathMetricRangeNV (metricQueryMask firstPathName numPaths stride metrics)
   :If 0=⎕NC'glGetPathMetricRangeNV_DLL'
-      'glGetPathMetricRangeNV_DLL'⎕NA'opengl32|glGetPathMetricRangeNV U4 U4 I4 I4 >F4[]'
+      'glGetPathMetricRangeNV_DLL'⎕NA'',getdllname,'|glGetPathMetricRangeNV U4 U4 I4 I4 >F4[]'
   :EndIf
   r←glGetPathMetricRangeNV_DLL metricQueryMask firstPathName numPaths stride metrics
 ∇
@@ -24541,168 +24549,168 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←glGetPathColorGenivNV (color pname value)
   :If 0=⎕NC'glGetPathColorGenivNV_DLL'
-      'glGetPathColorGenivNV_DLL'⎕NA'opengl32|glGetPathColorGenivNV U4 U4 >I4[]'
+      'glGetPathColorGenivNV_DLL'⎕NA'',getdllname,'|glGetPathColorGenivNV U4 U4 >I4[]'
   :EndIf
   r←glGetPathColorGenivNV_DLL color pname value
 ∇
 
 ∇ r←glGetPathColorGenfvNV (color pname value)
   :If 0=⎕NC'glGetPathColorGenfvNV_DLL'
-      'glGetPathColorGenfvNV_DLL'⎕NA'opengl32|glGetPathColorGenfvNV U4 U4 >F4[]'
+      'glGetPathColorGenfvNV_DLL'⎕NA'',getdllname,'|glGetPathColorGenfvNV U4 U4 >F4[]'
   :EndIf
   r←glGetPathColorGenfvNV_DLL color pname value
 ∇
 
 ∇ r←glGetPathTexGenivNV (texCoordSet pname value)
   :If 0=⎕NC'glGetPathTexGenivNV_DLL'
-      'glGetPathTexGenivNV_DLL'⎕NA'opengl32|glGetPathTexGenivNV U4 U4 >I4[]'
+      'glGetPathTexGenivNV_DLL'⎕NA'',getdllname,'|glGetPathTexGenivNV U4 U4 >I4[]'
   :EndIf
   r←glGetPathTexGenivNV_DLL texCoordSet pname value
 ∇
 
 ∇ r←glGetPathTexGenfvNV (texCoordSet pname value)
   :If 0=⎕NC'glGetPathTexGenfvNV_DLL'
-      'glGetPathTexGenfvNV_DLL'⎕NA'opengl32|glGetPathTexGenfvNV U4 U4 >F4[]'
+      'glGetPathTexGenfvNV_DLL'⎕NA'',getdllname,'|glGetPathTexGenfvNV U4 U4 >F4[]'
   :EndIf
   r←glGetPathTexGenfvNV_DLL texCoordSet pname value
 ∇
 
 ∇ r←glIsPointInFillPathNV (path mask x y)
   :If 0=⎕NC'glIsPointInFillPathNV_DLL'
-      'glIsPointInFillPathNV_DLL'⎕NA'U1 opengl32|glIsPointInFillPathNV U4 U4 F4 F4'
+      'glIsPointInFillPathNV_DLL'⎕NA'U1 ',getdllname,'|glIsPointInFillPathNV U4 U4 F4 F4'
   :EndIf
   r←glIsPointInFillPathNV_DLL path mask x y
 ∇
 
 ∇ r←glIsPointInStrokePathNV (path x y)
   :If 0=⎕NC'glIsPointInStrokePathNV_DLL'
-      'glIsPointInStrokePathNV_DLL'⎕NA'U1 opengl32|glIsPointInStrokePathNV U4 F4 F4'
+      'glIsPointInStrokePathNV_DLL'⎕NA'U1 ',getdllname,'|glIsPointInStrokePathNV U4 F4 F4'
   :EndIf
   r←glIsPointInStrokePathNV_DLL path x y
 ∇
 
 ∇ r←glGetPathLengthNV (path startSegment numSegments)
   :If 0=⎕NC'glGetPathLengthNV_DLL'
-      'glGetPathLengthNV_DLL'⎕NA'F4 opengl32|glGetPathLengthNV U4 I4 I4'
+      'glGetPathLengthNV_DLL'⎕NA'F4 ',getdllname,'|glGetPathLengthNV U4 I4 I4'
   :EndIf
   r←glGetPathLengthNV_DLL path startSegment numSegments
 ∇
 
 ∇ r←glPointAlongPathNV (path startSegment numSegments distance)
   :If 0=⎕NC'glPointAlongPathNV_DLL'
-      'glPointAlongPathNV_DLL'⎕NA'U1 opengl32|glPointAlongPathNV U4 I4 I4 F4 >F4[1] >F4[1] >F4[1] >F4[1]'
+      'glPointAlongPathNV_DLL'⎕NA'U1 ',getdllname,'|glPointAlongPathNV U4 I4 I4 F4 >F4[1] >F4[1] >F4[1] >F4[1]'
   :EndIf
   r←glPointAlongPathNV_DLL path startSegment numSegments distance 1 1 1 1
 ∇
 
 ∇ glStencilOpValueAMD (face value)
   :If 0=⎕NC'glStencilOpValueAMD_DLL'
-      'glStencilOpValueAMD_DLL'⎕NA'opengl32|glStencilOpValueAMD U4 U4'
+      'glStencilOpValueAMD_DLL'⎕NA'',getdllname,'|glStencilOpValueAMD U4 U4'
   :EndIf
   {}glStencilOpValueAMD_DLL face value
 ∇
 
 ∇ r←glGetTextureHandleNV texture
   :If 0=⎕NC'glGetTextureHandleNV_DLL'
-      'glGetTextureHandleNV_DLL'⎕NA'U8 opengl32|glGetTextureHandleNV U4'
+      'glGetTextureHandleNV_DLL'⎕NA'U8 ',getdllname,'|glGetTextureHandleNV U4'
   :EndIf
   r←glGetTextureHandleNV_DLL texture
 ∇
 
 ∇ r←glGetTextureSamplerHandleNV (texture sampler)
   :If 0=⎕NC'glGetTextureSamplerHandleNV_DLL'
-      'glGetTextureSamplerHandleNV_DLL'⎕NA'U8 opengl32|glGetTextureSamplerHandleNV U4 U4'
+      'glGetTextureSamplerHandleNV_DLL'⎕NA'U8 ',getdllname,'|glGetTextureSamplerHandleNV U4 U4'
   :EndIf
   r←glGetTextureSamplerHandleNV_DLL texture sampler
 ∇
 
 ∇ glMakeTextureHandleResidentNV handle
   :If 0=⎕NC'glMakeTextureHandleResidentNV_DLL'
-      'glMakeTextureHandleResidentNV_DLL'⎕NA'opengl32|glMakeTextureHandleResidentNV U8'
+      'glMakeTextureHandleResidentNV_DLL'⎕NA'',getdllname,'|glMakeTextureHandleResidentNV U8'
   :EndIf
   {}glMakeTextureHandleResidentNV_DLL handle
 ∇
 
 ∇ glMakeTextureHandleNonResidentNV handle
   :If 0=⎕NC'glMakeTextureHandleNonResidentNV_DLL'
-      'glMakeTextureHandleNonResidentNV_DLL'⎕NA'opengl32|glMakeTextureHandleNonResidentNV U8'
+      'glMakeTextureHandleNonResidentNV_DLL'⎕NA'',getdllname,'|glMakeTextureHandleNonResidentNV U8'
   :EndIf
   {}glMakeTextureHandleNonResidentNV_DLL handle
 ∇
 
 ∇ r←glGetImageHandleNV (texture level layered layer format)
   :If 0=⎕NC'glGetImageHandleNV_DLL'
-      'glGetImageHandleNV_DLL'⎕NA'U8 opengl32|glGetImageHandleNV U4 I4 U1 I4 U4'
+      'glGetImageHandleNV_DLL'⎕NA'U8 ',getdllname,'|glGetImageHandleNV U4 I4 U1 I4 U4'
   :EndIf
   r←glGetImageHandleNV_DLL texture level layered layer format
 ∇
 
 ∇ glMakeImageHandleResidentNV (handle access)
   :If 0=⎕NC'glMakeImageHandleResidentNV_DLL'
-      'glMakeImageHandleResidentNV_DLL'⎕NA'opengl32|glMakeImageHandleResidentNV U8 U4'
+      'glMakeImageHandleResidentNV_DLL'⎕NA'',getdllname,'|glMakeImageHandleResidentNV U8 U4'
   :EndIf
   {}glMakeImageHandleResidentNV_DLL handle access
 ∇
 
 ∇ glMakeImageHandleNonResidentNV handle
   :If 0=⎕NC'glMakeImageHandleNonResidentNV_DLL'
-      'glMakeImageHandleNonResidentNV_DLL'⎕NA'opengl32|glMakeImageHandleNonResidentNV U8'
+      'glMakeImageHandleNonResidentNV_DLL'⎕NA'',getdllname,'|glMakeImageHandleNonResidentNV U8'
   :EndIf
   {}glMakeImageHandleNonResidentNV_DLL handle
 ∇
 
 ∇ glUniformHandleui64NV (location value)
   :If 0=⎕NC'glUniformHandleui64NV_DLL'
-      'glUniformHandleui64NV_DLL'⎕NA'opengl32|glUniformHandleui64NV I4 U8'
+      'glUniformHandleui64NV_DLL'⎕NA'',getdllname,'|glUniformHandleui64NV I4 U8'
   :EndIf
   {}glUniformHandleui64NV_DLL location value
 ∇
 
 ∇ glUniformHandleui64vNV (location count value)
   :If 0=⎕NC'glUniformHandleui64vNV_DLL'
-      'glUniformHandleui64vNV_DLL'⎕NA'opengl32|glUniformHandleui64vNV I4 I4 <U8[]'
+      'glUniformHandleui64vNV_DLL'⎕NA'',getdllname,'|glUniformHandleui64vNV I4 I4 <U8[]'
   :EndIf
   {}glUniformHandleui64vNV_DLL location count value
 ∇
 
 ∇ glProgramUniformHandleui64NV (program location value)
   :If 0=⎕NC'glProgramUniformHandleui64NV_DLL'
-      'glProgramUniformHandleui64NV_DLL'⎕NA'opengl32|glProgramUniformHandleui64NV U4 I4 U8'
+      'glProgramUniformHandleui64NV_DLL'⎕NA'',getdllname,'|glProgramUniformHandleui64NV U4 I4 U8'
   :EndIf
   {}glProgramUniformHandleui64NV_DLL program location value
 ∇
 
 ∇ glProgramUniformHandleui64vNV (program location count values)
   :If 0=⎕NC'glProgramUniformHandleui64vNV_DLL'
-      'glProgramUniformHandleui64vNV_DLL'⎕NA'opengl32|glProgramUniformHandleui64vNV U4 I4 I4 <U8[]'
+      'glProgramUniformHandleui64vNV_DLL'⎕NA'',getdllname,'|glProgramUniformHandleui64vNV U4 I4 I4 <U8[]'
   :EndIf
   {}glProgramUniformHandleui64vNV_DLL program location count values
 ∇
 
 ∇ r←glIsTextureHandleResidentNV handle
   :If 0=⎕NC'glIsTextureHandleResidentNV_DLL'
-      'glIsTextureHandleResidentNV_DLL'⎕NA'U1 opengl32|glIsTextureHandleResidentNV U8'
+      'glIsTextureHandleResidentNV_DLL'⎕NA'U1 ',getdllname,'|glIsTextureHandleResidentNV U8'
   :EndIf
   r←glIsTextureHandleResidentNV_DLL handle
 ∇
 
 ∇ r←glIsImageHandleResidentNV handle
   :If 0=⎕NC'glIsImageHandleResidentNV_DLL'
-      'glIsImageHandleResidentNV_DLL'⎕NA'U1 opengl32|glIsImageHandleResidentNV U8'
+      'glIsImageHandleResidentNV_DLL'⎕NA'U1 ',getdllname,'|glIsImageHandleResidentNV U8'
   :EndIf
   r←glIsImageHandleResidentNV_DLL handle
 ∇
 
 ∇ glTexStorageSparseAMD (target internalFormat width height depth layers flags)
   :If 0=⎕NC'glTexStorageSparseAMD_DLL'
-      'glTexStorageSparseAMD_DLL'⎕NA'opengl32|glTexStorageSparseAMD U4 U4 I4 I4 I4 I4 U4'
+      'glTexStorageSparseAMD_DLL'⎕NA'',getdllname,'|glTexStorageSparseAMD U4 U4 I4 I4 I4 I4 U4'
   :EndIf
   {}glTexStorageSparseAMD_DLL target internalFormat width height depth layers flags
 ∇
 
 ∇ glTextureStorageSparseAMD (texture target internalFormat width height depth layers flags)
   :If 0=⎕NC'glTextureStorageSparseAMD_DLL'
-      'glTextureStorageSparseAMD_DLL'⎕NA'opengl32|glTextureStorageSparseAMD U4 U4 U4 I4 I4 I4 I4 U4'
+      'glTextureStorageSparseAMD_DLL'⎕NA'',getdllname,'|glTextureStorageSparseAMD U4 U4 U4 I4 I4 I4 I4 U4'
   :EndIf
   {}glTextureStorageSparseAMD_DLL texture target internalFormat width height depth layers flags
 ∇

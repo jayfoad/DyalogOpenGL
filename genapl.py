@@ -35,6 +35,14 @@ print()
 
 # Insert some helper functions
 
+print('∇ r←getdllname')
+print('  :If \'Windows\'≡7↑#.⎕WG\'APLVersion\'')
+print('      r←\'opengl32\'')
+print('  :Else')
+print('      r←\'libGL.so\'')
+print('  :Endif')
+print('∇')
+print()
 print('∇ r←ptostring p;l')
 print('  :If p=0')
 print('      r←\'\'')
@@ -249,7 +257,7 @@ def printfunc(rettype, funcname, params, cfuncname = None):
         if retstr is None or argstr is None:
             print(' ⎕SIGNAL 16')
         else:
-            print('\'' + retstr + 'opengl32|' + cfuncname + argstr + '\'')
+            print('\'' + retstr + '\',getdllname,\'|' + cfuncname + argstr + '\'')
         print('  :EndIf')
         if numretvals == 0:
             print('  {}', end = '')

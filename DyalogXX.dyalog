@@ -2,7 +2,7 @@
 
 ∇ r←GetDLLName;⎕IO
   ⎕IO←0
-  t←⊃#.⎕WG'aplversion'
+  t←⊃#.⎕WG'APLVersion'
   :If 'Windows'≡7↑t
       r←''
   :Else

@@ -76,7 +76,7 @@ PFD_STEREO←2
 PFD_DRAW_TO_WINDOW←4
 PFD_SUPPORT_OPENGL←32
 
-∇ {w}←glutCreateWindow title;d;s;r;bitand;a;f;v;c
+∇ {w}←glutCreateWindow title;d;s;r;bitand;a;fs;f;v;c;x
   d←#.Xlib.XOpenDisplay
   s←#.Xlib.XDefaultScreen d
   r←#.Xlib.XDefaultRootWindow d
@@ -91,14 +91,22 @@ PFD_SUPPORT_OPENGL←32
       a←#.GLX.GLX_STEREO #.Xlib.True,a
   :Endif
 
-  f←#.GLX.glXChooseFBConfig d s a
-  :If 0=⍴f
+  fs←#.GLX.glXChooseFBConfig d s a
+  :If 0=⍴fs
       ⎕SIGNAL 999 ⍝ ???
   :EndIf
-  v←#.GLX.glXGetVisualFromFBConfig d (⎕IO⊃f)
+  f←⎕IO⊃fs
+  v←#.GLX.glXGetVisualFromFBConfig d f
   c←#.Xlib.XCreateColormap d r v.visual #.Xlib.AllocNone
   w←#.Xlib.XCreateWindow d r,initialwindowposition,initialwindowsize,0 v.depth #.Xlib.InputOutput v.visual (#.Xlib.CWEventMask+#.Xlib.CWColormap) (0 0 0 0 0 0 0 0 0 0 #.Xlib.ExposureMask 0 0 c 0)
+  ⍝ TODO #.Xlib.XStoreName d w title
   #.Xlib.XMapWindow d w
+  x←#.GLX.glXCreateNewContext d f #.GLX.GLX_RGBA_TYPE 0 #.Xlib.True
+  :If x=0
+      ⎕SIGNAL 999 ⍝ ???
+  :Endif
+  #.GLX.glXMakeCurrent d w x
+
   currentwindow←w
 ∇
 

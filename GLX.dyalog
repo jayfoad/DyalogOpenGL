@@ -155,7 +155,13 @@ GLX_PBUFFER_CLOBBER_MASK←134217728
 
 ⍝ 3.3.7 Rendering Contexts
 
-⍝ glXCreateNewContext
+∇ {z}←glXCreateNewContext x
+ :If 3≠⎕NC'glXCreateNewContext_DLL'
+     'glXCreateNewContext_DLL'⎕NA'P libGL.so|glXCreateNewContext P P I4 P I4'
+ :EndIf
+ z←glXCreateNewContext_DLL x
+∇
+
 ⍝ glXIsDirect
 ⍝ glXDestroyContext
 ⍝ glXMakeContextCurrent
@@ -202,6 +208,12 @@ GLX_PBUFFER_CLOBBER_MASK←134217728
 ⍝ 3.5 Rendering Contexts
 
 ⍝ glXCreateContext
-⍝ glXMakeCurrent
+
+∇ {z}←glXMakeCurrent x
+ :If 3≠⎕NC'glXMakeCurrent_DLL'
+     'glXMakeCurrent_DLL'⎕NA'I4 libGL.so|glXMakeCurrent P P P'
+ :EndIf
+ z←glXMakeCurrent_DLL x
+∇
 
 :EndNamespace

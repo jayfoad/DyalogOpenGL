@@ -8,6 +8,18 @@
 ⍝ #.Xlib.XMapWindow d w
 ⍝ {⍵≡#.Xlib.XNextEvent d: ⋄ ∇⍵} #.Xlib.MapNotify
 
+⍝ Or:
+⍝ d←#.Xlib.XOpenDisplay
+⍝ r←#.Xlib.XDefaultRootWindow d
+⍝ s←#.Xlib.XDefaultScreen 
+⍝ f←#.GLX.glXChooseFBConfig d s 0
+⍝ v←#.GLX.glXGetVisualFromFBConfig d (⊃f)
+
+None←0
+
+True←1
+False←0
+
 NoEventMask←0
 KeyPressMask←2*0
 KeyReleaseMask←2*1
@@ -71,6 +83,28 @@ MappingNotify←34
 GenericEvent←35
 LASTEvent←36
 
+InputOutput←1
+InputOnly←2
+
+CWBackPixmap←2*0
+CWBackPixel←2*1
+CWBorderPixmap←2*2
+CWBorderPixel←2*3
+CWBitGravity←2*4
+CWWinGravity←2*5
+CWBackingStore←2*6
+CWBackingPlanes←2*7
+CWBackingPixel←2*8
+CWOverrideRedirect←2*9
+CWSaveUnder←2*10
+CWEventMask←2*11
+CWDontPropagate←2*12
+CWColormap←2*13
+CWCursor←2*14
+
+AllocNone←0
+AllocAll←1
+
 ∇ {z}←XOpenDisplay
  :If 3≠⎕NC'XOpenDisplay_DLL'
      'XOpenDisplay_DLL'⎕NA'P libX11.so|XOpenDisplay P'
@@ -95,14 +129,18 @@ LASTEvent←36
  z←XDefaultScreen_DLL x
 ∇
 
+∇ {z}←XCreateColormap x
+ :If 3≠⎕NC'XCreateColormap_DLL'
+     'XCreateColormap_DLL'⎕NA'P libX11.so|XCreateColormap P P P I4'
+ :EndIf
+ z←XCreateColormap_DLL x
+∇
+
 ∇ {z}←XCreateWindow x
  :If 3≠⎕NC'XCreateWindow_DLL'
-     'XCreateWindow_DLL'⎕NA'P libX11.so|XCreateWindow P P I4 I4 U4 U4 U4 I4 U4 P P P'
+     'XCreateWindow_DLL'⎕NA'P libX11.so|XCreateWindow P P I4 I4 U4 U4 U4 I4 U4 P P <{P P P P I4 I4 I4 I4 P P I4 I4 P P I4 I4 P P}'
  :EndIf
- z←XCreateWindow_DLL x
- :If z=0
-     ⎕SIGNAL 999 ⍝ ???
- :EndIf
+ z←XCreateWindow_DLL (¯1↓x),⊂1 1 1 1 1 1 1 0 1 1 1 0 1 1 1 0 1 1\⊃⌽x
 ∇
 
 ∇ {z}←XCreateSimpleWindow x
@@ -110,21 +148,18 @@ LASTEvent←36
      'XCreateSimpleWindow_DLL'⎕NA'P libX11.so|XCreateSimpleWindow P P I4 I4 U4 U4 U4 P P'
  :EndIf
  z←XCreateSimpleWindow_DLL x
- :If z=0
-     ⎕SIGNAL 999 ⍝ ???
- :EndIf
 ∇
 
 ∇ XSelectInput x
  :If 3≠⎕NC'XSelectInput_DLL'
-     'XSelectInput_DLL'⎕NA'libX11.so|I4 XSelectInput P P P'
+     'XSelectInput_DLL'⎕NA'I4 libX11.so|XSelectInput P P P'
  :EndIf
  {}XSelectInput_DLL x
 ∇
 
 ∇ XMapWindow x
  :If 3≠⎕NC'XMapWindow_DLL'
-     'XMapWindow_DLL'⎕NA'libX11.so|I4 XMapWindow P P'
+     'XMapWindow_DLL'⎕NA'I4 libX11.so|XMapWindow P P'
  :EndIf
  {}XMapWindow_DLL x
 ∇
@@ -132,7 +167,7 @@ LASTEvent←36
 ∇ {z}←XNextEvent x
  :If 3≠⎕NC'XNextEvent_DLL'
      ⍝ P[24] ensures that this struct isn't smaller than struct XEvent.
-     'XNextEvent_DLL'⎕NA'libX11.so|I4 XNextEvent P >{I4 P[24]}'
+     'XNextEvent_DLL'⎕NA'I4 libX11.so|XNextEvent P >{I4 P[24]}'
  :EndIf
  ⍝ Just return the event type for the nonce.
  z←⊃XNextEvent_DLL x 0
@@ -140,7 +175,7 @@ LASTEvent←36
 
 ∇ XFree x
  :If 3≠⎕NC'XFree_DLL'
-     'XFree_DLL'⎕NA'libX11.so|I4 XFree P'
+     'XFree_DLL'⎕NA'I4 libX11.so|XFree P'
  :EndIf
  {}XFree_DLL x
 ∇

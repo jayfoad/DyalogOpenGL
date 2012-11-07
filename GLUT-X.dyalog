@@ -30,8 +30,6 @@
 
 ⎕ML←3 ⍝ because static data (e.g. cpdata) initialisation uses "⊃" for "mix"
 
-⎕USING←',System.Windows.Forms.dll' ',System.Drawing.dll'
-
 GLUT_RGB←0
 GLUT_RGBA←GLUT_RGB
 GLUT_SINGLE←0
@@ -45,7 +43,7 @@ GLUT_MULTISAMPLE←128
 GLUT_STEREO←256
 GLUT_LUMINANCE←512
 
-initialwindowposition←¯1 ¯1
+initialwindowposition←0 0
 initialwindowsize←300 300
 
 ∇ glutInit
@@ -78,20 +76,30 @@ PFD_STEREO←2
 PFD_DRAW_TO_WINDOW←4
 PFD_SUPPORT_OPENGL←32
 
-∇ {r}←glutCreateWindow title;dpy;scr;root;fbconfigs;vi
-  dpy←#.Xlib.XOpenDisplay
-  scr←#.Xlib.XDefaultScreen dpy
-  root←#.Xlib.XDefaultRootWindow dpy
+∇ {w}←glutCreateWindow title;d;s;r;bitand;a;f;v;c
+  d←#.Xlib.XOpenDisplay
+  s←#.Xlib.XDefaultScreen d
+  r←#.Xlib.XDefaultRootWindow d
 
-  fbconfigs←#.GLX.glXChooseFBConfig dpy scr attribs
-  vi←glXGetVisualFromFBConfig dpy config
-  r←#.Xlib.XCreateWindow dpy root 0 0 w h 0 vi.depth IO vi.visual #.Xlib.CWEventMask (0 0 0 0 0 0 0 0 0 0 #.Xlib.ExposureMask 0 0 0 0)
-  #.Xlib.XFree vi
-  #.Xlib.XFree fbconfigs
+  bitand←{∨/∧/2(⊥⍣¯1)⍺ ⍵}
 
-  #.Xlib.XMapWindow dpy r
+  a←#.GLX.GLX_X_RENDERABLE #.Xlib.True #.Xlib.None
+  :If displaymode bitand GLUT_DOUBLE
+      a←#.GLX.GLX_DOUBLEBUFFER #.Xlib.True,a
+  :Endif
+  :If displaymode bitand GLUT_STEREO
+      a←#.GLX.GLX_STEREO #.Xlib.True,a
+  :Endif
 
-  currentwindow←r
+  f←#.GLX.glXChooseFBConfig d s a
+  :If 0=⍴f
+      ⎕SIGNAL 999 ⍝ ???
+  :EndIf
+  v←#.GLX.glXGetVisualFromFBConfig d (⎕IO⊃f)
+  c←#.Xlib.XCreateColormap d r v.visual #.Xlib.AllocNone
+  w←#.Xlib.XCreateWindow d r,initialwindowposition,initialwindowsize,0 v.depth #.Xlib.InputOutput v.visual (#.Xlib.CWEventMask+#.Xlib.CWColormap) (0 0 0 0 0 0 0 0 0 0 #.Xlib.ExposureMask 0 0 c 0)
+  #.Xlib.XMapWindow d w
+  currentwindow←w
 ∇
 
 ∇ glutSetWindow w

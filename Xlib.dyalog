@@ -177,7 +177,7 @@ AllocAll←1
      'XNextEvent_DLL'⎕NA'I4 libX11.so|XNextEvent P >{I4 P[24]}'
  :EndIf
  ⍝ Just return the event type for the nonce.
- z←⊃XNextEvent_DLL x 0
+ z←⊃⊃⌽XNextEvent_DLL x 0
 ∇
 
 ∇ XFree x

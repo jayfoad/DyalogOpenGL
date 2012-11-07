@@ -1,5 +1,8 @@
 :Namespace GL
 
+⍝ Dependencies
+⍝∇:require =/DyalogXX
+
 GL_CURRENT_BIT←1
 GL_POINT_BIT←2
 GL_LINE_BIT←4
@@ -4607,28 +4610,16 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR←37851
 GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR←37852
 GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
-∇ r←dyalogdllname;⎕IO
-  ⎕IO←0
-  r←0⊃#.⎕WG'aplversion'
-  r←(r⍳' ')↑r
-  r←(r⍳'-')↓r
-  :If r≡'-64'
-      r←'dyalog64'
-  :Else
-      r←'dyalog32'
-  :EndIf
-∇
-
 ∇ r←ptostring p;l
   :If p=0
       r←''
   :Else
       :If 0=⎕NC'strlen'
-          'strlen'⎕NA'P ',dyalogdllname,'|STRLEN P'
+          'strlen'⎕NA'P ',#.DyalogXX.GetDLLName,'|STRLEN P'
       :EndIf
       l←strlen p
       :If 0=⎕NC'memcpy'
-          'memcpy'⎕NA'P ',dyalogdllname,'|MEMCPY >U1[] P P'
+          'memcpy'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >U1[] P P'
       :EndIf
       p r←memcpy l p l
       r←'UTF-8' ⎕UCS r

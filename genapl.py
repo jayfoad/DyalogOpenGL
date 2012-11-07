@@ -11,6 +11,10 @@ import urllib2
 print(':Namespace GL')
 print()
 
+print('⍝ Dependencies')
+print('⍝∇:require =/DyalogXX')
+print()
+
 # Read the OpenGL enumerants and emit them as APL
 e = False
 for line in urllib2.urlopen('http://www.opengl.org/registry/api/enum.spec'):
@@ -31,28 +35,16 @@ print()
 
 # Insert some helper functions
 
-print('∇ r←dyalogdllname;⎕IO')
-print('  ⎕IO←0')
-print('  r←0⊃#.⎕WG\'aplversion\'')
-print('  r←(r⍳\' \')↑r')
-print('  r←(r⍳\'-\')↓r')
-print('  :If r≡\'-64\'')
-print('      r←\'dyalog64\'')
-print('  :Else')
-print('      r←\'dyalog32\'')
-print('  :EndIf')
-print('∇')
-print()
 print('∇ r←ptostring p;l')
 print('  :If p=0')
 print('      r←\'\'')
 print('  :Else')
 print('      :If 0=⎕NC\'strlen\'')
-print('          \'strlen\'⎕NA\'P \',dyalogdllname,\'|STRLEN P\'')
+print('          \'strlen\'⎕NA\'P \',#.DyalogXX.GetDLLName,\'|STRLEN P\'')
 print('      :EndIf')
 print('      l←strlen p')
 print('      :If 0=⎕NC\'memcpy\'')
-print('          \'memcpy\'⎕NA\'P \',dyalogdllname,\'|MEMCPY >U1[] P P\'')
+print('          \'memcpy\'⎕NA\'P \',#.DyalogXX.GetDLLName,\'|MEMCPY >U1[] P P\'')
 print('      :EndIf')
 print('      p r←memcpy l p l')
 # OpenGL 3.1 onwards specifies that the strings returned by glGetString are

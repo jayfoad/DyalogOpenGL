@@ -99,7 +99,7 @@ PFD_SUPPORT_OPENGL←32
   v←#.GLX.glXGetVisualFromFBConfig d f
   c←#.Xlib.XCreateColormap d r v.visual #.Xlib.AllocNone
   w←#.Xlib.XCreateWindow d r,initialwindowposition,initialwindowsize,0 v.depth #.Xlib.InputOutput v.visual (#.Xlib.CWEventMask+#.Xlib.CWColormap) (0 0 0 0 0 0 0 0 0 0 #.Xlib.ExposureMask 0 0 c 0)
-  ⍝ TODO #.Xlib.XStoreName d w title
+  #.Xlib.XStoreName d w title
   #.Xlib.XMapWindow d w
   x←#.GLX.glXCreateNewContext d f #.GLX.GLX_RGBA_TYPE 0 #.Xlib.True
   :If x=0

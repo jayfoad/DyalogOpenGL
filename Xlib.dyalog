@@ -157,6 +157,13 @@ AllocAll←1
  {}XSelectInput_DLL x
 ∇
 
+∇ XStoreName x
+ :If 3≠⎕NC'XStoreName_DLL'
+     'XStoreName_DLL'⎕NA'I4 libX11.so|XStoreName P P <0T1[]'
+ :EndIf
+ {}XStoreName_DLL x
+∇
+
 ∇ XMapWindow x
  :If 3≠⎕NC'XMapWindow_DLL'
      'XMapWindow_DLL'⎕NA'I4 libX11.so|XMapWindow P P'

@@ -5,6 +5,7 @@
 
 ⍝ Dependencies
 ⍝∇:require =/Xlib
+⍝∇:require =/DyalogXX
 
 GLX_USE_GL←1
 GLX_BUFFER_SIZE←2
@@ -106,13 +107,13 @@ GLX_PBUFFER_CLOBBER_MASK←134217728
       z←⍬
   :Else
       :If 3≠⎕NC'glXChooseFBConfig_copyarray'
-          'glXChooseFBConfig_copyarray'⎕NA'P dyalog64.so|MEMCPY >P[] P P' ⍝ FIXME dyalog32 for 32-bit
+          'glXChooseFBConfig_copyarray'⎕NA'P ',#.DyalogXX.GetDLLName,'.so|MEMCPY >P[] P P'
       :EndIf
       z←⊃⌽glXChooseFBConfig_copyarray n p (n×8) ⍝ FIXME 4 for 32-bit
       #.Xlib.XFree p
 
       ⍝:If 3≠⎕NC'glXChooseFBConfig_copyfbconfig'
-      ⍝    'glXChooseFBConfig_copyfbconfig'⎕NA'P dyalog64.so|MEMCPY >{I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U1 U1 U1 U1 U1 U1 U1 U1[1] I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 U4 U4 U4 U4 I4 I4 U1 U1[7] F8 F8 F8 F8 F8 F8 F8 F8} P P' ⍝ FIXME dyalog32 for 32-bit
+      ⍝    'glXChooseFBConfig_copyfbconfig'⎕NA'P ',#.DyalogXX.GetDLLName,'.so|MEMCPY >{I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U1 U1 U1 U1 U1 U1 U1 U1[1] I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 I4 U4 U4 U4 U4 U4 U4 I4 I4 U1 U1[7] F8 F8 F8 F8 F8 F8 F8 F8} P P'
       ⍝:EndIf
       ⍝z←{⊃⌽glXChooseFBConfig_copyfbconfig 0 ⍵ 232}¨z ⍝ FIXME 228 for 32-bit
   :EndIf
@@ -129,7 +130,7 @@ GLX_PBUFFER_CLOBBER_MASK←134217728
       ⎕SIGNAL 999 ⍝ ???
   :EndIf
   :If 3≠⎕NC'glXGetVisualFromFBConfig_copy'
-      'glXGetVisualFromFBConfig_copy'⎕NA'P dyalog64.so|MEMCPY >{P P I4 I4 I4 U1[4] P P P I4 I4} P P' ⍝ FIXME dyalog32 for 32-bit
+      'glXGetVisualFromFBConfig_copy'⎕NA'P ',#.DyalogXX.GetDLLName,'.so|MEMCPY >{P P I4 I4 I4 U1[4] P P P I4 I4} P P'
   :EndIf
   z←⎕NS''
   z.(visual visualid screen depth class red_mask green_mask blue_mask colormap_size bits_per_rgb)←1 1 1 1 1 0 1 1 1 1 1/⊃⌽glXGetVisualFromFBConfig_copy 0 p 64 ⍝ FIXME 40 for 32-bit

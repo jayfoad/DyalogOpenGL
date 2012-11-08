@@ -184,7 +184,12 @@ GLX_PBUFFER_CLOBBER_MASK←134217728
 
 ⍝ 3.3.10 Double Buffering
 
-⍝ glXSwapBuffers
+∇ glXSwapBuffers x
+ :If 3≠⎕NC'glXSwapBuffers_DLL'
+     'glXSwapBuffers_DLL'⎕NA'libGL.so|glXSwapBuffers P P'
+ :EndIf
+ glXSwapBuffers_DLL x
+∇
 
 ⍝ 3.3.11 Access to X Fonts
 

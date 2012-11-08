@@ -118,6 +118,13 @@ AllocAll←1
  :EndIf
 ∇
 
+∇ {z}←XCloseDisplay x
+ :If 3≠⎕NC'XCloseDisplay_DLL'
+     'XCloseDisplay_DLL'⎕NA'I4 libX11.so|XCloseDisplay P'
+ :EndIf
+ z←XCloseDisplay_DLL x
+∇
+
 ∇ {z}←XDefaultRootWindow x
  :If 3≠⎕NC'XDefaultRootWindow_DLL'
      'XDefaultRootWindow_DLL'⎕NA'P libX11.so|XDefaultRootWindow P'
@@ -196,6 +203,11 @@ AllocAll←1
          'XNextEvent_copyconfigureevent'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >{I4 I4 P I4 I4 P P P I4 I4 I4 I4 I4 I4 P I4} <{I4 P[24]} P' ⍝ FIXME for 32-bit
      :EndIf
      z←1 0 1 1 0 1 1 1 1 1 1 1 1 0 1 1/⊃⌽XNextEvent_copyconfigureevent 0 z 84 ⍝ FIXME for 32-bit
+ :Case ClientMessage
+     :If 3≠⎕NC'XNextEvent_copyclientmessageevent'
+         'XNextEvent_copyclientmessageevent'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >{I4 I4 P I4 I4 P P P I4 I4 {P P P P P}} <{I4 P[24]} P' ⍝ FIXME for 32-bit
+     :EndIf
+     z←1 0 1 1 0 1 1 1 1 0 1/⊃⌽XNextEvent_copyclientmessageevent 0 z 84 ⍝ FIXME for 32-bit
  :Else
      ⍝ Just return the event type.
      z←⊃z
@@ -214,6 +226,20 @@ AllocAll←1
      'XPending_DLL'⎕NA'I4 libX11.so|XPending P'
  :EndIf
  z←XPending_DLL x
+∇
+
+∇ {z}←XInternAtom x
+ :If 3≠⎕NC'XInternAtom_DLL'
+     'XInternAtom_DLL'⎕NA'P libX11.so|XInternAtom P <0T1[] I4'
+ :EndIf
+ z←XInternAtom_DLL x
+∇
+
+∇ {z}←XSetWMProtocols x
+ :If 3≠⎕NC'XSetWMProtocols_DLL'
+     'XSetWMProtocols_DLL'⎕NA'I4 libX11.so|XSetWMProtocols P P <P[] I4'
+ :EndIf
+ z←XSetWMProtocols_DLL x,⍴,⊃⌽x
 ∇
 
 :EndNamespace

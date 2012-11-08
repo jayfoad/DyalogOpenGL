@@ -71,7 +71,7 @@ initialwindowsize←300 300
 ∇ glutMainLoop;⎕IO;e
   ⎕IO←0
   :While 1
-      :If redisplay∧0=#.Xlib.XPending dpy
+      :If redisplay
           :If 0≠⎕NC'displayfunc'
               ⍎displayfunc
           :Endif
@@ -94,9 +94,13 @@ initialwindowsize←300 300
           :If 0≠⎕NC'reshapefunc'
               (⍎reshapefunc) e[8 9]
           :Endif
+      :Case #.Xlib.ClientMessage
+          :If e[⊂7 0]=wmdeletemessage
+              :Leave
+          :Endif
       :EndSelect
   :EndWhile
-  ⍝ TODO destroy the gl context ?
+  #.Xlib.XCloseDisplay dpy ⋄ ⎕EX'dpy'
 ∇
 
 PFD_DOUBLEBUFFER←1
@@ -129,18 +133,14 @@ PFD_SUPPORT_OPENGL←32
   cmap←#.Xlib.XCreateColormap dpy r v.visual #.Xlib.AllocNone
   w←#.Xlib.XCreateWindow dpy r,initialwindowposition,initialwindowsize,0 v.depth #.Xlib.InputOutput v.visual cw (0 0 0 0 0 0 0 0 0 0 em 0 0 cmap 0)
   #.Xlib.XStoreName dpy w title
+  wmdeletemessage←#.Xlib.XInternAtom dpy 'WM_DELETE_WINDOW' #.Xlib.False
+  #.Xlib.XSetWMProtocols dpy w wmdeletemessage
   #.Xlib.XMapWindow dpy w
   ctx←#.GLX.glXCreateNewContext dpy f #.GLX.GLX_RGBA_TYPE 0 #.Xlib.True
   :If ctx=0
       ⎕SIGNAL 999 ⍝ ???
   :Endif
   #.GLX.glXMakeCurrent dpy w ctx
-
-  ⍝ TODO: to intercept window close:
-  ⍝Atom wmDeleteMessage = XInternAtom(display, "WM_DELETE_WINDOW", False);
-  ⍝XSetWMProtocols(display, window, &wmDeleteMessage, 1);
-  ⍝ ... and handle ClientMessage event if event.xclient.data.l[0]==wmDeleteMessage
-
   currentwindow←w
 ∇
 

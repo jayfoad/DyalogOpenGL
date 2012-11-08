@@ -117,247 +117,255 @@ GLU_VERSION←100800
 GLU_VERTEX←100101
 GLU_V_STEP←100207
 
+∇ r←getdllname
+  :If 'Windows'≡7↑#.⎕WG'APLVersion'
+      r←'glu32'
+  :Else
+      r←'libGLU.so'
+  :Endif
+∇
+
 ∇ {z}←gluBeginPolygon x
  :If 3≠⎕NC'gluBeginPolygon_DLL'
-     'gluBeginPolygon_DLL'⎕NA'GLU32.DLL|gluBeginPolygon I4'
+     'gluBeginPolygon_DLL'⎕NA getdllname,'|gluBeginPolygon I4'
  :EndIf
  z←gluBeginPolygon_DLL x
 ∇
 
 ∇ {z}←gluBeginSurface x
  :If 3≠⎕NC'gluBeginSurface_DLL'
-     'gluBeginSurface_DLL'⎕NA'GLU32.DLL|gluBeginSurface I4'
+     'gluBeginSurface_DLL'⎕NA getdllname,'|gluBeginSurface I4'
  :EndIf
  z←gluBeginSurface_DLL x
 ∇
 
 ∇ {z}←gluBeginTrim x
  :If 3≠⎕NC'gluBeginTrim_DLL'
-     'gluBeginTrim_DLL'⎕NA'GLU32.DLL|gluBeginTrim I4'
+     'gluBeginTrim_DLL'⎕NA getdllname,'|gluBeginTrim I4'
  :EndIf
  z←gluBeginTrim_DLL x
 ∇
 
 ∇ {z}←gluCylinder x
  :If 3≠⎕NC'gluCylinder_DLL'
-     'gluCylinder_DLL'⎕NA'GLU32.DLL|gluCylinder I4 F8 F8 F8 I4 I4'
+     'gluCylinder_DLL'⎕NA getdllname,'|gluCylinder I4 F8 F8 F8 I4 I4'
  :EndIf
  z←gluCylinder_DLL x
 ∇
 
 ∇ {z}←gluDeleteNurbsRenderer x
  :If 3≠⎕NC'gluDeleteNurbsRenderer_DLL'
-     'gluDeleteNurbsRenderer_DLL'⎕NA'GLU32.DLL|gluDeleteNurbsRenderer I4'
+     'gluDeleteNurbsRenderer_DLL'⎕NA getdllname,'|gluDeleteNurbsRenderer I4'
  :EndIf
  z←gluDeleteNurbsRenderer_DLL x
 ∇
 
 ∇ {z}←gluDeleteQuadric x
  :If 3≠⎕NC'gluDeleteQuadric_DLL'
-     'gluDeleteQuadric_DLL'⎕NA'GLU32.DLL|gluDeleteQuadric I4'
+     'gluDeleteQuadric_DLL'⎕NA getdllname,'|gluDeleteQuadric I4'
  :EndIf
  z←gluDeleteQuadric_DLL x
 ∇
 
 ∇ {z}←gluDeleteTess x
  :If 3≠⎕NC'gluDeleteTess_DLL'
-     'gluDeleteTess_DLL'⎕NA'GLU32.DLL|gluDeleteTess I4'
+     'gluDeleteTess_DLL'⎕NA getdllname,'|gluDeleteTess I4'
  :EndIf
  z←gluDeleteTess_DLL x
 ∇
 
 ∇ {z}←gluDisk x
  :If 3≠⎕NC'gluDisk_DLL'
-     'gluDisk_DLL'⎕NA'GLU32.DLL|gluDisk I4 F8 F8 I4 I4'
+     'gluDisk_DLL'⎕NA getdllname,'|gluDisk I4 F8 F8 I4 I4'
  :EndIf
  z←gluDisk_DLL x
 ∇
 
 ∇ {z}←gluEndCurve x
  :If 3≠⎕NC'gluEndCurve_DLL'
-     'gluEndCurve_DLL'⎕NA'GLU32.DLL|gluEndCurve I4'
+     'gluEndCurve_DLL'⎕NA getdllname,'|gluEndCurve I4'
  :EndIf
  z←gluEndCurve_DLL x
 ∇
 
 ∇ {z}←gluEndPolygon x
  :If 3≠⎕NC'gluEndPolygon_DLL'
-     'gluEndPolygon_DLL'⎕NA'GLU32.DLL|gluEndPolygon I4'
+     'gluEndPolygon_DLL'⎕NA getdllname,'|gluEndPolygon I4'
  :EndIf
  z←gluEndPolygon_DLL x
 ∇
 
 ∇ {z}←gluEndSurface x
  :If 3≠⎕NC'gluEndSurface_DLL'
-     'gluEndSurface_DLL'⎕NA'GLU32.DLL|gluEndSurface I4'
+     'gluEndSurface_DLL'⎕NA getdllname,'|gluEndSurface I4'
  :EndIf
  z←gluEndSurface_DLL x
 ∇
 
 ∇ {z}←gluEndTrim x
  :If 3≠⎕NC'gluEndTrim_DLL'
-     'gluEndTrim_DLL'⎕NA'GLU32.DLL|gluEndTrim I4'
+     'gluEndTrim_DLL'⎕NA getdllname,'|gluEndTrim I4'
  :EndIf
  z←gluEndTrim_DLL x
 ∇
 
 ∇ {z}←gluGetNurbsProperty x
  :If 3≠⎕NC'gluGetNurbsProperty_DLL'
-     'gluGetNurbsProperty_DLL'⎕NA'I4 GLU32.DLL|GetNurbsProperty I4 U4 =F4[]'
+     'gluGetNurbsProperty_DLL'⎕NA'I4 ',getdllname,'|GetNurbsProperty I4 U4 =F4[]'
  :EndIf
  z←gluGetNurbsProperty_DLL x
 ∇
 
 ∇ {z}←gluLoadSamplingMatrices x
  :If 3≠⎕NC'gluLoadSamplingMatrices_DLL'
-     'gluLoadSamplingMatrices_DLL'⎕NA'GLU32.DLL|gluLoadSamplingMatrices I4 <F4[16] <F4[16] <I4[4]'
+     'gluLoadSamplingMatrices_DLL'⎕NA getdllname,'|gluLoadSamplingMatrices I4 <F4[16] <F4[16] <I4[4]'
  :EndIf
  z←gluLoadSamplingMatrices_DLL x
 ∇
 
 ∇ {z}←gluLookAt x
  :If 3≠⎕NC'gluLookAt_DLL'
-     'gluLookAt_DLL'⎕NA'GLU32.DLL|gluLookAt F8 F8 F8 F8 F8 F8 F8 F8 F8'
+     'gluLookAt_DLL'⎕NA getdllname,'|gluLookAt F8 F8 F8 F8 F8 F8 F8 F8 F8'
  :EndIf
  z←gluLookAt_DLL x
 ∇
 
 ∇ z←gluNewNurbsRenderer
  :If 3≠⎕NC'gluNewNurbsRenderer_DLL'
-     'gluNewNurbsRenderer_DLL'⎕NA'I4 GLU32.DLL|gluNewNurbsRenderer'
+     'gluNewNurbsRenderer_DLL'⎕NA'I4 ',getdllname,'|gluNewNurbsRenderer'
  :EndIf
  z←gluNewNurbsRenderer_DLL
 ∇
 
 ∇ {z}←gluNewQuadric
  :If 3≠⎕NC'gluNewQuadric_DLL'
-     'gluNewQuadric_DLL'⎕NA'I4 GLU32.DLL|gluNewQuadric'
+     'gluNewQuadric_DLL'⎕NA'I4 ',getdllname,'|gluNewQuadric'
  :EndIf
  z←gluNewQuadric_DLL
 ∇
 
 ∇ z←gluNewTess
  :If 3≠⎕NC'gluNewTess_DLL'
-     'gluNewTess_DLL'⎕NA'I4 GLU32.DLL|gluNewTess'
+     'gluNewTess_DLL'⎕NA'I4 ',getdllname,'|gluNewTess'
  :EndIf
  z←gluNewTess_DLL
 ∇
 
 ∇ z←gluNextContour x
  :If 3≠⎕NC'gluNextContour_DLL'
-     'gluNextContour_DLL'⎕NA'GLU32.DLL|gluNextContour I4 U4'
+     'gluNextContour_DLL'⎕NA getdllname,'|gluNextContour I4 U4'
  :EndIf
  z←gluNextContour_DLL
 ∇
 
 ∇ {z}←gluNurbsCallback x
  :If 3≠⎕NC'gluNurbsCallback_DLL'
-     'gluNurbsCallback_DLL'⎕NA'GLU32.DLL|gluNurbsCallback I4 U4'
+     'gluNurbsCallback_DLL'⎕NA getdllname,'|gluNurbsCallback I4 U4'
  :EndIf
  z←gluNurbsCallback_DLL x
 ∇
 
 ∇ {z}←gluNurbsCurve x
  :If 3≠⎕NC'gluNurbsCurve_DLL'
-     'gluNurbsCurve_DLL'⎕NA'GLU32.DLL|gluNurbsCurve I4 I4 =F4[] I4 =F4[] I4 U4'
+     'gluNurbsCurve_DLL'⎕NA getdllname,'|gluNurbsCurve I4 I4 =F4[] I4 =F4[] I4 U4'
  :EndIf
  z←gluNurbsCurve_DLL x
 ∇
 
 ∇ {z}←gluNurbsProperty x
  :If 3≠⎕NC'gluNurbsProperty_DLL'
-     'gluNurbsProperty_DLL'⎕NA'GLU32.DLL|gluNurbsProperty I4 U4 F4'
+     'gluNurbsProperty_DLL'⎕NA getdllname,'|gluNurbsProperty I4 U4 F4'
  :EndIf
  z←gluNurbsProperty_DLL x
 ∇
 
 ∇ {z}←gluNurbsSurface x
  :If 3≠⎕NC'gluNurbsSurface_DLL'
-     'gluNurbsSurface_DLL'⎕NA'GLU32.DLL|gluNurbsSurface I4 I4 =F4[] I4 =F4[] I4 I4 =F4[] I4 I4 U4'
+     'gluNurbsSurface_DLL'⎕NA getdllname,'|gluNurbsSurface I4 I4 =F4[] I4 =F4[] I4 I4 =F4[] I4 I4 U4'
  :EndIf
  z←gluNurbsSurface_DLL x
 ∇
 
 ∇ {z}←gluOrtho2D x
  :If 3≠⎕NC'gluOrtho2D_DLL'
-     'gluOrtho2D_DLL'⎕NA'U4 GLU32.DLL|gluOrtho2D F8 F8 F8 F8'
+     'gluOrtho2D_DLL'⎕NA'U4 ',getdllname,'|gluOrtho2D F8 F8 F8 F8'
  :EndIf
  z←gluOrtho2D_DLL x
 ∇
 
 ∇ {z}←gluPartialDisk x
  :If 3≠⎕NC'gluPartialDisk_DLL'
-     'gluPartialDisk_DLL'⎕NA'GLU32.DLL|gluPartialDisk I4 F8 F8 I4 I4 F8 F8'
+     'gluPartialDisk_DLL'⎕NA getdllname,'|gluPartialDisk I4 F8 F8 I4 I4 F8 F8'
  :EndIf
  z←gluPartialDisk_DLL x
 ∇
 
 ∇ {z}←gluPerspective x
  :If 3≠⎕NC'gluPerspective_DLL'
-     'gluPerspective_DLL'⎕NA'U4 GLU32.DLL|gluPerspective F8 F8 F8 F8'
+     'gluPerspective_DLL'⎕NA'U4 ',getdllname,'|gluPerspective F8 F8 F8 F8'
  :EndIf
  z←gluPerspective_DLL x
 ∇
 
 ∇ {z}←gluPickMatrix x
  :If 3≠⎕NC'gluPickMatrix_DLL'
-     'gluPickMatrix_DLL'⎕NA'OpenGL32.DLL|gluPickMatrix F8 F8 F8 F8 <I4[4]'
+     'gluPickMatrix_DLL'⎕NA'opengl32|gluPickMatrix F8 F8 F8 F8 <I4[4]'
  :EndIf
  z←gluPickMatrix_DLL x
 ∇
 
 ∇ {z}←gluPwlCurve x
  :If 3≠⎕NC'gluPwlCurve_DLL'
-     'gluPwlCurve_DLL'⎕NA'GLU32.DLL|gluPwlCurve I4 I4 =F4[] I4 U4'
+     'gluPwlCurve_DLL'⎕NA getdllname,'|gluPwlCurve I4 I4 =F4[] I4 U4'
  :EndIf
  z←gluPwlCurve_DLL x
 ∇
 
 ∇ {z}←gluQuadricCallback x
  :If 3≠⎕NC'gluQuadricCallback_DLL'
-     'gluQuadricCallback_DLL'⎕NA'GLU32.DLL|gluQuadricCallback I4 U4 <0T'
+     'gluQuadricCallback_DLL'⎕NA getdllname,'|gluQuadricCallback I4 U4 <0T'
  :EndIf
  z←gluQuadricCallback_DLL x
 ∇
 
 ∇ {z}←gluQuadricDrawStyle x
  :If 3≠⎕NC'gluQuadricDrawStyle_DLL'
-     'gluQuadricDrawStyle_DLL'⎕NA'GLU32.DLL|gluQuadricDrawStyle I4 U4'
+     'gluQuadricDrawStyle_DLL'⎕NA getdllname,'|gluQuadricDrawStyle I4 U4'
  :EndIf
  z←gluQuadricDrawStyle_DLL x
 ∇
 
 ∇ {z}←gluQuadricNormals x
  :If 3≠⎕NC'gluQuadricNormals_DLL'
-     'gluQuadricNormals_DLL'⎕NA'GLU32.DLL|gluQuadricNormals I4 U4'
+     'gluQuadricNormals_DLL'⎕NA getdllname,'|gluQuadricNormals I4 U4'
  :EndIf
  z←gluQuadricNormals_DLL x
 ∇
 
 ∇ {z}←gluQuadricOrientation x
  :If 3≠⎕NC'gluQuadricOrientation_DLL'
-     'gluQuadricOrientation_DLL'⎕NA'GLU32.DLL|gluQuadricOrientation I4 U4'
+     'gluQuadricOrientation_DLL'⎕NA getdllname,'|gluQuadricOrientation I4 U4'
  :EndIf
  z←gluQuadricOrientation_DLL x
 ∇
 
 ∇ {z}←gluQuadricTexture x
  :If 3≠⎕NC'gluQuadricTexture_DLL'
-     'gluQuadricTexture_DLL'⎕NA'GLU32.DLL|gluQuadricTexture I4 U1'
+     'gluQuadricTexture_DLL'⎕NA getdllname,'|gluQuadricTexture I4 U1'
  :EndIf
  z←gluQuadricTexture_DLL x
 ∇
 
 ∇ {z}←gluSphere x
  :If 3≠⎕NC'gluSphere_DLL'
-     'gluSphere_DLL'⎕NA'GLU32.DLL|gluSphere I4 F8 I4 I4'
+     'gluSphere_DLL'⎕NA getdllname,'|gluSphere I4 F8 I4 I4'
  :EndIf
  z←gluSphere_DLL x
 ∇
 
 ∇ {z}←gluTessVertex x
  :If 3≠⎕NC'gluTessVertex_DLL'
-     'gluTessVertex_DLL'⎕NA'GLU32.DLL|gluTessVertex I4 =F8[3] =F4[]'
+     'gluTessVertex_DLL'⎕NA getdllname,'|gluTessVertex I4 =F8[3] =F4[]'
  :EndIf
  z←gluTessVertex_DLL x
 ∇

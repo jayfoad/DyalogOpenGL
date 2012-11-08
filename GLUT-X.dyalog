@@ -48,7 +48,6 @@ initialwindowsize←300 300
 
 ∇ glutInit
   ⎕EX 'displayfunc' 'reshapefunc' 'keyboardfunc'
-  needreshape←1
   dpy←#.Xlib.XOpenDisplay
 ∇
 
@@ -68,32 +67,23 @@ initialwindowsize←300 300
   displaymode←mode
 ∇
 
-∇ glutMainLoop;e
+∇ glutMainLoop;⎕IO;e
+  ⎕IO←0
   :While 1
       e←#.Xlib.XNextEvent dpy
-      :Select e
+      :Select ⍬⍴e
       :Case #.Xlib.KeyPress
           :If 0≠⎕NC'keyboardfunc'
-              (⍎keyboardfunc) ascii x y
+              (⍎keyboardfunc) e[13 8 9]
           :Endif
       :Case #.Xlib.Expose
-          ⍝ Force a reshape before the first display
-          :If needreshape
-              :If 0≠⎕NC'reshapefunc'
-                  (⍎reshapefunc) w h
-              :Endif
-              needreshape←0
-          :Endif
           :If 0≠⎕NC'displayfunc'
               ⍎displayfunc
           :Endif
-      :Case #.Xlib.DestroyNotify
-          :Leave
       :Case #.Xlib.ConfigureNotify
           :If 0≠⎕NC'reshapefunc'
-              (⍎reshapefunc) w h
+              (⍎reshapefunc) e[8 9]
           :Endif
-          needreshape←0
       :EndSelect
   :EndWhile
   ⍝ TODO destroy the gl context ?
@@ -122,7 +112,7 @@ PFD_SUPPORT_OPENGL←32
   :If 0=⍴fs
       ⎕SIGNAL 999 ⍝ ???
   :EndIf
-  f←⎕IO⊃fs
+  f←⍬⍴fs
   v←#.GLX.glXGetVisualFromFBConfig dpy f
   cw←#.Xlib.CWEventMask+#.Xlib.CWColormap
   em←#.Xlib.KeyPressMask+#.Xlib.ExposureMask+#.Xlib.StructureNotifyMask
@@ -135,6 +125,11 @@ PFD_SUPPORT_OPENGL←32
       ⎕SIGNAL 999 ⍝ ???
   :Endif
   #.GLX.glXMakeCurrent dpy w ctx
+
+  ⍝ TODO: to intercept window close:
+  ⍝Atom wmDeleteMessage = XInternAtom(display, "WM_DELETE_WINDOW", False);
+  ⍝XSetWMProtocols(display, window, &wmDeleteMessage, 1);
+  ⍝ ... and handle ClientMessage event if event.xclient.data.l[0]==wmDeleteMessage
 
   currentwindow←w
 ∇
@@ -155,18 +150,6 @@ PFD_SUPPORT_OPENGL←32
   displayfunc←func
 ∇
 
-∇ display (sender e)
-  ⍝ Force a reshape before the first display
-  :If needreshape
-      :If 0≠⎕NC 'reshapefunc'
-          ⍝ TODO set eventcode to 'Configure'
-          (⍎reshapefunc) sender.Size.Width sender.Size.Height
-      :EndIf
-      needreshape←0
-  :EndIf
-  ⍎displayfunc
-∇
-
 ∇ glutSwapBuffers
   #.GLX.glXSwapBuffers dpy currentwindow
 ∇
@@ -175,21 +158,12 @@ PFD_SUPPORT_OPENGL←32
   reshapefunc←func
 ∇
 
-∇ reshape (sender e)
-  needreshape←0
-  (⍎reshapefunc) sender.Size.Width sender.Size.Height
-∇
-
 ∇ glutKeyboardFunc func
   keyboardfunc←func
 ∇
 
-∇ keyboard (sender e)
-  (⍎keyboardfunc) e.KeyChar 0 0
-∇
-
 ∇ glutIdleFunc func
-  # ⎕WS 'Event' 'onIdle' func
+  FIXME
 ∇
 
 ∇ r←glutExtensionSupported extension;⎕ML;t

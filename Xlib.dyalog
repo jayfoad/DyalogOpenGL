@@ -15,6 +15,9 @@
 ⍝ f←#.GLX.glXChooseFBConfig d s 0
 ⍝ v←#.GLX.glXGetVisualFromFBConfig d (⊃f)
 
+⍝ Dependencies
+⍝∇:require =/DyalogXX
+
 None←0
 
 True←1
@@ -176,8 +179,27 @@ AllocAll←1
      ⍝ P[24] ensures that this struct isn't smaller than struct XEvent.
      'XNextEvent_DLL'⎕NA'I4 libX11.so|XNextEvent P >{I4 P[24]}'
  :EndIf
- ⍝ Just return the event type for the nonce.
- z←⊃⊃⌽XNextEvent_DLL x 0
+ z←⊃⌽XNextEvent_DLL x 0
+ :Select ⊃z
+ :Case KeyPress
+     :If 3≠⎕NC'XNextEvent_copykeyevent'
+         'XNextEvent_copykeyevent'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >{I4 I4 P I4 I4 P P P P P I4 I4 I4 I4 U4 U4 I4} <{I4 P[24]} P' ⍝ FIXME for 32-bit
+     :EndIf
+     z←1 0 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1/⊃⌽XNextEvent_copykeyevent 0 z 92 ⍝ FIXME for 32-bit
+ :Case Expose
+     :If 3≠⎕NC'XNextEvent_copyexposeevent'
+         'XNextEvent_copyexposeevent'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >{I4 I4 P I4 I4 P P I4 I4 I4 I4 I4} <{I4 P[24]} P' ⍝ FIXME for 32-bit
+     :EndIf
+     z←1 0 1 1 0 1 1 1 1 1 1 1/⊃⌽XNextEvent_copyexposeevent 0 z 60 ⍝ FIXME for 32-bit
+ :Case ConfigureNotify
+     :If 3≠⎕NC'XNextEvent_copyconfigureevent'
+         'XNextEvent_copyconfigureevent'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >{I4 I4 P I4 I4 P P P I4 I4 I4 I4 I4 I4 P I4} <{I4 P[24]} P' ⍝ FIXME for 32-bit
+     :EndIf
+     z←1 0 1 1 0 1 1 1 1 1 1 1 1 0 1 1/⊃⌽XNextEvent_copyconfigureevent 0 z 84 ⍝ FIXME for 32-bit
+ :Else
+     ⍝ Just return the event type.
+     z←⊃z
+ :EndSelect
 ∇
 
 ∇ XFree x

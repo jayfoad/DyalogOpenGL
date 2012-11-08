@@ -114,7 +114,7 @@ PFD_SUPPORT_OPENGL←32
 
   bitand←{∨/∧/2(⊥⍣¯1)⍺ ⍵}
 
-  a←#.GLX.GLX_X_RENDERABLE #.Xlib.True #.Xlib.None
+  a←#.GLX.GLX_DEPTH_SIZE 1 #.GLX.GLX_X_RENDERABLE #.Xlib.True #.Xlib.None
   :If displaymode bitand GLUT_DOUBLE
       a←#.GLX.GLX_DOUBLEBUFFER #.Xlib.True,a
   :Endif

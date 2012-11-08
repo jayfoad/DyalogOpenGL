@@ -209,4 +209,11 @@ AllocAll←1
  {}XFree_DLL x
 ∇
 
+∇ {z}←XPending x
+ :If 3≠⎕NC'XPending_DLL'
+     'XPending_DLL'⎕NA'I4 libX11.so|XPending P'
+ :EndIf
+ z←XPending_DLL x
+∇
+
 :EndNamespace

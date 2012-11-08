@@ -48,6 +48,7 @@ initialwindowsize←300 300
 
 ∇ glutInit
   ⎕EX 'displayfunc' 'reshapefunc' 'keyboardfunc'
+  redisplay←0
   dpy←#.Xlib.XOpenDisplay
 ∇
 
@@ -70,6 +71,13 @@ initialwindowsize←300 300
 ∇ glutMainLoop;⎕IO;e
   ⎕IO←0
   :While 1
+      :If redisplay∧0=#.Xlib.XPending dpy
+          :If 0≠⎕NC'displayfunc'
+              ⍎displayfunc
+          :Endif
+          redisplay←0
+      :Endif
+
       e←#.Xlib.XNextEvent dpy
       :Select ⍬⍴e
       :Case #.Xlib.KeyPress
@@ -77,8 +85,10 @@ initialwindowsize←300 300
               (⍎keyboardfunc) e[13 8 9]
           :Endif
       :Case #.Xlib.Expose
-          :If 0≠⎕NC'displayfunc'
-              ⍎displayfunc
+          :If e[9]=0
+              :If 0≠⎕NC'displayfunc'
+                  ⍎displayfunc
+              :Endif
           :Endif
       :Case #.Xlib.ConfigureNotify
           :If 0≠⎕NC'reshapefunc'
@@ -143,7 +153,7 @@ PFD_SUPPORT_OPENGL←32
 ∇
 
 ∇ glutPostRedisplay
-  currentwindow.Invalidate ⍬
+  redisplay←1
 ∇
 
 ∇ glutDisplayFunc func

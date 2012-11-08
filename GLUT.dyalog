@@ -48,7 +48,7 @@ initialwindowposition←⍬ ⍬
 initialwindowsize←300 300
 
 ∇ glutInit
-  ⎕EX 'displayfunc' 'reshapefunc'
+  ⎕EX 'displayfunc' 'reshapefunc' 'keyboardfunc'
   needreshape←1
 ∇
 

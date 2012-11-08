@@ -49,6 +49,7 @@ initialwindowsize←300 300
 ∇ glutInit
   ⎕EX 'displayfunc' 'reshapefunc' 'keyboardfunc'
   needreshape←1
+  dpy←#.Xlib.XOpenDisplay
 ∇
 
 ∇ glutInitWindowPosition pos
@@ -67,8 +68,35 @@ initialwindowsize←300 300
   displaymode←mode
 ∇
 
-∇ glutMainLoop
-  System.Windows.Forms.Application.Run currentwindow
+∇ glutMainLoop;e
+  :While 1
+      e←#.Xlib.XNextEvent dpy
+      :Select e
+      :Case #.Xlib.KeyPress
+          :If 0≠⎕NC'keyboardfunc'
+              (⍎keyboardfunc) ascii x y
+          :Endif
+      :Case #.Xlib.Expose
+          ⍝ Force a reshape before the first display
+          :If needreshape
+              :If 0≠⎕NC'reshapefunc'
+                  (⍎reshapefunc) w h
+              :Endif
+              needreshape←0
+          :Endif
+          :If 0≠⎕NC'displayfunc'
+              ⍎displayfunc
+          :Endif
+      :Case #.Xlib.DestroyNotify
+          :Leave
+      :Case #.Xlib.ConfigureNotify
+          :If 0≠⎕NC'reshapefunc'
+              (⍎reshapefunc) w h
+          :Endif
+          needreshape←0
+      :EndSelect
+  :EndWhile
+  ⍝ TODO destroy the gl context ?
 ∇
 
 PFD_DOUBLEBUFFER←1
@@ -76,10 +104,9 @@ PFD_STEREO←2
 PFD_DRAW_TO_WINDOW←4
 PFD_SUPPORT_OPENGL←32
 
-∇ {w}←glutCreateWindow title;d;s;r;bitand;a;fs;f;v;c;x
-  d←#.Xlib.XOpenDisplay
-  s←#.Xlib.XDefaultScreen d
-  r←#.Xlib.XDefaultRootWindow d
+∇ {w}←glutCreateWindow title;s;r;bitand;a;fs;f;v;cw;em;cmap;ctx
+  s←#.Xlib.XDefaultScreen dpy
+  r←#.Xlib.XDefaultRootWindow dpy
 
   bitand←{∨/∧/2(⊥⍣¯1)⍺ ⍵}
 
@@ -91,21 +118,23 @@ PFD_SUPPORT_OPENGL←32
       a←#.GLX.GLX_STEREO #.Xlib.True,a
   :Endif
 
-  fs←#.GLX.glXChooseFBConfig d s a
+  fs←#.GLX.glXChooseFBConfig dpy s a
   :If 0=⍴fs
       ⎕SIGNAL 999 ⍝ ???
   :EndIf
   f←⎕IO⊃fs
-  v←#.GLX.glXGetVisualFromFBConfig d f
-  c←#.Xlib.XCreateColormap d r v.visual #.Xlib.AllocNone
-  w←#.Xlib.XCreateWindow d r,initialwindowposition,initialwindowsize,0 v.depth #.Xlib.InputOutput v.visual (#.Xlib.CWEventMask+#.Xlib.CWColormap) (0 0 0 0 0 0 0 0 0 0 #.Xlib.ExposureMask 0 0 c 0)
-  #.Xlib.XStoreName d w title
-  #.Xlib.XMapWindow d w
-  x←#.GLX.glXCreateNewContext d f #.GLX.GLX_RGBA_TYPE 0 #.Xlib.True
-  :If x=0
+  v←#.GLX.glXGetVisualFromFBConfig dpy f
+  cw←#.Xlib.CWEventMask+#.Xlib.CWColormap
+  em←#.Xlib.KeyPressMask+#.Xlib.ExposureMask+#.Xlib.StructureNotifyMask
+  cmap←#.Xlib.XCreateColormap dpy r v.visual #.Xlib.AllocNone
+  w←#.Xlib.XCreateWindow dpy r,initialwindowposition,initialwindowsize,0 v.depth #.Xlib.InputOutput v.visual cw (0 0 0 0 0 0 0 0 0 0 em 0 0 cmap 0)
+  #.Xlib.XStoreName dpy w title
+  #.Xlib.XMapWindow dpy w
+  ctx←#.GLX.glXCreateNewContext dpy f #.GLX.GLX_RGBA_TYPE 0 #.Xlib.True
+  :If ctx=0
       ⎕SIGNAL 999 ⍝ ???
   :Endif
-  #.GLX.glXMakeCurrent d w x
+  #.GLX.glXMakeCurrent dpy w ctx
 
   currentwindow←w
 ∇
@@ -124,7 +153,6 @@ PFD_SUPPORT_OPENGL←32
 
 ∇ glutDisplayFunc func
   displayfunc←func
-  currentwindow.onPaint←'#.GLUT.display'
 ∇
 
 ∇ display (sender e)
@@ -140,12 +168,11 @@ PFD_SUPPORT_OPENGL←32
 ∇
 
 ∇ glutSwapBuffers
-  #.GDI.SwapBuffers #.WGL.wglGetCurrentDC
+  #.GLX.glXSwapBuffers dpy currentwindow
 ∇
 
 ∇ glutReshapeFunc func
   reshapefunc←func
-  currentwindow.onResize←'#.GLUT.reshape'
 ∇
 
 ∇ reshape (sender e)
@@ -155,7 +182,6 @@ PFD_SUPPORT_OPENGL←32
 
 ∇ glutKeyboardFunc func
   keyboardfunc←func
-  currentwindow.onKeyPress←'#.GLUT.keyboard'
 ∇
 
 ∇ keyboard (sender e)
@@ -173,18 +199,6 @@ PFD_SUPPORT_OPENGL←32
       extensions←(t≠' ')⊂t
   :Endif
   r←(⊂extension)∊extensions
-∇
-
-∇ close;hRC;handle;hDC
-  hRC←#.WGL.wglGetCurrentContext
-  #.WGL.wglMakeCurrent 0 0
-  #.WGL.wglDeleteContext hRC
-
-  handle←currentwindow.Handle.ToInt32
-  hDC←#.User32.GetDC handle
-  #.User32.ReleaseDC handle hDC
-
-  ⎕EX 'currentwindow'
 ∇
 
 ⍝ Shapes ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝

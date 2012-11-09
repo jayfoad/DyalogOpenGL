@@ -68,7 +68,7 @@ initialwindowsize←300 300
   displaymode←mode
 ∇
 
-∇ glutMainLoop;⎕IO;e
+∇ glutMainLoop;⎕IO;e;k
   ⎕IO←0
   :While 1
       :If redisplay
@@ -82,7 +82,10 @@ initialwindowsize←300 300
       :Select ⍬⍴e
       :Case #.Xlib.KeyPress
           :If 0≠⎕NC'keyboardfunc'
-              (⍎keyboardfunc) e[13 8 9]
+              k←#.Xlib.XLookupString e
+              :If 1=⍴k
+                  (⍎keyboardfunc) k,e[8 9]
+              :Endif
           :Endif
       :Case #.Xlib.Expose
           :If e[9]=0

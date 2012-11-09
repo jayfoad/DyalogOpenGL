@@ -242,4 +242,16 @@ AllocAll←1
  z←XSetWMProtocols_DLL x,⍴,⊃⌽x
 ∇
 
+∇ {z}←XLookupString x;t
+ :If 3≠⎕NC'XLookupString_copykeyevent'
+     'XLookupString_copykeyevent'⎕NA'P ',#.DyalogXX.GetDLLName,'|MEMCPY >P[24] <{I4 I4 P I4 I4 P P P P P I4 I4 I4 I4 U4 U4 I4} P' ⍝ FIXME for 32-bit
+ :EndIf
+ t←⊃⌽XLookupString_copykeyevent 0 (1 0 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1\x) 92 ⍝ FIXME for 32-bit
+ :If 3≠⎕NC'XLookupString_DLL'
+     'XLookupString_DLL'⎕NA'I4 libX11.so|XLookupString <P[24] >T1[1] I4 P P'
+ :EndIf
+ t z←XLookupString_DLL t 0 1 0 0
+ z←t⍴z
+∇
+
 :EndNamespace

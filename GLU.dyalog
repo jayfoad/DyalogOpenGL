@@ -118,7 +118,7 @@ GLU_VERTEX←100101
 GLU_V_STEP←100207
 
 ∇ r←getdllname
-  :If 'Windows'≡7↑#.⎕WG'APLVersion'
+  :If 'Windows'≡7↑⊃#.⎕WG'APLVersion'
       r←'glu32'
   :Else
       r←'libGLU.so'

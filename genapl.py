@@ -36,7 +36,7 @@ print()
 # Insert some helper functions
 
 print('∇ r←getdllname')
-print('  :If \'Windows\'≡7↑#.⎕WG\'APLVersion\'')
+print('  :If \'Windows\'≡7↑⊃#.⎕WG\'APLVersion\'')
 print('      r←\'opengl32\'')
 print('  :Else')
 print('      r←\'libGL.so\'')

@@ -4611,7 +4611,7 @@ GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR←37852
 GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR←37853
 
 ∇ r←getdllname
-  :If 'Windows'≡7↑#.⎕WG'APLVersion'
+  :If 'Windows'≡7↑⊃#.⎕WG'APLVersion'
       r←'opengl32'
   :Else
       r←'libGL.so'

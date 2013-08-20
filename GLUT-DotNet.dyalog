@@ -48,6 +48,7 @@ GLUT_LUMINANCE←512
 
 initialwindowposition←¯1 ¯1
 initialwindowsize←300 300
+initialdisplaymode←GLUT_RGB+GLUT_SINGLE+GLUT_DEPTH
 
 ∇ glutInit
   ⎕EX 'displayfunc' 'reshapefunc' 'keyboardfunc'
@@ -67,7 +68,7 @@ initialwindowsize←300 300
 ∇
 
 ∇ glutInitDisplayMode mode
-  displaymode←mode
+  initialdisplaymode←mode
 ∇
 
 ∇ glutMainLoop
@@ -99,10 +100,10 @@ PFD_SUPPORT_OPENGL←32
   bitand←{∨/∧/2(⊥⍣¯1)⍺ ⍵}
 
   dwFlags←PFD_SUPPORT_OPENGL+PFD_DRAW_TO_WINDOW
-  :If displaymode bitand GLUT_STEREO
+  :If initialdisplaymode bitand GLUT_STEREO
       dwFlags+←PFD_STEREO
   :EndIf
-  :If displaymode bitand GLUT_DOUBLE
+  :If initialdisplaymode bitand GLUT_DOUBLE
       dwFlags+←PFD_DOUBLEBUFFER
   :EndIf
   pFD←32 1 dwFlags 3 24,(13⍴0),32 0 0 0 0 0 0 0

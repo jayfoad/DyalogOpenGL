@@ -43,8 +43,9 @@ GLUT_MULTISAMPLE←128
 GLUT_STEREO←256
 GLUT_LUMINANCE←512
 
-initialwindowposition←0 0
+initialwindowposition←¯1 ¯1
 initialwindowsize←300 300
+initialdisplaymode←GLUT_RGB+GLUT_SINGLE+GLUT_DEPTH
 
 ∇ glutInit
   ⎕EX 'displayfunc' 'reshapefunc' 'keyboardfunc'
@@ -65,7 +66,7 @@ initialwindowsize←300 300
 ∇
 
 ∇ glutInitDisplayMode mode
-  displaymode←mode
+  initialdisplaymode←mode
 ∇
 
 ∇ glutMainLoop;⎕IO;e;k
@@ -118,10 +119,10 @@ PFD_SUPPORT_OPENGL←32
   bitand←{∨/∧/2(⊥⍣¯1)⍺ ⍵}
 
   a←#.GLX.GLX_DEPTH_SIZE 1 #.GLX.GLX_X_RENDERABLE #.Xlib.True #.Xlib.None
-  :If displaymode bitand GLUT_DOUBLE
+  :If initialdisplaymode bitand GLUT_DOUBLE
       a←#.GLX.GLX_DOUBLEBUFFER #.Xlib.True,a
   :Endif
-  :If displaymode bitand GLUT_STEREO
+  :If initialdisplaymode bitand GLUT_STEREO
       a←#.GLX.GLX_STEREO #.Xlib.True,a
   :Endif
 

@@ -6,7 +6,7 @@
 ⍝ Dependencies
 ⍝∇:require =/GL
 ⍝∇:require =/GLU
-⍝∇:require =/GLUT-X
+⍝∇:require =/GLUT
 ⍝∇:require =/GLDuck
 
 ⎕ML←0

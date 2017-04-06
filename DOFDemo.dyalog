@@ -112,10 +112,8 @@ j8←8 2⍴¯0.334818 0.435331 0.286438 ¯0.393495 0.459462 0.141540 ¯0.414498 
   #.GLUT.glutSwapBuffers
 ∇
 
-∇ reshape msg;⎕IO
-  ⎕IO←0
-
-  #.GL.glViewport 0 0,msg[5 4]
+∇ reshape (w h)
+  #.GL.glViewport 0 0 w h
 ∇
 
 ∇ keyboard msg;⎕IO

@@ -45,9 +45,9 @@ Note that this demo uses Cube Map Texture Selection, a feature that was first in
 
 # References
 
-OpenGL: http://www.opengl.org/
-GLUT: http://www.opengl.org/resources/libraries/glut/
-GLU: http://www.opengl.org/resources/libraries/glx/
-WGL: http://msdn.microsoft.com/en-us/library/dd374394.aspx
-GDI: http://msdn.microsoft.com/en-us/library/ms533798.aspx
-User32: http://en.wikipedia.org/wiki/Windows_USER
+* OpenGL: http://www.opengl.org/
+* GLUT: http://www.opengl.org/resources/libraries/glut/
+* GLU: http://www.opengl.org/resources/libraries/glx/
+* WGL: http://msdn.microsoft.com/en-us/library/dd374394.aspx
+* GDI: http://msdn.microsoft.com/en-us/library/ms533798.aspx
+* User32: http://en.wikipedia.org/wiki/Windows_USER

@@ -1,48 +1,49 @@
 OpenGL Bindings for APL
 
-* Introduction
+# Introduction
 
 The OpenGL Bindings for APL provide a way to call OpenGL functions directly from Dyalog APL for Windows. They are distributed as a collection of namespace scripts, which can be loaded using the SALT features built into Dyalog APL.
 
-* Getting started
+# Getting started
 
-0. Install Dyalog APL for Windows.
+1. Install Dyalog APL for Windows.
 
 1. Obtain the scripts and put them in a folder on your computer (or accessible from your computer).
 
-2. Add that folder to the SALT path of your Dyalog APL interpreter. To do this from the Dyalog APL development environment, go to Options -> Configure... -> SALT
+1. Add that folder to the SALT path of your Dyalog APL interpreter. To do this from the Dyalog APL development environment, go to Options -> Configure... -> SALT
 
-3. In the session, type:
-<pre>      ]load DOFDemo
-      DOFDemo.main</pre>
-
+1. In the session, type:
+```apl
+      ]load DOFDemo
+      DOFDemo.main
+```
 This will launch the Depth of Field demo. You should see a new window appear containing five different coloured 3D teapots. Close the window to end the demo.
 
-* The libraries
+# The libraries
 
-** OpenGL
+## OpenGL
 
-** GLUT
+## GLUT
 
-** Other libraries
+## Other libraries
 
-* Conventions
+# Conventions
 
-** Functions returning a fixed length array
+## Functions returning a fixed length array
 
-** Functions returning a variable length array
+## Functions returning a variable length array
 
 (e.g. a b c←glGenTextures 3 3 ⍝ looks a bit odd!)
 
-* Demos
+# Demos
 
-** DOFDemo
+## DOFDemo
 
-** EMDemo
+## EMDemo
 
 Note that this demo uses Cube Map Texture Selection, a feature that was first introduced as an extension (http://www.opengl.org/registry/specs/ARB/texture_cube_map.txt) to OpenGL 1.2(?), and then incorporated into the core of OpenGL 1.3.
 
-* References
+# References
 
 OpenGL: http://www.opengl.org/
 GLUT: http://www.opengl.org/resources/libraries/glut/
